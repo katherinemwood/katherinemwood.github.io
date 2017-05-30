@@ -41,6 +41,15 @@
     
     <url>
     
+      <loc>https://katherinemwood.github.io/project/shiny_es/</loc>
+      <lastmod>2016-04-27T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://katherinemwood.github.io/project/darksky/</loc>
       <lastmod>2016-04-27T00:00:00+00:00</lastmod>
     </url>
@@ -110,6 +119,16 @@
     <url>
     
       <loc>https://katherinemwood.github.io/tags/r/</loc>
+      <lastmod>2016-04-27T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://katherinemwood.github.io/tags/shiny/</loc>
       <lastmod>2016-04-27T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
