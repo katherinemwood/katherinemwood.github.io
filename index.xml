@@ -34,9 +34,9 @@ return(as.numeric(!(sum(deck == sample(deck)) &amp;gt; 0))) #1 is win, 0 is lose
 }
 results &amp;lt;- replicate(100000, cards())
 paste(&amp;#39;Win percentage: &amp;#39;, sum(results)/1000,&amp;#39;%&amp;#39;, sep=&amp;#39;&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;Win percentage: 1.604%&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;Win percentage: 1.67%&amp;quot;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;I’ll update this post with the closed-form solution if I manage to work it out (failing that, I’ll just link to the solution on FiveThirtyEight).&lt;/p&gt;
-&lt;p&gt;(Here’s the source code)[&lt;a href=&#34;https://github.com/katherinemwood/lonely_cards&#34; class=&#34;uri&#34;&gt;https://github.com/katherinemwood/lonely_cards&lt;/a&gt;] for the shiny app.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/katherinemwood/lonely_cards&#34;&gt;Here’s the source code&lt;/a&gt; for the shiny app.&lt;/p&gt;
 &lt;p&gt;UPDATE: It turns out the &lt;a href=&#34;https://fivethirtyeight.com/features/how-long-will-it-take-to-blow-out-the-birthday-candles/#correction&#34;&gt;closed-form solution to this riddle&lt;/a&gt; is nontrivial! It relies on a branch of combinatorics called &lt;a href=&#34;http://mathworld.wolfram.com/Derangement.html&#34;&gt;“derangements”&lt;/a&gt; I didn’t encounter in my (admittedly less than comprehensive) math and stats education.&lt;/p&gt;
 </description>
     </item>

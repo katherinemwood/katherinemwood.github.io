@@ -26,6 +26,6 @@ paste('Win percentage: ', sum(results)/1000,'%', sep='')
 
 I'll update this post with the closed-form solution if I manage to work it out (failing that, I'll just link to the solution on FiveThirtyEight).
 
-(Here's the source code)[https://github.com/katherinemwood/lonely_cards] for the shiny app.
+[Here's the source code](https://github.com/katherinemwood/lonely_cards) for the shiny app.
 
 UPDATE: It turns out the [closed-form solution to this riddle](https://fivethirtyeight.com/features/how-long-will-it-take-to-blow-out-the-birthday-candles/#correction) is nontrivial! It relies on a branch of combinatorics called ["derangements"](http://mathworld.wolfram.com/Derangement.html) I didn't encounter in my (admittedly less than comprehensive) math and stats education.
