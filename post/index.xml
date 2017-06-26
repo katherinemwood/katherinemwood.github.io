@@ -11,6 +11,756 @@
     <atom:link href="/post/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>A Primer on Data Wrangling</title>
+      <link>https://katherinemwood.github.io/post/wrangling/</link>
+      <pubDate>Mon, 26 Jun 2017 15:20:35 -0500</pubDate>
+      
+      <guid>https://katherinemwood.github.io/post/wrangling/</guid>
+      <description>&lt;p&gt;I found &lt;a href=&#34;https://twitter.com/dalejbarr/status/826717889608765444&#34;&gt;this Twitter thread&lt;/a&gt; on the vagaries of data wrangling killing momentum interesting, particularly the notion of how frustrating it must be to be at point A with your data, see Point B, where you’d like to go, and have no idea how to get there. Even for those with programming experience, data wrangling can be an enormous chore.&lt;/p&gt;
+&lt;p&gt;To that end, I thought I’d walk through a basic overview of how to accomplish some of the operations you might commonly encounter when you first get a data set. If you’re generating the data yourself, you can try to make your life easier by saving it in the format you want.&lt;/p&gt;
+&lt;p&gt;Where possible, I’ll show multiple ways to accomplish something and try to highlight packages that will make things easier.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;MANDATORY DISCLAIMER:&lt;/strong&gt; There are often at least six ways to do anything in R. If you don’t like any of the methods here, rest assured that there are others (and probably better ones, too); you can almost certainly find something that suits your style.&lt;/p&gt;
+&lt;div id=&#34;reading-in-data&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Reading in data&lt;/h1&gt;
+&lt;div id=&#34;csv-files&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;CSV Files&lt;/h3&gt;
+&lt;p&gt;First, I’m going to create some data to actually read in. The following code chunk will write three csv files to the current directory, each with 3 columns of random data. This is meant to simulate raw data from three different subjects.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#Generate some dummy data
+data &amp;lt;- replicate(3, mapply(rnorm, c(100, 100, 100),  c(10, 100, 1), c(2, 25, .5)), 
+                  simplify = FALSE)
+catch_output &amp;lt;- mapply(write.csv, data,
+       mapply(paste, rep(&amp;quot;data&amp;quot;, times=length(data)),
+              seq(1, length(data)),
+              rep(&amp;quot;.csv&amp;quot;), sep=&amp;quot;&amp;quot;), row.names=FALSE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here’s a common situation: one spreadsheet has all of a subject’s raw data, and you have a few dozen spreadsheets. First, let’s talk about an easy way to read that in as painlessly as possible. No for-loops needed here; we’ll just use the trusty &lt;code&gt;apply()&lt;/code&gt; family from base R.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#Note that if your data are not in your current directory, you need to either:
+#Call, for ex., setwd(&amp;#39;~/my_data_folder&amp;#39;) to set the data folder as the current directory
+#Specify the path in list.files and then have it return the full path name of each file, rather than #the relative path.
+alldata &amp;lt;- lapply(list.files(pattern = &amp;#39;*.csv&amp;#39;), read.csv)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We’re accomplishing a few things in one line. First, the call to &lt;code&gt;list.files&lt;/code&gt; simply lists all of the files in your current directory. It has a bunch of optional arguments, too. You can specify a pattern, which is just a regex expression that specifies what you want. Here, I only want .csv files, so I specify that I want any file (“*&amp;quot; is a wildcard symbol allowing anything) that ends in the extension .csv. I can specify other arguments, like whether I want the full path names returned, whether I want it to also search sub-directories for files, and so on.&lt;/p&gt;
+&lt;p&gt;After we have this list of files, we simply iterate over it and call &lt;code&gt;read.csv&lt;/code&gt; on each one. The end result is a list, wherein each element is one subject’s data frame.&lt;/p&gt;
+&lt;p&gt;Now, a list of data frames is not the &lt;em&gt;most&lt;/em&gt; useful data format to have. Fortunately, it’s easy to bind this list together into one big data frame. Here’s how to bring it all together in base R.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;subjects_all &amp;lt;- do.call(&amp;#39;rbind&amp;#39;, alldata)
+head(subjects_all)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##          V1        V2        V3
+## 1  9.104732  71.14083 1.2808888
+## 2 11.219601 112.98932 1.1333154
+## 3  7.552447  34.67953 0.9981915
+## 4  9.270783  56.11430 0.6851157
+## 5  8.680940 101.99105 0.4548949
+## 6 10.193610 135.84464 1.1275677&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Note that the information about which data belong to each subject is lost here. You’ll need to add an identifier column, or make sure that each file has one, before reading it in this way.&lt;/p&gt;
+&lt;p&gt;How about some good old dplyr?&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(dplyr)
+subjects_all &amp;lt;- bind_rows(alldata, .id=&amp;#39;subject&amp;#39;)
+head(subjects_all)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   subject        V1        V2        V3
+## 1       1  9.104732  71.14083 1.2808888
+## 2       1 11.219601 112.98932 1.1333154
+## 3       1  7.552447  34.67953 0.9981915
+## 4       1  9.270783  56.11430 0.6851157
+## 5       1  8.680940 101.99105 0.4548949
+## 6       1 10.193610 135.84464 1.1275677&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;unique(subjects_all$subject)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;1&amp;quot; &amp;quot;2&amp;quot; &amp;quot;3&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can use the&lt;code&gt;.id&lt;/code&gt; argument to specify an ID column, which will keep track of where the data comes from.&lt;/p&gt;
+&lt;p&gt;We can also use the handy rbindlist function from the &lt;a href=&#34;https://cran.r-project.org/web/packages/data.table/data.table.pdf&#34;&gt;data.table&lt;/a&gt;/&lt;a href=&#34;https://cran.r-project.org/web/packages/dtplyr/dtplyr.pdf&#34;&gt;dtplyr&lt;/a&gt; package. This will label the data automatically for us according to which data frame it came from; we can call this new column (specified by the id argument) anything we like.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(data.table)
+subjects_all &amp;lt;- rbindlist(alldata, idcol=&amp;#39;subject&amp;#39;)
+head(subjects_all)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    subject        V1        V2        V3
+## 1:       1  9.104732  71.14083 1.2808888
+## 2:       1 11.219601 112.98932 1.1333154
+## 3:       1  7.552447  34.67953 0.9981915
+## 4:       1  9.270783  56.11430 0.6851157
+## 5:       1  8.680940 101.99105 0.4548949
+## 6:       1 10.193610 135.84464 1.1275677&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;unique(subjects_all$subject)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 1 2 3&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Note also that &lt;code&gt;rbindlist()&lt;/code&gt; is an order of magnitude faster than &lt;code&gt;do.call&lt;/code&gt;. If you’ve got a lot of data, you’ll probably want to go with this function. &lt;code&gt;data.tables&lt;/code&gt; are extremely fast and memory efficient in general, and might be a good option if you’re working with truly huge amounts of data. For most uses, though, this kind of optimization isn’t really necessary.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;text-files&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Text files&lt;/h3&gt;
+&lt;p&gt;Same process. I’ll make some real quick:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;catch_output &amp;lt;- mapply(write.table, data,
+       mapply(paste, rep(&amp;quot;data&amp;quot;, times=length(data)),
+              seq(1, length(data)),
+              rep(&amp;quot;.txt&amp;quot;), sep=&amp;quot;&amp;quot;), row.names=FALSE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To read it in, we just call &lt;code&gt;read.table&lt;/code&gt; instead.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;allsubjs &amp;lt;- lapply(list.files(pattern = &amp;#39;*.txt&amp;#39;), read.table, header=TRUE, colClasses=c(&amp;#39;double&amp;#39;))
+head(allsubjs[[1]])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##          V1        V2        V3
+## 1  9.104732  71.14083 1.2808888
+## 2 11.219601 112.98932 1.1333154
+## 3  7.552447  34.67953 0.9981915
+## 4  9.270783  56.11430 0.6851157
+## 5  8.680940 101.99105 0.4548949
+## 6 10.193610 135.84464 1.1275677&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Just like before, we end up with a list of data frames, one for each subject. In &lt;code&gt;read.table()&lt;/code&gt;, unlike &lt;code&gt;read.csv&lt;/code&gt;, the &lt;code&gt;header&lt;/code&gt; argument defaults to &lt;code&gt;FALSE&lt;/code&gt;, so be sure to change that. I also specify &lt;code&gt;colClasses&lt;/code&gt; here to tell R what type of data the content of the columns is. Without that, these doubles get read in as factors; doing it now saves a little work later.&lt;/p&gt;
+&lt;p&gt;We can then bind these together with &lt;code&gt;rbindlist&lt;/code&gt; just like we did when we used &lt;code&gt;read.csv&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;xlsx&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;XLS(X)&lt;/h3&gt;
+&lt;p&gt;Need to read in Excel files, or read in each sheet in one file as a separate set of data?&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/readxl/readxl.pdf&#34;&gt;Jenny Bryan et al. to the rescue.&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;some-general-notes&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Some general notes&lt;/h3&gt;
+&lt;p&gt;There are a lot of arguments you can specify in the &lt;code&gt;read.csv&lt;/code&gt; function call that can save you work down the line–I used some of them when I was reading in the text files, but there are many more. You can even tell the function what strings should be read as NA values! This is really handy if you have NULL and what R to treat that as NA. You can also read in only part of the file, which is useful if you have a monster file and want to read it in in chunks.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;reshaping-data&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Reshaping Data&lt;/h1&gt;
+&lt;p&gt;It’s helpful to be able to switch at will between data in wide format, where each row is a subject and each column contains a variable, to long format, where each row is a value at a given time, or measure (for repeated measures).&lt;/p&gt;
+&lt;p&gt;Here’s a very simple data set. Each row is a subject’s scores. Column 1 is their subject number, followed by their scores in the control, treatment 1, and treatment 2 conditions. We tend to be most accustomed to seeing data this way. This is “wide” format.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;traits &amp;lt;- data.frame(&amp;#39;id&amp;#39;=seq(1, 10),
+                     &amp;#39;control&amp;#39;=floor(rnorm(10, 30, 5)),
+                     &amp;#39;treat1&amp;#39;=floor(rnorm(10, 10, 2)),
+                     &amp;#39;treat2&amp;#39;=floor(rnorm(10, 15, 3)))
+print(traits)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    id control treat1 treat2
+## 1   1      31     12     20
+## 2   2      31      8     16
+## 3   3      21      9     20
+## 4   4      30      8     11
+## 5   5      33     11     16
+## 6   6      24      8     14
+## 7   7      29      8     16
+## 8   8      34      8     12
+## 9   9      32      8     13
+## 10 10      25      8     12&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;wide-to-long&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Wide to Long&lt;/h3&gt;
+&lt;p&gt;Now, when we cast this to “long” format, we will have the id column (the subject number), a variable column (in this case, which test was taken), and the value column (the score on each test). Here it is, melted two ways. In base:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;traits_long_base &amp;lt;- reshape(traits, idvar=&amp;quot;id&amp;quot;, direction=&amp;#39;long&amp;#39;, v.names=c(&amp;#39;score&amp;#39;),
+                       timevar=&amp;#39;test&amp;#39;,times=c(&amp;#39;control&amp;#39;, &amp;#39;treat1&amp;#39;, &amp;#39;treat2&amp;#39;), varying=seq(2, 4))
+print(traits_long_base)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##            id    test score
+## 1.control   1 control    31
+## 2.control   2 control    31
+## 3.control   3 control    21
+## 4.control   4 control    30
+## 5.control   5 control    33
+## 6.control   6 control    24
+## 7.control   7 control    29
+## 8.control   8 control    34
+## 9.control   9 control    32
+## 10.control 10 control    25
+## 1.treat1    1  treat1    12
+## 2.treat1    2  treat1     8
+## 3.treat1    3  treat1     9
+## 4.treat1    4  treat1     8
+## 5.treat1    5  treat1    11
+## 6.treat1    6  treat1     8
+## 7.treat1    7  treat1     8
+## 8.treat1    8  treat1     8
+## 9.treat1    9  treat1     8
+## 10.treat1  10  treat1     8
+## 1.treat2    1  treat2    20
+## 2.treat2    2  treat2    16
+## 3.treat2    3  treat2    20
+## 4.treat2    4  treat2    11
+## 5.treat2    5  treat2    16
+## 6.treat2    6  treat2    14
+## 7.treat2    7  treat2    16
+## 8.treat2    8  treat2    12
+## 9.treat2    9  treat2    13
+## 10.treat2  10  treat2    12&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We have to be pretty careful about specifying our arguments here. The &lt;code&gt;idvar&lt;/code&gt; indicates which column we want to map over the data. Here, we want the subject number; we want each subject’s score on each test labeled with their unique ID. Direction is fairly self-explanatory; we’re going to long form here. &lt;code&gt;v.names&lt;/code&gt; is the name (or names) of the new columns. Here, we’re collapsing everybody’s scores into a single column, so we call it &lt;code&gt;&#39;score&#39;&lt;/code&gt;. &lt;code&gt;timevar&lt;/code&gt; is the variable that changes over time, or over repeated measures. Here it’s which test they took, so we call the new column &lt;code&gt;&#39;test&#39;&lt;/code&gt;. Then we tell it which values to use in this new times column with &lt;code&gt;times&lt;/code&gt;; we want the name of the test. Then we tell it which columns of our data are varying over time/are our repeated measures; here it’s the final three columns (you can also specify a vector of strings).&lt;/p&gt;
+&lt;p&gt;Here are the same results with the &lt;code&gt;melt()&lt;/code&gt; function from data.table or reshape2. We specify again which column represents our data labels, and then we tell it which columns we want it to treat as our “measures,” which in our case is our three tests (if unspecified, it just uses all non-id variables, so we could have left it out here):&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;traits_long_m &amp;lt;- melt(traits, id.vars=&amp;quot;id&amp;quot;, measure.vars=c(&amp;#39;control&amp;#39;, &amp;#39;treat1&amp;#39;, &amp;#39;treat2&amp;#39;), 
+                    variable.name=&amp;#39;test&amp;#39;, value.name=&amp;#39;score&amp;#39;)
+print(traits_long_m)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    id    test score
+## 1   1 control    31
+## 2   2 control    31
+## 3   3 control    21
+## 4   4 control    30
+## 5   5 control    33
+## 6   6 control    24
+## 7   7 control    29
+## 8   8 control    34
+## 9   9 control    32
+## 10 10 control    25
+## 11  1  treat1    12
+## 12  2  treat1     8
+## 13  3  treat1     9
+## 14  4  treat1     8
+## 15  5  treat1    11
+## 16  6  treat1     8
+## 17  7  treat1     8
+## 18  8  treat1     8
+## 19  9  treat1     8
+## 20 10  treat1     8
+## 21  1  treat2    20
+## 22  2  treat2    16
+## 23  3  treat2    20
+## 24  4  treat2    11
+## 25  5  treat2    16
+## 26  6  treat2    14
+## 27  7  treat2    16
+## 28  8  treat2    12
+## 29  9  treat2    13
+## 30 10  treat2    12&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And let’s not leave out &lt;code&gt;tidyr&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyr)
+traits_long_t &amp;lt;- gather(traits, key=test, value=score, control, treat1, treat2)
+print(traits_long_t)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    id    test score
+## 1   1 control    31
+## 2   2 control    31
+## 3   3 control    21
+## 4   4 control    30
+## 5   5 control    33
+## 6   6 control    24
+## 7   7 control    29
+## 8   8 control    34
+## 9   9 control    32
+## 10 10 control    25
+## 11  1  treat1    12
+## 12  2  treat1     8
+## 13  3  treat1     9
+## 14  4  treat1     8
+## 15  5  treat1    11
+## 16  6  treat1     8
+## 17  7  treat1     8
+## 18  8  treat1     8
+## 19  9  treat1     8
+## 20 10  treat1     8
+## 21  1  treat2    20
+## 22  2  treat2    16
+## 23  3  treat2    20
+## 24  4  treat2    11
+## 25  5  treat2    16
+## 26  6  treat2    14
+## 27  7  treat2    16
+## 28  8  treat2    12
+## 29  9  treat2    13
+## 30 10  treat2    12&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here, the key/value pairing tells us about our outcome columns, and then we just list the columns to gather up.&lt;/p&gt;
+&lt;p&gt;Three roads, same destination. I find &lt;code&gt;melt&lt;/code&gt; and &lt;code&gt;gather&lt;/code&gt; both much more intuitive than &lt;code&gt;reshape&lt;/code&gt;, with &lt;code&gt;gather&lt;/code&gt; the easiest of them all to use, but your mileage may vary.&lt;/p&gt;
+&lt;p&gt;Data is &lt;em&gt;really&lt;/em&gt; easy to plot this way:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
+plot &amp;lt;- ggplot(traits_long_t, aes(x=test, y=score, color=test)) +
+        geom_point()
+print(plot)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/wrangling_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt; Simplicity itself.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;long-to-wide&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Long to Wide&lt;/h3&gt;
+&lt;p&gt;Now, if we want to go the other direction (long to wide), in base R, we call the same function with different arguments:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;traits_wide_base &amp;lt;- reshape(traits_long_base, direction=&amp;#39;wide&amp;#39;, timevar=&amp;#39;test&amp;#39;, idvar=&amp;#39;id&amp;#39;)
+print(traits_wide_base)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##            id score.control score.treat1 score.treat2
+## 1.control   1            31           12           20
+## 2.control   2            31            8           16
+## 3.control   3            21            9           20
+## 4.control   4            30            8           11
+## 5.control   5            33           11           16
+## 6.control   6            24            8           14
+## 7.control   7            29            8           16
+## 8.control   8            34            8           12
+## 9.control   9            32            8           13
+## 10.control 10            25            8           12&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now we have the original structure of our data back.&lt;/p&gt;
+&lt;p&gt;The inverse of &lt;code&gt;melt()&lt;/code&gt; is &lt;code&gt;dcast&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;traits_wide_m &amp;lt;- dcast(traits_long_m, id ~ test, value.var=&amp;#39;score&amp;#39;)
+print(traits_wide_m)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    id control treat1 treat2
+## 1   1      31     12     20
+## 2   2      31      8     16
+## 3   3      21      9     20
+## 4   4      30      8     11
+## 5   5      33     11     16
+## 6   6      24      8     14
+## 7   7      29      8     16
+## 8   8      34      8     12
+## 9   9      32      8     13
+## 10 10      25      8     12&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Right back to where we were.&lt;/p&gt;
+&lt;p&gt;And to undo &lt;code&gt;gather&lt;/code&gt;, we &lt;code&gt;spread&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;traits_wide_t &amp;lt;- spread(traits_long_t, test, score)
+print(traits_wide_t)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    id control treat1 treat2
+## 1   1      31     12     20
+## 2   2      31      8     16
+## 3   3      21      9     20
+## 4   4      30      8     11
+## 5   5      33     11     16
+## 6   6      24      8     14
+## 7   7      29      8     16
+## 8   8      34      8     12
+## 9   9      32      8     13
+## 10 10      25      8     12&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;reshaping-with-more-variables&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Reshaping with more variables&lt;/h3&gt;
+&lt;p&gt;Here’s a more complex example.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;traittest &amp;lt;- data.frame(&amp;#39;traitA&amp;#39;=factor(rep(c(&amp;#39;high&amp;#39;, &amp;#39;med&amp;#39;, &amp;#39;low&amp;#39;), each=4)),
+                        &amp;#39;traitB&amp;#39;=factor(rep(c(&amp;#39;positive&amp;#39;, &amp;#39;negative&amp;#39;), times=6)),
+                        &amp;#39;test1&amp;#39;=floor(rnorm(12, 10, 2)), &amp;#39;test2&amp;#39;=floor(rnorm(12, 15, 2)))
+head(traittest)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   traitA   traitB test1 test2
+## 1   high positive    14    12
+## 2   high negative    12    16
+## 3   high positive    12    12
+## 4   high negative     8    14
+## 5    med positive    12    18
+## 6    med negative     9    18&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;There are a lot of ways to melt this data. Maybe we want to collpase the tests into a single column–in this case the traits are the identifier variables.&lt;/p&gt;
+&lt;p&gt;In base:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tt_bytrait_base &amp;lt;- reshape(traittest, direction=&amp;#39;long&amp;#39;, v.names=&amp;#39;score&amp;#39;,
+                           timevar=&amp;#39;test&amp;#39;, times=c(&amp;#39;test1&amp;#39;, &amp;#39;test2&amp;#39;), varying=c(&amp;#39;test1&amp;#39;,&amp;#39;test2&amp;#39;))
+print(tt_bytrait_base)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##          traitA   traitB  test score id
+## 1.test1    high positive test1    14  1
+## 2.test1    high negative test1    12  2
+## 3.test1    high positive test1    12  3
+## 4.test1    high negative test1     8  4
+## 5.test1     med positive test1    12  5
+## 6.test1     med negative test1     9  6
+## 7.test1     med positive test1    13  7
+## 8.test1     med negative test1    10  8
+## 9.test1     low positive test1    12  9
+## 10.test1    low negative test1    11 10
+## 11.test1    low positive test1     9 11
+## 12.test1    low negative test1    10 12
+## 1.test2    high positive test2    12  1
+## 2.test2    high negative test2    16  2
+## 3.test2    high positive test2    12  3
+## 4.test2    high negative test2    14  4
+## 5.test2     med positive test2    18  5
+## 6.test2     med negative test2    18  6
+## 7.test2     med positive test2    18  7
+## 8.test2     med negative test2    14  8
+## 9.test2     low positive test2    10  9
+## 10.test2    low negative test2    14 10
+## 11.test2    low positive test2    16 11
+## 12.test2    low negative test2    12 12&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;With &lt;code&gt;melt()&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tt_bytrait_m &amp;lt;- melt(traittest, measure.vars=c(&amp;#39;test1&amp;#39;, &amp;#39;test2&amp;#39;), variable.name=&amp;#39;test&amp;#39;,
+                  value.name=&amp;#39;score&amp;#39;)
+head(tt_bytrait_m)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   traitA   traitB  test score
+## 1   high positive test1    14
+## 2   high negative test1    12
+## 3   high positive test1    12
+## 4   high negative test1     8
+## 5    med positive test1    12
+## 6    med negative test1     9&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;With &lt;code&gt;gather&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tt_bytrait_t &amp;lt;- gather(traittest, test, score, test1, test2)
+head(tt_bytrait_t)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   traitA   traitB  test score
+## 1   high positive test1    14
+## 2   high negative test1    12
+## 3   high positive test1    12
+## 4   high negative test1     8
+## 5    med positive test1    12
+## 6    med negative test1     9&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Or, we can let the tests be the identifiers, and collapse the traits into a single column.&lt;/p&gt;
+&lt;p&gt;Base:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tt_bytest_base &amp;lt;- reshape(traittest, direction=&amp;#39;long&amp;#39;, v.names=&amp;#39;rating&amp;#39;,
+                          timevar=&amp;#39;trait&amp;#39;, times=c(&amp;#39;traitA&amp;#39;, &amp;#39;traitB&amp;#39;), 
+                          varying=c(&amp;#39;traitA&amp;#39;,&amp;#39;traitB&amp;#39;))
+print(tt_bytest_base)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##           test1 test2  trait   rating id
+## 1.traitA     14    12 traitA     high  1
+## 2.traitA     12    16 traitA     high  2
+## 3.traitA     12    12 traitA     high  3
+## 4.traitA      8    14 traitA     high  4
+## 5.traitA     12    18 traitA      med  5
+## 6.traitA      9    18 traitA      med  6
+## 7.traitA     13    18 traitA      med  7
+## 8.traitA     10    14 traitA      med  8
+## 9.traitA     12    10 traitA      low  9
+## 10.traitA    11    14 traitA      low 10
+## 11.traitA     9    16 traitA      low 11
+## 12.traitA    10    12 traitA      low 12
+## 1.traitB     14    12 traitB positive  1
+## 2.traitB     12    16 traitB negative  2
+## 3.traitB     12    12 traitB positive  3
+## 4.traitB      8    14 traitB negative  4
+## 5.traitB     12    18 traitB positive  5
+## 6.traitB      9    18 traitB negative  6
+## 7.traitB     13    18 traitB positive  7
+## 8.traitB     10    14 traitB negative  8
+## 9.traitB     12    10 traitB positive  9
+## 10.traitB    11    14 traitB negative 10
+## 11.traitB     9    16 traitB positive 11
+## 12.traitB    10    12 traitB negative 12&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;melt&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tt_bytest_m &amp;lt;- melt(traittest, measure.vars=c(&amp;#39;traitA&amp;#39;, &amp;#39;traitB&amp;#39;),
+                  variable.name=&amp;#39;trait&amp;#39;, value.name=&amp;#39;rating&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: attributes are not identical across measure variables; they will
+## be dropped&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(tt_bytest_m)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   test1 test2  trait rating
+## 1    14    12 traitA   high
+## 2    12    16 traitA   high
+## 3    12    12 traitA   high
+## 4     8    14 traitA   high
+## 5    12    18 traitA    med
+## 6     9    18 traitA    med&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;(We can ignore the warning; it’s warning us about the fact that we’re combining two factors that don’t share levels, so it’s coercing them all to characters.)&lt;/p&gt;
+&lt;p&gt;With &lt;code&gt;gather&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tt_bytest_t &amp;lt;- gather(traittest, trait, rating, traitA, traitB)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: attributes are not identical across measure variables; they will
+## be dropped&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(tt_bytest_t)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   test1 test2  trait rating
+## 1    14    12 traitA   high
+## 2    12    16 traitA   high
+## 3    12    12 traitA   high
+## 4     8    14 traitA   high
+## 5    12    18 traitA    med
+## 6     9    18 traitA    med&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;(Same warning as above.)&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;reformatting-data&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Reformatting Data&lt;/h1&gt;
+&lt;p&gt;So we’ve read data in, and can flip it between long and wide at will. Great, but what if the data itself needs to be fixed?&lt;/p&gt;
+&lt;div id=&#34;recoding-values&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Recoding values&lt;/h3&gt;
+&lt;p&gt;Let’s say you have some data that look like this:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;yesno &amp;lt;- data.frame(&amp;#39;subj&amp;#39;=seq(1,10), &amp;#39;resp&amp;#39;=rep(c(&amp;#39;Y&amp;#39;,&amp;#39;N&amp;#39;), each=5))
+print(yesno)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    subj resp
+## 1     1    Y
+## 2     2    Y
+## 3     3    Y
+## 4     4    Y
+## 5     5    Y
+## 6     6    N
+## 7     7    N
+## 8     8    N
+## 9     9    N
+## 10   10    N&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So we have 10 subjects, and each one responded either yes (Y) or no (N) to… something. But maybe we don’t like the way this is coded; Y and N are hard to work with if we want to find average accuracy, for example. Maybe we want 1’s and 0’s instead, with which it is easy to do calculations.&lt;/p&gt;
+&lt;p&gt;If we want to recode these values, we have a few options. We can use indexing, of course, but there are also some functions that will save you some work.&lt;/p&gt;
+&lt;p&gt;Base has the &lt;code&gt;ifelse&lt;/code&gt; function, which performs a logical comparison, and if true, returns the first value; else, the second:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;yesno$resp &amp;lt;- ifelse(yesno$resp == &amp;#39;Y&amp;#39;, 1, 0)
+print(yesno)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    subj resp
+## 1     1    1
+## 2     2    1
+## 3     3    1
+## 4     4    1
+## 5     5    1
+## 6     6    0
+## 7     7    0
+## 8     8    0
+## 9     9    0
+## 10   10    0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If we have more than two alternatives, you’ll have to use something like a &lt;code&gt;switch&lt;/code&gt; statement:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;yesnomaybe &amp;lt;- data.frame(&amp;#39;subj&amp;#39;=seq(1,15), &amp;#39;resp&amp;#39;=rep(c(&amp;#39;Y&amp;#39;,&amp;#39;N&amp;#39;,&amp;#39;M&amp;#39;), each=5))
+print(yesnomaybe)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    subj resp
+## 1     1    Y
+## 2     2    Y
+## 3     3    Y
+## 4     4    Y
+## 5     5    Y
+## 6     6    N
+## 7     7    N
+## 8     8    N
+## 9     9    N
+## 10   10    N
+## 11   11    M
+## 12   12    M
+## 13   13    M
+## 14   14    M
+## 15   15    M&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now we have three options. Maybe we want ‘yes’ to be 1, ‘no’ to be -1, and ‘maybe’ to be 0. Here’s how you can do it with a &lt;code&gt;switch&lt;/code&gt; statement and &lt;code&gt;sapply&lt;/code&gt; to call it on each element:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;yesnomaybe$resp &amp;lt;- sapply(yesnomaybe$resp, function(x) switch(as.character(x), &amp;#39;Y&amp;#39;=1, &amp;#39;N&amp;#39;=-1,
+                                                              &amp;#39;M&amp;#39;=0))
+print(yesnomaybe)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    subj resp
+## 1     1    1
+## 2     2    1
+## 3     3    1
+## 4     4    1
+## 5     5    1
+## 6     6   -1
+## 7     7   -1
+## 8     8   -1
+## 9     9   -1
+## 10   10   -1
+## 11   11    0
+## 12   12    0
+## 13   13    0
+## 14   14    0
+## 15   15    0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In &lt;code&gt;dplyr&lt;/code&gt;, we have the &lt;code&gt;recode&lt;/code&gt; function:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;yesnomaybe$dplyr_recode &amp;lt;- recode(yesnomaybe$resp, `1`=&amp;#39;yes&amp;#39;, `-1`=&amp;#39;no&amp;#39;, `0`=&amp;#39;maybe&amp;#39;)
+print(yesnomaybe)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    subj resp dplyr_recode
+## 1     1    1          yes
+## 2     2    1          yes
+## 3     3    1          yes
+## 4     4    1          yes
+## 5     5    1          yes
+## 6     6   -1           no
+## 7     7   -1           no
+## 8     8   -1           no
+## 9     9   -1           no
+## 10   10   -1           no
+## 11   11    0        maybe
+## 12   12    0        maybe
+## 13   13    0        maybe
+## 14   14    0        maybe
+## 15   15    0        maybe&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Recoding, assuming you don’t have to do it for a huge number of possibilities, goes pretty fast.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;adding-variables&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Adding variables&lt;/h3&gt;
+&lt;p&gt;Variables can be added to an existing data frame just with the &lt;code&gt;$&lt;/code&gt; operator:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;- data.frame(&amp;#39;x&amp;#39;=rnorm(20, 6), &amp;#39;y&amp;#39;=rnorm(20))
+print(df)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##           x           y
+## 1  5.321063  1.27546477
+## 2  7.921474 -1.09202534
+## 3  4.879107  0.84981798
+## 4  4.875426 -1.47361959
+## 5  6.183893  0.44135024
+## 6  5.186712 -0.01960857
+## 7  6.932356  2.51740437
+## 8  5.882108  0.23503556
+## 9  4.917174 -0.10725595
+## 10 4.285822 -1.16840270
+## 11 5.813983 -0.42226951
+## 12 3.045076  0.89728076
+## 13 5.941509 -1.83189649
+## 14 5.002063  2.27450213
+## 15 5.196162 -0.15084471
+## 16 5.917263  0.63115370
+## 17 4.836357  0.02943924
+## 18 6.426733  0.55176555
+## 19 6.539495  0.65668028
+## 20 6.435905  1.09114812&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df$z &amp;lt;- rnorm(20, 10)
+print(df)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##           x           y         z
+## 1  5.321063  1.27546477 10.115745
+## 2  7.921474 -1.09202534  9.145157
+## 3  4.879107  0.84981798  9.983023
+## 4  4.875426 -1.47361959 10.099452
+## 5  6.183893  0.44135024 12.461841
+## 6  5.186712 -0.01960857 10.798048
+## 7  6.932356  2.51740437  8.693534
+## 8  5.882108  0.23503556 11.693113
+## 9  4.917174 -0.10725595 10.906583
+## 10 4.285822 -1.16840270  8.657903
+## 11 5.813983 -0.42226951  8.385715
+## 12 3.045076  0.89728076  8.078574
+## 13 5.941509 -1.83189649  7.642014
+## 14 5.002063  2.27450213  9.931242
+## 15 5.196162 -0.15084471 11.367653
+## 16 5.917263  0.63115370  8.722094
+## 17 4.836357  0.02943924  9.442070
+## 18 6.426733  0.55176555 10.125772
+## 19 6.539495  0.65668028  8.407829
+## 20 6.435905  1.09114812  9.184487&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you need to manipulate two data vectors that are numeric, you can just add, multiply, etc. your columns together to perform these operations elementwise:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df$total &amp;lt;- with(df, x + y + z)
+head(df)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##          x           y         z    total
+## 1 5.321063  1.27546477 10.115745 16.71227
+## 2 7.921474 -1.09202534  9.145157 15.97461
+## 3 4.879107  0.84981798  9.983023 15.71195
+## 4 4.875426 -1.47361959 10.099452 13.50126
+## 5 6.183893  0.44135024 12.461841 19.08708
+## 6 5.186712 -0.01960857 10.798048 15.96515&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You also have a lot of options in the &lt;code&gt;dplyr&lt;/code&gt; library, notably &lt;code&gt;transform&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;- transform(df, x = -x)
+head(df)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##           x           y         z    total
+## 1 -5.321063  1.27546477 10.115745 16.71227
+## 2 -7.921474 -1.09202534  9.145157 15.97461
+## 3 -4.879107  0.84981798  9.983023 15.71195
+## 4 -4.875426 -1.47361959 10.099452 13.50126
+## 5 -6.183893  0.44135024 12.461841 19.08708
+## 6 -5.186712 -0.01960857 10.798048 15.96515&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;But now that we’ve updated a column, our total is wrong. Let’s fix it with &lt;code&gt;transmute&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;- mutate(df, corrected_total = x + y + z)
+head(df)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##           x           y         z    total corrected_total
+## 1 -5.321063  1.27546477 10.115745 16.71227       6.0701463
+## 2 -7.921474 -1.09202534  9.145157 15.97461       0.1316579
+## 3 -4.879107  0.84981798  9.983023 15.71195       5.9537346
+## 4 -4.875426 -1.47361959 10.099452 13.50126       3.7504059
+## 5 -6.183893  0.44135024 12.461841 19.08708       6.7192978
+## 6 -5.186712 -0.01960857 10.798048 15.96515       5.5917268&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Maybe I now want a dataframe just of the even numbers in the x column, and the residuals from total and corrected total (for… reasons). &lt;code&gt;transmute&lt;/code&gt; is like mutate, but it throws away all the extra:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_even &amp;lt;- transmute(df, x_ev=floor(x)%%2==0, residuals=total-corrected_total)
+head(df_even)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    x_ev residuals
+## 1  TRUE 10.642126
+## 2  TRUE 15.842947
+## 3 FALSE  9.758213
+## 4 FALSE  9.750852
+## 5 FALSE 12.367786
+## 6  TRUE 10.373424&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If none of these methods fit the bill, you can call &lt;code&gt;apply&lt;/code&gt; along all the columns or rows of your data frame and write a custom function to do whatever processing you need.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;factor-levels-as-column-labels&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Factor levels as column labels&lt;/h3&gt;
+&lt;p&gt;Let’s take the unfortunate case of levels-as-columns, in which all the levels of a factor are columns, and people get a 1 or a 0 for each level instead of their value. Here’s some example data:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;levs &amp;lt;- data.frame(&amp;#39;subj&amp;#39;=seq(1, 4), &amp;#39;a&amp;#39;=c(0, 0, 1, 0), &amp;#39;b&amp;#39;=c(1, 0, 0, 1), &amp;#39;c&amp;#39;=c(0, 1, 0, 0))
+print(levs)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   subj a b c
+## 1    1 0 1 0
+## 2    2 0 0 1
+## 3    3 1 0 0
+## 4    4 0 1 0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So, what we have are three subjects, and a factor with three possible levels: A, B, and C. What we want is the subject and the actual level of their factor, so we need a 2-column matrix.&lt;/p&gt;
+&lt;p&gt;Here’s one way we might do that (there are others) that uses some procedures I’ve already shown. First, we’ll reshape the dataframe so that the factors end up in one column. This has the advantage of putting the actual values of the factors we want all in one place. Then we filter out the 0s, leaving behind only the levels the subject actually selected, drop the redundant ones colum, then put the subjects back in the right order.&lt;/p&gt;
+&lt;p&gt;For these examples, I’ll print out each intermediate stage of manipulation so that you can see what’s happening.&lt;/p&gt;
+&lt;p&gt;All about that base:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(lev_long &amp;lt;- reshape(levs, idvar=&amp;#39;subj&amp;#39;, direction=&amp;#39;long&amp;#39;, v.names=&amp;#39;value&amp;#39;, timevar=&amp;#39;trait&amp;#39;,
+                    times=c(&amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;c&amp;#39;), varying=c(&amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;c&amp;#39;)))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##     subj trait value
+## 1.a    1     a     0
+## 2.a    2     a     0
+## 3.a    3     a     1
+## 4.a    4     a     0
+## 1.b    1     b     1
+## 2.b    2     b     0
+## 3.b    3     b     0
+## 4.b    4     b     1
+## 1.c    1     c     0
+## 2.c    2     c     1
+## 3.c    3     c     0
+## 4.c    4     c     0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;First, we reshape the data. We need all of the factor-related pieces of information in a single column. We have a column with the possible factor levels, and a column indicating 0 (not the subject’s level) or 1 (the subject’s level).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(lev_filtered &amp;lt;- with(lev_long, lev_long[value == 1, 1:2]))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##     subj trait
+## 3.a    3     a
+## 1.b    1     b
+## 4.b    4     b
+## 2.c    2     c&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The second step just uses good old-fashioned indexing to keep all rows where the value is 1 (aka, the subject has that level), and to keep only the useful subject and trait columns; what the &lt;code&gt;with&lt;/code&gt; function does is tell R to perform all operations with the supplied data set, so we can reference columns by isolated names rather than having to do the verbose &lt;code&gt;data_frame$column&lt;/code&gt; syntax.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(lev_reformed_base &amp;lt;- lev_filtered[order(lev_filtered$subj),])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##     subj trait
+## 1.b    1     b
+## 2.c    2     c
+## 3.a    3     a
+## 4.b    4     b&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The final step is reordering the data according to the subject column in ascending order. Now we’ve got our data in a much more sensible format.&lt;/p&gt;
+&lt;p&gt;Tidyr and dplyr make quick work of this. First, we gather:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(lev_g &amp;lt;- gather(levs, trait, value, a, b, c))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    subj trait value
+## 1     1     a     0
+## 2     2     a     0
+## 3     3     a     1
+## 4     4     a     0
+## 5     1     b     1
+## 6     2     b     0
+## 7     3     b     0
+## 8     4     b     1
+## 9     1     c     0
+## 10    2     c     1
+## 11    3     c     0
+## 12    4     c     0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Filter out the 0s:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(lev_f &amp;lt;- filter(lev_g, value != 0))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   subj trait value
+## 1    3     a     1
+## 2    1     b     1
+## 3    4     b     1
+## 4    2     c     1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Retain only the useful columns:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(lev_s &amp;lt;- select(lev_f, subj, trait))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   subj trait
+## 1    3     a
+## 2    1     b
+## 3    4     b
+## 4    2     c&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Finally, put the subjects back in order:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(lev_reform &amp;lt;- arrange(lev_s, subj))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   subj trait
+## 1    1     b
+## 2    2     c
+## 3    3     a
+## 4    4     b&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here are those steps strung together with piping and thus obviating the need for all those separate variable assignments:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;levs_reformed &amp;lt;- gather(levs, trait, value, a, b, c) %&amp;gt;%
+                filter(value != 0) %&amp;gt;%
+                select(subj, trait) %&amp;gt;%
+                arrange(subj)
+print(levs_reformed)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   subj trait
+## 1    1     b
+## 2    2     c
+## 3    3     a
+## 4    4     b&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Charming!&lt;/p&gt;
+&lt;p&gt;What about if we have multiple factors? Here we have a test and a report, each of which has three possible levels: ABC and XYZ, respectively.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mfac &amp;lt;- data.frame(&amp;#39;subj&amp;#39;=seq(1, 4), &amp;#39;test.A&amp;#39;=c(0, 1, 0, 1), &amp;#39;test.B&amp;#39;=c(1, 0, 0, 0), 
+                   &amp;#39;test.C&amp;#39;=c(0, 0, 1, 0), &amp;#39;report.X&amp;#39;=c(1, 0, 0, 0), 
+                   &amp;#39;report.Y&amp;#39;=c(0, 1, 1, 0), &amp;#39;report.Z&amp;#39;=c(0, 0, 0, 1))
+print(mfac)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   subj test.A test.B test.C report.X report.Y report.Z
+## 1    1      0      1      0        1        0        0
+## 2    2      1      0      0        0        1        0
+## 3    3      0      0      1        0        1        0
+## 4    4      1      0      0        0        0        1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So what we want is a dataframe with three columns: subject number, test, and report. Subject 1 picked test A and report X, subject 2 picked test A and report Y, and so on.&lt;/p&gt;
+&lt;p&gt;This gets a little more complicated. If we collapse everything into one column, we’re going to have to then spread it back out to separate the factors. We’ve also got the item label merged to its type, which is a problem if we only want the letter designation.&lt;/p&gt;
+&lt;p&gt;Let’s try with base. Here’s the reshape-filter method:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mfac_long &amp;lt;- reshape(mfac, idvar=&amp;#39;subj&amp;#39;, direction=&amp;#39;long&amp;#39;, v.names=&amp;#39;value&amp;#39;, timevar=&amp;#39;measure&amp;#39;,
+                    times=colnames(mfac)[-1], varying=colnames(mfac)[-1])
+mfac_filtered &amp;lt;- with(mfac_long, mfac_long[value == 1, 1:2])
+type_splits &amp;lt;- do.call(rbind, strsplit(mfac_filtered$measure, &amp;#39;.&amp;#39;, fixed=TRUE))
+mfac_sep &amp;lt;- data.frame(&amp;#39;subj&amp;#39;=mfac_filtered$subj, 
+                       &amp;#39;type&amp;#39;=type_splits[,1], 
+                       &amp;#39;version&amp;#39;=type_splits[,2])
+mfac_wide &amp;lt;- reshape(mfac_sep, idvar=&amp;#39;subj&amp;#39;, direction=&amp;#39;wide&amp;#39;, timevar=&amp;#39;type&amp;#39;)
+(mfac_reformed_base &amp;lt;- mfac_wide[order(mfac_wide$subj),])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   subj version.test version.report
+## 3    1            B              X
+## 1    2            A              Y
+## 4    3            C              Y
+## 2    4            A              Z&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Pulling this off takes more finagling. Things are fine when we reshape and filter (note the trick used to save some verbage in reshape(); indexing with a negative excludes that item, so we’re saying we want all column names except the first), but then we have to recover whether our factor was a test or a report &lt;em&gt;separately&lt;/em&gt; of its type. This means we have to split the string using &lt;code&gt;strsplit&lt;/code&gt;, bind the results into a matrix (because they automatically come out as a list), and then take those newly-made factors and reshape it wide again with the test type and report type as their own columns. One nice thing about this approach, in spite of its many steps, is that it’s totally blind to the content of the labels (provided they are consistently delimited). If they’re labeled in a cooperative way, you don’t need to know how many labels there are or what they say, and they can be in any order.&lt;/p&gt;
+&lt;p&gt;Here’s another base approach, from my BFF Kelly Chang. This one uses the &lt;code&gt;apply&lt;/code&gt; function to sweep a filter down the dataframe, then repackage the results:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;labels &amp;lt;- c(&amp;#39;A&amp;#39;, &amp;#39;B&amp;#39;, &amp;#39;C&amp;#39;, &amp;#39;X&amp;#39;, &amp;#39;Y&amp;#39;, &amp;#39;Z&amp;#39;)
+filtered &amp;lt;- t(apply(mfac[,2:ncol(mfac)], 1, function(x) labels[x==1]))
+mfac_kc &amp;lt;- data.frame(mfac$subj, filtered)
+colnames(mfac_kc) &amp;lt;- c(&amp;#39;subj&amp;#39;, &amp;#39;test&amp;#39;, &amp;#39;report&amp;#39;)
+print(mfac_kc)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   subj test report
+## 1    1    B      X
+## 2    2    A      Y
+## 3    3    C      Y
+## 4    4    A      Z&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here, you would supply the labels, rather than recovering them from the data itself (as was done in the previous approach). Here, order is important; the labels need to be in the same order as the corresponding columns for the filter to work.&lt;/p&gt;
+&lt;p&gt;With &lt;code&gt;tidyr&lt;/code&gt; and &lt;code&gt;dplyr&lt;/code&gt;, this approach can look something like this (still agnostic to the label content):&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mfac_reformed &amp;lt;- gather(mfac, measure, value, -subj) %&amp;gt;%
+                filter(value != 0) %&amp;gt;%
+                select(subj, measure) %&amp;gt;%
+                separate(measure, c(&amp;#39;test&amp;#39;, &amp;#39;type&amp;#39;)) %&amp;gt;%
+                spread(test, type) %&amp;gt;%
+                arrange(subj)
+print(mfac_reformed)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   subj report test
+## 1    1      X    B
+## 2    2      Y    A
+## 3    3      Y    C
+## 4    4      Z    A&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The first few steps are the same; melt everything down and toss the zero values. Then, we need a step to yank apart the measure’s letter designation and its type. Fortunately, &lt;code&gt;tidyr&lt;/code&gt; has a handy &lt;code&gt;separate&lt;/code&gt; function that does just this; it pulls apart the joined values into two columns that we can label right away. Then, we need to spread our now distinct factor types back into columns–one for the test and one for the report–and sort by subject.&lt;/p&gt;
+&lt;p&gt;Note also that the intermediate steps in this last example, when we had to separate the two types of factors and get two separate ones back from the &lt;code&gt;report.X&lt;/code&gt; format, which involved splitting the string and reshaping the data, can also be useful if you have data in this form, or if you have one big code for a condition or trial and at some point want to split it into its components. You can also use the &lt;code&gt;colsplit()&lt;/code&gt; function from the &lt;code&gt;reshape2&lt;/code&gt; package for this purpose.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;parting-thoughts&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Parting Thoughts&lt;/h1&gt;
+&lt;p&gt;And there you have it–a brief introduction to some common data manipulation tasks, and a few ways to handle them. This is only the thinnest of samples of methods. There are lots of different ways to accomplish things, and packages to help you do it. Many of these methods will undoubtedly have my fingerprints all over them; one of the reasons I approached these problems the way I did is to show how learning a skill in one context–reshaping data for plotting, for example–can be useful in other contexts, like changing a data frame’s fundamental structure. Many roads lead to the same place, and if you don’t like this one, another will get you there just as comfortably, if not more so.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Intro to Bootstrapping</title>
       <link>https://katherinemwood.github.io/post/bootstrapping/</link>
       <pubDate>Mon, 26 Jun 2017 15:02:58 -0500</pubDate>
