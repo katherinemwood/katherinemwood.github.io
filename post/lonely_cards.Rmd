@@ -4,9 +4,12 @@ title: "5 Minute Simulation: Lonely Cards"
 ---
 FiveThirtyEight posts math, logic, and probability puzzles each week. I was tempted by this week's [Riddler Express](http://fivethirtyeight.com/features/can-you-deal-with-these-card-game-puzzles/):
 
->On snowy afternoons, you like to play a solitaire “game” with a standard, randomly shuffled deck of >52 cards. You start dealing cards face up, one at a time, into a pile. As you deal each card, you >also speak aloud, in order, the 13 card faces in a standard deck: ace, two, three, etc. (When you >get to king, you start over at ace.) You keep doing this until the rank of the card you deal matches >the rank you speak aloud, in which case you lose. You win if you reach the end of the deck without >any matches.
 
->What is the probability that you win?
+> On snowy afternoons, you like to play a solitaire “game” with a standard, randomly shuffled deck of > 52 cards. You start dealing cards face up, one at a time, into a pile. As you deal each card, you 
+> also speak aloud, in order, the 13 card faces in a standard deck: ace, two, three, etc. (When you 
+> get to king, you start over at ace.) You keep doing this until the rank of the card you deal matches 
+> the rank you speak aloud, in which case you lose. You win if you reach the end of the deck without > any matches.
+> What is the probability that you win?
 
 My combinatorics skills are rusty, so I'm still hacking away at the closed-form solution. But, where cunning fails, brute force may suffice. While the closed-form approach is proving challenging (for me), this is fairly trivial to approximate through simulation. Recreating the game itself only takes a line or two of code, and then we can "play" hundreds of thousands of simulated games to get an idea of how often we win. [Here's a simple shiny app](https://katherinemwood.shinyapps.io/lonely_cards/) with the results, and here's the dead-simple code for simulating the game itself:
 

@@ -18,10 +18,7 @@
       <guid>https://katherinemwood.github.io/post/lonely_cards/</guid>
       <description>&lt;p&gt;FiveThirtyEight posts math, logic, and probability puzzles each week. I was tempted by this week’s &lt;a href=&#34;http://fivethirtyeight.com/features/can-you-deal-with-these-card-game-puzzles/&#34;&gt;Riddler Express&lt;/a&gt;:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;On snowy afternoons, you like to play a solitaire “game” with a standard, randomly shuffled deck of &amp;gt;52 cards. You start dealing cards face up, one at a time, into a pile. As you deal each card, you &amp;gt;also speak aloud, in order, the 13 card faces in a standard deck: ace, two, three, etc. (When you &amp;gt;get to king, you start over at ace.) You keep doing this until the rank of the card you deal matches &amp;gt;the rank you speak aloud, in which case you lose. You win if you reach the end of the deck without &amp;gt;any matches.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;What is the probability that you win?&lt;/p&gt;
+&lt;p&gt;On snowy afternoons, you like to play a solitaire “game” with a standard, randomly shuffled deck of &amp;gt; 52 cards. You start dealing cards face up, one at a time, into a pile. As you deal each card, you also speak aloud, in order, the 13 card faces in a standard deck: ace, two, three, etc. (When you get to king, you start over at ace.) You keep doing this until the rank of the card you deal matches the rank you speak aloud, in which case you lose. You win if you reach the end of the deck without &amp;gt; any matches. What is the probability that you win?&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;My combinatorics skills are rusty, so I’m still hacking away at the closed-form solution. But, where cunning fails, brute force may suffice. While the closed-form approach is proving challenging (for me), this is fairly trivial to approximate through simulation. Recreating the game itself only takes a line or two of code, and then we can “play” hundreds of thousands of simulated games to get an idea of how often we win. &lt;a href=&#34;https://katherinemwood.shinyapps.io/lonely_cards/&#34;&gt;Here’s a simple shiny app&lt;/a&gt; with the results, and here’s the dead-simple code for simulating the game itself:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cards &amp;lt;- function() {
@@ -34,7 +31,7 @@ return(as.numeric(!(sum(deck == sample(deck)) &amp;gt; 0))) #1 is win, 0 is lose
 }
 results &amp;lt;- replicate(100000, cards())
 paste(&amp;#39;Win percentage: &amp;#39;, sum(results)/1000,&amp;#39;%&amp;#39;, sep=&amp;#39;&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;Win percentage: 1.722%&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;Win percentage: 1.635%&amp;quot;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;I’ll update this post with the closed-form solution if I manage to work it out (failing that, I’ll just link to the solution on FiveThirtyEight).&lt;/p&gt;
 &lt;p&gt;(Here’s the source code)[&lt;a href=&#34;https://github.com/katherinemwood/lonely_cards&#34; class=&#34;uri&#34;&gt;https://github.com/katherinemwood/lonely_cards&lt;/a&gt;] for the shiny app.&lt;/p&gt;
 &lt;p&gt;UPDATE: It turns out the &lt;a href=&#34;https://fivethirtyeight.com/features/how-long-will-it-take-to-blow-out-the-birthday-candles/#correction&#34;&gt;closed-form solution to this riddle&lt;/a&gt; is nontrivial! It relies on a branch of combinatorics called &lt;a href=&#34;http://mathworld.wolfram.com/Derangement.html&#34;&gt;“derangements”&lt;/a&gt; I didn’t encounter in my (admittedly less than comprehensive) math and stats education.&lt;/p&gt;
