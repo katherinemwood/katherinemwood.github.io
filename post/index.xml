@@ -11,6 +11,52 @@
     <atom:link href="/post/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Open Science in Practice</title>
+      <link>https://katherinemwood.github.io/post/open_sci/</link>
+      <pubDate>Mon, 26 Jun 2017 13:48:35 -0500</pubDate>
+      
+      <guid>https://katherinemwood.github.io/post/open_sci/</guid>
+      <description>&lt;p&gt;I will finish grad school a child of the replication crisis. My year and a half in grad school has been marked by bombshell failures-to-replicate, increasing adoption of Bayesian methods, and wider recognition of the insidious effects of questionable research practices.&lt;/p&gt;
+&lt;p&gt;In many ways, I’m lucky. I didn’t have to make changes to the way I did things to adhere to better practices. I got to start with openness as one of the core tenets of how I conduct my research, and starting fresh is always easier than having to alter pre-existing patterns of behavior. It also helps to have a huge proponent of replication and open science as an advisor and to have come in at a time when there’s fantastic infrastructure in place.&lt;/p&gt;
+&lt;p&gt;Here’s an example of what my process looks like. A lot of this has already been said by better minds, and none of what I do is revolutionary. But it can, perhaps, serve as an illustration of what it looks like to actually build these practices into your workflow.&lt;/p&gt;
+&lt;div id=&#34;planning-and-preregistration&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;1. Planning and preregistration&lt;/h2&gt;
+&lt;p&gt;Once my advisor and I have finalized the approach to our next experiment, the preparation phase begins. I write-up and test my experiment script by running through the entire thing, as a subject would (and try to break it as a subject might).&lt;/p&gt;
+&lt;p&gt;Because I’ve written the experiment script, I know exactly how the data will be saved out. This lets me write the entire analysis script, including wrangling, pre-processing, and figure generation. I test the functionality of the script on dummy data I generate during testing my experiment and make sure it runs properly.&lt;/p&gt;
+&lt;p&gt;After this is done, it’s time to preregister–I like to do so at the &lt;a href=&#34;https://osf.io/&#34;&gt;Open Science Framework&lt;/a&gt;. I outline my hypotheses and upload hypothetical data figures if my predictions are sufficiently specific. I describe all of my experiment methods in gory detail, including all measures collected, and attach my experimental script and any stimuli I use. I detail exactly which hypotheses I’m going to test, and how (which statistical test; how many tails, if applicable; the values of any parameters, such as priors for Bayes Factors, etc.). I explicitly state how many subjects we’ll be running and how we’re going to exclude subjects from analysis. I also upload my analysis script and any helper functions or files.&lt;/p&gt;
+&lt;p&gt;Once all of these things are in place, I preregister the project. My preferred method is to enter it into embargo, and then make the project public after the paper has been submitted.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;data-collection&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;2. Data collection&lt;/h2&gt;
+&lt;p&gt;This tends to be uneventful, since everything has been battle-tested and all decision have already been made. I do not examine the data, even just to look, as it comes in, so that if something unforeseen emerges that requires a change to protocol, I can make a new preregistration on OSF and affirm that it has been done in absence of knowledge of the data. I collect as many subjects as I said I would in my preregistration.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;analysis&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;3. Analysis&lt;/h2&gt;
+&lt;p&gt;This also goes lightning-fast, because the script is already written. I just run the data through it, and know the results that I will be reporting as confirmatory immediately (no strolls through the garden of forking paths). This is great for me, because I cannot handle suspense when it comes to knowing the outcome of my experiments.&lt;/p&gt;
+&lt;p&gt;That done, I can then poke around a little and explore the data if I wish, or do some robustness analyses. Anything that comes from this needs to be reported as exploratory if it is reported at all.&lt;/p&gt;
+&lt;p&gt;I make sure to plot my raw data. Ideally I like to plot it along with my summary values in something like a violin plot (I like to do the raw points over the violin density graph, plus a line showing the mean and maybe some confidence intervals). It’s always a good idea to know the ins and outs of your data, which requires knowing what the raw distributions look like.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;post-raw-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;4. Post raw data&lt;/h2&gt;
+&lt;p&gt;After the analysis is done, I add the raw data in its entirety to the project’s OSF page and include with it a README that provides detailed instructions on how to interpret the data. This has the nice added benefit of creating a secure backup of my data then and there.&lt;/p&gt;
+&lt;p&gt;The project is still private at this point.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;reporting&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;5. Reporting&lt;/h2&gt;
+&lt;p&gt;After repeating steps 1-4 as necessary for follow-up experiments, I write up the manuscript. The methods section is easy, as I pretty much wrote it already back in step 1. I make sure to include a link to my OSF page for the project, which I make public when submitting the manuscript, and include language making it clear that we report all conditions and measures.&lt;/p&gt;
+&lt;p&gt;When we report our stats, we include all information necessary to recreate our analyses. This means correlations for within-subjects designs and cell means for ANOVAs. We also make sure to report how many people were excluded and what proportion of our sample that represents, and how many people ended up assigned to each condition, if applicable.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;pre-prints&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;6. Pre-prints&lt;/h2&gt;
+&lt;p&gt;After the manuscript has been accepted (I’ll take Wishful Thinking for $800, Alex), I upload a preprint of the accepted version to PsyarXiv. I will do this for all of my papers, but I think it’s especially important in cases where one cannot publish open access. Most journals will tell you what the policy is regarding posting the paper to external sources.&lt;/p&gt;
+&lt;p&gt;You can, of course, post a preprint before the paper has been accepted (most of the time this will not preclude later publishing in a journal), but my papers tend to undergo radical transformation during peer review, so I prefer to post a more final version.&lt;/p&gt;
+&lt;p&gt;And that’s my process. Integrating open science and best research practices takes a little practice, but once you’ve gotten comfortable with your workflow it’s as easy as any other habit (and comes with a lot of benefits for your trouble).&lt;/p&gt;
+&lt;p&gt;This workflow works pretty well for me, but I think it can be better. This year I would like to start using figshare, and do version control for my scripts with GitHub, and look into using RMarkdown for papers. There’s always more to learn!&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>5 Minute Simulation: Lonely Cards</title>
       <link>https://katherinemwood.github.io/post/lonely_cards/</link>
       <pubDate>Mon, 26 Jun 2017 12:34:18 -0500</pubDate>
@@ -38,20 +84,6 @@ paste(&amp;#39;Win percentage: &amp;#39;, sum(results)/1000,&amp;#39;%&amp;#39;,
 &lt;p&gt;I’ll update this post with the closed-form solution if I manage to work it out (failing that, I’ll just link to the solution on FiveThirtyEight).&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/katherinemwood/lonely_cards&#34;&gt;Here’s the source code&lt;/a&gt; for the shiny app.&lt;/p&gt;
 &lt;p&gt;UPDATE: It turns out the &lt;a href=&#34;https://fivethirtyeight.com/features/how-long-will-it-take-to-blow-out-the-birthday-candles/#correction&#34;&gt;closed-form solution to this riddle&lt;/a&gt; is nontrivial! It relies on a branch of combinatorics called &lt;a href=&#34;http://mathworld.wolfram.com/Derangement.html&#34;&gt;“derangements”&lt;/a&gt; I didn’t encounter in my (admittedly less than comprehensive) math and stats education.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Pardon our dust</title>
-      <link>https://katherinemwood.github.io/post/pardon/</link>
-      <pubDate>Tue, 30 May 2017 18:36:37 -0500</pubDate>
-      
-      <guid>https://katherinemwood.github.io/post/pardon/</guid>
-      <description>&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;http://butchbellah.com/wp-content/uploads/2014/05/Pardon-Our-Dust.jpg&#34; /&gt;
-
-&lt;/div&gt;
-&lt;p&gt;I’m currently in the progress of moving my old posts over. In the meantime, you can find them at &lt;a href=&#34;https://inattentionalcoffee.wordpress.com/&#34;&gt;their usual home&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
