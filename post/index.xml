@@ -11,6 +11,62 @@
     <atom:link href="/post/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>5 Minute Simulation: Variation in effect size estimates</title>
+      <link>https://katherinemwood.github.io/post/es_var/</link>
+      <pubDate>Mon, 26 Jun 2017 13:54:20 -0500</pubDate>
+      
+      <guid>https://katherinemwood.github.io/post/es_var/</guid>
+      <description>&lt;p&gt;If it’s not terribly obvious, &lt;a href=&#34;http://shiny.rstudio.com/tutorial/&#34;&gt;Shiny&lt;/a&gt; is my new favorite toy. It’s incredibly accessible for beginners, gives you great results with minimal effort, and can be as sophisticated as you need it to be.&lt;/p&gt;
+&lt;p&gt;I decided to throw together a quick simulation to look at the variation in effect size estimates we can expect at different sample sizes. There’s an increasing focus in psych on estimation of effects, rather than simply detection of effects. This is great, but, as it turns out, virtually impossible with a single study unless you are prepared to recruit massive numbers of subjects. Nothing here is new, but I like looking at distributions and playing with sliders, and I’ll take any excuse to make a little shiny widget.&lt;/p&gt;
+&lt;p&gt;In this simulation, we’re doing a basic, between-groups t-test and drawing samples from the normal distribution. The code can be dead simple. I’ll write a tiny&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
+
+sim_es &amp;lt;- function(n, true_es) {
+  g1 &amp;lt;- rnorm(n, true_es, 1)
+  g2 &amp;lt;- rnorm(n, 0, 1)
+  return(effsize::cohen.d(g1, g2, paired=FALSE)$estimate)
+}
+
+plot_es &amp;lt;- function(data, true_es) {
+  es_plot &amp;lt;- ggplot() +
+      theme_minimal() +
+      geom_histogram(aes(x=data, y=..count../sum(..count..)), 
+               color=&amp;#39;darkblue&amp;#39;, fill=&amp;#39;darkblue&amp;#39;, position=&amp;#39;identity&amp;#39;) +
+      geom_vline(xintercept=c(true_es,
+                              sort(data)[.975*length(data)], 
+                              sort(data)[.025*length(data)]), 
+                 size=1.5, color=c(&amp;#39;lightgray&amp;#39;, &amp;#39;red&amp;#39;, &amp;#39;red&amp;#39;), 
+                 linetype=c(&amp;#39;solid&amp;#39;, &amp;#39;longdash&amp;#39;,&amp;#39;longdash&amp;#39;)) +
+      xlab(&amp;quot;Effect size&amp;quot;) +
+      ylab(&amp;#39;Proportion&amp;#39;) +
+      xlim(c(-2, 2))
+
+  print(es_plot)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here’s what you get if you use tiny (n=10) groups (perhaps under the justification that if an effect is big, you’ll detect it just fine in small samples) and no true effect is present:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n10 &amp;lt;- replicate(3000, sim_es(10, 0))
+plot_es(n10, 0)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/es_var_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;The white line is the true effect, and the two red lines mark out the 95% quantile.&lt;/p&gt;
+&lt;p&gt;Yikes. With samples that small, you could (and will, often!) get an enormous effect when none is present.&lt;/p&gt;
+&lt;p&gt;Here’s what we get with n = 50, no effect present. I’ve left the x-axis fixed to make it easier to compare all of these plots.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n50 &amp;lt;- replicate(3000, sim_es(50, 0))
+plot_es(n50, 0)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/es_var_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;This is a dramatic improvement over n=10, but you could still estimate what is considered a small (d=.1, traditionally) to medium (d=.3, traditionally) effect in either direction with appreciable frequency.&lt;/p&gt;
+&lt;p&gt;And here’s n=200.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n200 &amp;lt;- replicate(3000, sim_es(200, 0))
+plot_es(n200, 0)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/es_var_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;I’ve used d=0 as an example, but you get this spread regardless of what the true d is; it will just shift to center on the true effect. In that case, you’ll detect an effect most of the time, but can be way off about its actual size. This doesn’t mean that you can throw power out the window by arguing that you only care about detection, of course–you’ll “detect” an effect a lot of the time when d=0 with small samples.&lt;/p&gt;
+&lt;p&gt;These simulations are the result of 3000 replications each, but in the shiny app you can change this number.&lt;/p&gt;
+&lt;p&gt;For me, this really drives home just how important replications and meta-analyses–cumulative science in general, really–are, particularly for estimation. When you do a lot of these studies over and over again, as these simulations model, you’ll zero in on the true effect, but a study can’t do it alone.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://katherinemwood.shinyapps.io/effect_size/&#34;&gt;The Shiny app can be found here&lt;/a&gt;. You can tweak group size, true effect size, how many simulations are run, and the limits on the x-axis. You can also view a plot of the corresponding p-values.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/katherinemwood/es_variation&#34;&gt;The source code can be found here.&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Open Science in Practice</title>
       <link>https://katherinemwood.github.io/post/open_sci/</link>
       <pubDate>Mon, 26 Jun 2017 13:48:35 -0500</pubDate>
