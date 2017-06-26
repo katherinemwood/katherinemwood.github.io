@@ -11,6 +11,75 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Data in the raw: Violin plots</title>
+      <link>https://katherinemwood.github.io/post/violins/</link>
+      <pubDate>Mon, 26 Jun 2017 15:27:06 -0500</pubDate>
+      
+      <guid>https://katherinemwood.github.io/post/violins/</guid>
+      <description>&lt;p&gt;One of the ways we can increase transparency in science, in addition to posting our data, materials, and pre-registering our methods, is to start including more information about our raw data in our write-ups and reports. One of the ways we can do this is just show it in a visualization.&lt;/p&gt;
+&lt;p&gt;The bar chart with error bars (usually &lt;span class=&#34;math inline&#34;&gt;\(\pm 1.96 \times\)&lt;/span&gt; standard error for a 95% confidence interval) is a classic plot type, but it obscures a lot of information about the underlying distribution that generated it. Scatterplots and histograms show more of the raw distribution, but they can be messy and hard to cleanly overlay with summary statistics.&lt;/p&gt;
+&lt;p&gt;Fortunately, violin plots bring together the informativeness of a histogram with the cleanliness of a bar chart, and they can be easily overlaid with summary statistics, error bars, and other information without too much additional clutter.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
+library(dplyr)
+
+set.seed(836)
+dat &amp;lt;- data.frame(&amp;#39;condition&amp;#39;=c(rep(&amp;#39;t1&amp;#39;, 30), rep(&amp;#39;t2&amp;#39;, 30)), 
+                  &amp;#39;value&amp;#39;=c(rnorm(30, 10, 3), rnorm(30, 20, 7)))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here is the simplest incarnation of a violin plot, for two normally distributed groups:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;basic_violin &amp;lt;- ggplot(data=dat, aes(x=condition, y=value)) +
+  geom_violin(aes(fill=condition, color=condition)) +
+  theme_minimal()
+
+print(basic_violin)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/violins_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;These might be more accurately called “jug” or “vase” plots, since they rarely make pretty violin shapes and more often tend to look like postmodern sculpture. Name aside, the violin plot is a rotated, symmetric kernel density plot that shows the density of points at different values. Where the plot is wide, there is a high density of points; where it is narrow, a low density of points (like height on a histogram). We can see here that group T1 is less variable than T2; T1’s violin is short and squat, meaning most of the points are massed in a small region. T2, on the other hand, is tall and narrow, meaning the points are spread thinner along a wider range of values&lt;/p&gt;
+&lt;p&gt;These guys looks a little sparse, though. Why don’t we dress them up a smidge?&lt;/p&gt;
+&lt;p&gt;Maybe you like a point mean and &lt;span class=&#34;math inline&#34;&gt;\(2*\)&lt;/span&gt;SE error bars:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;errbar_lims &amp;lt;- group_by(dat, condition) %&amp;gt;% 
+              summarize(mean=mean(value), se=sd(value)/sqrt(n()), 
+                        upper=mean+(2*se), lower=mean-(2*se))
+
+mean_se_violin &amp;lt;- ggplot() +
+  geom_violin(data=dat, aes(x=condition, y=value, fill=condition, color=condition)) +
+  geom_point(data=errbar_lims, aes(x=condition, y=mean), size=3) +
+  geom_errorbar(aes(x=errbar_lims$condition, ymax=errbar_lims$upper, 
+                ymin=errbar_lims$lower), stat=&amp;#39;identity&amp;#39;, width=.25) +
+  theme_minimal()
+
+print(mean_se_violin)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/violins_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Or maybe boxplots are your jam:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;boxplot_violin &amp;lt;- ggplot(data=dat, aes(x=condition, y=value)) +
+  geom_violin(aes(fill=condition, color=condition)) +
+  geom_boxplot(width=.1, outlier.shape=NA) +
+  theme_minimal()
+
+print(boxplot_violin)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/violins_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Here’s the way I like to do my violin plots, with each subject’s point plotted plus a horizontal line for the mean. I add a little horizontal jitter to each point to make things easier to see:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;scatter_violin &amp;lt;- ggplot(data=dat, aes(x=condition, y=value)) +
+  geom_violin(aes(fill=condition, color=condition)) +
+  geom_crossbar(stat=&amp;quot;summary&amp;quot;, fun.y=mean, fun.ymax=mean, fun.ymin=mean, fatten=2, width=.5) +
+  geom_point(color=&amp;quot;black&amp;quot;, size=1, position = position_jitter(w=0.05)) +
+  theme_minimal()
+
+print(scatter_violin)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/violins_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;There are a few things I really like about violin plots. One, they add a lot more information without taking up any more space than a bar plot would. Two, they give you an intuitive way to look at the distributions of your data. I don’t think many of us are accustomed to seeing data this way, and it goes to show that even well-behaved data doesn’t necessarily look like we might expect. &lt;code&gt;t1&lt;/code&gt; is just as normal as &lt;code&gt;t2&lt;/code&gt;, but &lt;code&gt;t1&lt;/code&gt; “looks” a lot more normal than &lt;code&gt;t2&lt;/code&gt; does. You lose a lot of the characteristics of the data with a bar plot:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;bar_plot &amp;lt;- ggplot(data=errbar_lims) +
+  geom_bar(aes(x=condition, y=mean, fill=condition, color=condition), stat=&amp;#39;identity&amp;#39;, position=&amp;#39;dodge&amp;#39;) +
+  geom_errorbar(aes(x=condition, ymax=upper, 
+                    ymin=lower), stat=&amp;#39;identity&amp;#39;, width=.25) +
+  theme_minimal()
+
+print(bar_plot)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/violins_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;It captures the broad strokes, to be sure, but a lot of the finer details disappear.&lt;/p&gt;
+&lt;p&gt;So there you go. Violin plots! Dress ’em up, dress ’em down. However you like them, they’re a nice plot type to have in your arsenal.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>A Primer on Data Wrangling</title>
       <link>https://katherinemwood.github.io/post/wrangling/</link>
       <pubDate>Mon, 26 Jun 2017 15:20:35 -0500</pubDate>
