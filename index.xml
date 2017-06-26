@@ -11,6 +11,71 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Program better, for fun and for profit</title>
+      <link>https://katherinemwood.github.io/post/programming/</link>
+      <pubDate>Mon, 26 Jun 2017 14:35:49 -0500</pubDate>
+      
+      <guid>https://katherinemwood.github.io/post/programming/</guid>
+      <description>&lt;p&gt;Psych researchers have a bit of a reputation for being, shall we say, less-than-delicate programmers. It’s common to hear “it doesn’t matter if it’s ugly, as long as it works.”&lt;/p&gt;
+&lt;p&gt;I took computer science classes as an undergrad, and style was rigidly enforced. I had one notoriously strict professor who would dock up to a grade on an otherwise completely functional project if it was ugly. It wasn’t just simple elitism; ugly code is often inefficient code, and ugly code is hard to read and understand.&lt;/p&gt;
+&lt;p&gt;Code quality is something I’m constantly working on. You can see the development in my scripts; I only recently started using dplyr and the rest of the tidyverse in R, and what a difference it’s made to the quality of my code. I cringe a little, looking back at my earliest scripts (and they’re a matter of public record, forever). Cringe is good, though. Cringe signals improvement, and wisdom gained.&lt;/p&gt;
+&lt;p&gt;I thought I’d share a few of the practices that were drilled into me during my CS education that have helped improve the style, quality, and readability of my code.&lt;/p&gt;
+&lt;div id=&#34;comment-your-code.&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;1. Comment your code.&lt;/h1&gt;
+&lt;p&gt;Please. If not for others, then for your future self. You will neither remember nor understand your code in the future as well as you think you will. I don’t to it as thoroughly as I ought; I’m not sure anyone does. This is easy to change, and doesn’t take much effort.&lt;/p&gt;
+&lt;p&gt;Functions should be commented with what their inputs are, what it does to those inputs, and what it returns. For a gold star, you can include examples of input and output.&lt;/p&gt;
+&lt;p&gt;For example:&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;&amp;#39;&amp;#39;&amp;#39;
+A function that takes in a list of integers X
+and returns the arithmetic mean in floating-point
+form.
+&amp;#39;&amp;#39;&amp;#39;
+def mean(x):
+    return(sum(x)/float(len(x)))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Global variables should be commented with what they are and how they’re used, so that you can change them without having to dig back through the code to make sure you understand what the variable does.&lt;/p&gt;
+&lt;p&gt;Commenting code makes it much easier for others to understand, and it cuts way down on re-learning if you have to go back and revisit old code.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;use-sensible-variable-and-function-names.&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;2. Use sensible variable and function names.&lt;/h1&gt;
+&lt;p&gt;It very rapidly becomes impossible to tell what is happening when all variables are named &lt;code&gt;x&lt;/code&gt;, &lt;code&gt;x1&lt;/code&gt;, &lt;code&gt;x2&lt;/code&gt;, or &lt;code&gt;tmp&lt;/code&gt;. While we want variable names to be succinct, they should also make sense and be recognizable. Degrees of freedom can be &lt;code&gt;df&lt;/code&gt;. A subject’s height could be &lt;code&gt;subj_height&lt;/code&gt;, rather than, say, &lt;code&gt;h&lt;/code&gt; or &lt;code&gt;s_h&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;This is also good to do when you’re subsetting data. You don’t want to confuse yourself or others about which variable represents the full dataset, and which represents a subset!&lt;/p&gt;
+&lt;p&gt;Functions should also, ideally, be named after what they do. &lt;code&gt;cartesian_to_polar(x, y)&lt;/code&gt; is obvious (if you know your coordinate systems); &lt;code&gt;c2p(x, y)&lt;/code&gt; less so.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;avoid-hardcoding.&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;3. Avoid hardcoding.&lt;/h1&gt;
+&lt;p&gt;“Hardcoding” is the practice of writing explicit, fixed values into functions and scripts instead of variables. So if you had a run_experiment function, hardcoded to do 100 trials, it might look like this:&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;def run_experiment():
+    for i in range(100):
+        do_trial(i)
+do_other_stuff(i)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And then maybe at the end of the script, you have to reference the number of trials again, maybe to calculate percent correct:&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;#let&amp;#39;s assume for convenience that yes_responses is a list of bools
+correct_resp = sum(yes_responses)/100&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This works fine, but what if you decide to change the number of trials? Then you’ll have to hunt back through every place you used 100 and change it. What would be a lot easier is to define a variable, num_trials, at the beginning of your script. Then, every time you need to reference this number, use num_trials rather than the hard number. Then, if you change your mind, you only have to change the value of num_trials to change its value everywhere else in the script.&lt;/p&gt;
+&lt;p&gt;This is especially relevant for experiment scripts, in which values might change over the course of development, or need to change during the experiment itself with the condition or trial type. It’s much more convenient to have all of you parameters mapped to variables in one place so that you only have to change them once to change behavior everywhere. Changes become easy and quick, and it will save heartache.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;think-modular.&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;4. Think modular.&lt;/h1&gt;
+&lt;p&gt;Break routines and operations into functions, particularly if you have to do them over and over again. For example, if you’re writing an experiment, you might want to have a function that handles a single trial, with some inputs that can be adjusted. Maybe you have long-exposure trials and short-exposure trials, for instance. It’s nice to be able to call &lt;code&gt;do_trial(long_ontime)&lt;/code&gt; or &lt;code&gt;do_trial(short_ontime)&lt;/code&gt;, rather than having all of that logic imbedded in one monster script. If you need more flexibility, just write the function to accept more variables and pass them in.&lt;/p&gt;
+&lt;p&gt;If you have a function that you use a lot (I have one for saving out data), you can keep it in a separate file and source it in each time you need it, rather than rewriting it each time. Being able to re-use your code saves time and effort.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;be-succinct.&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;5. Be succinct.&lt;/h1&gt;
+&lt;p&gt;Often, there’s a verbose way to do something, and a concise way to do something. For instance, in Python, you can very often replace for-loops with list comprehensions. In R, just about every for-loop can be replaced with a combination of calls to the venerable &lt;code&gt;apply&lt;/code&gt; family of functions or to higher-order functions like &lt;code&gt;Reduce&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The &lt;a href=&#34;https://cran.r-project.org/web/packages/tidyverse/index.html&#34;&gt;&lt;code&gt;tidyverse&lt;/code&gt;&lt;/a&gt;, a diverse set of packages for R, makes many common data manipulation commands into short primitives. This can clean up and shorten code substantially, especially when extensive data manipulation is involved (see &lt;a href=&#34;https://katherinemwood.github.io/post/wrangling/&#34;&gt;this post&lt;/a&gt; for examples of it in action and how it compares to other base methods). It tends to be less verbose and more readable, although the latter is subjective to a point.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;unit-test.&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;6. Unit-test.&lt;/h1&gt;
+&lt;p&gt;This is an example of doing more work now to do less work later. I’ve fallen out of the habit of unit-testing, but with the new year comes an opportunity to return to core values.&lt;/p&gt;
+&lt;p&gt;In unit-testing, you write tests in a separate script for little pieces of your code. This is &lt;a href=&#34;https://docs.python.org/2/library/unittest.html&#34;&gt;easy in Python&lt;/a&gt;, and there’s a &lt;a href=&#34;https://cran.r-project.org/web/packages/testthat/testthat.pdf&#34;&gt;nice R package for it too&lt;/a&gt;. See &lt;a href=&#34;https://katherinemwood.github.io/post/testthat/&#34;&gt;this post&lt;/a&gt; to see it in action.&lt;/p&gt;
+&lt;p&gt;The idea is that you test each piece of code (functions, object classes, etc) as you write it and verify that it works. Even better, you can write tests for code first, before you even write the code itself. Tests make sure that code runs without crashing, that the output it gives you matches what you expect, that objects have the methods and attributes you want and that they all do what you expect, and so on.&lt;/p&gt;
+&lt;p&gt;Why bother? For one, it creates a nice feedback loop with modularity. Writing code in nice little packages makes it easy to test, which encourages writing code in nice little packages, etc. Two, it will save you a ton of time during debugging. If you write an entire script through, try to run it, and almost inevitably encounter bugs, you then have to search through a lot of possible failure points. Usually that means having to verify that all of the pieces work anyway, in order to zero in on the culprit(s). With unit testing, you know right away whether something is working and if it’s working correctly. This gives you a chance to fix things before you run the whole thing through.&lt;/p&gt;
+&lt;p&gt;Following good practices only nets benefits. It makes your old code more accessible to yourself. Possibly more critically, it makes your code more accessible to others. Open data and open materials are becoming more common, and it’s not enough just to throw uncommented code up on Github and call it duty done. Part of that responsibility to openness is making code readable, understandable, and transparent.These practices are a good place to start.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>5 Minute Simulation: Variation in effect size estimates</title>
       <link>https://katherinemwood.github.io/post/es_var/</link>
       <pubDate>Mon, 26 Jun 2017 13:54:20 -0500</pubDate>
