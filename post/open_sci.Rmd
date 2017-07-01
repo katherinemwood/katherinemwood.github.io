@@ -1,6 +1,7 @@
 ---
 date: 2017-06-26T13:48:35-05:00
 title: "Open Science in Practice"
+summary: " "
 ---
 
 I will finish grad school a child of the replication crisis. My year and a half in grad school has been marked by bombshell failures-to-replicate, increasing adoption of Bayesian methods, and wider recognition of the insidious effects of questionable research practices.

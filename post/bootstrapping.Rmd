@@ -1,6 +1,7 @@
 ---
 date: 2017-06-26T15:02:58-05:00
 title: "Intro to Bootstrapping"
+summary: " "
 ---
 
 The bootstrap, detailed by Efron and Tibshirani in their 1993 book *An Introduction to the Bootstrap,* is a powerful, flexible statistical concept based on the idea of "pulling yourself up by your bootstraps." With today's computing power, it's easier than ever to apply and use. It also happens to be one of my favorite statistical tricks because of the elegance of the underlying logic.

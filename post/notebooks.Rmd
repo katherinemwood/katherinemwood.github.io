@@ -1,6 +1,7 @@
 ---
 date: 2017-06-26T15:36:22-05:00
 title: "Intro to R Notebooks"
+summary: " "
 ---
 
 This notebook is based loosely on [this cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf) that shows some of the most basic functionality of R notebooks, including code, markdown, and Latex.

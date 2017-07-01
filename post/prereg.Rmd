@@ -1,6 +1,7 @@
 ---
 date: 2017-06-26T16:11:46-05:00
 title: "Considerations when writing a preregistration if you're new to all this"
+summary: " "
 ---
 
 (Note: I apparently use preregistration and pre-registration interchangeably, because I guess I want to have my hyphenation cake and eat it, too.)

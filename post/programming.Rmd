@@ -1,6 +1,7 @@
 ---
 date: 2017-06-26T14:35:49-05:00
 title: "Program better, for fun and for profit"
+summary: " "
 ---
 
 Psych researchers have a bit of a reputation for being, shall we say, less-than-delicate programmers. It's common to hear "it doesn't matter if it's ugly, as long as it works."

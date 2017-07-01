@@ -1,6 +1,7 @@
 ---
 date: 2017-06-26T15:46:23-05:00
 title: "Intro to unit testing in R"
+summary: " "
 ---
 
 I've mentioned before that a great coding practice you can ingrain into your work is unit testing. The idea is simple: you write a script that automatically evaluates pieces of your code and checks it against expected behavior. For example, a correlation coefficient should always be between -1 and 1, so you could write a test that will raise an error if it encounters an r beyond these values. Or, you could check your data file after it's read in to make sure it reads in with all rows and columns, nothing missing where it shouldn't be, and every column of the data type you want it.

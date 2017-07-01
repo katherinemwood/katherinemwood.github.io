@@ -1,6 +1,7 @@
 ---
 date: 2017-06-26T15:20:35-05:00
 title: "A Primer on Data Wrangling"
+summary: " "
 ---
 
 I found [this Twitter thread](https://twitter.com/dalejbarr/status/826717889608765444) on the vagaries of data wrangling killing momentum interesting, particularly the notion of how frustrating it must be to be at point A with your data, see Point B, where you'd like to go, and have no idea how to get there. Even for those with programming experience, data wrangling can be an enormous chore.

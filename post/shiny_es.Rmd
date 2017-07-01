@@ -1,6 +1,7 @@
 ---
 date: 2017-06-26T16:09:00-05:00
 title: "One day build: Shiny effect sizes"
+summary: " "
 ---
 
 It had been a long time since I had built anything, and I needed to scratch the itch. I decided to build a Shiny port of [Daniël Lakens's beloved effect size calculator spreadsheets](https://osf.io/ixGcd/). You can find the app itself [here](https://katherinemwood.shinyapps.io/lakens_effect_sizes/).

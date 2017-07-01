@@ -1,6 +1,7 @@
 ---
 date: 2017-06-26T12:34:18-05:00
 title: "5 Minute Simulation: Lonely Cards"
+summary: " "
 ---
 FiveThirtyEight posts math, logic, and probability puzzles each week. I was tempted by this week's [Riddler Express](http://fivethirtyeight.com/features/can-you-deal-with-these-card-game-puzzles/):
 

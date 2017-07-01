@@ -1,6 +1,7 @@
 ---
 date: 2017-06-26T13:54:20-05:00
 title: "5 Minute Simulation: Variation in effect size estimates"
+summary: " "
 ---
 
 If it's not terribly obvious, [Shiny](http://shiny.rstudio.com/tutorial/) is my new favorite toy. It's incredibly accessible for beginners, gives you great results with minimal effort, and can be as sophisticated as you need it to be.

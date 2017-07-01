@@ -1,6 +1,7 @@
 ---
 date: 2017-06-26T15:27:06-05:00
 title: "Data in the raw: Violin plots"
+summary: " "
 ---
 
 One of the ways we can increase transparency in science, in addition to posting our data, materials, and pre-registering our methods, is to start including more information about our raw data in our write-ups and reports. One of the ways we can do this is just show it in a visualization.
