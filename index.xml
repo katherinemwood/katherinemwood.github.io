@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Inattentional Coffee on Inattentional Coffee</title>
-    <link>/</link>
+    <link>https://katherinemwood.github.io/</link>
     <description>Recent content in Inattentional Coffee on Inattentional Coffee</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -12,10 +12,10 @@
     
     <item>
       <title>Considerations when writing a preregistration if you&#39;re new to all this</title>
-      <link>/post/prereg/</link>
+      <link>https://katherinemwood.github.io/post/prereg/</link>
       <pubDate>Mon, 26 Jun 2017 16:11:46 -0500</pubDate>
       
-      <guid>/post/prereg/</guid>
+      <guid>https://katherinemwood.github.io/post/prereg/</guid>
       <description>&lt;p&gt;(Note: I apparently use preregistration and pre-registration interchangeably, because I guess I want to have my hyphenation cake and eat it, too.)&lt;/p&gt;
 &lt;p&gt;I’m a selfish preregisterer (Preregisterizer? Preregistrar? Preregistrix?). I preregister experiments primarily for my own benefit. I make as many decisions as I can up front, when I’m unbiased and unattached. Yes, it’s more transparent, and yes, it provides a record to others that you made your decisions ahead of time and not in a post-hoc way. But I mostly do it for myself.&lt;/p&gt;
 &lt;p&gt;Like Odysseus tying himself to the mast, preregistration saves you from the siren song of totally justifiable post-hoc decisions that just happen to make things work a little more nicely. I do think that usually this isn’t ill-intentioned or even necessarily deliberate, but I do think it is extremely hard (if not impossible) to make decisions in an unbiased way once the data have started coming in.&lt;/p&gt;
@@ -55,10 +55,10 @@
     
     <item>
       <title>One day build: Shiny effect sizes</title>
-      <link>/post/shiny_es/</link>
+      <link>https://katherinemwood.github.io/post/shiny_es/</link>
       <pubDate>Mon, 26 Jun 2017 16:09:00 -0500</pubDate>
       
-      <guid>/post/shiny_es/</guid>
+      <guid>https://katherinemwood.github.io/post/shiny_es/</guid>
       <description>&lt;p&gt;It had been a long time since I had built anything, and I needed to scratch the itch. I decided to build a Shiny port of &lt;a href=&#34;https://osf.io/ixGcd/&#34;&gt;Daniël Lakens’s beloved effect size calculator spreadsheets&lt;/a&gt;. You can find the app itself &lt;a href=&#34;https://katherinemwood.shinyapps.io/lakens_effect_sizes/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;These sheets are handy for a number of reasons, primarily if a paper or talk reports stats but no effect sizes (or if you want to double-check reported stats or effect sizes). I thought it would be convenient to have an online version.&lt;/p&gt;
 &lt;p&gt;All of the math is based on what’s used in the spreadsheet, and the default examples are taken from there too.&lt;/p&gt;
@@ -69,10 +69,10 @@
     
     <item>
       <title>Intro to unit testing in R</title>
-      <link>/post/testthat/</link>
+      <link>https://katherinemwood.github.io/post/testthat/</link>
       <pubDate>Mon, 26 Jun 2017 15:46:23 -0500</pubDate>
       
-      <guid>/post/testthat/</guid>
+      <guid>https://katherinemwood.github.io/post/testthat/</guid>
       <description>&lt;p&gt;I’ve mentioned before that a great coding practice you can ingrain into your work is unit testing. The idea is simple: you write a script that automatically evaluates pieces of your code and checks it against expected behavior. For example, a correlation coefficient should always be between -1 and 1, so you could write a test that will raise an error if it encounters an r beyond these values. Or, you could check your data file after it’s read in to make sure it reads in with all rows and columns, nothing missing where it shouldn’t be, and every column of the data type you want it.&lt;/p&gt;
 &lt;p&gt;Hadley Wickham wrote an awesome R package that makes writing tests easy and pretty intuitive. In the &lt;code&gt;testthat&lt;/code&gt; package, you can bundle a series of &lt;code&gt;expect_that&lt;/code&gt; statements into a &lt;code&gt;test_that&lt;/code&gt; suite, which ideally would run a small cluster of closely related tests. Multiple &lt;code&gt;test_that&lt;/code&gt; suites can be grouped into a &lt;code&gt;context&lt;/code&gt; that tests an entire file, or a big chunk of functionality inside a file.&lt;/p&gt;
 &lt;p&gt;I’ll walk through examples. Code for this is up on GitHub, like always.&lt;/p&gt;
@@ -167,10 +167,10 @@ Avoid testing simple code that you’re confident will work. Instead focus your 
     
     <item>
       <title>Intro to R Notebooks</title>
-      <link>/post/notebooks/</link>
+      <link>https://katherinemwood.github.io/post/notebooks/</link>
       <pubDate>Mon, 26 Jun 2017 15:36:22 -0500</pubDate>
       
-      <guid>/post/notebooks/</guid>
+      <guid>https://katherinemwood.github.io/post/notebooks/</guid>
       <description>&lt;p&gt;This notebook is based loosely on &lt;a href=&#34;https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf&#34;&gt;this cheatsheet&lt;/a&gt; that shows some of the most basic functionality of R notebooks, including code, markdown, and Latex.&lt;/p&gt;
 &lt;div id=&#34;code&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Code&lt;/h1&gt;
@@ -237,7 +237,7 @@ iris_plot &amp;lt;- ggplot(data=select(iris, Species, Sepal.Length),
   geom_crossbar(stat=&amp;#39;summary&amp;#39;,fun.y=mean, fun.ymax=mean, fun.ymin=mean, fatten=2, width=.5) +
   theme_minimal()
 print(iris_plot)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/notebooks_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/notebooks_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Fascinating, I guess!&lt;/p&gt;
 &lt;p&gt;The nice thing about this is that these plots are completely reproduceable–they’ll be generated everytime you run the notebook. You can keep the code cell that generates it in the output, so people can see it, or if you want a cleaner output with just the results, you can hide the generating code cell. You can tailor it to your options.&lt;/p&gt;
 &lt;/div&gt;
@@ -524,10 +524,10 @@ A. sub-small thing&lt;/li&gt;
     
     <item>
       <title>Data in the raw: Violin plots</title>
-      <link>/post/violins/</link>
+      <link>https://katherinemwood.github.io/post/violins/</link>
       <pubDate>Mon, 26 Jun 2017 15:27:06 -0500</pubDate>
       
-      <guid>/post/violins/</guid>
+      <guid>https://katherinemwood.github.io/post/violins/</guid>
       <description>&lt;p&gt;One of the ways we can increase transparency in science, in addition to posting our data, materials, and pre-registering our methods, is to start including more information about our raw data in our write-ups and reports. One of the ways we can do this is just show it in a visualization.&lt;/p&gt;
 &lt;p&gt;The bar chart with error bars (usually &lt;span class=&#34;math inline&#34;&gt;\(\pm 1.96 \times\)&lt;/span&gt; standard error for a 95% confidence interval) is a classic plot type, but it obscures a lot of information about the underlying distribution that generated it. Scatterplots and histograms show more of the raw distribution, but they can be messy and hard to cleanly overlay with summary statistics.&lt;/p&gt;
 &lt;p&gt;Fortunately, violin plots bring together the informativeness of a histogram with the cleanliness of a bar chart, and they can be easily overlaid with summary statistics, error bars, and other information without too much additional clutter.&lt;/p&gt;
@@ -543,7 +543,7 @@ dat &amp;lt;- data.frame(&amp;#39;condition&amp;#39;=c(rep(&amp;#39;t1&amp;#39;,
   theme_minimal()
 
 print(basic_violin)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/violins_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/violins_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;These might be more accurately called “jug” or “vase” plots, since they rarely make pretty violin shapes and more often tend to look like postmodern sculpture. Name aside, the violin plot is a rotated, symmetric kernel density plot that shows the density of points at different values. Where the plot is wide, there is a high density of points; where it is narrow, a low density of points (like height on a histogram). We can see here that group T1 is less variable than T2; T1’s violin is short and squat, meaning most of the points are massed in a small region. T2, on the other hand, is tall and narrow, meaning the points are spread thinner along a wider range of values&lt;/p&gt;
 &lt;p&gt;These guys looks a little sparse, though. Why don’t we dress them up a smidge?&lt;/p&gt;
 &lt;p&gt;Maybe you like a point mean and &lt;span class=&#34;math inline&#34;&gt;\(2*\)&lt;/span&gt;SE error bars:&lt;/p&gt;
@@ -559,7 +559,7 @@ mean_se_violin &amp;lt;- ggplot() +
   theme_minimal()
 
 print(mean_se_violin)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/violins_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/violins_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Or maybe boxplots are your jam:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;boxplot_violin &amp;lt;- ggplot(data=dat, aes(x=condition, y=value)) +
   geom_violin(aes(fill=condition, color=condition)) +
@@ -567,7 +567,7 @@ print(mean_se_violin)&lt;/code&gt;&lt;/pre&gt;
   theme_minimal()
 
 print(boxplot_violin)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/violins_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/violins_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Here’s the way I like to do my violin plots, with each subject’s point plotted plus a horizontal line for the mean. I add a little horizontal jitter to each point to make things easier to see:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;scatter_violin &amp;lt;- ggplot(data=dat, aes(x=condition, y=value)) +
   geom_violin(aes(fill=condition, color=condition)) +
@@ -576,7 +576,7 @@ print(boxplot_violin)&lt;/code&gt;&lt;/pre&gt;
   theme_minimal()
 
 print(scatter_violin)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/violins_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/violins_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;There are a few things I really like about violin plots. One, they add a lot more information without taking up any more space than a bar plot would. Two, they give you an intuitive way to look at the distributions of your data. I don’t think many of us are accustomed to seeing data this way, and it goes to show that even well-behaved data doesn’t necessarily look like we might expect. &lt;code&gt;t1&lt;/code&gt; is just as normal as &lt;code&gt;t2&lt;/code&gt;, but &lt;code&gt;t1&lt;/code&gt; “looks” a lot more normal than &lt;code&gt;t2&lt;/code&gt; does. You lose a lot of the characteristics of the data with a bar plot:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;bar_plot &amp;lt;- ggplot(data=errbar_lims) +
   geom_bar(aes(x=condition, y=mean, fill=condition, color=condition), stat=&amp;#39;identity&amp;#39;, position=&amp;#39;dodge&amp;#39;) +
@@ -585,7 +585,7 @@ print(scatter_violin)&lt;/code&gt;&lt;/pre&gt;
   theme_minimal()
 
 print(bar_plot)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/violins_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/violins_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;It captures the broad strokes, to be sure, but a lot of the finer details disappear.&lt;/p&gt;
 &lt;p&gt;So there you go. Violin plots! Dress ’em up, dress ’em down. However you like them, they’re a nice plot type to have in your arsenal.&lt;/p&gt;
 </description>
@@ -593,10 +593,10 @@ print(bar_plot)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>A Primer on Data Wrangling</title>
-      <link>/post/wrangling/</link>
+      <link>https://katherinemwood.github.io/post/wrangling/</link>
       <pubDate>Mon, 26 Jun 2017 15:20:35 -0500</pubDate>
       
-      <guid>/post/wrangling/</guid>
+      <guid>https://katherinemwood.github.io/post/wrangling/</guid>
       <description>&lt;p&gt;I found &lt;a href=&#34;https://twitter.com/dalejbarr/status/826717889608765444&#34;&gt;this Twitter thread&lt;/a&gt; on the vagaries of data wrangling killing momentum interesting, particularly the notion of how frustrating it must be to be at point A with your data, see Point B, where you’d like to go, and have no idea how to get there. Even for those with programming experience, data wrangling can be an enormous chore.&lt;/p&gt;
 &lt;p&gt;To that end, I thought I’d walk through a basic overview of how to accomplish some of the operations you might commonly encounter when you first get a data set. If you’re generating the data yourself, you can try to make your life easier by saving it in the format you want.&lt;/p&gt;
 &lt;p&gt;Where possible, I’ll show multiple ways to accomplish something and try to highlight packages that will make things easier.&lt;/p&gt;
@@ -825,7 +825,7 @@ print(traits_long_t)&lt;/code&gt;&lt;/pre&gt;
 plot &amp;lt;- ggplot(traits_long_t, aes(x=test, y=score, color=test)) +
         geom_point()
 print(plot)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/wrangling_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt; Simplicity itself.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/wrangling_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt; Simplicity itself.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;long-to-wide&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Long to Wide&lt;/h3&gt;
@@ -1343,10 +1343,10 @@ print(mfac_reformed)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Intro to Bootstrapping</title>
-      <link>/post/bootstrapping/</link>
+      <link>https://katherinemwood.github.io/post/bootstrapping/</link>
       <pubDate>Mon, 26 Jun 2017 15:02:58 -0500</pubDate>
       
-      <guid>/post/bootstrapping/</guid>
+      <guid>https://katherinemwood.github.io/post/bootstrapping/</guid>
       <description>&lt;p&gt;The bootstrap, detailed by Efron and Tibshirani in their 1993 book &lt;em&gt;An Introduction to the Bootstrap,&lt;/em&gt; is a powerful, flexible statistical concept based on the idea of “pulling yourself up by your bootstraps.” With today’s computing power, it’s easier than ever to apply and use. It also happens to be one of my favorite statistical tricks because of the elegance of the underlying logic.&lt;/p&gt;
 &lt;p&gt;The idea behind the bootstrap is simple. We know that if we repeatedly sample groups from the population, our measurement of that population will get increasingly accurate, becoming perfect when we’ve sampled every member of the population (and thus obviating the need for statistics at all). However, this world, like worlds without friction in physics, don’t resemble operating conditions. In the real world, you typically get one sample from your population. If only we could easily resample from the population a few more times.&lt;/p&gt;
 &lt;p&gt;Bootstrapping gets you the next best thing. We don’t resample from the population. Instead, we continuously resample &lt;em&gt;our own data&lt;/em&gt;,with replacement, and generate a so-called bootstrapped distribution. We can then use this distribution to quantify uncertainty on all kinds of measures.&lt;/p&gt;
@@ -1369,7 +1369,7 @@ ub_se &amp;lt;- mean(x) + 1.96*se&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;[Just to note: bootstrapped confidence intervals give you a nice measure of uncertainty, and I like to use them as my error bars, but they don’t get you away from the problems of NHST, if that’s something you’re trying to avoid.]&lt;/p&gt;
 &lt;p&gt;Here’s a histogram of our sample. In this post, I’m plotting everything in base just for the thrill:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;hist(x,  breaks=10)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/bootstrapping_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/bootstrapping_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Here are the stats for our mean, calculated the old-fashioned way from an n of 50:&lt;/p&gt;
 &lt;p&gt;mean: 1.27&lt;br /&gt;
 SE: 0.18&lt;br /&gt;
@@ -1384,7 +1384,7 @@ ub &amp;lt;- sort(boot)[.975*1000]
 #mean, and the 95% bootstrapped CI
 hist(boot, breaks=50)
 abline(v=c(mean(boot), lb, ub), col=rep(&amp;#39;red&amp;#39;, 3), lty=c(1, 2, 2))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/bootstrapping_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/bootstrapping_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;The bootstrapped mean (1.27) is of course centered on our sample mean. Now we have a distribution of values for the mean that we could expect to obtain with our sample.&lt;/p&gt;
 &lt;p&gt;Now, if we wanted to do confidence intervals, we could get the SE of the bootstrapped distribution and do it the usual way. However, we also have an option available to us called the &lt;em&gt;percentile method.&lt;/em&gt; In order to find the confidence intervals, we sort all of our bootstrapped values, and then take the 2.5% quantile and the 97.5% quantile. If you repeat the sampling procedure with the same process on the same population (precisely what we do with our bootstrap), 95% of the time the mean falls between these endpoints. If we do this procedure with our particular sample, we get this:&lt;/p&gt;
 &lt;p&gt;95% bootstrapped CI: [1.14, 1.40]&lt;/p&gt;
@@ -1407,7 +1407,7 @@ abline(v=c(mean(boot), lb, ub), col=rep(&amp;#39;red&amp;#39;, 3), lty=c(1, 2, 2
 ub_es &amp;lt;- sort(boot_es)[.975*1000]
 hist(boot_es, breaks=50)
 abline(v=c(mean(boot_es), lb_es, ub_es), col=rep(&amp;#39;red&amp;#39;, 3), lty=c(1, 2, 2))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/bootstrapping_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/bootstrapping_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;bootstrapped mean: .56&lt;br /&gt;
 95% bootstrapped CI: [.14, .99]&lt;/p&gt;
 &lt;p&gt;And there you have it: bootstrapped confidence intervals on your effect sizes.&lt;/p&gt;
@@ -1423,10 +1423,10 @@ abline(v=c(mean(boot_es), lb_es, ub_es), col=rep(&amp;#39;red&amp;#39;, 3), lty=
     
     <item>
       <title>Program better, for fun and for profit</title>
-      <link>/post/programming/</link>
+      <link>https://katherinemwood.github.io/post/programming/</link>
       <pubDate>Mon, 26 Jun 2017 14:35:49 -0500</pubDate>
       
-      <guid>/post/programming/</guid>
+      <guid>https://katherinemwood.github.io/post/programming/</guid>
       <description>&lt;p&gt;Psych researchers have a bit of a reputation for being, shall we say, less-than-delicate programmers. It’s common to hear “it doesn’t matter if it’s ugly, as long as it works.”&lt;/p&gt;
 &lt;p&gt;I took computer science classes as an undergrad, and style was rigidly enforced. I had one notoriously strict professor who would dock up to a grade on an otherwise completely functional project if it was ugly. It wasn’t just simple elitism; ugly code is often inefficient code, and ugly code is hard to read and understand.&lt;/p&gt;
 &lt;p&gt;Code quality is something I’m constantly working on. You can see the development in my scripts; I only recently started using dplyr and the rest of the tidyverse in R, and what a difference it’s made to the quality of my code. I cringe a little, looking back at my earliest scripts (and they’re a matter of public record, forever). Cringe is good, though. Cringe signals improvement, and wisdom gained.&lt;/p&gt;
@@ -1488,10 +1488,10 @@ correct_resp = sum(yes_responses)/100&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>5 Minute Simulation: Variation in effect size estimates</title>
-      <link>/post/es_var/</link>
+      <link>https://katherinemwood.github.io/post/es_var/</link>
       <pubDate>Mon, 26 Jun 2017 13:54:20 -0500</pubDate>
       
-      <guid>/post/es_var/</guid>
+      <guid>https://katherinemwood.github.io/post/es_var/</guid>
       <description>&lt;p&gt;If it’s not terribly obvious, &lt;a href=&#34;http://shiny.rstudio.com/tutorial/&#34;&gt;Shiny&lt;/a&gt; is my new favorite toy. It’s incredibly accessible for beginners, gives you great results with minimal effort, and can be as sophisticated as you need it to be.&lt;/p&gt;
 &lt;p&gt;I decided to throw together a quick simulation to look at the variation in effect size estimates we can expect at different sample sizes. There’s an increasing focus in psych on estimation of effects, rather than simply detection of effects. This is great, but, as it turns out, virtually impossible with a single study unless you are prepared to recruit massive numbers of subjects. Nothing here is new, but I like looking at distributions and playing with sliders, and I’ll take any excuse to make a little shiny widget.&lt;/p&gt;
 &lt;p&gt;In this simulation, we’re doing a basic, between-groups t-test and drawing samples from the normal distribution. The code can be dead simple. I’ll write a tiny&lt;/p&gt;
@@ -1522,18 +1522,18 @@ plot_es &amp;lt;- function(data, true_es) {
 &lt;p&gt;Here’s what you get if you use tiny (n=10) groups (perhaps under the justification that if an effect is big, you’ll detect it just fine in small samples) and no true effect is present:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n10 &amp;lt;- replicate(3000, sim_es(10, 0))
 plot_es(n10, 0)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/es_var_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/es_var_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;The white line is the true effect, and the two red lines mark out the 95% quantile.&lt;/p&gt;
 &lt;p&gt;Yikes. With samples that small, you could (and will, often!) get an enormous effect when none is present.&lt;/p&gt;
 &lt;p&gt;Here’s what we get with n = 50, no effect present. I’ve left the x-axis fixed to make it easier to compare all of these plots.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n50 &amp;lt;- replicate(3000, sim_es(50, 0))
 plot_es(n50, 0)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/es_var_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/es_var_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;This is a dramatic improvement over n=10, but you could still estimate what is considered a small (d=.1, traditionally) to medium (d=.3, traditionally) effect in either direction with appreciable frequency.&lt;/p&gt;
 &lt;p&gt;And here’s n=200.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n200 &amp;lt;- replicate(3000, sim_es(200, 0))
 plot_es(n200, 0)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/es_var_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/es_var_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;I’ve used d=0 as an example, but you get this spread regardless of what the true d is; it will just shift to center on the true effect. In that case, you’ll detect an effect most of the time, but can be way off about its actual size. This doesn’t mean that you can throw power out the window by arguing that you only care about detection, of course–you’ll “detect” an effect a lot of the time when d=0 with small samples.&lt;/p&gt;
 &lt;p&gt;These simulations are the result of 3000 replications each, but in the shiny app you can change this number.&lt;/p&gt;
 &lt;p&gt;For me, this really drives home just how important replications and meta-analyses–cumulative science in general, really–are, particularly for estimation. When you do a lot of these studies over and over again, as these simulations model, you’ll zero in on the true effect, but a study can’t do it alone.&lt;/p&gt;
@@ -1544,10 +1544,10 @@ plot_es(n200, 0)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Open Science in Practice</title>
-      <link>/post/open_sci/</link>
+      <link>https://katherinemwood.github.io/post/open_sci/</link>
       <pubDate>Mon, 26 Jun 2017 13:48:35 -0500</pubDate>
       
-      <guid>/post/open_sci/</guid>
+      <guid>https://katherinemwood.github.io/post/open_sci/</guid>
       <description>&lt;p&gt;I will finish grad school a child of the replication crisis. My year and a half in grad school has been marked by bombshell failures-to-replicate, increasing adoption of Bayesian methods, and wider recognition of the insidious effects of questionable research practices.&lt;/p&gt;
 &lt;p&gt;In many ways, I’m lucky. I didn’t have to make changes to the way I did things to adhere to better practices. I got to start with openness as one of the core tenets of how I conduct my research, and starting fresh is always easier than having to alter pre-existing patterns of behavior. It also helps to have a huge proponent of replication and open science as an advisor and to have come in at a time when there’s fantastic infrastructure in place.&lt;/p&gt;
 &lt;p&gt;Here’s an example of what my process looks like. A lot of this has already been said by better minds, and none of what I do is revolutionary. But it can, perhaps, serve as an illustration of what it looks like to actually build these practices into your workflow.&lt;/p&gt;
@@ -1590,10 +1590,10 @@ plot_es(n200, 0)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>5 Minute Simulation: Lonely Cards</title>
-      <link>/post/lonely_cards/</link>
+      <link>https://katherinemwood.github.io/post/lonely_cards/</link>
       <pubDate>Mon, 26 Jun 2017 12:34:18 -0500</pubDate>
       
-      <guid>/post/lonely_cards/</guid>
+      <guid>https://katherinemwood.github.io/post/lonely_cards/</guid>
       <description>&lt;p&gt;FiveThirtyEight posts math, logic, and probability puzzles each week. I was tempted by this week’s &lt;a href=&#34;http://fivethirtyeight.com/features/can-you-deal-with-these-card-game-puzzles/&#34;&gt;Riddler Express&lt;/a&gt;:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;On snowy afternoons, you like to play a solitaire “game” with a standard, randomly shuffled deck of 52 cards. You start dealing cards face up, one at a time, into a pile. As you deal each card, you also speak aloud, in order, the 13 card faces in a standard deck: ace, two, three, etc. (When you get to king, you start over at ace.) You keep doing this until the rank of the card you deal matches the rank you speak aloud, in which case you lose. You win if you reach the end of the deck without any matches.&lt;/p&gt;
@@ -1621,28 +1621,28 @@ paste(&amp;#39;Win percentage: &amp;#39;, sum(results)/1000,&amp;#39;%&amp;#39;,
     
     <item>
       <title>Reconciling change blindness with long-term memory for objects</title>
-      <link>/publication/cbltm/</link>
+      <link>https://katherinemwood.github.io/publication/cbltm/</link>
       <pubDate>Wed, 23 Nov 2016 00:00:00 +0000</pubDate>
       
-      <guid>/publication/cbltm/</guid>
+      <guid>https://katherinemwood.github.io/publication/cbltm/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Shiny Effect Sizes</title>
-      <link>/project/shiny_es/</link>
+      <link>https://katherinemwood.github.io/project/shiny_es/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>/project/shiny_es/</guid>
+      <guid>https://katherinemwood.github.io/project/shiny_es/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Two Sisters, One Dark Sky</title>
-      <link>/project/darksky/</link>
+      <link>https://katherinemwood.github.io/project/darksky/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>/project/darksky/</guid>
+      <guid>https://katherinemwood.github.io/project/darksky/</guid>
       <description></description>
     </item>
     

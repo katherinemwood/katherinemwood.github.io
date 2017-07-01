@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Web on Inattentional Coffee</title>
-    <link>/tags/web/</link>
+    <link>https://katherinemwood.github.io/tags/web/</link>
     <description>Recent content in Web on Inattentional Coffee</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -12,19 +12,19 @@
     
     <item>
       <title>Shiny Effect Sizes</title>
-      <link>/project/shiny_es/</link>
+      <link>https://katherinemwood.github.io/project/shiny_es/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>/project/shiny_es/</guid>
+      <guid>https://katherinemwood.github.io/project/shiny_es/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Two Sisters, One Dark Sky</title>
-      <link>/project/darksky/</link>
+      <link>https://katherinemwood.github.io/project/darksky/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>/project/darksky/</guid>
+      <guid>https://katherinemwood.github.io/project/darksky/</guid>
       <description></description>
     </item>
     
