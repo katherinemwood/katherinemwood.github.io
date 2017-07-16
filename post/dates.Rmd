@@ -1,0 +1,44 @@
+---
+date: 2017-07-09T13:14:46-05:00
+title: "Working with dates and times in R"
+summary: ' '
+draft: true
+---
+#Date classes
+
+#Formatting dates
+
+#Storing dates
+`POSIXct` is the number of seconds since 12:00 am on January 1st, 1970 (UTC), also known as "unix time." While it may seem ludicrous to represent time this way (as one giant number), this actually has a lot of advantages. You don't have to worry about time zone conversions, and having the time as just a number makes it a lot easier for machines to handle. For human readability, you have to run conversions for day, month, year, and time.
+
+```{r}
+as.POSIXct(Sys.Date())
+```
+
+`POSIXlt` is a more human-readable form of the time. It is a named list of vectors that includes all of the information you could want about a date.
+
+```{r}
+plt <- as.POSIXlt(Sys.Date())
+objects(plt)
+```
+
+Generally, it's a good idea to store dates or timestamps as `POSIXct` objects. This ensures uniformity, and means that you can operate on all the dates without worrying about differences in how they're stored (month-day-year versus day-month-year, for example). You can always convert these objects to another form if that's what you need.
+
+#Manipulating dates
+
+Dates are just numbers, meaning you can do arithmetic operations with them.
+
+You can add and subtract time:
+```{r}
+
+```
+
+You can compare times with logicals:
+```{r}
+
+```
+
+
+#Plotting with dates
+
+They also play well with ggplot, and there are convenient operations you can do specifically on POSIX objects to customize things.

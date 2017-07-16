@@ -1,0 +1,10 @@
+---
+date: 2017-07-11T11:17:49-05:00
+title: 'Annotated forest plots in ggplot'
+summary: ' '
+draft: true
+---
+
+http://chetvericov.ru/analiz-dannyx/grouped-forest-plots-using-ggplot2/#.WWT7eNPyvLY
+
+https://sakaluk.wordpress.com/2016/02/16/7-make-it-pretty-plots-for-meta-analysis/

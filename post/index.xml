@@ -11,6 +11,92 @@
     <atom:link href="/post/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Oh, joy! Joyplots in R with ggjoy</title>
+      <link>https://katherinemwood.github.io/post/joy/</link>
+      <pubDate>Fri, 14 Jul 2017 14:42:32 -0500</pubDate>
+      
+      <guid>https://katherinemwood.github.io/post/joy/</guid>
+      <description>&lt;p&gt;I’ve &lt;a href=&#34;https://katherinemwood.github.io/post/violins/&#34;&gt;written before&lt;/a&gt; about plots that are more informative than your standard barplot.&lt;/p&gt;
+&lt;p&gt;Another option is the joyplot (also known as &lt;a href=&#34;http://www.brendangregg.com/frequencytrails.html&#34;&gt;frequency trails&lt;/a&gt;). Joyplots are like mountain ranges, except instead of mountains it’s smoothed density histograms. It’s a way to visualize a lot of data in a pretty compact space.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/clauswilke/ggjoy&#34;&gt;Claus Wilke has written an R package&lt;/a&gt; that makes plotting these pretty frictionless. Just add data!&lt;/p&gt;
+&lt;p&gt;I’ll whip up some fake data to play with.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(123)
+joy &amp;lt;- data.frame(&amp;#39;label&amp;#39;=rep(letters[1:10], each=100),
+                  &amp;#39;value&amp;#39;=as.vector(mapply(rnorm, rep(100, 10), rnorm(10), SIMPLIFY=TRUE)),
+                  &amp;#39;rank&amp;#39;=rep(1:5, each=100, times=20))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here’s an example in which the distributions are allowed to overlap vertically, giving the appearance that they are stacked.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;suppressPackageStartupMessages({
+  library(ggjoy)
+  library(dplyr)})
+
+ggplot(joy, aes(x=value, y=label)) +
+  geom_joy(scale=2, rel_min_height=.03) +
+  scale_y_discrete(expand = c(0.01, 0)) +
+  xlab(&amp;#39;Value&amp;#39;) +
+  theme_joy() +
+  theme(axis.title.y = element_blank())&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.209&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/joy_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt; To make things look more orderly, and since our labels have no inherent order, we can order the data according to the mean. This isn’t neccessary if your y-axis is time, for instance.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;joy &amp;lt;- group_by(joy, label) %&amp;gt;%
+       mutate(m=mean(value)) %&amp;gt;%
+       arrange(m) %&amp;gt;%
+       ungroup() %&amp;gt;%
+       mutate(label=factor(label, unique(label)))
+
+ggplot(joy, aes(x=value, y=label)) +
+  geom_joy(scale=2, rel_min_height=.03) +
+  scale_y_discrete(expand = c(0.01, 0)) +
+  xlab(&amp;#39;Value&amp;#39;) +
+  theme_joy() +
+  theme(axis.title.y = element_blank())&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.209&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/joy_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Some people don’t like this overlap (for the aesthetics or because it can obscure the data) so here’s an example if we spread everybody out so that they don’t touch. The amount of overlap is easily controlled by the &lt;code&gt;scale&lt;/code&gt; argument in geom_joy. &lt;code&gt;scale = 1&lt;/code&gt; means no overlap; the higher this value, the more the distributions will overlap.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(joy, aes(x=value, y=label)) +
+  geom_joy(scale=1, rel_min_height=.01) +
+  scale_y_discrete(expand = c(0.001, 0)) +
+  xlab(&amp;#39;Value&amp;#39;) +
+  theme_joy() +
+  theme(axis.title.y = element_blank())&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.209&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/joy_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;How about some color? Color can be used to separate groups:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(joy, aes(x=value, y=label, fill=as.factor(rank))) +
+  geom_joy(scale=1, rel_min_height=.01) +
+  scale_y_discrete(expand = c(0.01, 0)) +
+  xlab(&amp;#39;Value&amp;#39;) +
+  labs(fill=&amp;#39;Rank&amp;#39;) +
+  theme_joy() +
+  theme(axis.title.y = element_blank())&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.209&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/joy_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Or, if your data doesn’t have grouping structure, it can just be used to break things up a little bit. (See &lt;a href=&#34;https://twitter.com/hnrklndbrg/status/883675698300420098&#34;&gt;this tweet&lt;/a&gt; for another example.)&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(joy, aes(x=value, y=label, fill=label)) +
+  geom_joy(scale=3, rel_min_height=0.01) +
+  scale_fill_manual(values=rep(c(&amp;#39;gray&amp;#39;, &amp;#39;lightblue&amp;#39;), length(unique(joy$label))/2)) + 
+  scale_y_discrete(expand = c(0.01, 0)) +
+  xlab(&amp;#39;Value&amp;#39;) +
+  theme_joy() +
+  theme(axis.title.y = element_blank(),
+        legend.position=&amp;#39;none&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.209&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/joy_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;How about some joyful facets?&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(filter(joy, rank != 5), aes(x=value, y=label)) +
+  geom_joy(scale=1, rel_min_height=.03) +
+  scale_y_discrete(expand = c(0.01, 0)) +
+  xlab(&amp;#39;Value&amp;#39;) +
+  facet_wrap(~rank, scales=&amp;#39;free&amp;#39;) +
+  theme_joy() +
+  theme(axis.title.y = element_blank())&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.212&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/joy_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;You can check out &lt;a href=&#34;https://cran.r-project.org/web/packages/ggjoy/vignettes/introduction.html&#34;&gt;the vignette&lt;/a&gt; for more examples and more information. You can also &lt;a href=&#34;https://cran.r-project.org/web/packages/ggjoy/ggjoy.pdf&#34;&gt;check out the docs&lt;/a&gt; for information on, for example, how the density is calculated and what your options are for that.&lt;/p&gt;
+&lt;p&gt;If you want to play around with these yourself, you can make up data (like I did) or check out the examples in the vignette for datasets to use that will make cool plots. Who knows–you might even find the iris dataset fun again if you use it to make joyplots.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Considerations when writing a preregistration if you&#39;re new to all this</title>
       <link>https://katherinemwood.github.io/post/prereg/</link>
       <pubDate>Mon, 26 Jun 2017 16:11:46 -0500</pubDate>
