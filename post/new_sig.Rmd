@@ -45,6 +45,48 @@ The authors stress that this threshold should not be used as a publication crite
 
 As for the second points, this was also true at $p < .05$. I've also seen this point brought up in response to other proposed changes to the field, like encouraging more power. I don't have much perspective to offer here, because I work with undergrads and MTurkers as subjects and have little difficulty getting enough people. There's [a little thread here](https://twitter.com/chrisdc77/status/890120245423345664) about this sort of thing by people smarter than I am.
 
+#What does this actually look like?
+
+I've done some simulations looking at p-hacking, etc. with the $p < .05$ significance level. It's helped me develop some intuitions, but I'm curious about the new significance level. I'd like to get to know it a little better.
+
+So, I'm going to do some simulating. First, I want to look at how many significant results you'll get at various effect sizes at various sample sizes. I'm going to simulate the plain old t-test because, hey, it's just a first date.
+
+Also, yes, I'm loading 5 packages to make one graph.
+
+```{r}
+library(data.table)
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+library(viridis)
+
+ sim.es <- function(n, es) {
+    g1 <- rnorm(n, es, 1)
+    g2 <- rnorm(n, 0, 1)
+    c('p'=t.test(g1, g2, paired=FALSE)$p.value, 'n'=n, 'es'=es)
+ }
+params <- expand.grid(list('n'=c(20, 50, 100, 500), 'es'=seq(0, 1, .1)))
+simulation_results <- rbindlist(mapply(function(n, es) 
+  as.data.frame(t(replicate(1000, sim.es(n, es)))), 
+                             n=params$n, es=params$es, SIMPLIFY=FALSE))
+
+sim_graph <- ggplot(data=simulation_results %>% 
+                      group_by(n, es) %>% 
+                      summarize(sig_results_new=sum(p < .005)/1000,
+                                sig_results_old=sum(p < .05)/1000) %>%
+                      gather(group, sig_pct, sig_results_old, sig_results_new)) +
+  geom_line(aes(x=es, y=sig_pct, lty=group, color=as.factor(n))) +
+  scale_color_viridis(discrete=TRUE) +
+  scale_linetype_discrete(labels=c('p < .005', 'p < .05')) +
+  labs(color='N per cell', lty='Alpha level') +
+  xlab('Effect Size') +
+  ylab('Percent significant results') +
+  theme_minimal()
+sim_graph
+```
+
+This graph doesn't match up perfectly with what I would have thought. The difference is pretty substantial at the lower sample sizes, but there's not as stark a difference at the larger sample sizes.
+
 #So...
 
 If nothing else, you've got to hand it to this paper for sparking a diverse and extensive discussion about where the field is now, and how best to encourage the changes that will make our science more robust.

@@ -219,6 +219,58 @@
 <p>The authors stress that this threshold should not be used as a publication criterion. This is important, because using these cutoffs as requirements for publication inflate the effect size estimates in the literature. You only avoid biased estimates if there is no publication bias. This doesn’t mean it wouldn’t be adopted as a requirement, of course, but the authors are advocating this as a standard-of-evidence metric, not a publication requirement. (Insert the line about the paving material on the road to hell here.)</p>
 <p>As for the second points, this was also true at <span class="math inline">\(p &lt; .05\)</span>. I’ve also seen this point brought up in response to other proposed changes to the field, like encouraging more power. I don’t have much perspective to offer here, because I work with undergrads and MTurkers as subjects and have little difficulty getting enough people. There’s <a href="https://twitter.com/chrisdc77/status/890120245423345664">a little thread here</a> about this sort of thing by people smarter than I am.</p>
 </div>
+<div id="what-does-this-actually-look-like" class="section level1">
+<h1>What does this actually look like?</h1>
+<p>I’ve done some simulations looking at p-hacking, etc. with the <span class="math inline">\(p &lt; .05\)</span> significance level. It’s helped me develop some intuitions, but I’m curious about the new significance level. I’d like to get to know it a little better.</p>
+<p>So, I’m going to do some simulating. First, I want to look at how many significant results you’ll get at various effect sizes at various sample sizes. I’m going to simulate the plain old t-test because, hey, it’s just a first date.</p>
+<p>Also, yes, I’m loading 5 packages to make one graph.</p>
+<pre class="r"><code>library(data.table)
+library(dplyr)</code></pre>
+<pre><code>## -------------------------------------------------------------------------</code></pre>
+<pre><code>## data.table + dplyr code now lives in dtplyr.
+## Please library(dtplyr)!</code></pre>
+<pre><code>## -------------------------------------------------------------------------</code></pre>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:data.table&#39;:
+## 
+##     between, first, last</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<pre class="r"><code>library(ggplot2)
+library(tidyr)
+library(viridis)</code></pre>
+<pre><code>## Loading required package: viridisLite</code></pre>
+<pre class="r"><code> sim.es &lt;- function(n, es) {
+    g1 &lt;- rnorm(n, es, 1)
+    g2 &lt;- rnorm(n, 0, 1)
+    c(&#39;p&#39;=t.test(g1, g2, paired=FALSE)$p.value, &#39;n&#39;=n, &#39;es&#39;=es)
+ }
+params &lt;- expand.grid(list(&#39;n&#39;=c(20, 50, 100, 500), &#39;es&#39;=seq(0, 1, .1)))
+simulation_results &lt;- rbindlist(mapply(function(n, es) 
+  as.data.frame(t(replicate(1000, sim.es(n, es)))), 
+                             n=params$n, es=params$es, SIMPLIFY=FALSE))
+
+sim_graph &lt;- ggplot(data=simulation_results %&gt;% 
+                      group_by(n, es) %&gt;% 
+                      summarize(sig_results_new=sum(p &lt; .005)/1000,
+                                sig_results_old=sum(p &lt; .05)/1000) %&gt;%
+                      gather(group, sig_pct, sig_results_old, sig_results_new)) +
+  geom_line(aes(x=es, y=sig_pct, lty=group, color=as.factor(n))) +
+  scale_color_viridis(discrete=TRUE) +
+  scale_linetype_discrete(labels=c(&#39;p &lt; .005&#39;, &#39;p &lt; .05&#39;)) +
+  labs(color=&#39;N per cell&#39;, lty=&#39;Alpha level&#39;) +
+  xlab(&#39;Effect Size&#39;) +
+  ylab(&#39;Percent significant results&#39;) +
+  theme_minimal()
+sim_graph</code></pre>
+<p><img src="/post/new_sig_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>This graph doesn’t match up perfectly with what I would have thought. The difference is pretty substantial at the lower sample sizes, but there’s not as stark a difference at the larger sample sizes.</p>
+</div>
 <div id="so" class="section level1">
 <h1>So…</h1>
 <p>If nothing else, you’ve got to hand it to this paper for sparking a diverse and extensive discussion about where the field is now, and how best to encourage the changes that will make our science more robust.</p>

@@ -46,6 +46,58 @@
 &lt;p&gt;The authors stress that this threshold should not be used as a publication criterion. This is important, because using these cutoffs as requirements for publication inflate the effect size estimates in the literature. You only avoid biased estimates if there is no publication bias. This doesn’t mean it wouldn’t be adopted as a requirement, of course, but the authors are advocating this as a standard-of-evidence metric, not a publication requirement. (Insert the line about the paving material on the road to hell here.)&lt;/p&gt;
 &lt;p&gt;As for the second points, this was also true at &lt;span class=&#34;math inline&#34;&gt;\(p &amp;lt; .05\)&lt;/span&gt;. I’ve also seen this point brought up in response to other proposed changes to the field, like encouraging more power. I don’t have much perspective to offer here, because I work with undergrads and MTurkers as subjects and have little difficulty getting enough people. There’s &lt;a href=&#34;https://twitter.com/chrisdc77/status/890120245423345664&#34;&gt;a little thread here&lt;/a&gt; about this sort of thing by people smarter than I am.&lt;/p&gt;
 &lt;/div&gt;
+&lt;div id=&#34;what-does-this-actually-look-like&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;What does this actually look like?&lt;/h1&gt;
+&lt;p&gt;I’ve done some simulations looking at p-hacking, etc. with the &lt;span class=&#34;math inline&#34;&gt;\(p &amp;lt; .05\)&lt;/span&gt; significance level. It’s helped me develop some intuitions, but I’m curious about the new significance level. I’d like to get to know it a little better.&lt;/p&gt;
+&lt;p&gt;So, I’m going to do some simulating. First, I want to look at how many significant results you’ll get at various effect sizes at various sample sizes. I’m going to simulate the plain old t-test because, hey, it’s just a first date.&lt;/p&gt;
+&lt;p&gt;Also, yes, I’m loading 5 packages to make one graph.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(data.table)
+library(dplyr)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## -------------------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## data.table + dplyr code now lives in dtplyr.
+## Please library(dtplyr)!&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## -------------------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Attaching package: &amp;#39;dplyr&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The following objects are masked from &amp;#39;package:data.table&amp;#39;:
+## 
+##     between, first, last&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The following objects are masked from &amp;#39;package:stats&amp;#39;:
+## 
+##     filter, lag&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The following objects are masked from &amp;#39;package:base&amp;#39;:
+## 
+##     intersect, setdiff, setequal, union&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
+library(tidyr)
+library(viridis)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Loading required package: viridisLite&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt; sim.es &amp;lt;- function(n, es) {
+    g1 &amp;lt;- rnorm(n, es, 1)
+    g2 &amp;lt;- rnorm(n, 0, 1)
+    c(&amp;#39;p&amp;#39;=t.test(g1, g2, paired=FALSE)$p.value, &amp;#39;n&amp;#39;=n, &amp;#39;es&amp;#39;=es)
+ }
+params &amp;lt;- expand.grid(list(&amp;#39;n&amp;#39;=c(20, 50, 100, 500), &amp;#39;es&amp;#39;=seq(0, 1, .1)))
+simulation_results &amp;lt;- rbindlist(mapply(function(n, es) 
+  as.data.frame(t(replicate(1000, sim.es(n, es)))), 
+                             n=params$n, es=params$es, SIMPLIFY=FALSE))
+
+sim_graph &amp;lt;- ggplot(data=simulation_results %&amp;gt;% 
+                      group_by(n, es) %&amp;gt;% 
+                      summarize(sig_results_new=sum(p &amp;lt; .005)/1000,
+                                sig_results_old=sum(p &amp;lt; .05)/1000) %&amp;gt;%
+                      gather(group, sig_pct, sig_results_old, sig_results_new)) +
+  geom_line(aes(x=es, y=sig_pct, lty=group, color=as.factor(n))) +
+  scale_color_viridis(discrete=TRUE) +
+  scale_linetype_discrete(labels=c(&amp;#39;p &amp;lt; .005&amp;#39;, &amp;#39;p &amp;lt; .05&amp;#39;)) +
+  labs(color=&amp;#39;N per cell&amp;#39;, lty=&amp;#39;Alpha level&amp;#39;) +
+  xlab(&amp;#39;Effect Size&amp;#39;) +
+  ylab(&amp;#39;Percent significant results&amp;#39;) +
+  theme_minimal()
+sim_graph&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/new_sig_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;This graph doesn’t match up perfectly with what I would have thought. The difference is pretty substantial at the lower sample sizes, but there’s not as stark a difference at the larger sample sizes.&lt;/p&gt;
+&lt;/div&gt;
 &lt;div id=&#34;so&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;So…&lt;/h1&gt;
 &lt;p&gt;If nothing else, you’ve got to hand it to this paper for sparking a diverse and extensive discussion about where the field is now, and how best to encourage the changes that will make our science more robust.&lt;/p&gt;
