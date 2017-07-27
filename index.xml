@@ -50,29 +50,16 @@
 &lt;h1&gt;What does this actually look like?&lt;/h1&gt;
 &lt;p&gt;I’ve done some simulations looking at p-hacking, etc. with the &lt;span class=&#34;math inline&#34;&gt;\(p &amp;lt; .05\)&lt;/span&gt; significance level. It’s helped me develop some intuitions, but I’m curious about the new significance level. I’d like to get to know it a little better.&lt;/p&gt;
 &lt;p&gt;So, I’m going to do some simulating. First, I want to look at how many significant results you’ll get at various effect sizes at various sample sizes. I’m going to simulate the plain old t-test because, hey, it’s just a first date.&lt;/p&gt;
-&lt;p&gt;Also, yes, I’m loading 5 packages to make one graph.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(data.table)
-library(dplyr)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## -------------------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## data.table + dplyr code now lives in dtplyr.
-## Please library(dtplyr)!&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## -------------------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 
-## Attaching package: &amp;#39;dplyr&amp;#39;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## The following objects are masked from &amp;#39;package:data.table&amp;#39;:
-## 
-##     between, first, last&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## The following objects are masked from &amp;#39;package:stats&amp;#39;:
-## 
-##     filter, lag&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## The following objects are masked from &amp;#39;package:base&amp;#39;:
-## 
-##     intersect, setdiff, setequal, union&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
-library(tidyr)
-library(viridis)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Loading required package: viridisLite&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt; sim.es &amp;lt;- function(n, es) {
+&lt;p&gt;I want to see how “hits” (getting a value below the significance threshold when there is a real effect, aka power) varies with sample size and effect size between the two cutoffs.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;suppressPackageStartupMessages({
+  library(data.table)
+  library(dplyr)
+  library(ggplot2)
+  library(tidyr)
+  library(viridis)
+})
+
+ sim.es &amp;lt;- function(n, es) {
     g1 &amp;lt;- rnorm(n, es, 1)
     g2 &amp;lt;- rnorm(n, 0, 1)
     c(&amp;#39;p&amp;#39;=t.test(g1, g2, paired=FALSE)$p.value, &amp;#39;n&amp;#39;=n, &amp;#39;es&amp;#39;=es)
@@ -96,14 +83,14 @@ sim_graph &amp;lt;- ggplot(data=simulation_results %&amp;gt;%
   theme_minimal()
 sim_graph&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/new_sig_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;This graph doesn’t match up perfectly with what I would have thought. The difference is pretty substantial at the lower sample sizes, but there’s not as stark a difference at the larger sample sizes.&lt;/p&gt;
+&lt;p&gt;So, yeah. Even at a big effect size, you’re not getting away with 20 per cell under the .005 threshold. Even 50 per cell is pretty lean unless you’re hunting a big effect.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;so&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;So…&lt;/h1&gt;
 &lt;p&gt;If nothing else, you’ve got to hand it to this paper for sparking a diverse and extensive discussion about where the field is now, and how best to encourage the changes that will make our science more robust.&lt;/p&gt;
 &lt;p&gt;I know you’re waiting with bated breath to hear my personal opinion on this. Call me an ideological slouch, but after reading the paper, and reading the arguments for and against, I remain solidly middle-ground. I think it’s true that changing this threshold wouldn’t change much; it doesn’t fix NHST or dichotomous, significance-based thinking. Many of the old problems would persist under the new world order. On the other hand, I don’t think this proposal is actively harmful (although others would vehemently disagree with me on that point), and I think it would even help a bit in terms of going to the mat for more power and higher standards of evidence.&lt;/p&gt;
 &lt;p&gt;This is definitely not the Thing That Will Save Psych Forever, and the authors don’t claim that it is. But I think it’s an interesting idea that has potential benefits, and merits consideration. It should also make us think about the strength of evidence we want to see, and how we should go about trying to effect that change in the field. Requiring a stricter cutoff is certainly a place to start.&lt;/p&gt;
-&lt;p&gt;If you’re interested in following this discussion, there’s a lot of it on Twitter. People are also getting into the mathematics behind the Bayesian perspective on p-values, prior probabilities, and so on; it’s worth a look if you’re interested.&lt;/p&gt;
+&lt;p&gt;If you’re interested in following this discussion, there’s a lot of it on Twitter. People are also getting into the mathematics behind the Bayesian perspective on p-values, prior probabilities, and so on; it’s worth a look if you’re interested. If this paper accomplishes nothing else, it’s sparked some interesting discussions.&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>

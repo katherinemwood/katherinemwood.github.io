@@ -51,14 +51,16 @@ I've done some simulations looking at p-hacking, etc. with the $p < .05$ signifi
 
 So, I'm going to do some simulating. First, I want to look at how many significant results you'll get at various effect sizes at various sample sizes. I'm going to simulate the plain old t-test because, hey, it's just a first date.
 
-Also, yes, I'm loading 5 packages to make one graph.
+I want to see how "hits" (getting a value below the significance threshold when there is a real effect, aka power) varies with sample size and effect size between the two cutoffs.
 
 ```{r}
-library(data.table)
-library(dplyr)
-library(ggplot2)
-library(tidyr)
-library(viridis)
+suppressPackageStartupMessages({
+  library(data.table)
+  library(dplyr)
+  library(ggplot2)
+  library(tidyr)
+  library(viridis)
+})
 
  sim.es <- function(n, es) {
     g1 <- rnorm(n, es, 1)
@@ -85,7 +87,7 @@ sim_graph <- ggplot(data=simulation_results %>%
 sim_graph
 ```
 
-This graph doesn't match up perfectly with what I would have thought. The difference is pretty substantial at the lower sample sizes, but there's not as stark a difference at the larger sample sizes.
+So, yeah. Even at a big effect size, you're not getting away with 20 per cell under the .005 threshold. Even 50 per cell is pretty lean unless you're hunting a big effect.
 
 #So...
 
@@ -95,4 +97,4 @@ I know you're waiting with bated breath to hear my personal opinion on this. Cal
 
 This is definitely not the Thing That Will Save Psych Forever, and the authors don't claim that it is. But I think it's an interesting idea that has potential benefits, and merits consideration. It should also make us think about the strength of evidence we want to see, and how we should go about trying to effect that change in the field. Requiring a stricter cutoff is certainly a place to start.
 
-If you're interested in following this discussion, there's a lot of it on Twitter. People are also getting into the mathematics behind the Bayesian perspective on p-values, prior probabilities, and so on; it's worth a look if you're interested.
+If you're interested in following this discussion, there's a lot of it on Twitter. People are also getting into the mathematics behind the Bayesian perspective on p-values, prior probabilities, and so on; it's worth a look if you're interested. If this paper accomplishes nothing else, it's sparked some interesting discussions.

@@ -223,29 +223,16 @@
 <h1>What does this actually look like?</h1>
 <p>I’ve done some simulations looking at p-hacking, etc. with the <span class="math inline">\(p &lt; .05\)</span> significance level. It’s helped me develop some intuitions, but I’m curious about the new significance level. I’d like to get to know it a little better.</p>
 <p>So, I’m going to do some simulating. First, I want to look at how many significant results you’ll get at various effect sizes at various sample sizes. I’m going to simulate the plain old t-test because, hey, it’s just a first date.</p>
-<p>Also, yes, I’m loading 5 packages to make one graph.</p>
-<pre class="r"><code>library(data.table)
-library(dplyr)</code></pre>
-<pre><code>## -------------------------------------------------------------------------</code></pre>
-<pre><code>## data.table + dplyr code now lives in dtplyr.
-## Please library(dtplyr)!</code></pre>
-<pre><code>## -------------------------------------------------------------------------</code></pre>
-<pre><code>## 
-## Attaching package: &#39;dplyr&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:data.table&#39;:
-## 
-##     between, first, last</code></pre>
-<pre><code>## The following objects are masked from &#39;package:stats&#39;:
-## 
-##     filter, lag</code></pre>
-<pre><code>## The following objects are masked from &#39;package:base&#39;:
-## 
-##     intersect, setdiff, setequal, union</code></pre>
-<pre class="r"><code>library(ggplot2)
-library(tidyr)
-library(viridis)</code></pre>
-<pre><code>## Loading required package: viridisLite</code></pre>
-<pre class="r"><code> sim.es &lt;- function(n, es) {
+<p>I want to see how “hits” (getting a value below the significance threshold when there is a real effect, aka power) varies with sample size and effect size between the two cutoffs.</p>
+<pre class="r"><code>suppressPackageStartupMessages({
+  library(data.table)
+  library(dplyr)
+  library(ggplot2)
+  library(tidyr)
+  library(viridis)
+})
+
+ sim.es &lt;- function(n, es) {
     g1 &lt;- rnorm(n, es, 1)
     g2 &lt;- rnorm(n, 0, 1)
     c(&#39;p&#39;=t.test(g1, g2, paired=FALSE)$p.value, &#39;n&#39;=n, &#39;es&#39;=es)
@@ -269,14 +256,14 @@ sim_graph &lt;- ggplot(data=simulation_results %&gt;%
   theme_minimal()
 sim_graph</code></pre>
 <p><img src="/post/new_sig_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
-<p>This graph doesn’t match up perfectly with what I would have thought. The difference is pretty substantial at the lower sample sizes, but there’s not as stark a difference at the larger sample sizes.</p>
+<p>So, yeah. Even at a big effect size, you’re not getting away with 20 per cell under the .005 threshold. Even 50 per cell is pretty lean unless you’re hunting a big effect.</p>
 </div>
 <div id="so" class="section level1">
 <h1>So…</h1>
 <p>If nothing else, you’ve got to hand it to this paper for sparking a diverse and extensive discussion about where the field is now, and how best to encourage the changes that will make our science more robust.</p>
 <p>I know you’re waiting with bated breath to hear my personal opinion on this. Call me an ideological slouch, but after reading the paper, and reading the arguments for and against, I remain solidly middle-ground. I think it’s true that changing this threshold wouldn’t change much; it doesn’t fix NHST or dichotomous, significance-based thinking. Many of the old problems would persist under the new world order. On the other hand, I don’t think this proposal is actively harmful (although others would vehemently disagree with me on that point), and I think it would even help a bit in terms of going to the mat for more power and higher standards of evidence.</p>
 <p>This is definitely not the Thing That Will Save Psych Forever, and the authors don’t claim that it is. But I think it’s an interesting idea that has potential benefits, and merits consideration. It should also make us think about the strength of evidence we want to see, and how we should go about trying to effect that change in the field. Requiring a stricter cutoff is certainly a place to start.</p>
-<p>If you’re interested in following this discussion, there’s a lot of it on Twitter. People are also getting into the mathematics behind the Bayesian perspective on p-values, prior probabilities, and so on; it’s worth a look if you’re interested.</p>
+<p>If you’re interested in following this discussion, there’s a lot of it on Twitter. People are also getting into the mathematics behind the Bayesian perspective on p-values, prior probabilities, and so on; it’s worth a look if you’re interested. If this paper accomplishes nothing else, it’s sparked some interesting discussions.</p>
 </div>
 
     </div>
