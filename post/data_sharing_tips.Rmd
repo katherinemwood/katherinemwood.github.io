@@ -40,7 +40,7 @@ If your analysis has a lot of dependencies--it loads a lot of packages, or requi
 
 [Docker](https://www.docker.com/)  
 [ReproZip](https://www.reprozip.org/)  
-[`rrtools` package](https://github.com/benmarwick/rrtools)
+[`rrtools` package](https://github.com/benmarwick/rrtools)  
 [PackRat](https://rstudio.github.io/packrat/)
 
 If you have a lightweight setup, you may not need these measures. But if it's a concern, you have options!

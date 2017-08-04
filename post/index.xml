@@ -46,7 +46,8 @@
 &lt;p&gt;If your analysis has a lot of dependencies–it loads a lot of packages, or requires something special–it’s very possible that it could break in the future with updates and new versions, or just not work for a user if they have a different setup. If you don’t want to be constantly maintaining your script, or trying to anticipate what things will look like for someone else, there are tools you can use that will wrap everything up for you in a bundle so that your project will always have the set of dependencies it needs. Here are a few:&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.docker.com/&#34;&gt;Docker&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&#34;https://www.reprozip.org/&#34;&gt;ReproZip&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://github.com/benmarwick/rrtools&#34;&gt;&lt;code&gt;rrtools&lt;/code&gt; package&lt;/a&gt; &lt;a href=&#34;https://rstudio.github.io/packrat/&#34;&gt;PackRat&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&#34;https://github.com/benmarwick/rrtools&#34;&gt;&lt;code&gt;rrtools&lt;/code&gt; package&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://rstudio.github.io/packrat/&#34;&gt;PackRat&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;If you have a lightweight setup, you may not need these measures. But if it’s a concern, you have options!&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;forever-homes&#34; class=&#34;section level1&#34;&gt;
