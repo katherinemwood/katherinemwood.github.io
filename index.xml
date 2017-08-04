@@ -11,6 +11,55 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Starter tips on sharing data and analysis scripts</title>
+      <link>https://katherinemwood.github.io/post/data_sharing_tips/</link>
+      <pubDate>Wed, 02 Aug 2017 20:12:31 -0500</pubDate>
+      
+      <guid>https://katherinemwood.github.io/post/data_sharing_tips/</guid>
+      <description>&lt;p&gt;One practice that’s considered increasingly important to transparency and reproducibility is open data (and the accompanying analysis script). Of course, it’s one thing to say “just post it!” It can be overwhelming if you’re new to the practice. There are different considerations when posting data publicly than when you’re retaining it solely for internal use. I’ve outlined a few things to consider when posting your data, and a few tips to help make it more accessible and usable for others who want to access it.&lt;/p&gt;
+&lt;div id=&#34;subject-consent-and-irb-approval&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;1. Subject consent and IRB approval&lt;/h1&gt;
+&lt;p&gt;If you intend to publicly post your data, a good place to start is updating your consent forms through the IRB to have some text about it, so that subjects can give their informed consent to have their data shared. For example, this is what the relevant text in our lab looks like for our subject pool recruits:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Your responses will be assigned a code number that is not linked to your name or other identifying information. All data and consent forms will be stored in a locked room or a password-protected digital archive. Results of this study may be presented at conferences and/or published in books, journals, and/or the popular media. &lt;strong&gt;De-identified data may be made publicly avaliable.&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;That’s it! Then you can be assured in your studious data posting.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;anonymization&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;2. Anonymization&lt;/h1&gt;
+&lt;p&gt;If you have data that uses some sort of non-random identifier for each subject, you’ll want to strip that out and replace it with some arbitrary subject ID before you post it. MTurk Worker IDs, for example, are not strictly anonymous, because they are linked to a person’s real information. You might want them during data collection, but not for public data.&lt;/p&gt;
+&lt;p&gt;Even if you don’t collect subjects’ names or other explicitly identifying information, it can still be possible to identify someone from the information in their data. A particular combination of gender, general age range, workplace, and ethnicity in a survey of professors, for example, might identify someone. You don’t have to be hyper-vigilant about everything all of the time, but it’s not a bad idea to keep this in mind and possibly take steps around it, such as withholding or binning nonessential variables, if it seems like it would be an issue.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;file-format&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;3. File format&lt;/h1&gt;
+&lt;p&gt;For maximum accessibility, plaintext is your friend. If at all possible, text should be in .txt format, column-data should be in .csv format, and images should be in .jpg, .png, .tiff, or some other common form. If possible, you want to avoid having data in proprietary forms, like .psd (Photoshop) which some people may not be able to open. Word and Excel documents can behave in strange ways if you open them in other applications, and sometimes aren’t back-compatible with older version of the software. You want anyone to be able to open your files, regardless of their setup.&lt;/p&gt;
+&lt;p&gt;Similarly, you want your analysis code in its source format and in plaintext. You don’t want to wrap things in executables, or post code as an image or word-processed document.&lt;/p&gt;
+&lt;p&gt;Data should also be in their raw form. Cleaning, wrangling, and summarizing should be left to the scripts if possible.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;readmes&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;4. Readmes&lt;/h1&gt;
+&lt;p&gt;You should include, along with your data and/or script, a readme that tells the user what they need to know. How do they run the analysis? Are there any special steps they need to take? What should things look like as it happens? What kind of output should they expect?&lt;/p&gt;
+&lt;p&gt;You also need a readme for your data. What variables are included in the dataset? What is the datatype of each variable? If you opened up a new datafile and see a column of numbers ranging from 1 to 4, that could mean anything. Did it come from a Likert-type scale? Is it a count of some event? Is it a continuous variable, or a discrete one? This confusion is only worsened by unusual or non-descriptive variable name choices, like &lt;code&gt;psc_sf&lt;/code&gt;. A detailed readme clears this up not only for the user, and but possibly for your future self!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;future-proofing&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;5. Future-proofing&lt;/h1&gt;
+&lt;p&gt;If your analysis has a lot of dependencies–it loads a lot of packages, or requires something special–it’s very possible that it could break in the future with updates and new versions, or just not work for a user if they have a different setup. If you don’t want to be constantly maintaining your script, or trying to anticipate what things will look like for someone else, there are tools you can use that will wrap everything up for you in a bundle so that your project will always have the set of dependencies it needs. Here are a few:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.docker.com/&#34;&gt;Docker&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://www.reprozip.org/&#34;&gt;ReproZip&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://github.com/benmarwick/rrtools&#34;&gt;&lt;code&gt;rrtools&lt;/code&gt; package&lt;/a&gt; &lt;a href=&#34;https://rstudio.github.io/packrat/&#34;&gt;PackRat&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;If you have a lightweight setup, you may not need these measures. But if it’s a concern, you have options!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;forever-homes&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;6. Forever homes&lt;/h1&gt;
+&lt;p&gt;Ideally, you’ll want to host your resources in a reliable place that won’t give you or your users access problems, is content to host multiple filetypes, and makes retrieval easy. The &lt;a href=&#34;https://osf.io&#34;&gt;Open Science Framework&lt;/a&gt; is a great option, as is &lt;a href=&#34;https://github.com/&#34;&gt;GitHub&lt;/a&gt;. Plus, this can serve as your cloud-backup in case some cataclysm destroys your computer.&lt;/p&gt;
+&lt;p&gt;This also makes it possible to have the analysis script download the data directly for a user, rather than relying on them to put it in the right place. For instance, you may have a line in your private version of the script that sets the current directory to &lt;code&gt;users/me/documents/folder_with_the_stuff&lt;/code&gt;, which the user would have to change if you uploaded it as-is.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Posting all this publicly can feel intimidating, especially if it’s a new experience. But the most important thing is that it’s out there. It doesn’t have to be perfect, and it gets easier and better with practice.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Some thoughts on the New Significance</title>
       <link>https://katherinemwood.github.io/post/new_sig/</link>
       <pubDate>Wed, 26 Jul 2017 10:00:17 -0700</pubDate>
@@ -27,7 +76,7 @@
 &lt;/div&gt;
 &lt;div id=&#34;this-encourages-dichotomous-thinking&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;2. This encourages dichotomous thinking&lt;/h1&gt;
-&lt;p&gt;Related to #1, one argument against that I’ve seen articulated by a few different people is that this proposal doesn’t fix the issue of the “significant-nonsignificant” dichotomy. This point is hard to argue with. The authors in the paper suggest treating &lt;span class=&#34;math inline&#34;&gt;\(p &amp;lt; .05\)&lt;/span&gt; as “suggestive,” not unlike how there is the tendency for people to call &lt;span class=&#34;math inline&#34;&gt;\(p &amp;lt; .1\)&lt;/span&gt; “trending towards significance.” But, as some of these folks have pointed out, that’s still entirely based on these thresholds.&lt;/p&gt;
+&lt;p&gt;Related to #1, one argument against that I’ve seen articulated by a few different people is that this proposal doesn’t fix the issue of the “significant-nonsignificant” dichotomy. This point is hard to argue with. The authors in the paper suggest treating &lt;span class=&#34;math inline&#34;&gt;\(p &amp;lt; .05\)&lt;/span&gt; as “suggestive,” not unlike how there is the tendency for people to call &lt;span class=&#34;math inline&#34;&gt;\(p &amp;lt; .1\)&lt;/span&gt; “trending towards significance.” But, as some of these folks have pointed out, that’s still entirely based on these thresholds. It’s essentially letting the p-value do the thinking for you, rather than demanding more difficult, nuanced interpretation.&lt;/p&gt;
 &lt;p&gt;I think there’s definitely something to this point. When these thresholds become really important– either because they are defacto required for publication, or required to avoid having others dismiss your work–results can get distilled down to the p-value and nothing more. For instance, an effect that is small, highly variable, and difficult to replicate even within the same lab is held up as “real” because it meets the threshold; the sixth of seven unplanned tests limbos under the cutoff, and it’s latched onto as the “important” result, and so on. The p-value becomes more important than whether or not the effect was predicted, how big it is, or how reliable it is.&lt;/p&gt;
 &lt;p&gt;I think this concern is reasonable. But, related to #1, change is gradual, and p-values are going to be here for a while yet (and may be here forever). So, is there any harm in a lower significance threshold? Sure, it might not &lt;em&gt;help&lt;/em&gt; in terms of the philosophy of the p-value and NHST, but if these are your primary concerns, it can’t hurt, either. Unless you view it as a waste of time and resources (see #3).&lt;/p&gt;
 &lt;/div&gt;
@@ -1796,15 +1845,6 @@ paste(&amp;#39;Win percentage: &amp;#39;, sum(results)/1000,&amp;#39;%&amp;#39;,
       <pubDate>Wed, 23 Nov 2016 00:00:00 +0000</pubDate>
       
       <guid>https://katherinemwood.github.io/publication/cbltm/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Shiny Effect Sizes</title>
-      <link>https://katherinemwood.github.io/project/shiny_es/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://katherinemwood.github.io/project/shiny_es/</guid>
       <description></description>
     </item>
     

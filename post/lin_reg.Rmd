@@ -1,6 +1,28 @@
 ---
 date: 2017-07-24T11:02:57-07:00
 title: "Skills bootcamp: Linear regression"
+comments: true
 draft: true
 ---
 
+This is the first post in a series motivated by what some might call my impostor syndrome, but I call a realistic audit of my weaknesses as a person who works with data.
+
+To that end, I'm putting myself through a skills bootcamp. Nothing is off-limits, and I plan (hope?) to cover everything from basic mathematical concepts like linear algebra to more integrative topics like modeling, machine learning, and data visualization.
+
+I have a few reasons for wanting to do this. One, I want to learn new things. It can be a little too easy to get wrapped up in grad school and forget to 1) keep the skillset sharp and 2) expand it, so I'm hoping this can be an outlet for that. I also want an opportunity to see what I already know, what I sort of know, and where my understanding needs to be improved. Finally, by sharing it in this format, I hope that it can both be helpful to others and garner useful feedback for me. Mistakes are guaranteed.
+
+For this initial foray, I'm going to be working from _The Elements of Statistical Learning_ by Hastie, Tibshirani, and Friedman (it's [free!](http://web.stanford.edu/~hastie/ElemStatLearn/)), with supplementary materials brought in for more depth on the topics covered, other perspectives, and so on.
+
+I'm going to start at the beginning: linear regression.
+
+#Linear regression
+##My background
+I've had quite a lot of exposure to linear regression, which seems appropriate given where I am in my grad career and the courses I've taken up to this point. I took an entire course dedicated to it in undergrad as well.
+
+##What?
+
+##Why?
+
+##How?
+
+##When?
