@@ -11,6 +11,15 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Selective attention in inattentional blindness: Selection is specific but suppression is not</title>
+      <link>https://katherinemwood.github.io/publication/ib_color/</link>
+      <pubDate>Mon, 07 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://katherinemwood.github.io/publication/ib_color/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Starter tips on sharing data and analysis scripts</title>
       <link>https://katherinemwood.github.io/post/data_sharing_tips/</link>
       <pubDate>Wed, 02 Aug 2017 20:12:31 -0500</pubDate>
@@ -1838,15 +1847,6 @@ paste(&amp;#39;Win percentage: &amp;#39;, sum(results)/1000,&amp;#39;%&amp;#39;,
 &lt;p&gt;&lt;a href=&#34;https://github.com/katherinemwood/lonely_cards&#34;&gt;Here’s the source code&lt;/a&gt; for the shiny app.&lt;/p&gt;
 &lt;p&gt;UPDATE: It turns out the &lt;a href=&#34;https://fivethirtyeight.com/features/how-long-will-it-take-to-blow-out-the-birthday-candles/#correction&#34;&gt;closed-form solution to this riddle&lt;/a&gt; is nontrivial! It relies on a branch of combinatorics called &lt;a href=&#34;http://mathworld.wolfram.com/Derangement.html&#34;&gt;“derangements”&lt;/a&gt; I didn’t encounter in my (admittedly less than comprehensive) math and stats education.&lt;/p&gt;
 </description>
-    </item>
-    
-    <item>
-      <title>Reconciling change blindness with long-term memory for objects</title>
-      <link>https://katherinemwood.github.io/publication/cbltm/</link>
-      <pubDate>Wed, 23 Nov 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://katherinemwood.github.io/publication/cbltm/</guid>
-      <description></description>
     </item>
     
   </channel>
