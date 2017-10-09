@@ -195,7 +195,7 @@
 <p>You can get pretty sophisticated with handling these qualifications, and there is a lot more detail on the <a href="http://docs.aws.amazon.com/AWSMechTurk/latest/AWSMechanicalTurkRequester/Concepts_QualificationsArticle.html">AWS documentation pages</a>.</p>
 <p>Here, I’m going to demonstrate how to make a qualification test that auto-scores itself using the boto3 library for Python. It’s a simple, 2-question colorblindness test (you can view it on the worker sandbox <a href="https://workersandbox.mturk.com/mturk/requestqualification?qualificationId=3CFGE88WF7UDUETM7YP3RSRD73VS4F">here</a>; sign-in required) that first asks people to self-report any known issues with their color vision, and then has them respond to an Ishihara plate. Here’s what it looks like to a worker:</p>
 <div class="figure">
-<img src="qualification_test.png" alt="a qualification test in the wild" />
+<img src="../../img/qualification_test.png" alt="a qualification test in the wild" />
 <p class="caption">a qualification test in the wild</p>
 </div>
 <p>With this test, instead of asking about colorblindness during the HIT itself and having to throw data out after the fact, I can restrict participation to people who pass this short test.</p>
