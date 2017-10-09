@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.21" />
+  <meta name="author" content="Katherine Wood">
+  <meta name="description" content="Psychology Graduate Student">
+
+  
+  
+  
+    
+  
+  
+    
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+  
+  <link rel="stylesheet" href="../../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../css/font-awesome.min.css">
+  <link rel="stylesheet" href="../../css/academicons.min.css">
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono">
+  <link rel="stylesheet" href="../../css/hugo-academic.css">
+  
+
+  <link rel="alternate" href="https://katherinemwood.github.io/index.xml" type="application/rss+xml" title="Inattentional Coffee">
+  <link rel="feed" href="https://katherinemwood.github.io/index.xml" type="application/rss+xml" title="Inattentional Coffee">
+
+  <link rel="icon" type="image/png" href="../../img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="../../img/apple-touch-icon.png">
+
+  <link rel="canonical" href="https://katherinemwood.github.io/post/mturk_dev_intro/">
+
+  
+
+  <title>Getting started with the Mechanical Turk API | Inattentional Coffee</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../../">Inattentional Coffee</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+
+        <li class="nav-item">
+          <a href="../../#posts">
+            
+            <span>Blog</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="../../#projects">
+            
+            <span>Projects</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="../../#publications">
+            
+            <span>Publications</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="../../#about">
+            
+            <span>About</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">Getting started with the Mechanical Turk API</h1>
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    <time datetime="2017-10-08 15:25:40 -0500 CDT" itemprop="datePublished">
+      Sun, Oct 8, 2017
+    </time>
+  </span>
+
+  
+
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fkatherinemwood.github.io%2fpost%2fmturk_dev_intro%2f"
+         target="_blank">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Getting%20started%20with%20the%20Mechanical%20Turk%20API&amp;url=https%3a%2f%2fkatherinemwood.github.io%2fpost%2fmturk_dev_intro%2f"
+         target="_blank">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fkatherinemwood.github.io%2fpost%2fmturk_dev_intro%2f&amp;title=Getting%20started%20with%20the%20Mechanical%20Turk%20API"
+         target="_blank">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fkatherinemwood.github.io%2fpost%2fmturk_dev_intro%2f&amp;title=Getting%20started%20with%20the%20Mechanical%20Turk%20API"
+         target="_blank">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Getting%20started%20with%20the%20Mechanical%20Turk%20API&amp;body=https%3a%2f%2fkatherinemwood.github.io%2fpost%2fmturk_dev_intro%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    <div class="article-style" itemprop="articleBody">
+      <p>Amazon’s Mechanical Turk is a great research tool. You can get huge sample sizes that tend to be more diverse than what you can recruit from a Psychology department subject pool. But, with lots of data comes a new set of problems. It very quickly becomes impossible to manage things manually.</p>
+<p>One very useful tool for dealing with this is the MTurk API. This lets you programmatically access all of MTurk’s functionality, and means you can write scripts to automate big tasks like fetching results, paying workers, or posting large numbers of HITs.</p>
+<p>There is something of a startup cost to this, though. If you’re not sure where to start, or are feeling overwhelmed, here’s a little guide to get you setup with the tools you’ll need.</p>
+<p>This guide is for using the boto3 SDK (Python), but there are also some more general tips about working with AWS.</p>
+<div id="accounts-users-and-permissions-setup" class="section level2">
+<h2>Accounts, Users, and Permissions Setup</h2>
+<p>To work programmatically with the MTurk API, you need at minimum two accounts: an AWS account, and an account on the MTurk Requester site. However, you should also make two more accounts: one on the Requester Sandbox, and one on the Worker Sandbox. These last two accounts will let you test and experiment in an environment that looks and behaves just like the real MTurk website, but with none of the consequences.</p>
+<div id="aws" class="section level3">
+<h3>1. AWS</h3>
+<p>AWS stands for “Amazon Web Services.” It’s an umbrella that covers a huge array of the web-based services Amazon offers, including access to their cloud servers. Among these services is MTurk. Your billing info is stored with your AWS account, rather than your MTurk requester account; on the MTurk side of things, you pre-pay for HITs and deplete that purse, rather than having a direct link to your credit card.</p>
+<p>To set up an AWS account, go to the <a href="https://aws.amazon.com/free/?sc_channel=PS&amp;sc_campaign=acquisition_US&amp;sc_publisher=google&amp;sc_medium=cloud_computing_hv_b&amp;sc_content=aws_core_e_control_q32016&amp;sc_detail=aws&amp;sc_category=cloud_computing&amp;sc_segment=188908133959&amp;sc_matchtype=e&amp;sc_country=US&amp;s_kwcid=AL!4422!3!188908133959!e!!g!!aws&amp;ef_id=WUMEpQAAAHy41iUB:20171008221039:s">website</a> and sign up. The free tier of service is all that you’ll need, if you’re only going to be dealing with MTurk.</p>
+<p>One of the many nice features about the AWS account is the ability to create what are called IAM users. These are users that you can assign permissions to without giving them root access to your account. This is the setup I have with my advisor; he has the billing info assigned to his AWS account, but he made me a user with complete MTurk permissions. This means I can post and delete HITs, pay workers, even sign into the AWS console to manage my user settings, but I have no ability to access his AWS account.</p>
+<p>We’ll create an IAM user with credentials that we’ll use to play around in the sandbox, but that don’t grant root access. Once the account is set up and you are signed in to your dashboard, type ‘iam’ in the AWS Services search bar. This will take you to your users dashboard; on the left hand side, go to the <code>users</code> menu and then click <code>Add User</code>. You can now set a name for this user; I recommend something obvious, like <code>reqester_sandbox</code> or <code>mturk</code>. Below that, you want to check the <code>Enable Programmatic Access</code> box. On the next page, you can select <code>Attach existing policies directly</code> (unless you want to deal with setting up groups, which can be useful if you’re managing lab members and multiple people will need the same set of permissions). Since we’re only dealing with MTurk, we don’t have to get too fancy. If you search for <code>mechanical</code> in the policy search bar, you’ll see one that says <code>AmazonMechanicalTurkFullAccess</code>. This is the policy we want to attach to this user; it gives full read and write access to MTurk. Check the box next to it and hit <code>Review</code>, then <code>Create User</code>. On this next screen, you will be presented with two very important pieces of information; the user access key, and the secret key. This is your only chance to take note of the secret key, so make a note of both of these passwords somewhere. We’ll need them later.</p>
+<p>You’ll also see a special URL that user can use to access the AWS console. This is another piece of information you would want to provide if you were setting up a user for another person.</p>
+</div>
+<div id="amazons-mechanical-turk-requester" class="section level3">
+<h3>2. Amazon’s Mechanical Turk – Requester</h3>
+<p>The next step is to create an account on the <a href="https://requester.mturk.com/">MTurk requester site</a>. Once you’ve done that, head over to the <code>Developer</code> tab and scroll down until you see the <code>Link your AWS Account</code> option. You’ll need to link these accounts together for programmatic access.</p>
+</div>
+<div id="the-requester-sandbox" class="section level3">
+<h3>3. The Requester Sandbox</h3>
+<p>If you keep scrolling under the <code>Developer</code> tab on the MTurk requester site, you’ll see a <code>Register for Requester Sandbox</code> option. Follow this link and make a Sandbox account, and then link it up to your AWS account just like you did on the real MTurk site. The sandbox looks and acts just like the real MTurk, allowing you to do extensive testing on your HITs and qualifications before you launch them for real.</p>
+</div>
+<div id="the-worker-sandbox" class="section level3">
+<h3>4. The Worker Sandbox</h3>
+<p>You can also go over to the <a href="https://workersandbox.mturk.com/mturk/">worker sandbox</a> and make an account there. This will let you see your HITs and qualification tests as real workers will.</p>
+</div>
+</div>
+<div id="software-setup" class="section level2">
+<h2>Software Setup</h2>
+<p>In order to handle Mechanical Turk operations via the command line, a few programs have to be installed.</p>
+<div id="python" class="section level3">
+<h3>1. Python</h3>
+<div id="on-a-mac" class="section level5">
+<h5>On a Mac</h5>
+<p>If you are on a Mac, Python is already installed and you don’t need to do anything further.</p>
+</div>
+<div id="on-windows" class="section level5">
+<h5>On Windows</h5>
+<p>If you are on windows, you need to install Python 2. You can find Python’s download link <a href="https://www.python.org/downloads/release/python-2714/">here</a>. You’ll want to select <code>Windows x86 MSI Installer</code>.</p>
+</div>
+</div>
+<div id="pip" class="section level3">
+<h3>2. Pip</h3>
+<p>Pip is a package manager for Python that makes it very easy to install additional packages.</p>
+<div id="on-a-mac-1" class="section level5">
+<h5>On a Mac</h5>
+<p>If you are on a Mac, navigate to Pip’s <a href="https://pip.pypa.io/en/stable/installing/">website</a> and download the file <code>get-pip.py</code>[<a href="https://bootstrap.pypa.io/get-pip.py" class="uri">https://bootstrap.pypa.io/get-pip.py</a>] (make sure to save it as a .py file if it saves as .txt). Put this file on the desktop.</p>
+<p>Now, open up Terminal, and first enter the following command to navigate to your desktop:</p>
+<pre class="bash"><code>cd desktop</code></pre>
+<p>Now, we need to run the installation program. Do this by running the following command:</p>
+<pre class="bash"><code>python get-pip.py</code></pre>
+<p>The program will then run automatically to install pip. You may be prompted for your password at some points during this process.</p>
+<p>To verify that install was successful, run the following command:</p>
+<pre class="bash"><code>which pip</code></pre>
+<p>You should see a filepath output as a result, telling you where pip was installed. You can now get rid of the installer file if you like.</p>
+</div>
+<div id="on-a-windows" class="section level5">
+<h5>On a Windows</h5>
+<p>Since you installed Python, pip comes with it. You may, however, need to upgrade pip. Do so by opening the Command Line and running the following command:</p>
+<pre class="bash"><code>python -m pip install -U pip</code></pre>
+<p>This will upgrade pip to the latest version.</p>
+</div>
+</div>
+<div id="boto3" class="section level3">
+<h3>3. Boto3</h3>
+<p>Now that pip is installed, it’s easy to install the boto3 package. Simply run the following command in either Terminal or Command Line:</p>
+<pre class="bash"><code>pip install boto3</code></pre>
+<p><strong>IF YOU GET AN ERROR ON MAC:</strong><br />
+Try again, but this time run this command:</p>
+<pre class="bash"><code>sudo pip install boto3</code></pre>
+<p>You will be prompted for your password.</p>
+</div>
+</div>
+<div id="managing-your-aws-credentials" class="section level2">
+<h2>Managing your AWS credentials</h2>
+<p>As a general rule, you don’t ever want to hardcode your credentials into your code. We want to avoid this at the top of your scripts:</p>
+<pre class="python"><code>aws_access_key_id = &#39;my_access_code&#39;
+aws_secret_access_key = &#39;my_super_secret_access_key&#39;</code></pre>
+<p>The nice thing about boto3 is that it checks a few different places for credentials in a specified order. So, rather than put them in your script directly, you can squirrel them away in a hidden file that the script will access automatically. <a href="http://boto3.readthedocs.io/en/latest/guide/configuration.html">This page</a> has several different options for setting up your credentials; if you’re not comfortable with bash, I suggest making either a shared credentials file or a config file to house your credentials. This is where you’ll put the access key and the secret key that you got from AWS back when you created a new user.</p>
+</div>
+<div id="testing-your-setup" class="section level2">
+<h2>Testing your setup</h2>
+<p>After all this legwork, it’s time to test the setup! First, you’ll want to copy-paste the code below into a file (adapted from step 5 <a href="https://requester.mturk.com/developer">here</a>) and save it as <code>balance.py</code>; to make things easy, you might want to save it to the desktop for now.</p>
+<pre class="python"><code>import boto3
+
+region_name = &#39;us-east-1&#39;
+
+endpoint_url = &#39;https://mturk-requester-sandbox.us-east-1.amazonaws.com&#39;
+
+client = boto3.client(
+    &#39;mturk&#39;,
+    endpoint_url=endpoint_url,
+    region_name=region_name,
+)
+
+# This will return $10,000.00 in the MTurk Developer Sandbox
+print(client.get_account_balance()[&#39;AvailableBalance&#39;])</code></pre>
+<p>You can then run it from the Terminal by executing the following commands:</p>
+<pre class="bash"><code>cd desktop
+python balance.py</code></pre>
+<p>If everything is working, you’ll see it print 10,000. You always have 10k in the sandbox. If you call this with the real MTurk site, it will print your actual account balance.</p>
+<hr />
+<p>You’re now setup and ready to start managing MTurk programmatically. With boto3, you can do all sorts of things, including creating and posting hits, contacting workers, fetching results, and managing custom qualifications. This interface allows you to automate some of the more tedious aspects of MTurk, and you can always test everything in the Sandbox.</p>
+<p>Now that you’re good to go, you can check out how to make <a href="katherinemwood.github.io/post/qualifications/">custom qualifications for workers using boto3</a>.</p>
+</div>
+
+    </div>
+  </div>
+
+</article>
+
+<div class="container">
+  <nav>
+  <ul class="pager">
+    
+    <li class="previous"><a href="https://katherinemwood.github.io/post/data_sharing_tips/"><span
+      aria-hidden="true">&larr;</span> Starter tips on sharing data and analysis scripts</a></li>
+    
+
+    
+    <li class="next"><a href="https://katherinemwood.github.io/post/qualifications/">Pre-screen MTurk workers with custom qualifications <span
+      aria-hidden="true">&rarr;</span></a></li>
+    
+  </ul>
+</nav>
+
+</div>
+
+<div class="article-container">
+  
+<section id="comments">
+  <div id="disqus_thread">
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'kmwblog';
+    var disqus_identifier = 'https:\/\/katherinemwood.github.io\/post\/mturk_dev_intro\/';
+    var disqus_title = 'Getting started with the Mechanical Turk API';
+    var disqus_url = 'https:\/\/katherinemwood.github.io\/post\/mturk_dev_intro\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+</section>
+
+
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2017 Katherine &middot; 
+
+      Powered by the <a href="https://github.com/gcushen/hugo-academic" target="_blank">Academic
+      theme</a> for <a href="http://gohugo.io" target="_blank">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenMax.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/ScrollToPlugin.min.js"></script>
+    <script src="../../js/jquery-1.12.3.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/isotope.pkgd.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.1/imagesloaded.pkgd.min.js"></script>
+    <script src="../../js/hugo-academic.js"></script>
+    
+
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-100181660-1', 'auto');
+        ga('send', 'pageview');
+
+         
+        var links = document.querySelectorAll('a');
+        Array.prototype.map.call(links, function(item) {
+            if (item.host != document.location.host) {
+                item.addEventListener('click', function() {
+                    var action = item.getAttribute('data-action') || 'follow';
+                    ga('send', 'event', 'outbound', action, item.href);
+                });
+            }
+        });
+    </script>
+    
+
+    
+    
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/r.min.js"></script>
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/python.min.js"></script>
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+    </script>
+    <script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"></script>
+    
+
+  </body>
+</html>
+

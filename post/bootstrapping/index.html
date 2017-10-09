@@ -21,18 +21,18 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
     
   
-  <link rel="stylesheet" href="/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/css/academicons.min.css">
+  <link rel="stylesheet" href="../../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../css/font-awesome.min.css">
+  <link rel="stylesheet" href="../../css/academicons.min.css">
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono">
-  <link rel="stylesheet" href="/css/hugo-academic.css">
+  <link rel="stylesheet" href="../../css/hugo-academic.css">
   
 
   <link rel="alternate" href="https://katherinemwood.github.io/index.xml" type="application/rss+xml" title="Inattentional Coffee">
   <link rel="feed" href="https://katherinemwood.github.io/index.xml" type="application/rss+xml" title="Inattentional Coffee">
 
-  <link rel="icon" type="image/png" href="/img/icon.png">
-  <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="../../img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="../../img/apple-touch-icon.png">
 
   <link rel="canonical" href="https://katherinemwood.github.io/post/bootstrapping/">
 
@@ -55,7 +55,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Inattentional Coffee</a>
+      <a class="navbar-brand" href="../../">Inattentional Coffee</a>
     </div>
 
     
@@ -68,7 +68,7 @@
         
 
         <li class="nav-item">
-          <a href="/#posts">
+          <a href="../../#posts">
             
             <span>Blog</span>
           </a>
@@ -80,7 +80,7 @@
         
 
         <li class="nav-item">
-          <a href="/#projects">
+          <a href="../../#projects">
             
             <span>Projects</span>
           </a>
@@ -92,7 +92,7 @@
         
 
         <li class="nav-item">
-          <a href="/#publications">
+          <a href="../../#publications">
             
             <span>Publications</span>
           </a>
@@ -104,7 +104,7 @@
         
 
         <li class="nav-item">
-          <a href="/#about">
+          <a href="../../#about">
             
             <span>About</span>
           </a>
@@ -211,7 +211,7 @@ ub_se &lt;- mean(x) + 1.96*se</code></pre>
 <p>[Just to note: bootstrapped confidence intervals give you a nice measure of uncertainty, and I like to use them as my error bars, but they don’t get you away from the problems of NHST, if that’s something you’re trying to avoid.]</p>
 <p>Here’s a histogram of our sample. In this post, I’m plotting everything in base just for the thrill:</p>
 <pre class="r"><code>hist(x,  breaks=10)</code></pre>
-<p><img src="/post/bootstrapping_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="../../"katherinemwood.github.io/"  # End your URL with a `/` trailing slash.post/bootstrapping_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>Here are the stats for our mean, calculated the old-fashioned way from an n of 50:</p>
 <p>mean: 1.27<br />
 SE: 0.18<br />
@@ -226,7 +226,7 @@ ub &lt;- sort(boot)[.975*1000]
 #mean, and the 95% bootstrapped CI
 hist(boot, breaks=50)
 abline(v=c(mean(boot), lb, ub), col=rep(&#39;red&#39;, 3), lty=c(1, 2, 2))</code></pre>
-<p><img src="/post/bootstrapping_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="../../"katherinemwood.github.io/"  # End your URL with a `/` trailing slash.post/bootstrapping_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>The bootstrapped mean (1.27) is of course centered on our sample mean. Now we have a distribution of values for the mean that we could expect to obtain with our sample.</p>
 <p>Now, if we wanted to do confidence intervals, we could get the SE of the bootstrapped distribution and do it the usual way. However, we also have an option available to us called the <em>percentile method.</em> In order to find the confidence intervals, we sort all of our bootstrapped values, and then take the 2.5% quantile and the 97.5% quantile. If you repeat the sampling procedure with the same process on the same population (precisely what we do with our bootstrap), 95% of the time the mean falls between these endpoints. If we do this procedure with our particular sample, we get this:</p>
 <p>95% bootstrapped CI: [1.14, 1.40]</p>
@@ -249,7 +249,7 @@ abline(v=c(mean(boot), lb, ub), col=rep(&#39;red&#39;, 3), lty=c(1, 2, 2))</code
 ub_es &lt;- sort(boot_es)[.975*1000]
 hist(boot_es, breaks=50)
 abline(v=c(mean(boot_es), lb_es, ub_es), col=rep(&#39;red&#39;, 3), lty=c(1, 2, 2))</code></pre>
-<p><img src="/post/bootstrapping_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="../../"katherinemwood.github.io/"  # End your URL with a `/` trailing slash.post/bootstrapping_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>bootstrapped mean: .56<br />
 95% bootstrapped CI: [.14, .99]</p>
 <p>And there you have it: bootstrapped confidence intervals on your effect sizes.</p>
@@ -331,11 +331,11 @@ abline(v=c(mean(boot_es), lb_es, ub_es), col=rep(&#39;red&#39;, 3), lty=c(1, 2, 
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenMax.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/ScrollToPlugin.min.js"></script>
-    <script src="/js/jquery-1.12.3.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/isotope.pkgd.min.js"></script>
+    <script src="../../js/jquery-1.12.3.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/isotope.pkgd.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.1/imagesloaded.pkgd.min.js"></script>
-    <script src="/js/hugo-academic.js"></script>
+    <script src="../../js/hugo-academic.js"></script>
     
 
     

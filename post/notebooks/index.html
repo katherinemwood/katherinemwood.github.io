@@ -21,18 +21,18 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
     
   
-  <link rel="stylesheet" href="/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/css/academicons.min.css">
+  <link rel="stylesheet" href="../../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../css/font-awesome.min.css">
+  <link rel="stylesheet" href="../../css/academicons.min.css">
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono">
-  <link rel="stylesheet" href="/css/hugo-academic.css">
+  <link rel="stylesheet" href="../../css/hugo-academic.css">
   
 
   <link rel="alternate" href="https://katherinemwood.github.io/index.xml" type="application/rss+xml" title="Inattentional Coffee">
   <link rel="feed" href="https://katherinemwood.github.io/index.xml" type="application/rss+xml" title="Inattentional Coffee">
 
-  <link rel="icon" type="image/png" href="/img/icon.png">
-  <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="../../img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="../../img/apple-touch-icon.png">
 
   <link rel="canonical" href="https://katherinemwood.github.io/post/notebooks/">
 
@@ -55,7 +55,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Inattentional Coffee</a>
+      <a class="navbar-brand" href="../../">Inattentional Coffee</a>
     </div>
 
     
@@ -68,7 +68,7 @@
         
 
         <li class="nav-item">
-          <a href="/#posts">
+          <a href="../../#posts">
             
             <span>Blog</span>
           </a>
@@ -80,7 +80,7 @@
         
 
         <li class="nav-item">
-          <a href="/#projects">
+          <a href="../../#projects">
             
             <span>Projects</span>
           </a>
@@ -92,7 +92,7 @@
         
 
         <li class="nav-item">
-          <a href="/#publications">
+          <a href="../../#publications">
             
             <span>Publications</span>
           </a>
@@ -104,7 +104,7 @@
         
 
         <li class="nav-item">
-          <a href="/#about">
+          <a href="../../#about">
             
             <span>About</span>
           </a>
@@ -235,7 +235,7 @@
 <div id="inline" class="section level2">
 <h2>Inline</h2>
 <p>Inline code executes invisibly, so all you see is the output. For example, I can run a function right here and now to get the weekday:</p>
-<p>Today is a Saturday.</p>
+<p>Today is a Sunday.</p>
 <p>That was accomplished by simply adding a back-ticked <code>r</code> prefix to a call to <code>weekdays(Sys.time())</code>.</p>
 <p>You can also set global parameters in the header and reference them throughout the document.</p>
 <p>This inline execution has various uses. If you need code primarily for its output, like getting the current date or weekday and adding it into text, then inline works really well and better than a chunk.</p>
@@ -255,7 +255,7 @@ iris_plot &lt;- ggplot(data=select(iris, Species, Sepal.Length),
   geom_crossbar(stat=&#39;summary&#39;,fun.y=mean, fun.ymax=mean, fun.ymin=mean, fatten=2, width=.5) +
   theme_minimal()
 print(iris_plot)</code></pre>
-<p><img src="/post/notebooks_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="../../"katherinemwood.github.io/"  # End your URL with a `/` trailing slash.post/notebooks_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>Fascinating, I guess!</p>
 <p>The nice thing about this is that these plots are completely reproduceable–they’ll be generated everytime you run the notebook. You can keep the code cell that generates it in the output, so people can see it, or if you want a cleaner output with just the results, you can hide the generating code cell. You can tailor it to your options.</p>
 </div>
@@ -292,8 +292,8 @@ print(iris_plot)</code></pre>
 <p>That looks alright!</p>
 <p>There’s also <code>xtable,</code> which will make it easier to set the appearance of the table through HTML attributes. This won’t show up until it’s rendered, though.</p>
 <pre class="r"><code>print(xtable::xtable(meanpetals), type=&#39;html&#39;, html.table.attributes=&#39;border=0  width=250&#39;)</code></pre>
-<!-- html table generated in R 3.4.0 by xtable 1.8-2 package -->
-<!-- Sat Jul  1 14:39:42 2017 -->
+<!-- html table generated in R 3.4.1 by xtable 1.8-2 package -->
+<!-- Sun Oct  8 22:20:39 2017 -->
 <table border="0" width="250">
 <tr>
 <th>
@@ -608,11 +608,11 @@ A. sub-small thing</li>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenMax.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/ScrollToPlugin.min.js"></script>
-    <script src="/js/jquery-1.12.3.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/isotope.pkgd.min.js"></script>
+    <script src="../../js/jquery-1.12.3.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/isotope.pkgd.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.1/imagesloaded.pkgd.min.js"></script>
-    <script src="/js/hugo-academic.js"></script>
+    <script src="../../js/hugo-academic.js"></script>
     
 
     

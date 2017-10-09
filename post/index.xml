@@ -11,6 +11,435 @@
     <atom:link href="/post/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Pre-screen MTurk workers with custom qualifications</title>
+      <link>https://katherinemwood.github.io/post/qualifications/</link>
+      <pubDate>Mon, 09 Oct 2017 15:25:40 -0500</pubDate>
+      
+      <guid>https://katherinemwood.github.io/post/qualifications/</guid>
+      <description>&lt;p&gt;If you do research using MTurk, you may have run into a common issue: how to recruit exclusively workers that meet certain criteria. For instance, you may want to run a study only on colorblind people, or only people who have perfect pitch, or only people who voted in their last local election. These criteria are all pretty easy to ascertain, but you don’t want to wait to ask until the main HIT itself; then you would be paying full price for data you can’t use at all. However, it’s also not fair to let people accept a HIT, ask them the critical question, and then force them to return it if they don’t meet the necessary criteria. That hurts certain worker metrics like HIT completion rate and can affect their ability to access other HITs, through no real fault of their own.&lt;/p&gt;
+&lt;p&gt;One option I’ve seen used is a 2-part HIT. First you make a short, cheap HIT in which you ask the relevant question or two, and then you reach out to the eligible workers who completed that HIT with the link to your actual survey. This is complex and can be time consuming for the requester, though, especially if the pre-screen is extremely short.&lt;/p&gt;
+&lt;p&gt;It turns out that there is a very straightforward way to deal with this if you’re willing to use the MTurk web API. You can create custom qualifications that workers can request, either directly or by completing a test, and then assign those qualifications as a requirement for your HITs.&lt;/p&gt;
+&lt;p&gt;You can get pretty sophisticated with handling these qualifications, and there is a lot more detail on the &lt;a href=&#34;http://docs.aws.amazon.com/AWSMechTurk/latest/AWSMechanicalTurkRequester/Concepts_QualificationsArticle.html&#34;&gt;AWS documentation pages&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Here, I’m going to demonstrate how to make a qualification test that auto-scores itself using the boto3 library for Python. It’s a simple, 2-question colorblindness test (you can view it on the worker sandbox &lt;a href=&#34;https://workersandbox.mturk.com/mturk/requestqualification?qualificationId=3CFGE88WF7UDUETM7YP3RSRD73VS4F&#34;&gt;here&lt;/a&gt;; sign-in required) that first asks people to self-report any known issues with their color vision, and then has them respond to an Ishihara plate. Here’s what it looks like to a worker:&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;qualification_test.png&#34; alt=&#34;a qualification test in the wild&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;a qualification test in the wild&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;With this test, instead of asking about colorblindness during the HIT itself and having to throw data out after the fact, I can restrict participation to people who pass this short test.&lt;/p&gt;
+&lt;div id=&#34;setup&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;1. Setup&lt;/h2&gt;
+&lt;p&gt;To use the MTurk API, a couple of things are neccessary.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/free/?sc_channel=PS&amp;amp;sc_campaign=acquisition_US&amp;amp;sc_publisher=google&amp;amp;sc_medium=cloud_computing_hv_b&amp;amp;sc_content=aws_core_e_control_q32016&amp;amp;sc_detail=aws&amp;amp;sc_category=cloud_computing&amp;amp;sc_segment=188908133959&amp;amp;sc_matchtype=e&amp;amp;sc_country=US&amp;amp;s_kwcid=AL!4422!3!188908133959!e!!g!!aws&amp;amp;ef_id=WUMEpQAAAHy41iUB:20171008205604:s&#34;&gt;an AWS account&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.mturk.com/mturk/welcome&#34;&gt;an MTurk requester account&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://requestersandbox.mturk.com/&#34;&gt;an MTurk sandbox requester account&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://workersandbox.mturk.com/mturk/&#34;&gt;an MTurk sandbox worker account&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;the &lt;a href=&#34;http://boto3.readthedocs.io/en/latest/guide/quickstart.html#installation&#34;&gt;boto3 library for Python&lt;/a&gt;, most easily installed via &lt;a href=&#34;https://pypi.python.org/pypi/pip&#34;&gt;pip&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You’ll also need to link your AWS account to both your real Requester account and to your Sandbox Requester account, and have your access credentials formatted in a way that boto3 can access them.&lt;/p&gt;
+&lt;p&gt;For more detail on how to handle setting all of this up, or to see how all the pieces fit together, you can check out &lt;a href=&#34;katherinemwood.github.io/post/mturk_dev_intro/&#34;&gt;this post&lt;/a&gt; for an in-depth guide.&lt;/p&gt;
+&lt;p&gt;With that in place, we can move on to actually creating the qualification!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-qualification-skeleton&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;2. The qualification skeleton&lt;/h2&gt;
+&lt;p&gt;Making a qualification itself involves just one function call.&lt;/p&gt;
+&lt;p&gt;First, we make our client object:&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;import boto3
+
+mturk = boto3.client(&amp;#39;mturk&amp;#39;, 
+                      region_name=&amp;#39;us-east-1&amp;#39;, 
+                      endpoint_url=&amp;#39;https://mturk-requester-sandbox.us-east-1.amazonaws.com&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then, to make a qualification, we call &lt;code&gt;create_qualification_type()&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;qual_response = mturk.create_qualification_type(
+                        Name=&amp;#39;Color blindness test&amp;#39;,
+                        Keywords=&amp;#39;test, qualification, sample, colorblindness, boto&amp;#39;,
+                        Description=&amp;#39;This is a brief colorblindness test&amp;#39;,
+                        QualificationTypeStatus=&amp;#39;Active&amp;#39;,
+                        Test=questions,
+                        AnswerKey=answers,
+                        TestDurationInSeconds=300)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;No matter what kind of qualification you’re creating, you’ll need to give it a &lt;code&gt;Name&lt;/code&gt; and a &lt;code&gt;Description&lt;/code&gt; that workers will see, plus some &lt;code&gt;Keywords&lt;/code&gt; that will help people search for it. We’re going to go ahead and set this qualification to &lt;code&gt;Active&lt;/code&gt; with the &lt;code&gt;QualificationTypeStatus&lt;/code&gt; argument, meaning that it will go live immediately (as live as something can go in the sandbox, that is).&lt;/p&gt;
+&lt;p&gt;The next handful of arguments are particular to the qualification type this is–in particular, a qualification type that requires a test. The &lt;code&gt;Test&lt;/code&gt; argument needs to be a &lt;code&gt;QuestionForm&lt;/code&gt; datatype (more on that in a second). This will specify the actual questions that make up the test. If this is left blank, a worker can request the qualification without taking a test first.&lt;/p&gt;
+&lt;p&gt;Similarly, the &lt;code&gt;AnswerKey&lt;/code&gt; argument must be an &lt;code&gt;AnswerKey&lt;/code&gt; data structure. This is like an auto-grader for the test. In this file (more details below), we specify how each answer to each question is scored, and what the scoring scheme is overall (a straight sum, a percent, a range, etc). A person will take the test, and if an answer key is provided, be automatically scored. We can then require that people have a certain score on the qualification test to be able to take your HIT. If no answer key is given, you’ll have to go through the tests manually (and free response answers can’t be auto-graded).&lt;/p&gt;
+&lt;p&gt;Because we have a qualification test, we have to specify how long people have to take it in seconds with the &lt;code&gt;TestDurationInSeconds&lt;/code&gt; argument. Because this is a short little questionnare, we’ll allot 5 minutes.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-question-file&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;3. The question file&lt;/h2&gt;
+&lt;p&gt;Questions have to be passed in a very specific format. They should be &lt;code&gt;.xml&lt;/code&gt; files, and they have a specific structure. There’s lots of detail &lt;a href=&#34;http://docs.aws.amazon.com/AWSMechTurk/latest/AWSMturkAPI/ApiReference_QuestionFormDataStructureArticle.html&#34;&gt;here&lt;/a&gt;, and you can get pretty sophisticated in terms of your questions.&lt;/p&gt;
+&lt;p&gt;In our case, we have just two questions: a text-only question, and a question in which we present an image.&lt;/p&gt;
+&lt;p&gt;The XML file needs to start this way:&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;&amp;lt;QuestionForm xmlns=&amp;#39;http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd&amp;#39;&amp;gt;
+...
+&amp;lt;/QuestionForm&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This URL is important for technical reasons (it identifies the location of an important file for presenting the questions).&lt;/p&gt;
+&lt;p&gt;Inside the &lt;code&gt;QuestionForm&lt;/code&gt; tags are sections for each question. You can give it a name and an identifier (important for matching up the answer key):&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;&amp;lt;Question&amp;gt;
+      &amp;lt;QuestionIdentifier&amp;gt;self_report&amp;lt;/QuestionIdentifier&amp;gt;
+      &amp;lt;DisplayName&amp;gt;Q1&amp;lt;/DisplayName&amp;gt;
+      &amp;lt;IsRequired&amp;gt;true&amp;lt;/IsRequired&amp;gt;
+    ...
+&amp;lt;/Question&amp;gt;    &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And then we get to the actual question content. This first question is only text:&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;&amp;lt;QuestionContent&amp;gt;
+        &amp;lt;Text&amp;gt; Which statement best describes your color vision? &amp;lt;/Text&amp;gt;
+&amp;lt;/QuestionContent&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;But we can also present images, videos, and so on. Here’s how we’ll present the Ishihara plate:&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt; &amp;lt;QuestionContent&amp;gt;
+        &amp;lt;Text&amp;gt; What number do you see in the image below? &amp;lt;/Text&amp;gt;
+        &amp;lt;Binary&amp;gt;
+          &amp;lt;MimeType&amp;gt;
+            &amp;lt;Type&amp;gt;image&amp;lt;/Type&amp;gt;
+            &amp;lt;SubType&amp;gt;jpg&amp;lt;/SubType&amp;gt;
+          &amp;lt;/MimeType&amp;gt;
+          &amp;lt;DataURL&amp;gt;https://www.spservices.co.uk/images/products/pics/1401209116aw2271.jpg&amp;lt;/DataURL&amp;gt;
+          &amp;lt;AltText&amp;gt;Ishihara Color Plate&amp;lt;/AltText&amp;gt;
+        &amp;lt;/Binary&amp;gt;
+&amp;lt;/QuestionContent&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Specifying the &lt;code&gt;MimeType&lt;/code&gt; within the &lt;code&gt;Binary&lt;/code&gt; tags is what allows us to embed other media.&lt;/p&gt;
+&lt;p&gt;After every &lt;code&gt;QuestionContent&lt;/code&gt; section, you have an &lt;code&gt;AnswerSpecification&lt;/code&gt; section. Since we just have radio button responses, we have a &lt;code&gt;SelectionAnswer&lt;/code&gt; section, and then for each answer we have a &lt;code&gt;Selection&lt;/code&gt; with text the worker sees, and then a secret label for that answer that only we see (and that the answer key will use to grade the worker). Like so:&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;&amp;lt;AnswerSpecification&amp;gt;
+    &amp;lt;SelectionAnswer&amp;gt;
+      &amp;lt;StyleSuggestion&amp;gt;radiobutton&amp;lt;/StyleSuggestion&amp;gt;
+          &amp;lt;Selections&amp;gt;
+            &amp;lt;Selection&amp;gt;
+              &amp;lt;SelectionIdentifier&amp;gt;rg&amp;lt;/SelectionIdentifier&amp;gt;
+              &amp;lt;Text&amp;gt;I am red-green colorblind.&amp;lt;/Text&amp;gt;
+            &amp;lt;/Selection&amp;gt;
+            &amp;lt;Selection&amp;gt;
+              &amp;lt;SelectionIdentifier&amp;gt;by&amp;lt;/SelectionIdentifier&amp;gt;
+              &amp;lt;Text&amp;gt;I am blue-yellow colorblind.&amp;lt;/Text&amp;gt;
+            &amp;lt;/Selection&amp;gt;
+            &amp;lt;Selection&amp;gt;
+              &amp;lt;SelectionIdentifier&amp;gt;other&amp;lt;/SelectionIdentifier&amp;gt;
+              &amp;lt;Text&amp;gt;I have some other issue with my color vision.&amp;lt;/Text&amp;gt;
+            &amp;lt;/Selection&amp;gt;
+            &amp;lt;Selection&amp;gt;
+              &amp;lt;SelectionIdentifier&amp;gt;norm&amp;lt;/SelectionIdentifier&amp;gt;
+              &amp;lt;Text&amp;gt;My color vision is normal.&amp;lt;/Text&amp;gt;
+            &amp;lt;/Selection&amp;gt;
+          &amp;lt;/Selections&amp;gt;
+    &amp;lt;/SelectionAnswer&amp;gt;
+&amp;lt;/AnswerSpecification&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This gets defined for each question.&lt;/p&gt;
+&lt;p&gt;Here’s what that entire file, all put together, looks like:&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;&amp;lt;QuestionForm xmlns=&amp;#39;http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd&amp;#39;&amp;gt;  
+  &amp;lt;Question&amp;gt;
+      &amp;lt;QuestionIdentifier&amp;gt;self_report&amp;lt;/QuestionIdentifier&amp;gt;
+      &amp;lt;DisplayName&amp;gt;Q1&amp;lt;/DisplayName&amp;gt;
+      &amp;lt;IsRequired&amp;gt;true&amp;lt;/IsRequired&amp;gt;
+      &amp;lt;QuestionContent&amp;gt;
+        &amp;lt;Text&amp;gt; Which statement best describes your color vision? &amp;lt;/Text&amp;gt;
+      &amp;lt;/QuestionContent&amp;gt;
+      &amp;lt;AnswerSpecification&amp;gt;
+        &amp;lt;SelectionAnswer&amp;gt;
+          &amp;lt;StyleSuggestion&amp;gt;radiobutton&amp;lt;/StyleSuggestion&amp;gt;
+          &amp;lt;Selections&amp;gt;
+            &amp;lt;Selection&amp;gt;
+              &amp;lt;SelectionIdentifier&amp;gt;rg&amp;lt;/SelectionIdentifier&amp;gt;
+              &amp;lt;Text&amp;gt;I am red-green colorblind.&amp;lt;/Text&amp;gt;
+            &amp;lt;/Selection&amp;gt;
+            &amp;lt;Selection&amp;gt;
+              &amp;lt;SelectionIdentifier&amp;gt;by&amp;lt;/SelectionIdentifier&amp;gt;
+              &amp;lt;Text&amp;gt;I am blue-yellow colorblind.&amp;lt;/Text&amp;gt;
+            &amp;lt;/Selection&amp;gt;
+            &amp;lt;Selection&amp;gt;
+              &amp;lt;SelectionIdentifier&amp;gt;other&amp;lt;/SelectionIdentifier&amp;gt;
+              &amp;lt;Text&amp;gt;I have some other issue with my color vision.&amp;lt;/Text&amp;gt;
+            &amp;lt;/Selection&amp;gt;
+            &amp;lt;Selection&amp;gt;
+              &amp;lt;SelectionIdentifier&amp;gt;norm&amp;lt;/SelectionIdentifier&amp;gt;
+              &amp;lt;Text&amp;gt;My color vision is normal.&amp;lt;/Text&amp;gt;
+            &amp;lt;/Selection&amp;gt;
+          &amp;lt;/Selections&amp;gt;
+        &amp;lt;/SelectionAnswer&amp;gt;
+      &amp;lt;/AnswerSpecification&amp;gt;
+  &amp;lt;/Question&amp;gt;
+  &amp;lt;Question&amp;gt;
+      &amp;lt;QuestionIdentifier&amp;gt;ishihara_39&amp;lt;/QuestionIdentifier&amp;gt;
+      &amp;lt;DisplayName&amp;gt;Q2&amp;lt;/DisplayName&amp;gt;
+      &amp;lt;IsRequired&amp;gt;true&amp;lt;/IsRequired&amp;gt;
+      &amp;lt;QuestionContent&amp;gt;
+        &amp;lt;Text&amp;gt; What number do you see in the image below? &amp;lt;/Text&amp;gt;
+        &amp;lt;Binary&amp;gt;
+          &amp;lt;MimeType&amp;gt;
+            &amp;lt;Type&amp;gt;image&amp;lt;/Type&amp;gt;
+            &amp;lt;SubType&amp;gt;jpg&amp;lt;/SubType&amp;gt;
+          &amp;lt;/MimeType&amp;gt;
+          &amp;lt;DataURL&amp;gt;https://www.spservices.co.uk/images/products/pics/1401209116aw2271.jpg&amp;lt;/DataURL&amp;gt;
+          &amp;lt;AltText&amp;gt;Ishihara Color Plate&amp;lt;/AltText&amp;gt;
+        &amp;lt;/Binary&amp;gt;
+      &amp;lt;/QuestionContent&amp;gt;
+      &amp;lt;AnswerSpecification&amp;gt;
+        &amp;lt;SelectionAnswer&amp;gt;
+          &amp;lt;StyleSuggestion&amp;gt;radiobutton&amp;lt;/StyleSuggestion&amp;gt;
+          &amp;lt;Selections&amp;gt;
+            &amp;lt;Selection&amp;gt;
+              &amp;lt;SelectionIdentifier&amp;gt;122&amp;lt;/SelectionIdentifier&amp;gt;
+              &amp;lt;Text&amp;gt;122&amp;lt;/Text&amp;gt;
+            &amp;lt;/Selection&amp;gt;
+            &amp;lt;Selection&amp;gt;
+              &amp;lt;SelectionIdentifier&amp;gt;74&amp;lt;/SelectionIdentifier&amp;gt;
+              &amp;lt;Text&amp;gt;74&amp;lt;/Text&amp;gt;
+            &amp;lt;/Selection&amp;gt;
+            &amp;lt;Selection&amp;gt;
+              &amp;lt;SelectionIdentifier&amp;gt;21&amp;lt;/SelectionIdentifier&amp;gt;
+              &amp;lt;Text&amp;gt;21&amp;lt;/Text&amp;gt;
+            &amp;lt;/Selection&amp;gt;
+            &amp;lt;Selection&amp;gt;
+              &amp;lt;SelectionIdentifier&amp;gt;none&amp;lt;/SelectionIdentifier&amp;gt;
+              &amp;lt;Text&amp;gt;I don&amp;#39;t see a number.&amp;lt;/Text&amp;gt;
+            &amp;lt;/Selection&amp;gt;
+          &amp;lt;/Selections&amp;gt;
+        &amp;lt;/SelectionAnswer&amp;gt;
+      &amp;lt;/AnswerSpecification&amp;gt;
+  &amp;lt;/Question&amp;gt;
+&amp;lt;/QuestionForm&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-answer-key&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;4. The answer key&lt;/h2&gt;
+&lt;p&gt;The answer key looks much the same as the question form. Starts in a similar way:&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;&amp;lt;AnswerKey xmlns=&amp;quot;http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/AnswerKey.xsd&amp;quot;&amp;gt;
+  ...
+&amp;lt;/AnswerKey&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It also has a &lt;code&gt;Question&lt;/code&gt; section for each question you asked on the test. Within that, you list out the score you want associated with each answer given on the test. For example, for the first question, we want to assign a point only to the answer “my color vision is normal.”&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;&amp;lt;Question&amp;gt;
+  &amp;lt;QuestionIdentifier&amp;gt;self_report&amp;lt;/QuestionIdentifier&amp;gt;
+  &amp;lt;AnswerOption&amp;gt;
+      &amp;lt;SelectionIdentifier&amp;gt;rg&amp;lt;/SelectionIdentifier&amp;gt;
+      &amp;lt;AnswerScore&amp;gt;0&amp;lt;/AnswerScore&amp;gt;
+    &amp;lt;/AnswerOption&amp;gt;
+    &amp;lt;AnswerOption&amp;gt;
+      &amp;lt;SelectionIdentifier&amp;gt;by&amp;lt;/SelectionIdentifier&amp;gt;
+      &amp;lt;AnswerScore&amp;gt;0&amp;lt;/AnswerScore&amp;gt;
+    &amp;lt;/AnswerOption&amp;gt;
+    &amp;lt;AnswerOption&amp;gt;
+      &amp;lt;SelectionIdentifier&amp;gt;other&amp;lt;/SelectionIdentifier&amp;gt;
+      &amp;lt;AnswerScore&amp;gt;0&amp;lt;/AnswerScore&amp;gt;
+    &amp;lt;/AnswerOption&amp;gt;
+    &amp;lt;AnswerOption&amp;gt;
+      &amp;lt;SelectionIdentifier&amp;gt;norm&amp;lt;/SelectionIdentifier&amp;gt;
+      &amp;lt;AnswerScore&amp;gt;1&amp;lt;/AnswerScore&amp;gt;
+  &amp;lt;/AnswerOption&amp;gt;
+&amp;lt;/Question&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Answer values can be anything you like, according to any scoring scheme. They can also be negative!&lt;/p&gt;
+&lt;p&gt;After you’re done listing out all of the questions, you need to tell MTurk how to calculate the final score with a &lt;code&gt;QualificationValueMapping&lt;/code&gt; section. There is a lot more detail &lt;a href=&#34;http://docs.aws.amazon.com/AWSMechTurk/latest/AWSMturkAPI/ApiReference_AnswerKeyDataStructureArticle.html&#34;&gt;here&lt;/a&gt;. We’re not going to do anything fancy: just a percentage conversion. We specify a &lt;code&gt;PercentageMapping&lt;/code&gt; and give it the max score to calculate relative to, like so:&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;&amp;lt;QualificationValueMapping&amp;gt;
+  &amp;lt;PercentageMapping&amp;gt;
+    &amp;lt;MaximumSummedScore&amp;gt;2&amp;lt;/MaximumSummedScore&amp;gt;
+  &amp;lt;/PercentageMapping&amp;gt;
+&amp;lt;/QualificationValueMapping&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And here’s what the entire file looks like, strung together:&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;&amp;lt;AnswerKey xmlns=&amp;quot;http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/AnswerKey.xsd&amp;quot;&amp;gt;
+  &amp;lt;Question&amp;gt;
+    &amp;lt;QuestionIdentifier&amp;gt;self_report&amp;lt;/QuestionIdentifier&amp;gt;
+    &amp;lt;AnswerOption&amp;gt;
+      &amp;lt;SelectionIdentifier&amp;gt;rg&amp;lt;/SelectionIdentifier&amp;gt;
+      &amp;lt;AnswerScore&amp;gt;0&amp;lt;/AnswerScore&amp;gt;
+    &amp;lt;/AnswerOption&amp;gt;
+    &amp;lt;AnswerOption&amp;gt;
+      &amp;lt;SelectionIdentifier&amp;gt;by&amp;lt;/SelectionIdentifier&amp;gt;
+      &amp;lt;AnswerScore&amp;gt;0&amp;lt;/AnswerScore&amp;gt;
+    &amp;lt;/AnswerOption&amp;gt;
+    &amp;lt;AnswerOption&amp;gt;
+      &amp;lt;SelectionIdentifier&amp;gt;other&amp;lt;/SelectionIdentifier&amp;gt;
+      &amp;lt;AnswerScore&amp;gt;0&amp;lt;/AnswerScore&amp;gt;
+    &amp;lt;/AnswerOption&amp;gt;
+    &amp;lt;AnswerOption&amp;gt;
+      &amp;lt;SelectionIdentifier&amp;gt;norm&amp;lt;/SelectionIdentifier&amp;gt;
+      &amp;lt;AnswerScore&amp;gt;1&amp;lt;/AnswerScore&amp;gt;
+    &amp;lt;/AnswerOption&amp;gt;
+  &amp;lt;/Question&amp;gt;
+  &amp;lt;Question&amp;gt;
+    &amp;lt;QuestionIdentifier&amp;gt;ishihara_39&amp;lt;/QuestionIdentifier&amp;gt;
+    &amp;lt;AnswerOption&amp;gt;
+      &amp;lt;SelectionIdentifier&amp;gt;122&amp;lt;/SelectionIdentifier&amp;gt;
+      &amp;lt;AnswerScore&amp;gt;0&amp;lt;/AnswerScore&amp;gt;
+    &amp;lt;/AnswerOption&amp;gt;
+    &amp;lt;AnswerOption&amp;gt;
+      &amp;lt;SelectionIdentifier&amp;gt;21&amp;lt;/SelectionIdentifier&amp;gt;
+      &amp;lt;AnswerScore&amp;gt;0&amp;lt;/AnswerScore&amp;gt;
+    &amp;lt;/AnswerOption&amp;gt;
+    &amp;lt;AnswerOption&amp;gt;
+      &amp;lt;SelectionIdentifier&amp;gt;none&amp;lt;/SelectionIdentifier&amp;gt;
+      &amp;lt;AnswerScore&amp;gt;0&amp;lt;/AnswerScore&amp;gt;
+    &amp;lt;/AnswerOption&amp;gt;
+    &amp;lt;AnswerOption&amp;gt;
+      &amp;lt;SelectionIdentifier&amp;gt;74&amp;lt;/SelectionIdentifier&amp;gt;
+      &amp;lt;AnswerScore&amp;gt;1&amp;lt;/AnswerScore&amp;gt;
+    &amp;lt;/AnswerOption&amp;gt;
+  &amp;lt;/Question&amp;gt;
+  &amp;lt;QualificationValueMapping&amp;gt;
+    &amp;lt;PercentageMapping&amp;gt;
+      &amp;lt;MaximumSummedScore&amp;gt;2&amp;lt;/MaximumSummedScore&amp;gt;
+    &amp;lt;/PercentageMapping&amp;gt;
+  &amp;lt;/QualificationValueMapping&amp;gt;
+&amp;lt;/AnswerKey&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now that we have these two files, we load them in. We can do this by adding two lines like this at the top of the script that actually makes the qualification:&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;questions = open(name=&amp;#39;color_qs.xml&amp;#39;, mode=&amp;#39;r&amp;#39;).read()
+answers = open(name=&amp;#39;color_ans_key.xml&amp;#39;, mode=&amp;#39;r&amp;#39;).read()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This reads these files in and assigns their contents to these variables. We then pass these variables into our &lt;code&gt;create_qualification_type&lt;/code&gt; function call as arguments to &lt;code&gt;Test&lt;/code&gt; and &lt;code&gt;AnswerKey&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;using-qualifications-in-a-hit&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;5. Using qualifications in a HIT&lt;/h2&gt;
+&lt;p&gt;So here’s the entire script. Once this script is run, the qualification exists permanently in an active state (unless it’s deleted).&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;import boto3
+
+questions = open(name=&amp;#39;color_qs.xml&amp;#39;, mode=&amp;#39;r&amp;#39;).read()
+answers = open(name=&amp;#39;color_ans_key.xml&amp;#39;, mode=&amp;#39;r&amp;#39;).read()
+
+mturk = boto3.client(&amp;#39;mturk&amp;#39;, 
+                      region_name=&amp;#39;us-east-1&amp;#39;, 
+                      endpoint_url=&amp;#39;https://mturk-requester-sandbox.us-east-1.amazonaws.com&amp;#39;)
+
+qual_response = mturk.create_qualification_type(
+                        Name=&amp;#39;Color blindness test&amp;#39;,
+                        Keywords=&amp;#39;test, qualification, sample, colorblindness, boto&amp;#39;,
+                        Description=&amp;#39;This is a brief colorblindness test&amp;#39;,
+                        QualificationTypeStatus=&amp;#39;Active&amp;#39;,
+                        Test=questions,
+                        AnswerKey=answers,
+                        TestDurationInSeconds=300)
+
+print(qual_response[&amp;#39;QualificationType&amp;#39;][&amp;#39;QualificationTypeId&amp;#39;])&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It’s important to make a note of the qualification’s unique ID, which is why I print it upon creation (you can also look it up on the MTurk website itself in the URL of the qualification), as this is how we’ll refer to it when we create a HIT that requires this qualification.&lt;/p&gt;
+&lt;p&gt;Here’s what that looks like:&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;hit = client.create_hit(
+        Reward=&amp;#39;0.01&amp;#39;,
+        LifetimeInSeconds=3600,
+        AssignmentDurationInSeconds=600,
+        MaxAssignments=9,
+        Title=&amp;#39;A HIT with a qualification test&amp;#39;,
+        Description=&amp;#39;A test HIT that requires a certain score from a qualification test to accept.&amp;#39;,
+        Keywords=&amp;#39;boto, qualification, test&amp;#39;,
+        AutoApprovalDelayInSeconds=0,
+        QualificationRequirements=[{&amp;#39;QualificationTypeId&amp;#39;:&amp;#39;3CFGE88WF7UDUETM7YP3RSRD73VS4F&amp;#39;,
+                                   &amp;#39;Comparator&amp;#39;: &amp;#39;EqualTo&amp;#39;,
+                                   &amp;#39;IntegerValues&amp;#39;:[100]}]
+        )&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Looking at the &lt;code&gt;QualificationRequirements&lt;/code&gt; argument in particular, we can see how this is structured. You pass a list of dictionaries as an argument, with each qualification getting its own dictionary. You can have lots (a location requirement, a minimum HIT approval rating, a minimum number of completed HITs, and so on), but in this case we just have the one. The dictionary has three entries: the qualification type ID, a comparator, and then an integer. These last two tell MTurk how to examine the score to determine if someone is qualified. In our case, we only want to accept workers who had a score exactly equal to 100% (meaning that they did not self-report any vision problems and answered the Ishihara plate correctly), but you could also ask for a score &lt;code&gt;GreaterThan&lt;/code&gt; some minimum value, for example.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;These custom qualifications work really well if they can be automatically scored, and if it’s only a question or two long. It’s not fair to require a long, unpaid test to complete your HIT, unless passing the test would grant them access to multiple, well-paying HITs. For most purposes, a very brief prescreen is all you’ll need.&lt;/p&gt;
+&lt;p&gt;This simplifies the process on both sides–workers can quickly get qualified (or not, in which case they can filter those HITs from their options, uncluttering their feeds), and from the requester side, this process is completely automatic. You’ll exclude less data, and won’t have to bother dealing with two separate HITs, invited-only hits, or “bonuses” that are actually payment for the real HIT you want data for.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Getting started with the Mechanical Turk API</title>
+      <link>https://katherinemwood.github.io/post/mturk_dev_intro/</link>
+      <pubDate>Sun, 08 Oct 2017 15:25:40 -0500</pubDate>
+      
+      <guid>https://katherinemwood.github.io/post/mturk_dev_intro/</guid>
+      <description>&lt;p&gt;Amazon’s Mechanical Turk is a great research tool. You can get huge sample sizes that tend to be more diverse than what you can recruit from a Psychology department subject pool. But, with lots of data comes a new set of problems. It very quickly becomes impossible to manage things manually.&lt;/p&gt;
+&lt;p&gt;One very useful tool for dealing with this is the MTurk API. This lets you programmatically access all of MTurk’s functionality, and means you can write scripts to automate big tasks like fetching results, paying workers, or posting large numbers of HITs.&lt;/p&gt;
+&lt;p&gt;There is something of a startup cost to this, though. If you’re not sure where to start, or are feeling overwhelmed, here’s a little guide to get you setup with the tools you’ll need.&lt;/p&gt;
+&lt;p&gt;This guide is for using the boto3 SDK (Python), but there are also some more general tips about working with AWS.&lt;/p&gt;
+&lt;div id=&#34;accounts-users-and-permissions-setup&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Accounts, Users, and Permissions Setup&lt;/h2&gt;
+&lt;p&gt;To work programmatically with the MTurk API, you need at minimum two accounts: an AWS account, and an account on the MTurk Requester site. However, you should also make two more accounts: one on the Requester Sandbox, and one on the Worker Sandbox. These last two accounts will let you test and experiment in an environment that looks and behaves just like the real MTurk website, but with none of the consequences.&lt;/p&gt;
+&lt;div id=&#34;aws&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;1. AWS&lt;/h3&gt;
+&lt;p&gt;AWS stands for “Amazon Web Services.” It’s an umbrella that covers a huge array of the web-based services Amazon offers, including access to their cloud servers. Among these services is MTurk. Your billing info is stored with your AWS account, rather than your MTurk requester account; on the MTurk side of things, you pre-pay for HITs and deplete that purse, rather than having a direct link to your credit card.&lt;/p&gt;
+&lt;p&gt;To set up an AWS account, go to the &lt;a href=&#34;https://aws.amazon.com/free/?sc_channel=PS&amp;amp;sc_campaign=acquisition_US&amp;amp;sc_publisher=google&amp;amp;sc_medium=cloud_computing_hv_b&amp;amp;sc_content=aws_core_e_control_q32016&amp;amp;sc_detail=aws&amp;amp;sc_category=cloud_computing&amp;amp;sc_segment=188908133959&amp;amp;sc_matchtype=e&amp;amp;sc_country=US&amp;amp;s_kwcid=AL!4422!3!188908133959!e!!g!!aws&amp;amp;ef_id=WUMEpQAAAHy41iUB:20171008221039:s&#34;&gt;website&lt;/a&gt; and sign up. The free tier of service is all that you’ll need, if you’re only going to be dealing with MTurk.&lt;/p&gt;
+&lt;p&gt;One of the many nice features about the AWS account is the ability to create what are called IAM users. These are users that you can assign permissions to without giving them root access to your account. This is the setup I have with my advisor; he has the billing info assigned to his AWS account, but he made me a user with complete MTurk permissions. This means I can post and delete HITs, pay workers, even sign into the AWS console to manage my user settings, but I have no ability to access his AWS account.&lt;/p&gt;
+&lt;p&gt;We’ll create an IAM user with credentials that we’ll use to play around in the sandbox, but that don’t grant root access. Once the account is set up and you are signed in to your dashboard, type ‘iam’ in the AWS Services search bar. This will take you to your users dashboard; on the left hand side, go to the &lt;code&gt;users&lt;/code&gt; menu and then click &lt;code&gt;Add User&lt;/code&gt;. You can now set a name for this user; I recommend something obvious, like &lt;code&gt;reqester_sandbox&lt;/code&gt; or &lt;code&gt;mturk&lt;/code&gt;. Below that, you want to check the &lt;code&gt;Enable Programmatic Access&lt;/code&gt; box. On the next page, you can select &lt;code&gt;Attach existing policies directly&lt;/code&gt; (unless you want to deal with setting up groups, which can be useful if you’re managing lab members and multiple people will need the same set of permissions). Since we’re only dealing with MTurk, we don’t have to get too fancy. If you search for &lt;code&gt;mechanical&lt;/code&gt; in the policy search bar, you’ll see one that says &lt;code&gt;AmazonMechanicalTurkFullAccess&lt;/code&gt;. This is the policy we want to attach to this user; it gives full read and write access to MTurk. Check the box next to it and hit &lt;code&gt;Review&lt;/code&gt;, then &lt;code&gt;Create User&lt;/code&gt;. On this next screen, you will be presented with two very important pieces of information; the user access key, and the secret key. This is your only chance to take note of the secret key, so make a note of both of these passwords somewhere. We’ll need them later.&lt;/p&gt;
+&lt;p&gt;You’ll also see a special URL that user can use to access the AWS console. This is another piece of information you would want to provide if you were setting up a user for another person.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;amazons-mechanical-turk-requester&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;2. Amazon’s Mechanical Turk – Requester&lt;/h3&gt;
+&lt;p&gt;The next step is to create an account on the &lt;a href=&#34;https://requester.mturk.com/&#34;&gt;MTurk requester site&lt;/a&gt;. Once you’ve done that, head over to the &lt;code&gt;Developer&lt;/code&gt; tab and scroll down until you see the &lt;code&gt;Link your AWS Account&lt;/code&gt; option. You’ll need to link these accounts together for programmatic access.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-requester-sandbox&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;3. The Requester Sandbox&lt;/h3&gt;
+&lt;p&gt;If you keep scrolling under the &lt;code&gt;Developer&lt;/code&gt; tab on the MTurk requester site, you’ll see a &lt;code&gt;Register for Requester Sandbox&lt;/code&gt; option. Follow this link and make a Sandbox account, and then link it up to your AWS account just like you did on the real MTurk site. The sandbox looks and acts just like the real MTurk, allowing you to do extensive testing on your HITs and qualifications before you launch them for real.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-worker-sandbox&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;4. The Worker Sandbox&lt;/h3&gt;
+&lt;p&gt;You can also go over to the &lt;a href=&#34;https://workersandbox.mturk.com/mturk/&#34;&gt;worker sandbox&lt;/a&gt; and make an account there. This will let you see your HITs and qualification tests as real workers will.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;software-setup&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Software Setup&lt;/h2&gt;
+&lt;p&gt;In order to handle Mechanical Turk operations via the command line, a few programs have to be installed.&lt;/p&gt;
+&lt;div id=&#34;python&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;1. Python&lt;/h3&gt;
+&lt;div id=&#34;on-a-mac&#34; class=&#34;section level5&#34;&gt;
+&lt;h5&gt;On a Mac&lt;/h5&gt;
+&lt;p&gt;If you are on a Mac, Python is already installed and you don’t need to do anything further.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;on-windows&#34; class=&#34;section level5&#34;&gt;
+&lt;h5&gt;On Windows&lt;/h5&gt;
+&lt;p&gt;If you are on windows, you need to install Python 2. You can find Python’s download link &lt;a href=&#34;https://www.python.org/downloads/release/python-2714/&#34;&gt;here&lt;/a&gt;. You’ll want to select &lt;code&gt;Windows x86 MSI Installer&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;pip&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;2. Pip&lt;/h3&gt;
+&lt;p&gt;Pip is a package manager for Python that makes it very easy to install additional packages.&lt;/p&gt;
+&lt;div id=&#34;on-a-mac-1&#34; class=&#34;section level5&#34;&gt;
+&lt;h5&gt;On a Mac&lt;/h5&gt;
+&lt;p&gt;If you are on a Mac, navigate to Pip’s &lt;a href=&#34;https://pip.pypa.io/en/stable/installing/&#34;&gt;website&lt;/a&gt; and download the file &lt;code&gt;get-pip.py&lt;/code&gt;[&lt;a href=&#34;https://bootstrap.pypa.io/get-pip.py&#34; class=&#34;uri&#34;&gt;https://bootstrap.pypa.io/get-pip.py&lt;/a&gt;] (make sure to save it as a .py file if it saves as .txt). Put this file on the desktop.&lt;/p&gt;
+&lt;p&gt;Now, open up Terminal, and first enter the following command to navigate to your desktop:&lt;/p&gt;
+&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;cd desktop&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now, we need to run the installation program. Do this by running the following command:&lt;/p&gt;
+&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;python get-pip.py&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The program will then run automatically to install pip. You may be prompted for your password at some points during this process.&lt;/p&gt;
+&lt;p&gt;To verify that install was successful, run the following command:&lt;/p&gt;
+&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;which pip&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You should see a filepath output as a result, telling you where pip was installed. You can now get rid of the installer file if you like.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;on-a-windows&#34; class=&#34;section level5&#34;&gt;
+&lt;h5&gt;On a Windows&lt;/h5&gt;
+&lt;p&gt;Since you installed Python, pip comes with it. You may, however, need to upgrade pip. Do so by opening the Command Line and running the following command:&lt;/p&gt;
+&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;python -m pip install -U pip&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This will upgrade pip to the latest version.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;boto3&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;3. Boto3&lt;/h3&gt;
+&lt;p&gt;Now that pip is installed, it’s easy to install the boto3 package. Simply run the following command in either Terminal or Command Line:&lt;/p&gt;
+&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;pip install boto3&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;IF YOU GET AN ERROR ON MAC:&lt;/strong&gt;&lt;br /&gt;
+Try again, but this time run this command:&lt;/p&gt;
+&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;sudo pip install boto3&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You will be prompted for your password.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;managing-your-aws-credentials&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Managing your AWS credentials&lt;/h2&gt;
+&lt;p&gt;As a general rule, you don’t ever want to hardcode your credentials into your code. We want to avoid this at the top of your scripts:&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;aws_access_key_id = &amp;#39;my_access_code&amp;#39;
+aws_secret_access_key = &amp;#39;my_super_secret_access_key&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The nice thing about boto3 is that it checks a few different places for credentials in a specified order. So, rather than put them in your script directly, you can squirrel them away in a hidden file that the script will access automatically. &lt;a href=&#34;http://boto3.readthedocs.io/en/latest/guide/configuration.html&#34;&gt;This page&lt;/a&gt; has several different options for setting up your credentials; if you’re not comfortable with bash, I suggest making either a shared credentials file or a config file to house your credentials. This is where you’ll put the access key and the secret key that you got from AWS back when you created a new user.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;testing-your-setup&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Testing your setup&lt;/h2&gt;
+&lt;p&gt;After all this legwork, it’s time to test the setup! First, you’ll want to copy-paste the code below into a file (adapted from step 5 &lt;a href=&#34;https://requester.mturk.com/developer&#34;&gt;here&lt;/a&gt;) and save it as &lt;code&gt;balance.py&lt;/code&gt;; to make things easy, you might want to save it to the desktop for now.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;import boto3
+
+region_name = &amp;#39;us-east-1&amp;#39;
+
+endpoint_url = &amp;#39;https://mturk-requester-sandbox.us-east-1.amazonaws.com&amp;#39;
+
+client = boto3.client(
+    &amp;#39;mturk&amp;#39;,
+    endpoint_url=endpoint_url,
+    region_name=region_name,
+)
+
+# This will return $10,000.00 in the MTurk Developer Sandbox
+print(client.get_account_balance()[&amp;#39;AvailableBalance&amp;#39;])&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You can then run it from the Terminal by executing the following commands:&lt;/p&gt;
+&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;cd desktop
+python balance.py&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If everything is working, you’ll see it print 10,000. You always have 10k in the sandbox. If you call this with the real MTurk site, it will print your actual account balance.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;You’re now setup and ready to start managing MTurk programmatically. With boto3, you can do all sorts of things, including creating and posting hits, contacting workers, fetching results, and managing custom qualifications. This interface allows you to automate some of the more tedious aspects of MTurk, and you can always test everything in the Sandbox.&lt;/p&gt;
+&lt;p&gt;Now that you’re good to go, you can check out how to make &lt;a href=&#34;katherinemwood.github.io/post/qualifications/&#34;&gt;custom qualifications for workers using boto3&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Starter tips on sharing data and analysis scripts</title>
       <link>https://katherinemwood.github.io/post/data_sharing_tips/</link>
       <pubDate>Wed, 02 Aug 2017 20:12:31 -0500</pubDate>
@@ -132,7 +561,7 @@ sim_graph &amp;lt;- ggplot(data=simulation_results %&amp;gt;%
   ylab(&amp;#39;Percent significant results&amp;#39;) +
   theme_minimal()
 sim_graph&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/new_sig_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/new_sig_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;So, yeah. Even at a big effect size, you’re not getting away with 20 per cell under the .005 threshold. Even 50 per cell is pretty lean unless you’re hunting a big effect.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;so&#34; class=&#34;section level1&#34;&gt;
@@ -171,7 +600,7 @@ ggplot(joy, aes(x=value, y=label)) +
   theme_joy() +
   theme(axis.title.y = element_blank())&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.209&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/joy_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt; To make things look more orderly, and since our labels have no inherent order, we can order the data according to the mean. This isn’t neccessary if your y-axis is time, for instance.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/joy_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt; To make things look more orderly, and since our labels have no inherent order, we can order the data according to the mean. This isn’t neccessary if your y-axis is time, for instance.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;joy &amp;lt;- group_by(joy, label) %&amp;gt;%
        mutate(m=mean(value)) %&amp;gt;%
        arrange(m) %&amp;gt;%
@@ -185,7 +614,7 @@ ggplot(joy, aes(x=value, y=label)) +
   theme_joy() +
   theme(axis.title.y = element_blank())&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.209&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/joy_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/joy_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Some people don’t like this overlap (for the aesthetics or because it can obscure the data) so here’s an example if we spread everybody out so that they don’t touch. The amount of overlap is easily controlled by the &lt;code&gt;scale&lt;/code&gt; argument in geom_joy. &lt;code&gt;scale = 1&lt;/code&gt; means no overlap; the higher this value, the more the distributions will overlap.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(joy, aes(x=value, y=label)) +
   geom_joy(scale=1, rel_min_height=.01) +
@@ -194,7 +623,7 @@ ggplot(joy, aes(x=value, y=label)) +
   theme_joy() +
   theme(axis.title.y = element_blank())&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.209&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/joy_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/joy_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;How about some color? Color can be used to separate groups:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(joy, aes(x=value, y=label, fill=as.factor(rank))) +
   geom_joy(scale=1, rel_min_height=.01) +
@@ -204,7 +633,7 @@ ggplot(joy, aes(x=value, y=label)) +
   theme_joy() +
   theme(axis.title.y = element_blank())&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.209&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/joy_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/joy_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Or, if your data doesn’t have grouping structure, it can just be used to break things up a little bit. (See &lt;a href=&#34;https://twitter.com/hnrklndbrg/status/883675698300420098&#34;&gt;this tweet&lt;/a&gt; for another example.)&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(joy, aes(x=value, y=label, fill=label)) +
   geom_joy(scale=3, rel_min_height=0.01) +
@@ -215,7 +644,7 @@ ggplot(joy, aes(x=value, y=label)) +
   theme(axis.title.y = element_blank(),
         legend.position=&amp;#39;none&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.209&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/joy_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/joy_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;How about some joyful facets?&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(filter(joy, rank != 5), aes(x=value, y=label)) +
   geom_joy(scale=1, rel_min_height=.03) +
@@ -225,7 +654,7 @@ ggplot(joy, aes(x=value, y=label)) +
   theme_joy() +
   theme(axis.title.y = element_blank())&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.212&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/joy_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/joy_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;You can check out &lt;a href=&#34;https://cran.r-project.org/web/packages/ggjoy/vignettes/introduction.html&#34;&gt;the vignette&lt;/a&gt; for more examples and more information. You can also &lt;a href=&#34;https://cran.r-project.org/web/packages/ggjoy/ggjoy.pdf&#34;&gt;check out the docs&lt;/a&gt; for information on, for example, how the density is calculated and what your options are for that.&lt;/p&gt;
 &lt;p&gt;If you want to play around with these yourself, you can make up data (like I did) or check out the examples in the vignette for datasets to use that will make cool plots. Who knows–you might even find the iris dataset fun again if you use it to make joyplots.&lt;/p&gt;
 </description>
@@ -438,7 +867,7 @@ Avoid testing simple code that you’re confident will work. Instead focus your 
 &lt;div id=&#34;inline&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Inline&lt;/h2&gt;
 &lt;p&gt;Inline code executes invisibly, so all you see is the output. For example, I can run a function right here and now to get the weekday:&lt;/p&gt;
-&lt;p&gt;Today is a Saturday.&lt;/p&gt;
+&lt;p&gt;Today is a Sunday.&lt;/p&gt;
 &lt;p&gt;That was accomplished by simply adding a back-ticked &lt;code&gt;r&lt;/code&gt; prefix to a call to &lt;code&gt;weekdays(Sys.time())&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;You can also set global parameters in the header and reference them throughout the document.&lt;/p&gt;
 &lt;p&gt;This inline execution has various uses. If you need code primarily for its output, like getting the current date or weekday and adding it into text, then inline works really well and better than a chunk.&lt;/p&gt;
@@ -458,7 +887,7 @@ iris_plot &amp;lt;- ggplot(data=select(iris, Species, Sepal.Length),
   geom_crossbar(stat=&amp;#39;summary&amp;#39;,fun.y=mean, fun.ymax=mean, fun.ymin=mean, fatten=2, width=.5) +
   theme_minimal()
 print(iris_plot)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/notebooks_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/notebooks_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Fascinating, I guess!&lt;/p&gt;
 &lt;p&gt;The nice thing about this is that these plots are completely reproduceable–they’ll be generated everytime you run the notebook. You can keep the code cell that generates it in the output, so people can see it, or if you want a cleaner output with just the results, you can hide the generating code cell. You can tailor it to your options.&lt;/p&gt;
 &lt;/div&gt;
@@ -495,8 +924,8 @@ print(iris_plot)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;That looks alright!&lt;/p&gt;
 &lt;p&gt;There’s also &lt;code&gt;xtable,&lt;/code&gt; which will make it easier to set the appearance of the table through HTML attributes. This won’t show up until it’s rendered, though.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;print(xtable::xtable(meanpetals), type=&amp;#39;html&amp;#39;, html.table.attributes=&amp;#39;border=0  width=250&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;!-- html table generated in R 3.4.0 by xtable 1.8-2 package --&gt;
-&lt;!-- Sat Jul  1 14:39:42 2017 --&gt;
+&lt;!-- html table generated in R 3.4.1 by xtable 1.8-2 package --&gt;
+&lt;!-- Sun Oct  8 22:20:39 2017 --&gt;
 &lt;table border=&#34;0&#34; width=&#34;250&#34;&gt;
 &lt;tr&gt;
 &lt;th&gt;
@@ -764,7 +1193,7 @@ dat &amp;lt;- data.frame(&amp;#39;condition&amp;#39;=c(rep(&amp;#39;t1&amp;#39;,
   theme_minimal()
 
 print(basic_violin)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/violins_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/violins_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;These might be more accurately called “jug” or “vase” plots, since they rarely make pretty violin shapes and more often tend to look like postmodern sculpture. Name aside, the violin plot is a rotated, symmetric kernel density plot that shows the density of points at different values. Where the plot is wide, there is a high density of points; where it is narrow, a low density of points (like height on a histogram). We can see here that group T1 is less variable than T2; T1’s violin is short and squat, meaning most of the points are massed in a small region. T2, on the other hand, is tall and narrow, meaning the points are spread thinner along a wider range of values&lt;/p&gt;
 &lt;p&gt;These guys looks a little sparse, though. Why don’t we dress them up a smidge?&lt;/p&gt;
 &lt;p&gt;Maybe you like a point mean and &lt;span class=&#34;math inline&#34;&gt;\(2*\)&lt;/span&gt;SE error bars:&lt;/p&gt;
@@ -780,7 +1209,7 @@ mean_se_violin &amp;lt;- ggplot() +
   theme_minimal()
 
 print(mean_se_violin)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/violins_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/violins_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Or maybe boxplots are your jam:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;boxplot_violin &amp;lt;- ggplot(data=dat, aes(x=condition, y=value)) +
   geom_violin(aes(fill=condition, color=condition)) +
@@ -788,7 +1217,7 @@ print(mean_se_violin)&lt;/code&gt;&lt;/pre&gt;
   theme_minimal()
 
 print(boxplot_violin)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/violins_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/violins_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Here’s the way I like to do my violin plots, with each subject’s point plotted plus a horizontal line for the mean. I add a little horizontal jitter to each point to make things easier to see:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;scatter_violin &amp;lt;- ggplot(data=dat, aes(x=condition, y=value)) +
   geom_violin(aes(fill=condition, color=condition)) +
@@ -797,7 +1226,7 @@ print(boxplot_violin)&lt;/code&gt;&lt;/pre&gt;
   theme_minimal()
 
 print(scatter_violin)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/violins_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/violins_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;There are a few things I really like about violin plots. One, they add a lot more information without taking up any more space than a bar plot would. Two, they give you an intuitive way to look at the distributions of your data. I don’t think many of us are accustomed to seeing data this way, and it goes to show that even well-behaved data doesn’t necessarily look like we might expect. &lt;code&gt;t1&lt;/code&gt; is just as normal as &lt;code&gt;t2&lt;/code&gt;, but &lt;code&gt;t1&lt;/code&gt; “looks” a lot more normal than &lt;code&gt;t2&lt;/code&gt; does. You lose a lot of the characteristics of the data with a bar plot:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;bar_plot &amp;lt;- ggplot(data=errbar_lims) +
   geom_bar(aes(x=condition, y=mean, fill=condition, color=condition), stat=&amp;#39;identity&amp;#39;, position=&amp;#39;dodge&amp;#39;) +
@@ -806,7 +1235,7 @@ print(scatter_violin)&lt;/code&gt;&lt;/pre&gt;
   theme_minimal()
 
 print(bar_plot)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/violins_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/violins_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;It captures the broad strokes, to be sure, but a lot of the finer details disappear.&lt;/p&gt;
 &lt;p&gt;So there you go. Violin plots! Dress ’em up, dress ’em down. However you like them, they’re a nice plot type to have in your arsenal.&lt;/p&gt;
 </description>
@@ -845,24 +1274,24 @@ alldata &amp;lt;- lapply(list.files(pattern = &amp;#39;*.csv&amp;#39;), read.csv
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;subjects_all &amp;lt;- do.call(&amp;#39;rbind&amp;#39;, alldata)
 head(subjects_all)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##          V1        V2        V3
-## 1 12.785490  97.99294 0.2746556
-## 2 12.278420 117.31365 1.0880228
-## 3  6.768356  85.64516 0.4223008
-## 4  9.361346  81.62643 0.2646769
-## 5 11.693622  82.50792 1.1522778
-## 6 13.099701 175.58823 1.3244140&lt;/code&gt;&lt;/pre&gt;
+## 1  8.949957 124.80946 1.3867713
+## 2 11.926203 117.26313 1.0590077
+## 3  6.922328  78.01893 1.1814264
+## 4  9.323430  91.66125 0.5276688
+## 5 11.648274 140.93698 1.6975092
+## 6  6.048526  65.44654 1.3584207&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Note that the information about which data belong to each subject is lost here. You’ll need to add an identifier column, or make sure that each file has one, before reading it in this way.&lt;/p&gt;
 &lt;p&gt;How about some good old dplyr?&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(dplyr)
 subjects_all &amp;lt;- bind_rows(alldata, .id=&amp;#39;subject&amp;#39;)
 head(subjects_all)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##   subject        V1        V2        V3
-## 1       1 12.785490  97.99294 0.2746556
-## 2       1 12.278420 117.31365 1.0880228
-## 3       1  6.768356  85.64516 0.4223008
-## 4       1  9.361346  81.62643 0.2646769
-## 5       1 11.693622  82.50792 1.1522778
-## 6       1 13.099701 175.58823 1.3244140&lt;/code&gt;&lt;/pre&gt;
+## 1       1  8.949957 124.80946 1.3867713
+## 2       1 11.926203 117.26313 1.0590077
+## 3       1  6.922328  78.01893 1.1814264
+## 4       1  9.323430  91.66125 0.5276688
+## 5       1 11.648274 140.93698 1.6975092
+## 6       1  6.048526  65.44654 1.3584207&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;unique(subjects_all$subject)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] &amp;quot;1&amp;quot; &amp;quot;2&amp;quot; &amp;quot;3&amp;quot;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;We can use the&lt;code&gt;.id&lt;/code&gt; argument to specify an ID column, which will keep track of where the data comes from.&lt;/p&gt;
@@ -871,12 +1300,12 @@ head(subjects_all)&lt;/code&gt;&lt;/pre&gt;
 subjects_all &amp;lt;- rbindlist(alldata, idcol=&amp;#39;subject&amp;#39;)
 head(subjects_all)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##    subject        V1        V2        V3
-## 1:       1 12.785490  97.99294 0.2746556
-## 2:       1 12.278420 117.31365 1.0880228
-## 3:       1  6.768356  85.64516 0.4223008
-## 4:       1  9.361346  81.62643 0.2646769
-## 5:       1 11.693622  82.50792 1.1522778
-## 6:       1 13.099701 175.58823 1.3244140&lt;/code&gt;&lt;/pre&gt;
+## 1:       1  8.949957 124.80946 1.3867713
+## 2:       1 11.926203 117.26313 1.0590077
+## 3:       1  6.922328  78.01893 1.1814264
+## 4:       1  9.323430  91.66125 0.5276688
+## 5:       1 11.648274 140.93698 1.6975092
+## 6:       1  6.048526  65.44654 1.3584207&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;unique(subjects_all$subject)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] 1 2 3&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Note also that &lt;code&gt;rbindlist()&lt;/code&gt; is an order of magnitude faster than &lt;code&gt;do.call&lt;/code&gt;. If you’ve got a lot of data, you’ll probably want to go with this function. &lt;code&gt;data.tables&lt;/code&gt; are extremely fast and memory efficient in general, and might be a good option if you’re working with truly huge amounts of data. For most uses, though, this kind of optimization isn’t really necessary.&lt;/p&gt;
@@ -892,12 +1321,12 @@ head(subjects_all)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;allsubjs &amp;lt;- lapply(list.files(pattern = &amp;#39;*.txt&amp;#39;), read.table, header=TRUE, colClasses=c(&amp;#39;double&amp;#39;))
 head(allsubjs[[1]])&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##          V1        V2        V3
-## 1 12.785490  97.99294 0.2746556
-## 2 12.278420 117.31365 1.0880228
-## 3  6.768356  85.64516 0.4223008
-## 4  9.361346  81.62643 0.2646769
-## 5 11.693622  82.50792 1.1522778
-## 6 13.099701 175.58823 1.3244140&lt;/code&gt;&lt;/pre&gt;
+## 1  8.949957 124.80946 1.3867713
+## 2 11.926203 117.26313 1.0590077
+## 3  6.922328  78.01893 1.1814264
+## 4  9.323430  91.66125 0.5276688
+## 5 11.648274 140.93698 1.6975092
+## 6  6.048526  65.44654 1.3584207&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Just like before, we end up with a list of data frames, one for each subject. In &lt;code&gt;read.table()&lt;/code&gt;, unlike &lt;code&gt;read.csv&lt;/code&gt;, the &lt;code&gt;header&lt;/code&gt; argument defaults to &lt;code&gt;FALSE&lt;/code&gt;, so be sure to change that. I also specify &lt;code&gt;colClasses&lt;/code&gt; here to tell R what type of data the content of the columns is. Without that, these doubles get read in as factors; doing it now saves a little work later.&lt;/p&gt;
 &lt;p&gt;We can then bind these together with &lt;code&gt;rbindlist&lt;/code&gt; just like we did when we used &lt;code&gt;read.csv&lt;/code&gt;.&lt;/p&gt;
 &lt;/div&gt;
@@ -921,16 +1350,16 @@ head(allsubjs[[1]])&lt;/code&gt;&lt;/pre&gt;
                      &amp;#39;treat2&amp;#39;=floor(rnorm(10, 15, 3)))
 print(traits)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##    id control treat1 treat2
-## 1   1      29      8     15
-## 2   2      25      7     15
-## 3   3      30     12     19
-## 4   4      32      7     17
-## 5   5      37      9     13
-## 6   6      30     10     12
-## 7   7      27      8     16
-## 8   8      20     12     15
-## 9   9      25      7      9
-## 10 10      21      8     15&lt;/code&gt;&lt;/pre&gt;
+## 1   1      36      8     21
+## 2   2      33     11      9
+## 3   3      27      9     13
+## 4   4      26      6     14
+## 5   5      23      9      8
+## 6   6      33     12     13
+## 7   7      30      9     19
+## 8   8      29     13     11
+## 9   9      22     12     11
+## 10 10      23     10     16&lt;/code&gt;&lt;/pre&gt;
 &lt;div id=&#34;wide-to-long&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Wide to Long&lt;/h3&gt;
 &lt;p&gt;Now, when we cast this to “long” format, we will have the id column (the subject number), a variable column (in this case, which test was taken), and the value column (the score on each test). Here it is, melted two ways. In base:&lt;/p&gt;
@@ -938,107 +1367,107 @@ print(traits)&lt;/code&gt;&lt;/pre&gt;
                        timevar=&amp;#39;test&amp;#39;,times=c(&amp;#39;control&amp;#39;, &amp;#39;treat1&amp;#39;, &amp;#39;treat2&amp;#39;), varying=seq(2, 4))
 print(traits_long_base)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##            id    test score
-## 1.control   1 control    29
-## 2.control   2 control    25
-## 3.control   3 control    30
-## 4.control   4 control    32
-## 5.control   5 control    37
-## 6.control   6 control    30
-## 7.control   7 control    27
-## 8.control   8 control    20
-## 9.control   9 control    25
-## 10.control 10 control    21
+## 1.control   1 control    36
+## 2.control   2 control    33
+## 3.control   3 control    27
+## 4.control   4 control    26
+## 5.control   5 control    23
+## 6.control   6 control    33
+## 7.control   7 control    30
+## 8.control   8 control    29
+## 9.control   9 control    22
+## 10.control 10 control    23
 ## 1.treat1    1  treat1     8
-## 2.treat1    2  treat1     7
-## 3.treat1    3  treat1    12
-## 4.treat1    4  treat1     7
+## 2.treat1    2  treat1    11
+## 3.treat1    3  treat1     9
+## 4.treat1    4  treat1     6
 ## 5.treat1    5  treat1     9
-## 6.treat1    6  treat1    10
-## 7.treat1    7  treat1     8
-## 8.treat1    8  treat1    12
-## 9.treat1    9  treat1     7
-## 10.treat1  10  treat1     8
-## 1.treat2    1  treat2    15
-## 2.treat2    2  treat2    15
-## 3.treat2    3  treat2    19
-## 4.treat2    4  treat2    17
-## 5.treat2    5  treat2    13
-## 6.treat2    6  treat2    12
-## 7.treat2    7  treat2    16
-## 8.treat2    8  treat2    15
-## 9.treat2    9  treat2     9
-## 10.treat2  10  treat2    15&lt;/code&gt;&lt;/pre&gt;
+## 6.treat1    6  treat1    12
+## 7.treat1    7  treat1     9
+## 8.treat1    8  treat1    13
+## 9.treat1    9  treat1    12
+## 10.treat1  10  treat1    10
+## 1.treat2    1  treat2    21
+## 2.treat2    2  treat2     9
+## 3.treat2    3  treat2    13
+## 4.treat2    4  treat2    14
+## 5.treat2    5  treat2     8
+## 6.treat2    6  treat2    13
+## 7.treat2    7  treat2    19
+## 8.treat2    8  treat2    11
+## 9.treat2    9  treat2    11
+## 10.treat2  10  treat2    16&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;We have to be pretty careful about specifying our arguments here. The &lt;code&gt;idvar&lt;/code&gt; indicates which column we want to map over the data. Here, we want the subject number; we want each subject’s score on each test labeled with their unique ID. Direction is fairly self-explanatory; we’re going to long form here. &lt;code&gt;v.names&lt;/code&gt; is the name (or names) of the new columns. Here, we’re collapsing everybody’s scores into a single column, so we call it &lt;code&gt;&#39;score&#39;&lt;/code&gt;. &lt;code&gt;timevar&lt;/code&gt; is the variable that changes over time, or over repeated measures. Here it’s which test they took, so we call the new column &lt;code&gt;&#39;test&#39;&lt;/code&gt;. Then we tell it which values to use in this new times column with &lt;code&gt;times&lt;/code&gt;; we want the name of the test. Then we tell it which columns of our data are varying over time/are our repeated measures; here it’s the final three columns (you can also specify a vector of strings).&lt;/p&gt;
 &lt;p&gt;Here are the same results with the &lt;code&gt;melt()&lt;/code&gt; function from data.table or reshape2. We specify again which column represents our data labels, and then we tell it which columns we want it to treat as our “measures,” which in our case is our three tests (if unspecified, it just uses all non-id variables, so we could have left it out here):&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;traits_long_m &amp;lt;- melt(traits, id.vars=&amp;quot;id&amp;quot;, measure.vars=c(&amp;#39;control&amp;#39;, &amp;#39;treat1&amp;#39;, &amp;#39;treat2&amp;#39;), 
                     variable.name=&amp;#39;test&amp;#39;, value.name=&amp;#39;score&amp;#39;)
 print(traits_long_m)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##    id    test score
-## 1   1 control    29
-## 2   2 control    25
-## 3   3 control    30
-## 4   4 control    32
-## 5   5 control    37
-## 6   6 control    30
-## 7   7 control    27
-## 8   8 control    20
-## 9   9 control    25
-## 10 10 control    21
+## 1   1 control    36
+## 2   2 control    33
+## 3   3 control    27
+## 4   4 control    26
+## 5   5 control    23
+## 6   6 control    33
+## 7   7 control    30
+## 8   8 control    29
+## 9   9 control    22
+## 10 10 control    23
 ## 11  1  treat1     8
-## 12  2  treat1     7
-## 13  3  treat1    12
-## 14  4  treat1     7
+## 12  2  treat1    11
+## 13  3  treat1     9
+## 14  4  treat1     6
 ## 15  5  treat1     9
-## 16  6  treat1    10
-## 17  7  treat1     8
-## 18  8  treat1    12
-## 19  9  treat1     7
-## 20 10  treat1     8
-## 21  1  treat2    15
-## 22  2  treat2    15
-## 23  3  treat2    19
-## 24  4  treat2    17
-## 25  5  treat2    13
-## 26  6  treat2    12
-## 27  7  treat2    16
-## 28  8  treat2    15
-## 29  9  treat2     9
-## 30 10  treat2    15&lt;/code&gt;&lt;/pre&gt;
+## 16  6  treat1    12
+## 17  7  treat1     9
+## 18  8  treat1    13
+## 19  9  treat1    12
+## 20 10  treat1    10
+## 21  1  treat2    21
+## 22  2  treat2     9
+## 23  3  treat2    13
+## 24  4  treat2    14
+## 25  5  treat2     8
+## 26  6  treat2    13
+## 27  7  treat2    19
+## 28  8  treat2    11
+## 29  9  treat2    11
+## 30 10  treat2    16&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;And let’s not leave out &lt;code&gt;tidyr&lt;/code&gt;:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyr)
 traits_long_t &amp;lt;- gather(traits, key=test, value=score, control, treat1, treat2)
 print(traits_long_t)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##    id    test score
-## 1   1 control    29
-## 2   2 control    25
-## 3   3 control    30
-## 4   4 control    32
-## 5   5 control    37
-## 6   6 control    30
-## 7   7 control    27
-## 8   8 control    20
-## 9   9 control    25
-## 10 10 control    21
+## 1   1 control    36
+## 2   2 control    33
+## 3   3 control    27
+## 4   4 control    26
+## 5   5 control    23
+## 6   6 control    33
+## 7   7 control    30
+## 8   8 control    29
+## 9   9 control    22
+## 10 10 control    23
 ## 11  1  treat1     8
-## 12  2  treat1     7
-## 13  3  treat1    12
-## 14  4  treat1     7
+## 12  2  treat1    11
+## 13  3  treat1     9
+## 14  4  treat1     6
 ## 15  5  treat1     9
-## 16  6  treat1    10
-## 17  7  treat1     8
-## 18  8  treat1    12
-## 19  9  treat1     7
-## 20 10  treat1     8
-## 21  1  treat2    15
-## 22  2  treat2    15
-## 23  3  treat2    19
-## 24  4  treat2    17
-## 25  5  treat2    13
-## 26  6  treat2    12
-## 27  7  treat2    16
-## 28  8  treat2    15
-## 29  9  treat2     9
-## 30 10  treat2    15&lt;/code&gt;&lt;/pre&gt;
+## 16  6  treat1    12
+## 17  7  treat1     9
+## 18  8  treat1    13
+## 19  9  treat1    12
+## 20 10  treat1    10
+## 21  1  treat2    21
+## 22  2  treat2     9
+## 23  3  treat2    13
+## 24  4  treat2    14
+## 25  5  treat2     8
+## 26  6  treat2    13
+## 27  7  treat2    19
+## 28  8  treat2    11
+## 29  9  treat2    11
+## 30 10  treat2    16&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Here, the key/value pairing tells us about our outcome columns, and then we just list the columns to gather up.&lt;/p&gt;
 &lt;p&gt;Three roads, same destination. I find &lt;code&gt;melt&lt;/code&gt; and &lt;code&gt;gather&lt;/code&gt; both much more intuitive than &lt;code&gt;reshape&lt;/code&gt;, with &lt;code&gt;gather&lt;/code&gt; the easiest of them all to use, but your mileage may vary.&lt;/p&gt;
 &lt;p&gt;Data is &lt;em&gt;really&lt;/em&gt; easy to plot this way:&lt;/p&gt;
@@ -1046,7 +1475,7 @@ print(traits_long_t)&lt;/code&gt;&lt;/pre&gt;
 plot &amp;lt;- ggplot(traits_long_t, aes(x=test, y=score, color=test)) +
         geom_point()
 print(plot)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/wrangling_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt; Simplicity itself.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/wrangling_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt; Simplicity itself.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;long-to-wide&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Long to Wide&lt;/h3&gt;
@@ -1054,46 +1483,46 @@ print(plot)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;traits_wide_base &amp;lt;- reshape(traits_long_base, direction=&amp;#39;wide&amp;#39;, timevar=&amp;#39;test&amp;#39;, idvar=&amp;#39;id&amp;#39;)
 print(traits_wide_base)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##            id score.control score.treat1 score.treat2
-## 1.control   1            29            8           15
-## 2.control   2            25            7           15
-## 3.control   3            30           12           19
-## 4.control   4            32            7           17
-## 5.control   5            37            9           13
-## 6.control   6            30           10           12
-## 7.control   7            27            8           16
-## 8.control   8            20           12           15
-## 9.control   9            25            7            9
-## 10.control 10            21            8           15&lt;/code&gt;&lt;/pre&gt;
+## 1.control   1            36            8           21
+## 2.control   2            33           11            9
+## 3.control   3            27            9           13
+## 4.control   4            26            6           14
+## 5.control   5            23            9            8
+## 6.control   6            33           12           13
+## 7.control   7            30            9           19
+## 8.control   8            29           13           11
+## 9.control   9            22           12           11
+## 10.control 10            23           10           16&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Now we have the original structure of our data back.&lt;/p&gt;
 &lt;p&gt;The inverse of &lt;code&gt;melt()&lt;/code&gt; is &lt;code&gt;dcast&lt;/code&gt;:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;traits_wide_m &amp;lt;- dcast(traits_long_m, id ~ test, value.var=&amp;#39;score&amp;#39;)
 print(traits_wide_m)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##    id control treat1 treat2
-## 1   1      29      8     15
-## 2   2      25      7     15
-## 3   3      30     12     19
-## 4   4      32      7     17
-## 5   5      37      9     13
-## 6   6      30     10     12
-## 7   7      27      8     16
-## 8   8      20     12     15
-## 9   9      25      7      9
-## 10 10      21      8     15&lt;/code&gt;&lt;/pre&gt;
+## 1   1      36      8     21
+## 2   2      33     11      9
+## 3   3      27      9     13
+## 4   4      26      6     14
+## 5   5      23      9      8
+## 6   6      33     12     13
+## 7   7      30      9     19
+## 8   8      29     13     11
+## 9   9      22     12     11
+## 10 10      23     10     16&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Right back to where we were.&lt;/p&gt;
 &lt;p&gt;And to undo &lt;code&gt;gather&lt;/code&gt;, we &lt;code&gt;spread&lt;/code&gt;:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;traits_wide_t &amp;lt;- spread(traits_long_t, test, score)
 print(traits_wide_t)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##    id control treat1 treat2
-## 1   1      29      8     15
-## 2   2      25      7     15
-## 3   3      30     12     19
-## 4   4      32      7     17
-## 5   5      37      9     13
-## 6   6      30     10     12
-## 7   7      27      8     16
-## 8   8      20     12     15
-## 9   9      25      7      9
-## 10 10      21      8     15&lt;/code&gt;&lt;/pre&gt;
+## 1   1      36      8     21
+## 2   2      33     11      9
+## 3   3      27      9     13
+## 4   4      26      6     14
+## 5   5      23      9      8
+## 6   6      33     12     13
+## 7   7      30      9     19
+## 8   8      29     13     11
+## 9   9      22     12     11
+## 10 10      23     10     16&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;reshaping-with-more-variables&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Reshaping with more variables&lt;/h3&gt;
@@ -1103,63 +1532,63 @@ print(traits_wide_t)&lt;/code&gt;&lt;/pre&gt;
                         &amp;#39;test1&amp;#39;=floor(rnorm(12, 10, 2)), &amp;#39;test2&amp;#39;=floor(rnorm(12, 15, 2)))
 head(traittest)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##   traitA   traitB test1 test2
-## 1   high positive    10    14
-## 2   high negative     8    15
+## 1   high positive     9    14
+## 2   high negative     7    16
 ## 3   high positive    11    18
-## 4   high negative     5    17
-## 5    med positive    10    13
-## 6    med negative     9    11&lt;/code&gt;&lt;/pre&gt;
+## 4   high negative    12    16
+## 5    med positive     8    16
+## 6    med negative     8    16&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;There are a lot of ways to melt this data. Maybe we want to collpase the tests into a single column–in this case the traits are the identifier variables.&lt;/p&gt;
 &lt;p&gt;In base:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tt_bytrait_base &amp;lt;- reshape(traittest, direction=&amp;#39;long&amp;#39;, v.names=&amp;#39;score&amp;#39;,
                            timevar=&amp;#39;test&amp;#39;, times=c(&amp;#39;test1&amp;#39;, &amp;#39;test2&amp;#39;), varying=c(&amp;#39;test1&amp;#39;,&amp;#39;test2&amp;#39;))
 print(tt_bytrait_base)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##          traitA   traitB  test score id
-## 1.test1    high positive test1    10  1
-## 2.test1    high negative test1     8  2
+## 1.test1    high positive test1     9  1
+## 2.test1    high negative test1     7  2
 ## 3.test1    high positive test1    11  3
-## 4.test1    high negative test1     5  4
-## 5.test1     med positive test1    10  5
-## 6.test1     med negative test1     9  6
-## 7.test1     med positive test1     6  7
-## 8.test1     med negative test1     8  8
-## 9.test1     low positive test1     7  9
-## 10.test1    low negative test1    10 10
-## 11.test1    low positive test1     9 11
-## 12.test1    low negative test1    12 12
+## 4.test1    high negative test1    12  4
+## 5.test1     med positive test1     8  5
+## 6.test1     med negative test1     8  6
+## 7.test1     med positive test1    10  7
+## 8.test1     med negative test1     9  8
+## 9.test1     low positive test1     6  9
+## 10.test1    low negative test1    11 10
+## 11.test1    low positive test1    13 11
+## 12.test1    low negative test1     9 12
 ## 1.test2    high positive test2    14  1
-## 2.test2    high negative test2    15  2
+## 2.test2    high negative test2    16  2
 ## 3.test2    high positive test2    18  3
-## 4.test2    high negative test2    17  4
-## 5.test2     med positive test2    13  5
-## 6.test2     med negative test2    11  6
-## 7.test2     med positive test2    15  7
-## 8.test2     med negative test2    12  8
-## 9.test2     low positive test2    12  9
-## 10.test2    low negative test2    15 10
-## 11.test2    low positive test2    14 11
-## 12.test2    low negative test2    14 12&lt;/code&gt;&lt;/pre&gt;
+## 4.test2    high negative test2    16  4
+## 5.test2     med positive test2    16  5
+## 6.test2     med negative test2    16  6
+## 7.test2     med positive test2    16  7
+## 8.test2     med negative test2    11  8
+## 9.test2     low positive test2    17  9
+## 10.test2    low negative test2    13 10
+## 11.test2    low positive test2    18 11
+## 12.test2    low negative test2    12 12&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;With &lt;code&gt;melt()&lt;/code&gt;:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tt_bytrait_m &amp;lt;- melt(traittest, measure.vars=c(&amp;#39;test1&amp;#39;, &amp;#39;test2&amp;#39;), variable.name=&amp;#39;test&amp;#39;,
                   value.name=&amp;#39;score&amp;#39;)
 head(tt_bytrait_m)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##   traitA   traitB  test score
-## 1   high positive test1    10
-## 2   high negative test1     8
+## 1   high positive test1     9
+## 2   high negative test1     7
 ## 3   high positive test1    11
-## 4   high negative test1     5
-## 5    med positive test1    10
-## 6    med negative test1     9&lt;/code&gt;&lt;/pre&gt;
+## 4   high negative test1    12
+## 5    med positive test1     8
+## 6    med negative test1     8&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;With &lt;code&gt;gather&lt;/code&gt;:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tt_bytrait_t &amp;lt;- gather(traittest, test, score, test1, test2)
 head(tt_bytrait_t)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##   traitA   traitB  test score
-## 1   high positive test1    10
-## 2   high negative test1     8
+## 1   high positive test1     9
+## 2   high negative test1     7
 ## 3   high positive test1    11
-## 4   high negative test1     5
-## 5    med positive test1    10
-## 6    med negative test1     9&lt;/code&gt;&lt;/pre&gt;
+## 4   high negative test1    12
+## 5    med positive test1     8
+## 6    med negative test1     8&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Or, we can let the tests be the identifiers, and collapse the traits into a single column.&lt;/p&gt;
 &lt;p&gt;Base:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tt_bytest_base &amp;lt;- reshape(traittest, direction=&amp;#39;long&amp;#39;, v.names=&amp;#39;rating&amp;#39;,
@@ -1167,30 +1596,30 @@ head(tt_bytrait_t)&lt;/code&gt;&lt;/pre&gt;
                           varying=c(&amp;#39;traitA&amp;#39;,&amp;#39;traitB&amp;#39;))
 print(tt_bytest_base)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##           test1 test2  trait   rating id
-## 1.traitA     10    14 traitA     high  1
-## 2.traitA      8    15 traitA     high  2
+## 1.traitA      9    14 traitA     high  1
+## 2.traitA      7    16 traitA     high  2
 ## 3.traitA     11    18 traitA     high  3
-## 4.traitA      5    17 traitA     high  4
-## 5.traitA     10    13 traitA      med  5
-## 6.traitA      9    11 traitA      med  6
-## 7.traitA      6    15 traitA      med  7
-## 8.traitA      8    12 traitA      med  8
-## 9.traitA      7    12 traitA      low  9
-## 10.traitA    10    15 traitA      low 10
-## 11.traitA     9    14 traitA      low 11
-## 12.traitA    12    14 traitA      low 12
-## 1.traitB     10    14 traitB positive  1
-## 2.traitB      8    15 traitB negative  2
+## 4.traitA     12    16 traitA     high  4
+## 5.traitA      8    16 traitA      med  5
+## 6.traitA      8    16 traitA      med  6
+## 7.traitA     10    16 traitA      med  7
+## 8.traitA      9    11 traitA      med  8
+## 9.traitA      6    17 traitA      low  9
+## 10.traitA    11    13 traitA      low 10
+## 11.traitA    13    18 traitA      low 11
+## 12.traitA     9    12 traitA      low 12
+## 1.traitB      9    14 traitB positive  1
+## 2.traitB      7    16 traitB negative  2
 ## 3.traitB     11    18 traitB positive  3
-## 4.traitB      5    17 traitB negative  4
-## 5.traitB     10    13 traitB positive  5
-## 6.traitB      9    11 traitB negative  6
-## 7.traitB      6    15 traitB positive  7
-## 8.traitB      8    12 traitB negative  8
-## 9.traitB      7    12 traitB positive  9
-## 10.traitB    10    15 traitB negative 10
-## 11.traitB     9    14 traitB positive 11
-## 12.traitB    12    14 traitB negative 12&lt;/code&gt;&lt;/pre&gt;
+## 4.traitB     12    16 traitB negative  4
+## 5.traitB      8    16 traitB positive  5
+## 6.traitB      8    16 traitB negative  6
+## 7.traitB     10    16 traitB positive  7
+## 8.traitB      9    11 traitB negative  8
+## 9.traitB      6    17 traitB positive  9
+## 10.traitB    11    13 traitB negative 10
+## 11.traitB    13    18 traitB positive 11
+## 12.traitB     9    12 traitB negative 12&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;code&gt;melt&lt;/code&gt;:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tt_bytest_m &amp;lt;- melt(traittest, measure.vars=c(&amp;#39;traitA&amp;#39;, &amp;#39;traitB&amp;#39;),
                   variable.name=&amp;#39;trait&amp;#39;, value.name=&amp;#39;rating&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
@@ -1198,12 +1627,12 @@ print(tt_bytest_base)&lt;/code&gt;&lt;/pre&gt;
 ## be dropped&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(tt_bytest_m)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##   test1 test2  trait rating
-## 1    10    14 traitA   high
-## 2     8    15 traitA   high
+## 1     9    14 traitA   high
+## 2     7    16 traitA   high
 ## 3    11    18 traitA   high
-## 4     5    17 traitA   high
-## 5    10    13 traitA    med
-## 6     9    11 traitA    med&lt;/code&gt;&lt;/pre&gt;
+## 4    12    16 traitA   high
+## 5     8    16 traitA    med
+## 6     8    16 traitA    med&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;(We can ignore the warning; it’s warning us about the fact that we’re combining two factors that don’t share levels, so it’s coercing them all to characters.)&lt;/p&gt;
 &lt;p&gt;With &lt;code&gt;gather&lt;/code&gt;:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tt_bytest_t &amp;lt;- gather(traittest, trait, rating, traitA, traitB)&lt;/code&gt;&lt;/pre&gt;
@@ -1211,12 +1640,12 @@ print(tt_bytest_base)&lt;/code&gt;&lt;/pre&gt;
 ## be dropped&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(tt_bytest_t)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##   test1 test2  trait rating
-## 1    10    14 traitA   high
-## 2     8    15 traitA   high
+## 1     9    14 traitA   high
+## 2     7    16 traitA   high
 ## 3    11    18 traitA   high
-## 4     5    17 traitA   high
-## 5    10    13 traitA    med
-## 6     9    11 traitA    med&lt;/code&gt;&lt;/pre&gt;
+## 4    12    16 traitA   high
+## 5     8    16 traitA    med
+## 6     8    16 traitA    med&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;(Same warning as above.)&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1320,90 +1749,90 @@ print(yesnomaybe)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Variables can be added to an existing data frame just with the &lt;code&gt;$&lt;/code&gt; operator:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;- data.frame(&amp;#39;x&amp;#39;=rnorm(20, 6), &amp;#39;y&amp;#39;=rnorm(20))
 print(df)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##           x             y
-## 1  6.382563 -0.6349377198
-## 2  5.178651  0.5779947820
-## 3  6.900055 -0.8934466449
-## 4  5.639740 -0.7364991053
-## 5  8.502692  0.0371889397
-## 6  5.831706 -1.4478027904
-## 7  6.557657  0.5066507289
-## 8  7.136671 -1.3353171159
-## 9  6.551727  0.0476008133
-## 10 6.908234 -1.1269031121
-## 11 7.012459 -0.8295170243
-## 12 5.392363 -0.2064574107
-## 13 6.301966 -0.3643905354
-## 14 4.965744 -0.0321969865
-## 15 4.890624  1.1440986573
-## 16 5.753496  0.4643063017
-## 17 5.860616  0.0009191402
-## 18 4.878040  0.5575799644
-## 19 5.845903  2.2756946745
-## 20 6.071341 -1.2962272395&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##           x           y
+## 1  6.182055  0.34012358
+## 2  7.436347 -0.59966661
+## 3  6.315306  0.36833177
+## 4  6.896922  1.50183433
+## 5  6.941559  2.49651251
+## 6  5.310434 -0.03238655
+## 7  5.571108 -1.14902213
+## 8  6.196074  0.84410316
+## 9  6.070575 -0.98276613
+## 10 7.307604 -0.41943093
+## 11 6.639640  0.85786488
+## 12 6.036730  0.59530225
+## 13 5.319429  0.51228832
+## 14 4.451193 -0.78561172
+## 15 5.352494  0.87007150
+## 16 8.215930 -0.67282494
+## 17 5.485161 -0.17377787
+## 18 6.126534 -0.03902882
+## 19 7.063122 -0.57183073
+## 20 5.599426  0.61108155&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df$z &amp;lt;- rnorm(20, 10)
 print(df)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##           x             y         z
-## 1  6.382563 -0.6349377198 10.292958
-## 2  5.178651  0.5779947820 11.052622
-## 3  6.900055 -0.8934466449 10.077596
-## 4  5.639740 -0.7364991053  8.906206
-## 5  8.502692  0.0371889397  9.858233
-## 6  5.831706 -1.4478027904  9.340396
-## 7  6.557657  0.5066507289  9.117452
-## 8  7.136671 -1.3353171159 10.169221
-## 9  6.551727  0.0476008133 10.578182
-## 10 6.908234 -1.1269031121 11.584164
-## 11 7.012459 -0.8295170243  8.057977
-## 12 5.392363 -0.2064574107 10.071884
-## 13 6.301966 -0.3643905354  9.832434
-## 14 4.965744 -0.0321969865 10.276102
-## 15 4.890624  1.1440986573 10.001042
-## 16 5.753496  0.4643063017  9.872071
-## 17 5.860616  0.0009191402  8.938737
-## 18 4.878040  0.5575799644 10.092249
-## 19 5.845903  2.2756946745  9.631067
-## 20 6.071341 -1.2962272395 10.700845&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##           x           y         z
+## 1  6.182055  0.34012358 10.298640
+## 2  7.436347 -0.59966661  9.799344
+## 3  6.315306  0.36833177  9.668752
+## 4  6.896922  1.50183433 10.097066
+## 5  6.941559  2.49651251 10.815749
+## 6  5.310434 -0.03238655  9.597003
+## 7  5.571108 -1.14902213 11.245294
+## 8  6.196074  0.84410316  8.256783
+## 9  6.070575 -0.98276613 10.099128
+## 10 7.307604 -0.41943093 11.489885
+## 11 6.639640  0.85786488  9.110691
+## 12 6.036730  0.59530225  8.862010
+## 13 5.319429  0.51228832 10.119818
+## 14 4.451193 -0.78561172 10.767057
+## 15 5.352494  0.87007150  9.525280
+## 16 8.215930 -0.67282494  9.805977
+## 17 5.485161 -0.17377787 10.306639
+## 18 6.126534 -0.03902882  9.573121
+## 19 7.063122 -0.57183073  9.948351
+## 20 5.599426  0.61108155  9.301278&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;If you need to manipulate two data vectors that are numeric, you can just add, multiply, etc. your columns together to perform these operations elementwise:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df$total &amp;lt;- with(df, x + y + z)
 head(df)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##          x           y         z    total
-## 1 6.382563 -0.63493772 10.292958 16.04058
-## 2 5.178651  0.57799478 11.052622 16.80927
-## 3 6.900055 -0.89344664 10.077596 16.08420
-## 4 5.639740 -0.73649911  8.906206 13.80945
-## 5 8.502692  0.03718894  9.858233 18.39811
-## 6 5.831706 -1.44780279  9.340396 13.72430&lt;/code&gt;&lt;/pre&gt;
+## 1 6.182055  0.34012358 10.298640 16.82082
+## 2 7.436347 -0.59966661  9.799344 16.63602
+## 3 6.315306  0.36833177  9.668752 16.35239
+## 4 6.896922  1.50183433 10.097066 18.49582
+## 5 6.941559  2.49651251 10.815749 20.25382
+## 6 5.310434 -0.03238655  9.597003 14.87505&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;You also have a lot of options in the &lt;code&gt;dplyr&lt;/code&gt; library, notably &lt;code&gt;transform&lt;/code&gt;:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;- transform(df, x = -x)
 head(df)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##           x           y         z    total
-## 1 -6.382563 -0.63493772 10.292958 16.04058
-## 2 -5.178651  0.57799478 11.052622 16.80927
-## 3 -6.900055 -0.89344664 10.077596 16.08420
-## 4 -5.639740 -0.73649911  8.906206 13.80945
-## 5 -8.502692  0.03718894  9.858233 18.39811
-## 6 -5.831706 -1.44780279  9.340396 13.72430&lt;/code&gt;&lt;/pre&gt;
+## 1 -6.182055  0.34012358 10.298640 16.82082
+## 2 -7.436347 -0.59966661  9.799344 16.63602
+## 3 -6.315306  0.36833177  9.668752 16.35239
+## 4 -6.896922  1.50183433 10.097066 18.49582
+## 5 -6.941559  2.49651251 10.815749 20.25382
+## 6 -5.310434 -0.03238655  9.597003 14.87505&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;But now that we’ve updated a column, our total is wrong. Let’s fix it with &lt;code&gt;transmute&lt;/code&gt;:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;- mutate(df, corrected_total = x + y + z)
 head(df)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##           x           y         z    total corrected_total
-## 1 -6.382563 -0.63493772 10.292958 16.04058        3.275458
-## 2 -5.178651  0.57799478 11.052622 16.80927        6.451965
-## 3 -6.900055 -0.89344664 10.077596 16.08420        2.284093
-## 4 -5.639740 -0.73649911  8.906206 13.80945        2.529967
-## 5 -8.502692  0.03718894  9.858233 18.39811        1.392730
-## 6 -5.831706 -1.44780279  9.340396 13.72430        2.060887&lt;/code&gt;&lt;/pre&gt;
+## 1 -6.182055  0.34012358 10.298640 16.82082        4.456709
+## 2 -7.436347 -0.59966661  9.799344 16.63602        1.763331
+## 3 -6.315306  0.36833177  9.668752 16.35239        3.721778
+## 4 -6.896922  1.50183433 10.097066 18.49582        4.701978
+## 5 -6.941559  2.49651251 10.815749 20.25382        6.370702
+## 6 -5.310434 -0.03238655  9.597003 14.87505        4.254183&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Maybe I now want a dataframe just of the even numbers in the x column, and the residuals from total and corrected total (for… reasons). &lt;code&gt;transmute&lt;/code&gt; is like mutate, but it throws away all the extra:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_even &amp;lt;- transmute(df, x_ev=floor(x)%%2==0, residuals=total-corrected_total)
 head(df_even)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##    x_ev residuals
-## 1 FALSE  12.76513
-## 2  TRUE  10.35730
-## 3 FALSE  13.80011
-## 4  TRUE  11.27948
-## 5 FALSE  17.00538
-## 6  TRUE  11.66341&lt;/code&gt;&lt;/pre&gt;
+## 1 FALSE  12.36411
+## 2  TRUE  14.87269
+## 3 FALSE  12.63061
+## 4 FALSE  13.79384
+## 5 FALSE  13.88312
+## 6  TRUE  10.62087&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;If none of these methods fit the bill, you can call &lt;code&gt;apply&lt;/code&gt; along all the columns or rows of your data frame and write a custom function to do whatever processing you need.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;factor-levels-as-column-labels&#34; class=&#34;section level3&#34;&gt;
@@ -1590,7 +2019,7 @@ ub_se &amp;lt;- mean(x) + 1.96*se&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;[Just to note: bootstrapped confidence intervals give you a nice measure of uncertainty, and I like to use them as my error bars, but they don’t get you away from the problems of NHST, if that’s something you’re trying to avoid.]&lt;/p&gt;
 &lt;p&gt;Here’s a histogram of our sample. In this post, I’m plotting everything in base just for the thrill:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;hist(x,  breaks=10)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/bootstrapping_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/bootstrapping_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Here are the stats for our mean, calculated the old-fashioned way from an n of 50:&lt;/p&gt;
 &lt;p&gt;mean: 1.27&lt;br /&gt;
 SE: 0.18&lt;br /&gt;
@@ -1605,7 +2034,7 @@ ub &amp;lt;- sort(boot)[.975*1000]
 #mean, and the 95% bootstrapped CI
 hist(boot, breaks=50)
 abline(v=c(mean(boot), lb, ub), col=rep(&amp;#39;red&amp;#39;, 3), lty=c(1, 2, 2))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/bootstrapping_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/bootstrapping_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;The bootstrapped mean (1.27) is of course centered on our sample mean. Now we have a distribution of values for the mean that we could expect to obtain with our sample.&lt;/p&gt;
 &lt;p&gt;Now, if we wanted to do confidence intervals, we could get the SE of the bootstrapped distribution and do it the usual way. However, we also have an option available to us called the &lt;em&gt;percentile method.&lt;/em&gt; In order to find the confidence intervals, we sort all of our bootstrapped values, and then take the 2.5% quantile and the 97.5% quantile. If you repeat the sampling procedure with the same process on the same population (precisely what we do with our bootstrap), 95% of the time the mean falls between these endpoints. If we do this procedure with our particular sample, we get this:&lt;/p&gt;
 &lt;p&gt;95% bootstrapped CI: [1.14, 1.40]&lt;/p&gt;
@@ -1628,7 +2057,7 @@ abline(v=c(mean(boot), lb, ub), col=rep(&amp;#39;red&amp;#39;, 3), lty=c(1, 2, 2
 ub_es &amp;lt;- sort(boot_es)[.975*1000]
 hist(boot_es, breaks=50)
 abline(v=c(mean(boot_es), lb_es, ub_es), col=rep(&amp;#39;red&amp;#39;, 3), lty=c(1, 2, 2))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/bootstrapping_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/bootstrapping_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;bootstrapped mean: .56&lt;br /&gt;
 95% bootstrapped CI: [.14, .99]&lt;/p&gt;
 &lt;p&gt;And there you have it: bootstrapped confidence intervals on your effect sizes.&lt;/p&gt;
@@ -1743,18 +2172,18 @@ plot_es &amp;lt;- function(data, true_es) {
 &lt;p&gt;Here’s what you get if you use tiny (n=10) groups (perhaps under the justification that if an effect is big, you’ll detect it just fine in small samples) and no true effect is present:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n10 &amp;lt;- replicate(3000, sim_es(10, 0))
 plot_es(n10, 0)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/es_var_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/es_var_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;The white line is the true effect, and the two red lines mark out the 95% quantile.&lt;/p&gt;
 &lt;p&gt;Yikes. With samples that small, you could (and will, often!) get an enormous effect when none is present.&lt;/p&gt;
 &lt;p&gt;Here’s what we get with n = 50, no effect present. I’ve left the x-axis fixed to make it easier to compare all of these plots.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n50 &amp;lt;- replicate(3000, sim_es(50, 0))
 plot_es(n50, 0)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/es_var_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/es_var_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;This is a dramatic improvement over n=10, but you could still estimate what is considered a small (d=.1, traditionally) to medium (d=.3, traditionally) effect in either direction with appreciable frequency.&lt;/p&gt;
 &lt;p&gt;And here’s n=200.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n200 &amp;lt;- replicate(3000, sim_es(200, 0))
 plot_es(n200, 0)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://katherinemwood.github.io/post/es_var_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/es_var_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;I’ve used d=0 as an example, but you get this spread regardless of what the true d is; it will just shift to center on the true effect. In that case, you’ll detect an effect most of the time, but can be way off about its actual size. This doesn’t mean that you can throw power out the window by arguing that you only care about detection, of course–you’ll “detect” an effect a lot of the time when d=0 with small samples.&lt;/p&gt;
 &lt;p&gt;These simulations are the result of 3000 replications each, but in the shiny app you can change this number.&lt;/p&gt;
 &lt;p&gt;For me, this really drives home just how important replications and meta-analyses–cumulative science in general, really–are, particularly for estimation. When you do a lot of these studies over and over again, as these simulations model, you’ll zero in on the true effect, but a study can’t do it alone.&lt;/p&gt;
@@ -1806,37 +2235,6 @@ plot_es(n200, 0)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;And that’s my process. Integrating open science and best research practices takes a little practice, but once you’ve gotten comfortable with your workflow it’s as easy as any other habit (and comes with a lot of benefits for your trouble).&lt;/p&gt;
 &lt;p&gt;This workflow works pretty well for me, but I think it can be better. This year I would like to start using figshare, and do version control for my scripts with GitHub, and look into using RMarkdown for papers. There’s always more to learn!&lt;/p&gt;
 &lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>5 Minute Simulation: Lonely Cards</title>
-      <link>https://katherinemwood.github.io/post/lonely_cards/</link>
-      <pubDate>Mon, 26 Jun 2017 12:34:18 -0500</pubDate>
-      
-      <guid>https://katherinemwood.github.io/post/lonely_cards/</guid>
-      <description>&lt;p&gt;FiveThirtyEight posts math, logic, and probability puzzles each week. I was tempted by this week’s &lt;a href=&#34;http://fivethirtyeight.com/features/can-you-deal-with-these-card-game-puzzles/&#34;&gt;Riddler Express&lt;/a&gt;:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;On snowy afternoons, you like to play a solitaire “game” with a standard, randomly shuffled deck of 52 cards. You start dealing cards face up, one at a time, into a pile. As you deal each card, you also speak aloud, in order, the 13 card faces in a standard deck: ace, two, three, etc. (When you get to king, you start over at ace.) You keep doing this until the rank of the card you deal matches the rank you speak aloud, in which case you lose. You win if you reach the end of the deck without any matches.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;What is the probability that you win?&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;My combinatorics skills are rusty, so I’m still hacking away at the closed-form solution. But, where cunning fails, brute force may suffice. While the closed-form approach is proving challenging (for me), this is fairly trivial to approximate through simulation. Recreating the game itself only takes a line or two of code, and then we can “play” hundreds of thousands of simulated games to get an idea of how often we win. &lt;a href=&#34;https://katherinemwood.shinyapps.io/lonely_cards/&#34;&gt;Here’s a simple shiny app&lt;/a&gt; with the results, and here’s the dead-simple code for simulating the game itself:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cards &amp;lt;- function() {
-#make a deck; leave this sequence fixed for the verbal sequence,
-#and scramble it to simulate the cards being dealt
-deck &amp;lt;- rep(c(&amp;#39;ace&amp;#39;, as.character(seq(2:10)),
-&amp;#39;jack&amp;#39;, &amp;#39;queen&amp;#39;, &amp;#39;king&amp;#39;), times=4)
-#You win if none of the ranks line up; you lose if one or more does
-return(as.numeric(!(sum(deck == sample(deck)) &amp;gt; 0))) #1 is win, 0 is lose
-}
-results &amp;lt;- replicate(100000, cards())
-paste(&amp;#39;Win percentage: &amp;#39;, sum(results)/1000,&amp;#39;%&amp;#39;, sep=&amp;#39;&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;Win percentage: 1.648%&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;I’ll update this post with the closed-form solution if I manage to work it out (failing that, I’ll just link to the solution on FiveThirtyEight).&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/katherinemwood/lonely_cards&#34;&gt;Here’s the source code&lt;/a&gt; for the shiny app.&lt;/p&gt;
-&lt;p&gt;UPDATE: It turns out the &lt;a href=&#34;https://fivethirtyeight.com/features/how-long-will-it-take-to-blow-out-the-birthday-candles/#correction&#34;&gt;closed-form solution to this riddle&lt;/a&gt; is nontrivial! It relies on a branch of combinatorics called &lt;a href=&#34;http://mathworld.wolfram.com/Derangement.html&#34;&gt;“derangements”&lt;/a&gt; I didn’t encounter in my (admittedly less than comprehensive) math and stats education.&lt;/p&gt;
 </description>
     </item>
     

@@ -21,18 +21,18 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
     
   
-  <link rel="stylesheet" href="/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/css/academicons.min.css">
+  <link rel="stylesheet" href="../../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../css/font-awesome.min.css">
+  <link rel="stylesheet" href="../../css/academicons.min.css">
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono">
-  <link rel="stylesheet" href="/css/hugo-academic.css">
+  <link rel="stylesheet" href="../../css/hugo-academic.css">
   
 
   <link rel="alternate" href="https://katherinemwood.github.io/index.xml" type="application/rss+xml" title="Inattentional Coffee">
   <link rel="feed" href="https://katherinemwood.github.io/index.xml" type="application/rss+xml" title="Inattentional Coffee">
 
-  <link rel="icon" type="image/png" href="/img/icon.png">
-  <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="../../img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="../../img/apple-touch-icon.png">
 
   <link rel="canonical" href="https://katherinemwood.github.io/post/joy/">
 
@@ -55,7 +55,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Inattentional Coffee</a>
+      <a class="navbar-brand" href="../../">Inattentional Coffee</a>
     </div>
 
     
@@ -68,7 +68,7 @@
         
 
         <li class="nav-item">
-          <a href="/#posts">
+          <a href="../../#posts">
             
             <span>Blog</span>
           </a>
@@ -80,7 +80,7 @@
         
 
         <li class="nav-item">
-          <a href="/#projects">
+          <a href="../../#projects">
             
             <span>Projects</span>
           </a>
@@ -92,7 +92,7 @@
         
 
         <li class="nav-item">
-          <a href="/#publications">
+          <a href="../../#publications">
             
             <span>Publications</span>
           </a>
@@ -104,7 +104,7 @@
         
 
         <li class="nav-item">
-          <a href="/#about">
+          <a href="../../#about">
             
             <span>About</span>
           </a>
@@ -209,7 +209,7 @@ ggplot(joy, aes(x=value, y=label)) +
   theme_joy() +
   theme(axis.title.y = element_blank())</code></pre>
 <pre><code>## Picking joint bandwidth of 0.209</code></pre>
-<p><img src="/post/joy_files/figure-html/unnamed-chunk-2-1.png" width="672" /> To make things look more orderly, and since our labels have no inherent order, we can order the data according to the mean. This isn’t neccessary if your y-axis is time, for instance.</p>
+<p><img src="../../"katherinemwood.github.io/"  # End your URL with a `/` trailing slash.post/joy_files/figure-html/unnamed-chunk-2-1.png" width="672" /> To make things look more orderly, and since our labels have no inherent order, we can order the data according to the mean. This isn’t neccessary if your y-axis is time, for instance.</p>
 <pre class="r"><code>joy &lt;- group_by(joy, label) %&gt;%
        mutate(m=mean(value)) %&gt;%
        arrange(m) %&gt;%
@@ -223,7 +223,7 @@ ggplot(joy, aes(x=value, y=label)) +
   theme_joy() +
   theme(axis.title.y = element_blank())</code></pre>
 <pre><code>## Picking joint bandwidth of 0.209</code></pre>
-<p><img src="/post/joy_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="../../"katherinemwood.github.io/"  # End your URL with a `/` trailing slash.post/joy_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>Some people don’t like this overlap (for the aesthetics or because it can obscure the data) so here’s an example if we spread everybody out so that they don’t touch. The amount of overlap is easily controlled by the <code>scale</code> argument in geom_joy. <code>scale = 1</code> means no overlap; the higher this value, the more the distributions will overlap.</p>
 <pre class="r"><code>ggplot(joy, aes(x=value, y=label)) +
   geom_joy(scale=1, rel_min_height=.01) +
@@ -232,7 +232,7 @@ ggplot(joy, aes(x=value, y=label)) +
   theme_joy() +
   theme(axis.title.y = element_blank())</code></pre>
 <pre><code>## Picking joint bandwidth of 0.209</code></pre>
-<p><img src="/post/joy_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="../../"katherinemwood.github.io/"  # End your URL with a `/` trailing slash.post/joy_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>How about some color? Color can be used to separate groups:</p>
 <pre class="r"><code>ggplot(joy, aes(x=value, y=label, fill=as.factor(rank))) +
   geom_joy(scale=1, rel_min_height=.01) +
@@ -242,7 +242,7 @@ ggplot(joy, aes(x=value, y=label)) +
   theme_joy() +
   theme(axis.title.y = element_blank())</code></pre>
 <pre><code>## Picking joint bandwidth of 0.209</code></pre>
-<p><img src="/post/joy_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="../../"katherinemwood.github.io/"  # End your URL with a `/` trailing slash.post/joy_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>Or, if your data doesn’t have grouping structure, it can just be used to break things up a little bit. (See <a href="https://twitter.com/hnrklndbrg/status/883675698300420098">this tweet</a> for another example.)</p>
 <pre class="r"><code>ggplot(joy, aes(x=value, y=label, fill=label)) +
   geom_joy(scale=3, rel_min_height=0.01) +
@@ -253,7 +253,7 @@ ggplot(joy, aes(x=value, y=label)) +
   theme(axis.title.y = element_blank(),
         legend.position=&#39;none&#39;)</code></pre>
 <pre><code>## Picking joint bandwidth of 0.209</code></pre>
-<p><img src="/post/joy_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="../../"katherinemwood.github.io/"  # End your URL with a `/` trailing slash.post/joy_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>How about some joyful facets?</p>
 <pre class="r"><code>ggplot(filter(joy, rank != 5), aes(x=value, y=label)) +
   geom_joy(scale=1, rel_min_height=.03) +
@@ -263,7 +263,7 @@ ggplot(joy, aes(x=value, y=label)) +
   theme_joy() +
   theme(axis.title.y = element_blank())</code></pre>
 <pre><code>## Picking joint bandwidth of 0.212</code></pre>
-<p><img src="/post/joy_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="../../"katherinemwood.github.io/"  # End your URL with a `/` trailing slash.post/joy_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>You can check out <a href="https://cran.r-project.org/web/packages/ggjoy/vignettes/introduction.html">the vignette</a> for more examples and more information. You can also <a href="https://cran.r-project.org/web/packages/ggjoy/ggjoy.pdf">check out the docs</a> for information on, for example, how the density is calculated and what your options are for that.</p>
 <p>If you want to play around with these yourself, you can make up data (like I did) or check out the examples in the vignette for datasets to use that will make cool plots. Who knows–you might even find the iris dataset fun again if you use it to make joyplots.</p>
 
@@ -337,11 +337,11 @@ ggplot(joy, aes(x=value, y=label)) +
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenMax.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/ScrollToPlugin.min.js"></script>
-    <script src="/js/jquery-1.12.3.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/isotope.pkgd.min.js"></script>
+    <script src="../../js/jquery-1.12.3.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/isotope.pkgd.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.1/imagesloaded.pkgd.min.js"></script>
-    <script src="/js/hugo-academic.js"></script>
+    <script src="../../js/hugo-academic.js"></script>
     
 
     

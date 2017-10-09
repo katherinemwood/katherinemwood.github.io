@@ -21,18 +21,18 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
     
   
-  <link rel="stylesheet" href="/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/css/academicons.min.css">
+  <link rel="stylesheet" href="../../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../css/font-awesome.min.css">
+  <link rel="stylesheet" href="../../css/academicons.min.css">
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono">
-  <link rel="stylesheet" href="/css/hugo-academic.css">
+  <link rel="stylesheet" href="../../css/hugo-academic.css">
   
 
   <link rel="alternate" href="https://katherinemwood.github.io/index.xml" type="application/rss+xml" title="Inattentional Coffee">
   <link rel="feed" href="https://katherinemwood.github.io/index.xml" type="application/rss+xml" title="Inattentional Coffee">
 
-  <link rel="icon" type="image/png" href="/img/icon.png">
-  <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="../../img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="../../img/apple-touch-icon.png">
 
   <link rel="canonical" href="https://katherinemwood.github.io/post/violins/">
 
@@ -55,7 +55,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Inattentional Coffee</a>
+      <a class="navbar-brand" href="../../">Inattentional Coffee</a>
     </div>
 
     
@@ -68,7 +68,7 @@
         
 
         <li class="nav-item">
-          <a href="/#posts">
+          <a href="../../#posts">
             
             <span>Blog</span>
           </a>
@@ -80,7 +80,7 @@
         
 
         <li class="nav-item">
-          <a href="/#projects">
+          <a href="../../#projects">
             
             <span>Projects</span>
           </a>
@@ -92,7 +92,7 @@
         
 
         <li class="nav-item">
-          <a href="/#publications">
+          <a href="../../#publications">
             
             <span>Publications</span>
           </a>
@@ -104,7 +104,7 @@
         
 
         <li class="nav-item">
-          <a href="/#about">
+          <a href="../../#about">
             
             <span>About</span>
           </a>
@@ -204,7 +204,7 @@ dat &lt;- data.frame(&#39;condition&#39;=c(rep(&#39;t1&#39;, 30), rep(&#39;t2&#3
   theme_minimal()
 
 print(basic_violin)</code></pre>
-<p><img src="/post/violins_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="../../"katherinemwood.github.io/"  # End your URL with a `/` trailing slash.post/violins_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>These might be more accurately called “jug” or “vase” plots, since they rarely make pretty violin shapes and more often tend to look like postmodern sculpture. Name aside, the violin plot is a rotated, symmetric kernel density plot that shows the density of points at different values. Where the plot is wide, there is a high density of points; where it is narrow, a low density of points (like height on a histogram). We can see here that group T1 is less variable than T2; T1’s violin is short and squat, meaning most of the points are massed in a small region. T2, on the other hand, is tall and narrow, meaning the points are spread thinner along a wider range of values</p>
 <p>These guys looks a little sparse, though. Why don’t we dress them up a smidge?</p>
 <p>Maybe you like a point mean and <span class="math inline">\(2*\)</span>SE error bars:</p>
@@ -220,7 +220,7 @@ mean_se_violin &lt;- ggplot() +
   theme_minimal()
 
 print(mean_se_violin)</code></pre>
-<p><img src="/post/violins_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="../../"katherinemwood.github.io/"  # End your URL with a `/` trailing slash.post/violins_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>Or maybe boxplots are your jam:</p>
 <pre class="r"><code>boxplot_violin &lt;- ggplot(data=dat, aes(x=condition, y=value)) +
   geom_violin(aes(fill=condition, color=condition)) +
@@ -228,7 +228,7 @@ print(mean_se_violin)</code></pre>
   theme_minimal()
 
 print(boxplot_violin)</code></pre>
-<p><img src="/post/violins_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="../../"katherinemwood.github.io/"  # End your URL with a `/` trailing slash.post/violins_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>Here’s the way I like to do my violin plots, with each subject’s point plotted plus a horizontal line for the mean. I add a little horizontal jitter to each point to make things easier to see:</p>
 <pre class="r"><code>scatter_violin &lt;- ggplot(data=dat, aes(x=condition, y=value)) +
   geom_violin(aes(fill=condition, color=condition)) +
@@ -237,7 +237,7 @@ print(boxplot_violin)</code></pre>
   theme_minimal()
 
 print(scatter_violin)</code></pre>
-<p><img src="/post/violins_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="../../"katherinemwood.github.io/"  # End your URL with a `/` trailing slash.post/violins_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>There are a few things I really like about violin plots. One, they add a lot more information without taking up any more space than a bar plot would. Two, they give you an intuitive way to look at the distributions of your data. I don’t think many of us are accustomed to seeing data this way, and it goes to show that even well-behaved data doesn’t necessarily look like we might expect. <code>t1</code> is just as normal as <code>t2</code>, but <code>t1</code> “looks” a lot more normal than <code>t2</code> does. You lose a lot of the characteristics of the data with a bar plot:</p>
 <pre class="r"><code>bar_plot &lt;- ggplot(data=errbar_lims) +
   geom_bar(aes(x=condition, y=mean, fill=condition, color=condition), stat=&#39;identity&#39;, position=&#39;dodge&#39;) +
@@ -246,7 +246,7 @@ print(scatter_violin)</code></pre>
   theme_minimal()
 
 print(bar_plot)</code></pre>
-<p><img src="/post/violins_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="../../"katherinemwood.github.io/"  # End your URL with a `/` trailing slash.post/violins_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>It captures the broad strokes, to be sure, but a lot of the finer details disappear.</p>
 <p>So there you go. Violin plots! Dress ’em up, dress ’em down. However you like them, they’re a nice plot type to have in your arsenal.</p>
 
@@ -320,11 +320,11 @@ print(bar_plot)</code></pre>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenMax.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/ScrollToPlugin.min.js"></script>
-    <script src="/js/jquery-1.12.3.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/isotope.pkgd.min.js"></script>
+    <script src="../../js/jquery-1.12.3.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/isotope.pkgd.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.1/imagesloaded.pkgd.min.js"></script>
-    <script src="/js/hugo-academic.js"></script>
+    <script src="../../js/hugo-academic.js"></script>
     
 
     

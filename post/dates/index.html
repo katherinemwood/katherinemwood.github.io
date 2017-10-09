@@ -21,20 +21,20 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
     
   
-  <link rel="stylesheet" href="/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/css/academicons.min.css">
+  <link rel="stylesheet" href="../../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../css/font-awesome.min.css">
+  <link rel="stylesheet" href="../../css/academicons.min.css">
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono">
-  <link rel="stylesheet" href="/css/hugo-academic.css">
+  <link rel="stylesheet" href="../../css/hugo-academic.css">
   
 
-  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Inattentional Coffee">
-  <link rel="feed" href="/index.xml" type="application/rss+xml" title="Inattentional Coffee">
+  <link rel="alternate" href="../../index.xml" type="application/rss+xml" title="Inattentional Coffee">
+  <link rel="feed" href="../../index.xml" type="application/rss+xml" title="Inattentional Coffee">
 
-  <link rel="icon" type="image/png" href="/img/icon.png">
-  <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="../../img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="../../img/apple-touch-icon.png">
 
-  <link rel="canonical" href="/post/dates/">
+  <link rel="canonical" href="../../post/dates/">
 
   
 
@@ -55,7 +55,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Inattentional Coffee</a>
+      <a class="navbar-brand" href="../../">Inattentional Coffee</a>
     </div>
 
     
@@ -68,7 +68,7 @@
         
 
         <li class="nav-item">
-          <a href="/#posts">
+          <a href="../../#posts">
             
             <span>Blog</span>
           </a>
@@ -80,7 +80,7 @@
         
 
         <li class="nav-item">
-          <a href="/#projects">
+          <a href="../../#projects">
             
             <span>Projects</span>
           </a>
@@ -92,7 +92,7 @@
         
 
         <li class="nav-item">
-          <a href="/#publications">
+          <a href="../../#publications">
             
             <span>Publications</span>
           </a>
@@ -104,7 +104,7 @@
         
 
         <li class="nav-item">
-          <a href="/#about">
+          <a href="../../#about">
             
             <span>About</span>
           </a>
@@ -199,7 +199,7 @@
 <h1>Storing dates</h1>
 <p><code>POSIXct</code> is the number of seconds since 12:00 am on January 1st, 1970 (UTC), also known as “unix time.” While it may seem ludicrous to represent time this way (as one giant number), this actually has a lot of advantages. You don’t have to worry about time zone conversions, and having the time as just a number makes it a lot easier for machines to handle. For human readability, you have to run conversions for day, month, year, and time.</p>
 <pre class="r"><code>as.POSIXct(Sys.Date())</code></pre>
-<pre><code>## [1] &quot;2017-07-14 19:00:00 CDT&quot;</code></pre>
+<pre><code>## [1] &quot;2017-10-07 19:00:00 CDT&quot;</code></pre>
 <p><code>POSIXlt</code> is a more human-readable form of the time. It is a named list of vectors that includes all of the information you could want about a date.</p>
 <pre class="r"><code>plt &lt;- as.POSIXlt(Sys.Date())
 objects(plt)</code></pre>
@@ -226,12 +226,12 @@ objects(plt)</code></pre>
   <nav>
   <ul class="pager">
     
-    <li class="previous"><a href="/post/prereg/"><span
+    <li class="previous"><a href="../../post/prereg/"><span
       aria-hidden="true">&larr;</span> Considerations when writing a preregistration if you&#39;re new to all this</a></li>
     
 
     
-    <li class="next"><a href="/post/ggplot_forest/">Annotated forest plots in ggplot <span
+    <li class="next"><a href="../../post/ggplot_forest/">Annotated forest plots in ggplot <span
       aria-hidden="true">&rarr;</span></a></li>
     
   </ul>
@@ -287,11 +287,11 @@ objects(plt)</code></pre>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenMax.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/ScrollToPlugin.min.js"></script>
-    <script src="/js/jquery-1.12.3.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/isotope.pkgd.min.js"></script>
+    <script src="../../js/jquery-1.12.3.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/isotope.pkgd.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.1/imagesloaded.pkgd.min.js"></script>
-    <script src="/js/hugo-academic.js"></script>
+    <script src="../../js/hugo-academic.js"></script>
     
 
     

@@ -1,0 +1,67 @@
+---
+date: 2017-09-01T11:34:43-05:00
+title: "Working with directories and lists of files in R"
+comments: true
+summary: " "
+draft: true
+---
+
+Having lots of files in different places can pose a problem for making code robust. If you have to read in a lot of files, or scan through a bunch of directories, ideally you want your code to be agnostic as to how many items there are and what the filenames are.
+
+R has several functions that make it easy to list files and navigate through directories so you can source in files or read in data without having to mess around with getwd() and setwd(), which is generally not advised.
+
+#0. Use relative paths to make your life easier
+
+Relative paths are defined relative to your current directory (as opposed to "absolute paths"). Think of it this way: a relative path is like telling some one, "from where we're standing, walk down the hall, go up one flight of stairs, then take the first left." An absolute path is like saying, "Go to Apartment 123." The problem with absolute paths is that if someone else wants to use your code, they have to either change the directions or set up their system to look just like yours. With relative paths, they just have to keep the structure of the files the same.
+
+This is what the difference looks like in R itself.
+
+A relative path assumes that the working directory is the root. You just refer to the subdirectory by name; since it is relative to the current directory, R should be able to find it no problem. You can also prepend the path with `.`, which simply specifies the current working directory.
+
+```{r eval=FALSE}
+read.csv('data/my_file.csv')
+#same as:
+read.csv('./data/my_file.csv')
+```
+
+An absolute path, on the other hand, specifies the precise location.
+
+```{r eval=FALSE}
+read.csv('/Users/me/my_stuff/documents/R_stuff/my_project/data/my_file.csv')
+```
+
+You can probably see why this would cause problems for someone else trying to use your code; they'll have to change this line to get it to work, but wouldn't have to change the relative path as long as they maintained your file structure.
+
+You can even avoid having to set the working directory to the right place to begin with if you use an R Project file. R Projects automatically set the working directory to wherever they're located on startup!
+
+See [this](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects) for more info on Projects.
+
+#1. I need to get all the files in a single directory
+
+Use `dir()` or `list.files()`! They are identical (literally). These functions return a list of the files in the specified directory. They also take a number of arguments that will help you get exactly the files you want and none of the ones you don't. You can specify a `pattern` with some regex to limit the files that get listed, such as ones that follow a certain format or end in a certain extension. This is handy if you have a bunch of different filetypes in the same directory but only want the csvs, for instance.
+
+Here's how I would list just the RMarkdown files for my blogposts, for instance:
+
+```{r}
+dir(pattern='*.Rmd')
+```
+
+#2. I need to get all the files in ALL the directories.
+
+You can specify the `recursive` option in the above functions. If you set this to `TRUE`, R will list all files in each subdirectory, all the way down. If you have folders-in-folders and still want to list all the files, this is the option for you. R automatically includes the path in the output with this option, so you can keep everyone's location straight.
+
+#4. I need to get all the subdirectories in my directory
+
+Use `list.dirs()`. This will only list the directories instead of all the files, and also has `pattern` and `recursive` options.
+
+#5. I need to source in a bunch of scripts, but they need to be sourced in the context of their own directory!
+
+It turns out that you can do this without ever calling `setwd()`. In the `source()` function, there's an argument called `chdir`. It's `FALSE` by default, which means the file sources into your current working directory. However, if you set it to `TRUE`, R temporarily changes the working directory to whatever path you specify, evaluates the file, and then changes the directory back.
+
+Here's an example of how these functions can work together to automate working with a bunch of subdirectories in a huge project I was working on.
+
+
+
+
+
+There are also a bunch of functions for creating and deleting files or directories, creating temporary files or directories, and getting more detailed info on everything. Try checking out `?files` for a taste!
