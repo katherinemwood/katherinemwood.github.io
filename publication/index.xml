@@ -7,8 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Katherine</copyright>
-    <lastBuildDate>Mon, 07 Aug 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 11 Oct 2017 00:00:00 +0000</lastBuildDate>
     <atom:link href="/publication/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>The role of similarity in inattentional blindness: Selective enhancement, selective suppression, or both?</title>
+      <link>https://katherinemwood.github.io/publication/ib_similarity/</link>
+      <pubDate>Wed, 11 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://katherinemwood.github.io/publication/ib_similarity/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Selective attention in inattentional blindness: Selection is specific but suppression is not</title>

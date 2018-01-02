@@ -11,6 +11,77 @@
     <atom:link href="/post/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Improving a data visualization: Connecticut edition</title>
+      <link>https://katherinemwood.github.io/post/vizfix/</link>
+      <pubDate>Sat, 16 Dec 2017 15:11:42 -0600</pubDate>
+      
+      <guid>https://katherinemwood.github.io/post/vizfix/</guid>
+      <description>&lt;p&gt;I came across a graph not long ago that I immediately saved for later use. Making clean, effective data visualizations is hard, and there is always someone waiting to gleefuly inform you that you’ve messed it up in one way or another. Sometimes these are minor aesthetic quibbles, and the visualization still manages to communicate what it needs to effectively.&lt;/p&gt;
+&lt;p&gt;Other times, missteps make the graph harder to interpret, and put too much onus on the viewer to make sense of what they’re seeing.&lt;/p&gt;
+&lt;p&gt;This was one of those latter cases.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;../img/cap_gains.jpg&#34; title=&#34;Connecticut Tax Report&#34; /&gt;
+
+&lt;/div&gt;
+&lt;p&gt;There is a lot going on here. It’s extremely difficult to parse this correctly. We’ve got:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Two y-axes on two different scales, meaning that two radically different values show up as overlapping, and very similar values appear to be much farther apart than they ought to be&lt;/li&gt;
+&lt;li&gt;Two y-axes and no way to tell which set of data goes with which axis without a legend&lt;/li&gt;
+&lt;li&gt;The same data type (growth rate) represented by two separate y-axes scaled to different values&lt;/li&gt;
+&lt;li&gt;In addition to the two axes, every data point is annotated in the graph itself (which should obviate the need for axes, or vice-versa)&lt;/li&gt;
+&lt;li&gt;These labels have inconsistent positions, and sometimes both points are labeled, and sometimes only one is&lt;/li&gt;
+&lt;li&gt;Data of the same type (value over time) represented by two different formats, a bar and a line, providing stark visual difference and therefore implying difference in the data itself even though none exists&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In the defense of the graph and its makers, some of these choices make sense &lt;em&gt;in a way&lt;/em&gt;. The cap gains growth varies a lot more than the enconomic growth rate, which could make it harder to see the take-home pattern. The smaller fluctuations in the income tax growth rate could get swamped by the much larger swings in cap gains. I think, though, that in an effort to get around this problem (if that was the reason), more were introduced.&lt;/p&gt;
+&lt;p&gt;This graph has a straightforward message it wants to communicate: cap gains and state income tax vary together. When one goes up, so does the other; when one falls, the other tumbles after. This is the message the graph should communicate. Let’s see if we can rework this a little bit.&lt;/p&gt;
+&lt;p&gt;Since this is just an excersize, I’m not going to fret too much about recovering &lt;em&gt;exactly&lt;/em&gt; the right values. Most of them are helpfully labeled, but for the handful that aren’t I’ll just eyeball it from the graph.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ct &amp;lt;- data.frame(&amp;#39;type&amp;#39;=rep(c(&amp;#39;Capital Gains&amp;#39;, &amp;#39;Income Tax&amp;#39;), each=14),
+                 &amp;#39;year&amp;#39;=rep(2001:2014, 2),
+                 &amp;#39;growth_rate&amp;#39;=c(30, -52, -17, 40, 23, 30, 17, 32, -60,
+                                 -40, 93, -10, 46, -9,
+                                 19, -23.5, -14.7, 21.9, 22.8, 19.4, 13,
+                                 17.9, -27.3, -21.3, 27.7, .3, 21.9, -.9))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Let’s just see how things look if we do a straightforward connected line graph. On the y-axis will simply be the growth rate, on the x-axis, the fiscal year. Cap gains and income tax will be connected lines, colored accordingly.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
+
+gains &amp;lt;- ggplot(data=ct, aes(x=year, y=growth_rate, color=type)) +
+  geom_point() +
+  geom_line() +
+  theme_minimal()
+
+print(gains)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;../post/vizfix_files/figure-html/rough_line-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;That doesn’t look too bad for a first step! The trends are still very visible–you can still clearly see that at every data point cap gains tracks with income tax. The difference in scales doesn’t actually obscure the pattern, and you can still see the changes for income tax even though they are smaller.&lt;/p&gt;
+&lt;p&gt;We’re not done yet, though. Let’s clean this up some more. We’ll need to fix the labels, put each year visible on the x-axis, make the y-axis intervals a little more granular, and add a line at 0 to make it obvious when things dip into the negative.&lt;/p&gt;
+&lt;p&gt;I’ll reproduce the entire plotting syntax, for clarity.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gains_tweaks &amp;lt;- ggplot(data=ct, aes(x=year, y=growth_rate, color=type)) +
+  geom_hline(yintercept=0, color=&amp;#39;darkgray&amp;#39;) +
+  geom_line() +
+  geom_point() +
+  labs(title = &amp;quot;When Investments Falter, So Does Connecticut&amp;quot;,
+       subtitle = &amp;quot;Annual Percentage Change in State Income Tax vs. Capital Gains&amp;quot;,
+       caption = &amp;quot;Note: Capital Gains are for the immediately preceding calendar year.&amp;quot;,
+       y = &amp;quot;Growth Rate (%)&amp;quot;,
+       x = &amp;quot;Fiscal Year&amp;quot;,
+       color=NULL) +
+  scale_y_continuous(breaks=seq(-60,100, by=20)) +
+  scale_x_continuous(breaks=seq(2001, 2014, by=2)) +
+  theme_minimal() +
+  theme(panel.grid.minor = element_blank(),
+        plot.caption = element_text(hjust=0, size=10),
+        plot.title = element_text(margin=margin(0, 0, 5, 0)),
+        plot.subtitle = element_text(margin=margin(0, 0, 10, 0)),
+        axis.title.x = element_text(margin=margin(10, 0, 10, 0)))
+
+print(gains_tweaks)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;../post/vizfix_files/figure-html/clean_gains-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;That’s an improvement, I’d say. One could quibble about details here and there (but don’t, you know, feel obligated to). Regardless, now we have something that’s much easier to digest. One y-axis for general growth rate, and both types of data are represented by the same visual technique. A lot of visual clutter pruned away.&lt;/p&gt;
+&lt;p&gt;In the end, it still communicates the core idea: these two values vary together. If anything it’s a little clearer in this case anyway, because we can see that the two lines have the same shape over the years as they rise and fall.&lt;/p&gt;
+&lt;p&gt;This turned out to be a surprisingly fun exercise. Looking at a visualization and thinking carefully about how you would do it yourself (better, or just differently) is a great way to practice.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Pre-screen MTurk workers with custom qualifications</title>
       <link>https://katherinemwood.github.io/post/qualifications/</link>
       <pubDate>Mon, 09 Oct 2017 15:25:40 -0500</pubDate>
@@ -22,7 +93,11 @@
 &lt;p&gt;You can get pretty sophisticated with handling these qualifications, and there is a lot more detail on the &lt;a href=&#34;http://docs.aws.amazon.com/AWSMechTurk/latest/AWSMechanicalTurkRequester/Concepts_QualificationsArticle.html&#34;&gt;AWS documentation pages&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Here, I’m going to demonstrate how to make a qualification test that auto-scores itself using the boto3 library for Python. It’s a simple, 2-question colorblindness test (you can view it on the worker sandbox &lt;a href=&#34;https://workersandbox.mturk.com/mturk/requestqualification?qualificationId=3CFGE88WF7UDUETM7YP3RSRD73VS4F&#34;&gt;here&lt;/a&gt;; sign-in required) that first asks people to self-report any known issues with their color vision, and then has them respond to an Ishihara plate. Here’s what it looks like to a worker:&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 &lt;img src=&#34;../img/qualification_test.png&#34; alt=&#34;a qualification test in the wild&#34; /&gt;
+=======
+&lt;img src=&#34;https://github.com/katherinemwood/katherinemwood.github.io/blob/sources/qualification_test.png&#34; alt=&#34;a qualification test in the wild&#34; /&gt;
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; e08752c6c5d1082b199e2a3b28e25274de7966f2
 &lt;p class=&#34;caption&#34;&gt;a qualification test in the wild&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;With this test, instead of asking about colorblindness during the HIT itself and having to throw data out after the fact, I can restrict participation to people who pass this short test.&lt;/p&gt;
@@ -2189,52 +2264,6 @@ plot_es(n200, 0)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;For me, this really drives home just how important replications and meta-analyses–cumulative science in general, really–are, particularly for estimation. When you do a lot of these studies over and over again, as these simulations model, you’ll zero in on the true effect, but a study can’t do it alone.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://katherinemwood.shinyapps.io/effect_size/&#34;&gt;The Shiny app can be found here&lt;/a&gt;. You can tweak group size, true effect size, how many simulations are run, and the limits on the x-axis. You can also view a plot of the corresponding p-values.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/katherinemwood/es_variation&#34;&gt;The source code can be found here.&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Open Science in Practice</title>
-      <link>https://katherinemwood.github.io/post/open_sci/</link>
-      <pubDate>Mon, 26 Jun 2017 13:48:35 -0500</pubDate>
-      
-      <guid>https://katherinemwood.github.io/post/open_sci/</guid>
-      <description>&lt;p&gt;I will finish grad school a child of the replication crisis. My year and a half in grad school has been marked by bombshell failures-to-replicate, increasing adoption of Bayesian methods, and wider recognition of the insidious effects of questionable research practices.&lt;/p&gt;
-&lt;p&gt;In many ways, I’m lucky. I didn’t have to make changes to the way I did things to adhere to better practices. I got to start with openness as one of the core tenets of how I conduct my research, and starting fresh is always easier than having to alter pre-existing patterns of behavior. It also helps to have a huge proponent of replication and open science as an advisor and to have come in at a time when there’s fantastic infrastructure in place.&lt;/p&gt;
-&lt;p&gt;Here’s an example of what my process looks like. A lot of this has already been said by better minds, and none of what I do is revolutionary. But it can, perhaps, serve as an illustration of what it looks like to actually build these practices into your workflow.&lt;/p&gt;
-&lt;div id=&#34;planning-and-preregistration&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;1. Planning and preregistration&lt;/h2&gt;
-&lt;p&gt;Once my advisor and I have finalized the approach to our next experiment, the preparation phase begins. I write-up and test my experiment script by running through the entire thing, as a subject would (and try to break it as a subject might).&lt;/p&gt;
-&lt;p&gt;Because I’ve written the experiment script, I know exactly how the data will be saved out. This lets me write the entire analysis script, including wrangling, pre-processing, and figure generation. I test the functionality of the script on dummy data I generate during testing my experiment and make sure it runs properly.&lt;/p&gt;
-&lt;p&gt;After this is done, it’s time to preregister–I like to do so at the &lt;a href=&#34;https://osf.io/&#34;&gt;Open Science Framework&lt;/a&gt;. I outline my hypotheses and upload hypothetical data figures if my predictions are sufficiently specific. I describe all of my experiment methods in gory detail, including all measures collected, and attach my experimental script and any stimuli I use. I detail exactly which hypotheses I’m going to test, and how (which statistical test; how many tails, if applicable; the values of any parameters, such as priors for Bayes Factors, etc.). I explicitly state how many subjects we’ll be running and how we’re going to exclude subjects from analysis. I also upload my analysis script and any helper functions or files.&lt;/p&gt;
-&lt;p&gt;Once all of these things are in place, I preregister the project. My preferred method is to enter it into embargo, and then make the project public after the paper has been submitted.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;data-collection&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;2. Data collection&lt;/h2&gt;
-&lt;p&gt;This tends to be uneventful, since everything has been battle-tested and all decision have already been made. I do not examine the data, even just to look, as it comes in, so that if something unforeseen emerges that requires a change to protocol, I can make a new preregistration on OSF and affirm that it has been done in absence of knowledge of the data. I collect as many subjects as I said I would in my preregistration.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;analysis&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;3. Analysis&lt;/h2&gt;
-&lt;p&gt;This also goes lightning-fast, because the script is already written. I just run the data through it, and know the results that I will be reporting as confirmatory immediately (no strolls through the garden of forking paths). This is great for me, because I cannot handle suspense when it comes to knowing the outcome of my experiments.&lt;/p&gt;
-&lt;p&gt;That done, I can then poke around a little and explore the data if I wish, or do some robustness analyses. Anything that comes from this needs to be reported as exploratory if it is reported at all.&lt;/p&gt;
-&lt;p&gt;I make sure to plot my raw data. Ideally I like to plot it along with my summary values in something like a violin plot (I like to do the raw points over the violin density graph, plus a line showing the mean and maybe some confidence intervals). It’s always a good idea to know the ins and outs of your data, which requires knowing what the raw distributions look like.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;post-raw-data&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;4. Post raw data&lt;/h2&gt;
-&lt;p&gt;After the analysis is done, I add the raw data in its entirety to the project’s OSF page and include with it a README that provides detailed instructions on how to interpret the data. This has the nice added benefit of creating a secure backup of my data then and there.&lt;/p&gt;
-&lt;p&gt;The project is still private at this point.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;reporting&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;5. Reporting&lt;/h2&gt;
-&lt;p&gt;After repeating steps 1-4 as necessary for follow-up experiments, I write up the manuscript. The methods section is easy, as I pretty much wrote it already back in step 1. I make sure to include a link to my OSF page for the project, which I make public when submitting the manuscript, and include language making it clear that we report all conditions and measures.&lt;/p&gt;
-&lt;p&gt;When we report our stats, we include all information necessary to recreate our analyses. This means correlations for within-subjects designs and cell means for ANOVAs. We also make sure to report how many people were excluded and what proportion of our sample that represents, and how many people ended up assigned to each condition, if applicable.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;pre-prints&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;6. Pre-prints&lt;/h2&gt;
-&lt;p&gt;After the manuscript has been accepted (I’ll take Wishful Thinking for $800, Alex), I upload a preprint of the accepted version to PsyarXiv. I will do this for all of my papers, but I think it’s especially important in cases where one cannot publish open access. Most journals will tell you what the policy is regarding posting the paper to external sources.&lt;/p&gt;
-&lt;p&gt;You can, of course, post a preprint before the paper has been accepted (most of the time this will not preclude later publishing in a journal), but my papers tend to undergo radical transformation during peer review, so I prefer to post a more final version.&lt;/p&gt;
-&lt;p&gt;And that’s my process. Integrating open science and best research practices takes a little practice, but once you’ve gotten comfortable with your workflow it’s as easy as any other habit (and comes with a lot of benefits for your trouble).&lt;/p&gt;
-&lt;p&gt;This workflow works pretty well for me, but I think it can be better. This year I would like to start using figshare, and do version control for my scripts with GitHub, and look into using RMarkdown for papers. There’s always more to learn!&lt;/p&gt;
-&lt;/div&gt;
 </description>
     </item>
     

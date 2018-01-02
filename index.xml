@@ -11,6 +11,86 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Improving a data visualization: Connecticut edition</title>
+      <link>https://katherinemwood.github.io/post/vizfix/</link>
+      <pubDate>Sat, 16 Dec 2017 15:11:42 -0600</pubDate>
+      
+      <guid>https://katherinemwood.github.io/post/vizfix/</guid>
+      <description>&lt;p&gt;I came across a graph not long ago that I immediately saved for later use. Making clean, effective data visualizations is hard, and there is always someone waiting to gleefuly inform you that you’ve messed it up in one way or another. Sometimes these are minor aesthetic quibbles, and the visualization still manages to communicate what it needs to effectively.&lt;/p&gt;
+&lt;p&gt;Other times, missteps make the graph harder to interpret, and put too much onus on the viewer to make sense of what they’re seeing.&lt;/p&gt;
+&lt;p&gt;This was one of those latter cases.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;./img/cap_gains.jpg&#34; title=&#34;Connecticut Tax Report&#34; /&gt;
+
+&lt;/div&gt;
+&lt;p&gt;There is a lot going on here. It’s extremely difficult to parse this correctly. We’ve got:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Two y-axes on two different scales, meaning that two radically different values show up as overlapping, and very similar values appear to be much farther apart than they ought to be&lt;/li&gt;
+&lt;li&gt;Two y-axes and no way to tell which set of data goes with which axis without a legend&lt;/li&gt;
+&lt;li&gt;The same data type (growth rate) represented by two separate y-axes scaled to different values&lt;/li&gt;
+&lt;li&gt;In addition to the two axes, every data point is annotated in the graph itself (which should obviate the need for axes, or vice-versa)&lt;/li&gt;
+&lt;li&gt;These labels have inconsistent positions, and sometimes both points are labeled, and sometimes only one is&lt;/li&gt;
+&lt;li&gt;Data of the same type (value over time) represented by two different formats, a bar and a line, providing stark visual difference and therefore implying difference in the data itself even though none exists&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In the defense of the graph and its makers, some of these choices make sense &lt;em&gt;in a way&lt;/em&gt;. The cap gains growth varies a lot more than the enconomic growth rate, which could make it harder to see the take-home pattern. The smaller fluctuations in the income tax growth rate could get swamped by the much larger swings in cap gains. I think, though, that in an effort to get around this problem (if that was the reason), more were introduced.&lt;/p&gt;
+&lt;p&gt;This graph has a straightforward message it wants to communicate: cap gains and state income tax vary together. When one goes up, so does the other; when one falls, the other tumbles after. This is the message the graph should communicate. Let’s see if we can rework this a little bit.&lt;/p&gt;
+&lt;p&gt;Since this is just an excersize, I’m not going to fret too much about recovering &lt;em&gt;exactly&lt;/em&gt; the right values. Most of them are helpfully labeled, but for the handful that aren’t I’ll just eyeball it from the graph.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ct &amp;lt;- data.frame(&amp;#39;type&amp;#39;=rep(c(&amp;#39;Capital Gains&amp;#39;, &amp;#39;Income Tax&amp;#39;), each=14),
+                 &amp;#39;year&amp;#39;=rep(2001:2014, 2),
+                 &amp;#39;growth_rate&amp;#39;=c(30, -52, -17, 40, 23, 30, 17, 32, -60,
+                                 -40, 93, -10, 46, -9,
+                                 19, -23.5, -14.7, 21.9, 22.8, 19.4, 13,
+                                 17.9, -27.3, -21.3, 27.7, .3, 21.9, -.9))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Let’s just see how things look if we do a straightforward connected line graph. On the y-axis will simply be the growth rate, on the x-axis, the fiscal year. Cap gains and income tax will be connected lines, colored accordingly.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
+
+gains &amp;lt;- ggplot(data=ct, aes(x=year, y=growth_rate, color=type)) +
+  geom_point() +
+  geom_line() +
+  theme_minimal()
+
+print(gains)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;./post/vizfix_files/figure-html/rough_line-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;That doesn’t look too bad for a first step! The trends are still very visible–you can still clearly see that at every data point cap gains tracks with income tax. The difference in scales doesn’t actually obscure the pattern, and you can still see the changes for income tax even though they are smaller.&lt;/p&gt;
+&lt;p&gt;We’re not done yet, though. Let’s clean this up some more. We’ll need to fix the labels, put each year visible on the x-axis, make the y-axis intervals a little more granular, and add a line at 0 to make it obvious when things dip into the negative.&lt;/p&gt;
+&lt;p&gt;I’ll reproduce the entire plotting syntax, for clarity.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gains_tweaks &amp;lt;- ggplot(data=ct, aes(x=year, y=growth_rate, color=type)) +
+  geom_hline(yintercept=0, color=&amp;#39;darkgray&amp;#39;) +
+  geom_line() +
+  geom_point() +
+  labs(title = &amp;quot;When Investments Falter, So Does Connecticut&amp;quot;,
+       subtitle = &amp;quot;Annual Percentage Change in State Income Tax vs. Capital Gains&amp;quot;,
+       caption = &amp;quot;Note: Capital Gains are for the immediately preceding calendar year.&amp;quot;,
+       y = &amp;quot;Growth Rate (%)&amp;quot;,
+       x = &amp;quot;Fiscal Year&amp;quot;,
+       color=NULL) +
+  scale_y_continuous(breaks=seq(-60,100, by=20)) +
+  scale_x_continuous(breaks=seq(2001, 2014, by=2)) +
+  theme_minimal() +
+  theme(panel.grid.minor = element_blank(),
+        plot.caption = element_text(hjust=0, size=10),
+        plot.title = element_text(margin=margin(0, 0, 5, 0)),
+        plot.subtitle = element_text(margin=margin(0, 0, 10, 0)),
+        axis.title.x = element_text(margin=margin(10, 0, 10, 0)))
+
+print(gains_tweaks)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;./post/vizfix_files/figure-html/clean_gains-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;That’s an improvement, I’d say. One could quibble about details here and there (but don’t, you know, feel obligated to). Regardless, now we have something that’s much easier to digest. One y-axis for general growth rate, and both types of data are represented by the same visual technique. A lot of visual clutter pruned away.&lt;/p&gt;
+&lt;p&gt;In the end, it still communicates the core idea: these two values vary together. If anything it’s a little clearer in this case anyway, because we can see that the two lines have the same shape over the years as they rise and fall.&lt;/p&gt;
+&lt;p&gt;This turned out to be a surprisingly fun exercise. Looking at a visualization and thinking carefully about how you would do it yourself (better, or just differently) is a great way to practice.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>The role of similarity in inattentional blindness: Selective enhancement, selective suppression, or both?</title>
+      <link>https://katherinemwood.github.io/publication/ib_similarity/</link>
+      <pubDate>Wed, 11 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://katherinemwood.github.io/publication/ib_similarity/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Pre-screen MTurk workers with custom qualifications</title>
       <link>https://katherinemwood.github.io/post/qualifications/</link>
       <pubDate>Mon, 09 Oct 2017 15:25:40 -0500</pubDate>
@@ -22,7 +102,11 @@
 &lt;p&gt;You can get pretty sophisticated with handling these qualifications, and there is a lot more detail on the &lt;a href=&#34;http://docs.aws.amazon.com/AWSMechTurk/latest/AWSMechanicalTurkRequester/Concepts_QualificationsArticle.html&#34;&gt;AWS documentation pages&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Here, I’m going to demonstrate how to make a qualification test that auto-scores itself using the boto3 library for Python. It’s a simple, 2-question colorblindness test (you can view it on the worker sandbox &lt;a href=&#34;https://workersandbox.mturk.com/mturk/requestqualification?qualificationId=3CFGE88WF7UDUETM7YP3RSRD73VS4F&#34;&gt;here&lt;/a&gt;; sign-in required) that first asks people to self-report any known issues with their color vision, and then has them respond to an Ishihara plate. Here’s what it looks like to a worker:&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 &lt;img src=&#34;./img/qualification_test.png&#34; alt=&#34;a qualification test in the wild&#34; /&gt;
+=======
+&lt;img src=&#34;https://github.com/katherinemwood/katherinemwood.github.io/blob/sources/qualification_test.png&#34; alt=&#34;a qualification test in the wild&#34; /&gt;
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; e08752c6c5d1082b199e2a3b28e25274de7966f2
 &lt;p class=&#34;caption&#34;&gt;a qualification test in the wild&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;With this test, instead of asking about colorblindness during the HIT itself and having to throw data out after the fact, I can restrict participation to people who pass this short test.&lt;/p&gt;
@@ -2077,127 +2161,6 @@ abline(v=c(mean(boot_es), lb_es, ub_es), col=rep(&amp;#39;red&amp;#39;, 3), lty=
 &lt;a href=&#34;https://cran.r-project.org/web/packages/bootES/bootES.pdf&#34;&gt;bootES&lt;/a&gt; (for effect sizes in particular)&lt;/p&gt;
 &lt;p&gt;And of course, if you want a really deep dive, you can check out the original book:&lt;/p&gt;
 &lt;p&gt;Efron &amp;amp; Tibshirani, &lt;em&gt;An Introduction to the Bootstrap.&lt;/em&gt; Chapman &amp;amp; Hall/CRC, 1993.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Program better, for fun and for profit</title>
-      <link>https://katherinemwood.github.io/post/programming/</link>
-      <pubDate>Mon, 26 Jun 2017 14:35:49 -0500</pubDate>
-      
-      <guid>https://katherinemwood.github.io/post/programming/</guid>
-      <description>&lt;p&gt;Psych researchers have a bit of a reputation for being, shall we say, less-than-delicate programmers. It’s common to hear “it doesn’t matter if it’s ugly, as long as it works.”&lt;/p&gt;
-&lt;p&gt;I took computer science classes as an undergrad, and style was rigidly enforced. I had one notoriously strict professor who would dock up to a grade on an otherwise completely functional project if it was ugly. It wasn’t just simple elitism; ugly code is often inefficient code, and ugly code is hard to read and understand.&lt;/p&gt;
-&lt;p&gt;Code quality is something I’m constantly working on. You can see the development in my scripts; I only recently started using dplyr and the rest of the tidyverse in R, and what a difference it’s made to the quality of my code. I cringe a little, looking back at my earliest scripts (and they’re a matter of public record, forever). Cringe is good, though. Cringe signals improvement, and wisdom gained.&lt;/p&gt;
-&lt;p&gt;I thought I’d share a few of the practices that were drilled into me during my CS education that have helped improve the style, quality, and readability of my code.&lt;/p&gt;
-&lt;div id=&#34;comment-your-code.&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;1. Comment your code.&lt;/h1&gt;
-&lt;p&gt;Please. If not for others, then for your future self. You will neither remember nor understand your code in the future as well as you think you will. I don’t to it as thoroughly as I ought; I’m not sure anyone does. This is easy to change, and doesn’t take much effort.&lt;/p&gt;
-&lt;p&gt;Functions should be commented with what their inputs are, what it does to those inputs, and what it returns. For a gold star, you can include examples of input and output.&lt;/p&gt;
-&lt;p&gt;For example:&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;&amp;#39;&amp;#39;&amp;#39;
-A function that takes in a list of integers X
-and returns the arithmetic mean in floating-point
-form.
-&amp;#39;&amp;#39;&amp;#39;
-def mean(x):
-    return(sum(x)/float(len(x)))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Global variables should be commented with what they are and how they’re used, so that you can change them without having to dig back through the code to make sure you understand what the variable does.&lt;/p&gt;
-&lt;p&gt;Commenting code makes it much easier for others to understand, and it cuts way down on re-learning if you have to go back and revisit old code.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;use-sensible-variable-and-function-names.&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;2. Use sensible variable and function names.&lt;/h1&gt;
-&lt;p&gt;It very rapidly becomes impossible to tell what is happening when all variables are named &lt;code&gt;x&lt;/code&gt;, &lt;code&gt;x1&lt;/code&gt;, &lt;code&gt;x2&lt;/code&gt;, or &lt;code&gt;tmp&lt;/code&gt;. While we want variable names to be succinct, they should also make sense and be recognizable. Degrees of freedom can be &lt;code&gt;df&lt;/code&gt;. A subject’s height could be &lt;code&gt;subj_height&lt;/code&gt;, rather than, say, &lt;code&gt;h&lt;/code&gt; or &lt;code&gt;s_h&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;This is also good to do when you’re subsetting data. You don’t want to confuse yourself or others about which variable represents the full dataset, and which represents a subset!&lt;/p&gt;
-&lt;p&gt;Functions should also, ideally, be named after what they do. &lt;code&gt;cartesian_to_polar(x, y)&lt;/code&gt; is obvious (if you know your coordinate systems); &lt;code&gt;c2p(x, y)&lt;/code&gt; less so.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;avoid-hardcoding.&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;3. Avoid hardcoding.&lt;/h1&gt;
-&lt;p&gt;“Hardcoding” is the practice of writing explicit, fixed values into functions and scripts instead of variables. So if you had a run_experiment function, hardcoded to do 100 trials, it might look like this:&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;def run_experiment():
-    for i in range(100):
-        do_trial(i)
-do_other_stuff(i)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;And then maybe at the end of the script, you have to reference the number of trials again, maybe to calculate percent correct:&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;#let&amp;#39;s assume for convenience that yes_responses is a list of bools
-correct_resp = sum(yes_responses)/100&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;This works fine, but what if you decide to change the number of trials? Then you’ll have to hunt back through every place you used 100 and change it. What would be a lot easier is to define a variable, num_trials, at the beginning of your script. Then, every time you need to reference this number, use num_trials rather than the hard number. Then, if you change your mind, you only have to change the value of num_trials to change its value everywhere else in the script.&lt;/p&gt;
-&lt;p&gt;This is especially relevant for experiment scripts, in which values might change over the course of development, or need to change during the experiment itself with the condition or trial type. It’s much more convenient to have all of you parameters mapped to variables in one place so that you only have to change them once to change behavior everywhere. Changes become easy and quick, and it will save heartache.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;think-modular.&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;4. Think modular.&lt;/h1&gt;
-&lt;p&gt;Break routines and operations into functions, particularly if you have to do them over and over again. For example, if you’re writing an experiment, you might want to have a function that handles a single trial, with some inputs that can be adjusted. Maybe you have long-exposure trials and short-exposure trials, for instance. It’s nice to be able to call &lt;code&gt;do_trial(long_ontime)&lt;/code&gt; or &lt;code&gt;do_trial(short_ontime)&lt;/code&gt;, rather than having all of that logic imbedded in one monster script. If you need more flexibility, just write the function to accept more variables and pass them in.&lt;/p&gt;
-&lt;p&gt;If you have a function that you use a lot (I have one for saving out data), you can keep it in a separate file and source it in each time you need it, rather than rewriting it each time. Being able to re-use your code saves time and effort.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;be-succinct.&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;5. Be succinct.&lt;/h1&gt;
-&lt;p&gt;Often, there’s a verbose way to do something, and a concise way to do something. For instance, in Python, you can very often replace for-loops with list comprehensions. In R, just about every for-loop can be replaced with a combination of calls to the venerable &lt;code&gt;apply&lt;/code&gt; family of functions or to higher-order functions like &lt;code&gt;Reduce&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;The &lt;a href=&#34;https://cran.r-project.org/web/packages/tidyverse/index.html&#34;&gt;&lt;code&gt;tidyverse&lt;/code&gt;&lt;/a&gt;, a diverse set of packages for R, makes many common data manipulation commands into short primitives. This can clean up and shorten code substantially, especially when extensive data manipulation is involved (see &lt;a href=&#34;https://katherinemwood.github.io/post/wrangling/&#34;&gt;this post&lt;/a&gt; for examples of it in action and how it compares to other base methods). It tends to be less verbose and more readable, although the latter is subjective to a point.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;unit-test.&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;6. Unit-test.&lt;/h1&gt;
-&lt;p&gt;This is an example of doing more work now to do less work later. I’ve fallen out of the habit of unit-testing, but with the new year comes an opportunity to return to core values.&lt;/p&gt;
-&lt;p&gt;In unit-testing, you write tests in a separate script for little pieces of your code. This is &lt;a href=&#34;https://docs.python.org/2/library/unittest.html&#34;&gt;easy in Python&lt;/a&gt;, and there’s a &lt;a href=&#34;https://cran.r-project.org/web/packages/testthat/testthat.pdf&#34;&gt;nice R package for it too&lt;/a&gt;. See &lt;a href=&#34;https://katherinemwood.github.io/post/testthat/&#34;&gt;this post&lt;/a&gt; to see it in action.&lt;/p&gt;
-&lt;p&gt;The idea is that you test each piece of code (functions, object classes, etc) as you write it and verify that it works. Even better, you can write tests for code first, before you even write the code itself. Tests make sure that code runs without crashing, that the output it gives you matches what you expect, that objects have the methods and attributes you want and that they all do what you expect, and so on.&lt;/p&gt;
-&lt;p&gt;Why bother? For one, it creates a nice feedback loop with modularity. Writing code in nice little packages makes it easy to test, which encourages writing code in nice little packages, etc. Two, it will save you a ton of time during debugging. If you write an entire script through, try to run it, and almost inevitably encounter bugs, you then have to search through a lot of possible failure points. Usually that means having to verify that all of the pieces work anyway, in order to zero in on the culprit(s). With unit testing, you know right away whether something is working and if it’s working correctly. This gives you a chance to fix things before you run the whole thing through.&lt;/p&gt;
-&lt;p&gt;Following good practices only nets benefits. It makes your old code more accessible to yourself. Possibly more critically, it makes your code more accessible to others. Open data and open materials are becoming more common, and it’s not enough just to throw uncommented code up on Github and call it duty done. Part of that responsibility to openness is making code readable, understandable, and transparent.These practices are a good place to start.&lt;/p&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>5 Minute Simulation: Variation in effect size estimates</title>
-      <link>https://katherinemwood.github.io/post/es_var/</link>
-      <pubDate>Mon, 26 Jun 2017 13:54:20 -0500</pubDate>
-      
-      <guid>https://katherinemwood.github.io/post/es_var/</guid>
-      <description>&lt;p&gt;If it’s not terribly obvious, &lt;a href=&#34;http://shiny.rstudio.com/tutorial/&#34;&gt;Shiny&lt;/a&gt; is my new favorite toy. It’s incredibly accessible for beginners, gives you great results with minimal effort, and can be as sophisticated as you need it to be.&lt;/p&gt;
-&lt;p&gt;I decided to throw together a quick simulation to look at the variation in effect size estimates we can expect at different sample sizes. There’s an increasing focus in psych on estimation of effects, rather than simply detection of effects. This is great, but, as it turns out, virtually impossible with a single study unless you are prepared to recruit massive numbers of subjects. Nothing here is new, but I like looking at distributions and playing with sliders, and I’ll take any excuse to make a little shiny widget.&lt;/p&gt;
-&lt;p&gt;In this simulation, we’re doing a basic, between-groups t-test and drawing samples from the normal distribution. The code can be dead simple. I’ll write a tiny&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
-
-sim_es &amp;lt;- function(n, true_es) {
-  g1 &amp;lt;- rnorm(n, true_es, 1)
-  g2 &amp;lt;- rnorm(n, 0, 1)
-  return(effsize::cohen.d(g1, g2, paired=FALSE)$estimate)
-}
-
-plot_es &amp;lt;- function(data, true_es) {
-  es_plot &amp;lt;- ggplot() +
-      theme_minimal() +
-      geom_histogram(aes(x=data, y=..count../sum(..count..)), 
-               color=&amp;#39;darkblue&amp;#39;, fill=&amp;#39;darkblue&amp;#39;, position=&amp;#39;identity&amp;#39;) +
-      geom_vline(xintercept=c(true_es,
-                              sort(data)[.975*length(data)], 
-                              sort(data)[.025*length(data)]), 
-                 size=1.5, color=c(&amp;#39;lightgray&amp;#39;, &amp;#39;red&amp;#39;, &amp;#39;red&amp;#39;), 
-                 linetype=c(&amp;#39;solid&amp;#39;, &amp;#39;longdash&amp;#39;,&amp;#39;longdash&amp;#39;)) +
-      xlab(&amp;quot;Effect size&amp;quot;) +
-      ylab(&amp;#39;Proportion&amp;#39;) +
-      xlim(c(-2, 2))
-
-  print(es_plot)
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Here’s what you get if you use tiny (n=10) groups (perhaps under the justification that if an effect is big, you’ll detect it just fine in small samples) and no true effect is present:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n10 &amp;lt;- replicate(3000, sim_es(10, 0))
-plot_es(n10, 0)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/es_var_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;The white line is the true effect, and the two red lines mark out the 95% quantile.&lt;/p&gt;
-&lt;p&gt;Yikes. With samples that small, you could (and will, often!) get an enormous effect when none is present.&lt;/p&gt;
-&lt;p&gt;Here’s what we get with n = 50, no effect present. I’ve left the x-axis fixed to make it easier to compare all of these plots.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n50 &amp;lt;- replicate(3000, sim_es(50, 0))
-plot_es(n50, 0)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/es_var_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;This is a dramatic improvement over n=10, but you could still estimate what is considered a small (d=.1, traditionally) to medium (d=.3, traditionally) effect in either direction with appreciable frequency.&lt;/p&gt;
-&lt;p&gt;And here’s n=200.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n200 &amp;lt;- replicate(3000, sim_es(200, 0))
-plot_es(n200, 0)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/es_var_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;I’ve used d=0 as an example, but you get this spread regardless of what the true d is; it will just shift to center on the true effect. In that case, you’ll detect an effect most of the time, but can be way off about its actual size. This doesn’t mean that you can throw power out the window by arguing that you only care about detection, of course–you’ll “detect” an effect a lot of the time when d=0 with small samples.&lt;/p&gt;
-&lt;p&gt;These simulations are the result of 3000 replications each, but in the shiny app you can change this number.&lt;/p&gt;
-&lt;p&gt;For me, this really drives home just how important replications and meta-analyses–cumulative science in general, really–are, particularly for estimation. When you do a lot of these studies over and over again, as these simulations model, you’ll zero in on the true effect, but a study can’t do it alone.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://katherinemwood.shinyapps.io/effect_size/&#34;&gt;The Shiny app can be found here&lt;/a&gt;. You can tweak group size, true effect size, how many simulations are run, and the limits on the x-axis. You can also view a plot of the corresponding p-values.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/katherinemwood/es_variation&#34;&gt;The source code can be found here.&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

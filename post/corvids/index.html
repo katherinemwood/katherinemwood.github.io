@@ -34,11 +34,11 @@
   <link rel="icon" type="image/png" href="../../img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="../../img/apple-touch-icon.png">
 
-  <link rel="canonical" href="../../post/ggplot_forest/">
+  <link rel="canonical" href="../../post/corvids/">
 
   
 
-  <title>Annotated forest plots in ggplot | Inattentional Coffee</title>
+  <title>CORVIDS: A provably-complete data reconstruction tool | Inattentional Coffee</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
@@ -139,14 +139,14 @@
 
 
   <div class="article-container">
-    <h1 itemprop="name">Annotated forest plots in ggplot</h1>
+    <h1 itemprop="name">CORVIDS: A provably-complete data reconstruction tool</h1>
     
 
 <div class="article-metadata">
 
   <span class="article-date">
-    <time datetime="2017-07-11 11:17:49 -0500 -0500" itemprop="datePublished">
-      Tue, Jul 11, 2017
+    <time datetime="2017-12-12 12:36:28 -0600 -0600" itemprop="datePublished">
+      Tue, Dec 12, 2017
     </time>
   </span>
 
@@ -160,35 +160,35 @@
   <ul class="share">
     <li>
       <a class="facebook"
-         href="https://www.facebook.com/sharer.php?u=%2fpost%2fggplot_forest%2f"
+         href="https://www.facebook.com/sharer.php?u=%2fpost%2fcorvids%2f"
          target="_blank">
         <i class="fa fa-facebook"></i>
       </a>
     </li>
     <li>
       <a class="twitter"
-         href="https://twitter.com/intent/tweet?text=Annotated%20forest%20plots%20in%20ggplot&amp;url=%2fpost%2fggplot_forest%2f"
+         href="https://twitter.com/intent/tweet?text=CORVIDS%3a%20A%20provably-complete%20data%20reconstruction%20tool&amp;url=%2fpost%2fcorvids%2f"
          target="_blank">
         <i class="fa fa-twitter"></i>
       </a>
     </li>
     <li>
       <a class="linkedin"
-         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fpost%2fggplot_forest%2f&amp;title=Annotated%20forest%20plots%20in%20ggplot"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fpost%2fcorvids%2f&amp;title=CORVIDS%3a%20A%20provably-complete%20data%20reconstruction%20tool"
          target="_blank">
         <i class="fa fa-linkedin"></i>
       </a>
     </li>
     <li>
       <a class="weibo"
-         href="http://service.weibo.com/share/share.php?url=%2fpost%2fggplot_forest%2f&amp;title=Annotated%20forest%20plots%20in%20ggplot"
+         href="http://service.weibo.com/share/share.php?url=%2fpost%2fcorvids%2f&amp;title=CORVIDS%3a%20A%20provably-complete%20data%20reconstruction%20tool"
          target="_blank">
         <i class="fa fa-weibo"></i>
       </a>
     </li>
     <li>
       <a class="email"
-         href="mailto:?subject=Annotated%20forest%20plots%20in%20ggplot&amp;body=%2fpost%2fggplot_forest%2f">
+         href="mailto:?subject=CORVIDS%3a%20A%20provably-complete%20data%20reconstruction%20tool&amp;body=%2fpost%2fcorvids%2f">
         <i class="fa fa-envelope"></i>
       </a>
     </li>
@@ -201,8 +201,49 @@
 </div>
 
     <div class="article-style" itemprop="articleBody">
-      <p><a href="http://chetvericov.ru/analiz-dannyx/grouped-forest-plots-using-ggplot2/#.WWT7eNPyvLY" class="uri">http://chetvericov.ru/analiz-dannyx/grouped-forest-plots-using-ggplot2/#.WWT7eNPyvLY</a></p>
-<p><a href="https://sakaluk.wordpress.com/2016/02/16/7-make-it-pretty-plots-for-meta-analysis/" class="uri">https://sakaluk.wordpress.com/2016/02/16/7-make-it-pretty-plots-for-meta-analysis/</a></p>
+      <p>This is a very exciting post for me, as it marks the release of a project that I have been working on with my peerless colleague and dear friend <a href="http://www.informatics.illinois.edu/people-2/phd-students/#sean">Sean Wilner</a>.</p>
+<p>This project started with a question from my advisor–did I think change-making algorithms could be used to reconstruct Likert scale data?–and ended with a data-reconstruction system that takes in a few summary statistics for Likert-scale-type data and returns to you every possible data set which could have generated those statistics, or informs you if no such data exist.</p>
+<p>The details of the implementation can be found in our <a href="linky">pre-print</a>, and the code is open source and available in a handful of formats <a href="GitHub%20link">here</a>. You can use the source code itself, or download a standalone compiled version of the app.</p>
+<p>Briefly sketched, the CORVIDS (COmplete Reconstruction of Values In a Diophantine System) relies on two things. One is the constrained nature of the data; we know that responses will fall between two endpoints (1 - 7, 0 - 10, etc.) and that the values must be integers. These constraints, coupled with three other pieces of information (mean, variance/standard deviation, and sample size) are sufficient to reconstruct the raw data. Using this information, we can set up a system of linear Diophantine equations, which take the form <span class="math inline">\(ax + by = c\)</span>. Importantly, Diophantine equations have only integer solutions. We set up three equations–one for the mean, one for the variance, and one for the sample size–and solve the system. The result describes all possible solutions to that system of equations, which here ends up being the raw data itself.</p>
+<p>The theoretical side is pure, provable math, but extra steps need to be taken to make sure something like this can work on real (that is, messy) data. The biggest consideration is precision and rounding. Statistics aren’t always reported to sufficient precision, and rounding errors happen. How do we ensure that we can account for this, and still find solutions to reasonable values? Build in a little tolerance! We have precision arguments you can set that will put an envelope around the mean and variance. The program then finds and chugs through all possible combinations of valid means and variances, and looks for solutions to all of them. Usually there’s only one valid mean-variance pair in the neighborhood that has solutions, but sometimes you will end up with a few candidates that have valid solutions. This program will give you all of them.</p>
+<p>You can also play around with what happens if you forbid certain values from appearing in a solution (“can you still get these numbers if no one is allowed to respond with 1 or 7?”), or if you force certain values to be present (“can you still get solutions if at least 3 people responded 4?”).</p>
+<p>A nice test case emerged recently, described <a href="https://medium.com/@jamesheathers/long-hair-dont-care-5eeba266ec52">here</a>. Here we have data on an integer scale (1-3) with means, standard deviations, and sample sizes reported for every condition.</p>
+<div class="figure">
+<img src="../../img/hair_data.png" title="Summary statistics from the paper" />
+
+</div>
+<p>This is enough for CORVIDS to work. What’s also nice in this instance is that Nick Brown and James Heathers already reconstructed the data manually, <strong>and</strong> the researcher shared their raw data. So we have ground truth to compare it against. With such a small scale, even at relatively low precision, I was able to reconstruct data for all 6 conditions in about 2 minutes.</p>
+<p>Here’s the process. Let’s just start with the first condition: male pedestrians, loose-haired confederate. This is what we would enter into CORVIDS:</p>
+<div class="figure">
+<img src="../../img/corvids_interface.png" title="Data entry fields" />
+
+</div>
+<p>As you can see, we’re going to set a fairly generous tolerance for both the mean and standard deviation to account for rounding.</p>
+<p>Once our values are entered, we just hit “Start!” CORVIDS will now tell us how many mean/standard deviation combinations it’s going to search through (kind of a lot in this case, when precision is low).</p>
+<div class="figure">
+<img src="../../img/corvids_startup.png" title="Starting message" />
+
+</div>
+<p>Then all we do is wait. Because the scale is so constrained (just 1 - 3), this process is going to be very fast. For larger scales and large numbers of subjects, it can take much longer.</p>
+<p>Here’s what CORVIDS will return once it’s done:</p>
+<div class="figure">
+<img src="../../img/corvids_finish.png" title="After reconstruction" />
+
+</div>
+<p>We can see in this case that there is one, and only one, solution. From here, if we wanted, we could save this data out, graph it, save our parameters or save the entire model (paramters and data) to save time later.</p>
+<p>This is a nice case, because a reconstruction already exists, and the original author shared his raw data. CORVIDS returns the correct answer.</p>
+<p>Just for illustrative purposes, here’s what happens if we <em>really</em> relax the tolerance on the mean and standard deviation:</p>
+<div class="figure">
+<img src="../../img/corvids_tolerance.png" />
+
+</div>
+<p>Now we have more solutions, at different mean/standard deviation combinations:</p>
+<div class="figure">
+<img src="../../img/corvids_tolerance_sol.png" />
+
+</div>
+<p>We can mow through the rest of the conditions in short order, and get the raw data for the other six:</p>
+<p><img src="../../img/corvids_mbun.png" /> <img src="../../img/corvids_fnat.png" /> <img src="../../img/corvids_fpony.png" /> <img src="../../img/corvids_fbun.png" /></p>
 
     </div>
   </div>
@@ -213,12 +254,12 @@
   <nav>
   <ul class="pager">
     
-    <li class="previous"><a href="../../post/dates/"><span
-      aria-hidden="true">&larr;</span> Working with dates and times in R</a></li>
+    <li class="previous"><a href="../../post/qualifications/"><span
+      aria-hidden="true">&larr;</span> Pre-screen MTurk workers with custom qualifications</a></li>
     
 
     
-    <li class="next"><a href="../../post/joy/">Oh, joy! Joyplots in R with ggjoy <span
+    <li class="next"><a href="../../post/vizfix/">Improving a data visualization: Connecticut edition <span
       aria-hidden="true">&rarr;</span></a></li>
     
   </ul>
@@ -233,9 +274,9 @@
     <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'kmwblog';
-    var disqus_identifier = '\/post\/ggplot_forest\/';
-    var disqus_title = 'Annotated forest plots in ggplot';
-    var disqus_url = '\/post\/ggplot_forest\/';
+    var disqus_identifier = '\/post\/corvids\/';
+    var disqus_title = 'CORVIDS: A provably-complete data reconstruction tool';
+    var disqus_url = '\/post\/corvids\/';
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
