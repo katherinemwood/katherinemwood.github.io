@@ -11,6 +11,63 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>CORVIDS: A provably-complete data reconstruction tool</title>
+      <link>https://katherinemwood.github.io/post/corvids/</link>
+      <pubDate>Mon, 29 Jan 2018 12:36:28 -0600</pubDate>
+      
+      <guid>https://katherinemwood.github.io/post/corvids/</guid>
+      <description>&lt;p&gt;This is a very exciting post for me, as it marks the release of a project that I have been working on with my peerless colleague and dear friend &lt;a href=&#34;http://www.informatics.illinois.edu/people-2/phd-students/#sean&#34;&gt;Sean Wilner&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This project started with a question from my advisor–did I think change-making algorithms could be used to reconstruct Likert scale data?–and ended with a complete data-reconstruction system that takes in a few summary statistics for Likert-scale-type data and returns every possible data set which could have generated those statistics, or informs you if no such data exist.&lt;/p&gt;
+&lt;p&gt;The details of the implementation can be found in our &lt;a href=&#34;https://psyarxiv.com/7shr8/&#34;&gt;pre-print&lt;/a&gt;, and the code is open source and available in a handful of formats &lt;a href=&#34;https://github.com/katherinemwood/corvids/releases/tag/v1.0.0&#34;&gt;here&lt;/a&gt;. You can use the source code itself, or download a standalone compiled version of the app (recommended).&lt;/p&gt;
+&lt;p&gt;Briefly sketched, the CORVIDS (COmplete Reconstruction of Values In a Diophantine System) relies on two things. One is the constrained nature of the data; we know that responses will fall between two endpoints (1 - 7, 0 - 10, etc.) and that the values must be integers. It turns out, these constraints, along with mean, variance (-or- standard deviation), and sample size, are sufficient to reconstruct the raw data. Using this information, we can set up a system of linear Diophantine equations (linear equations which can only take integer values) to solve for all possible data sets. In order to do this, we set up three equations–one for the mean, one for the variance, and one for the sample size–and solve the resulting system of equations. The result is a single solution and a set of transformations which describe all possible solutions to that system of equations (including the &lt;strong&gt;actual&lt;/strong&gt; raw data!).&lt;/p&gt;
+&lt;p&gt;The theoretical side is pure, provable math, but extra steps need to be taken to make sure something like this can work on real (that is, messy) data. The biggest consideration is precision and rounding. Statistics aren’t always reported to sufficient precision, and rounding errors happen. How do we ensure that we can account for this and still find solutions to reasonable values? We build tolerances into the process. To that end, we have precision arguments you can set that will put an envelope around the mean and variance. The program then finds and chugs through all possible valid combinations of means and variances, looking for viable solutions to all of them. Usually there’s only one valid mean-variance pair in the neighborhood that has a viable solution, but sometimes you will end up with a few candidates that have valid solutions. But this isn’t a problem since the program will give you all of them.&lt;/p&gt;
+&lt;p&gt;You can also play around with what happens if you forbid certain values from appearing in a solution (“can you still get these numbers if no one is allowed to respond with 1 or 7?”), or if you force certain values to be present (“can you still get solutions if at least 3 people responded 4?”).&lt;/p&gt;
+&lt;p&gt;A nice test case emerged recently as detailed by Nick Brown and James Heathers, the first installment of which is described &lt;a href=&#34;https://medium.com/@jamesheathers/long-hair-dont-care-5eeba266ec52&#34;&gt;here&lt;/a&gt;. Here we have data on an integer scale (1-3) with means, standard deviations, and sample sizes reported for every condition.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;./img/hair_data.png&#34; title=&#34;Summary statistics from the paper&#34; /&gt;
+
+&lt;/div&gt;
+&lt;p&gt;This is enough for CORVIDS to work. What’s also nice in this instance is that Nick Brown and James Heathers already reconstructed the data manually, &lt;strong&gt;and&lt;/strong&gt; the researcher shared their raw data. So we have ground truth to compare it against. With such a small scale, even at relatively low precision, I was able to reconstruct data for all 6 conditions in about 2 minutes.&lt;/p&gt;
+&lt;p&gt;Here’s the process: For the first condition (male pedestrians, loose-haired confederate) This is what we would enter into CORVIDS:&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;./img/corvids_interface.png&#34; title=&#34;Data entry fields&#34; style=&#34;width:50.0%&#34; style=&#34;height:50.0%&#34; /&gt;
+
+&lt;/div&gt;
+&lt;p&gt;As you can see, we’re going to set a fairly generous tolerance for both the mean and standard deviation to account for rounding.&lt;/p&gt;
+&lt;p&gt;Once our values are entered, we just hit “Start!” CORVIDS will now tell us how many mean/standard deviation combinations it’s going to search through (kind of a lot in this case, when precision is low).&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;./img/corvids_startup.png&#34; title=&#34;Starting message&#34; style=&#34;width:50.0%&#34; style=&#34;height:50.0%&#34; /&gt;
+
+&lt;/div&gt;
+&lt;p&gt;Then all we do is wait. Because the scale is so constrained (just 1 - 3), this process is going to be very fast. For larger scales and large numbers of subjects, it can take much longer.&lt;/p&gt;
+&lt;p&gt;Here’s what CORVIDS will return once it’s done:&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;./img/corvids_finish.png&#34; title=&#34;After reconstruction&#34; style=&#34;width:50.0%&#34; style=&#34;height:50.0%&#34; /&gt;
+
+&lt;/div&gt;
+&lt;p&gt;We can see in this case that there is one, and only one, solution. From here, if we wanted, we could save this data out, graph it, save our parameters or save the entire model (paramters and data) to save time later.&lt;/p&gt;
+&lt;p&gt;This is a nice case, because a reconstruction already exists, and the original author shared his raw data. CORVIDS returns the correct answer.&lt;/p&gt;
+&lt;p&gt;Just for illustrative purposes, here’s what happens if we &lt;em&gt;really&lt;/em&gt; relax the tolerance on the mean and standard deviation. We end up with more solutions, at different mean/standard deviation combinations:&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;./img/corvids_tolerance_sol.png&#34; style=&#34;width:50.0%&#34; style=&#34;height:50.0%&#34; /&gt;
+
+&lt;/div&gt;
+&lt;p&gt;CORVIDS can also graph the results, so we can see how these distributions differ from one another:&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;./img/tolerance.png&#34; style=&#34;width:50.0%&#34; style=&#34;height:50.0%&#34; /&gt;
+
+&lt;/div&gt;
+&lt;p&gt;One data point switches from 2 to 3 each time.&lt;/p&gt;
+&lt;p&gt;We can mow through the rest of the conditions in short order, and get the raw data for the other six:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./img/corvids_mbun.png&#34; style=&#34;width:50.0%&#34; style=&#34;height:50.0%&#34; /&gt; &lt;img src=&#34;./img/corvids_fnat.png&#34; style=&#34;width:50.0%&#34; style=&#34;height:50.0%&#34; /&gt; &lt;img src=&#34;./img/corvids_fpony.png&#34; style=&#34;width:50.0%&#34; style=&#34;height:50.0%&#34; /&gt; &lt;img src=&#34;./img/corvids_fbun.png&#34; style=&#34;width:50.0%&#34; style=&#34;height:50.0%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;If the data weren’t already known, we would know exactly how each individual subject responded.&lt;/p&gt;
+&lt;p&gt;This is a straightforward case, because the data are so constrained that there happened to be only one solution for each condition. More often, scales are wider than 1-3, there might be more subjects, and often there will be multiple solutions. In that case, you can get a sense of the “family resemblance” between the data sets. Sometimes solutions will all look similar–they might all be right-skewed, for instance. Other times a great many distribution shapes will be possible.&lt;/p&gt;
+&lt;p&gt;This method can also, in some lucky cases, help resurrect data that was destroyed or simply lost to time. If enough of the summary statistics survived, the raw data can be found again.&lt;/p&gt;
+&lt;p&gt;We encourage you to download the code and try it yourself! You can submit any issues or bug reports on Github.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Improving a data visualization: Connecticut edition</title>
       <link>https://katherinemwood.github.io/post/vizfix/</link>
       <pubDate>Sat, 16 Dec 2017 15:11:42 -0600</pubDate>
@@ -2081,86 +2138,6 @@ print(mfac_reformed)&lt;/code&gt;&lt;/pre&gt;
 &lt;h1&gt;Parting Thoughts&lt;/h1&gt;
 &lt;p&gt;And there you have it–a brief introduction to some common data manipulation tasks, and a few ways to handle them. This is only the thinnest of samples of methods. There are lots of different ways to accomplish things, and packages to help you do it. Many of these methods will undoubtedly have my fingerprints all over them; one of the reasons I approached these problems the way I did is to show how learning a skill in one context–reshaping data for plotting, for example–can be useful in other contexts, like changing a data frame’s fundamental structure. Many roads lead to the same place, and if you don’t like this one, another will get you there just as comfortably, if not more so.&lt;/p&gt;
 &lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Intro to Bootstrapping</title>
-      <link>https://katherinemwood.github.io/post/bootstrapping/</link>
-      <pubDate>Mon, 26 Jun 2017 15:02:58 -0500</pubDate>
-      
-      <guid>https://katherinemwood.github.io/post/bootstrapping/</guid>
-      <description>&lt;p&gt;The bootstrap, detailed by Efron and Tibshirani in their 1993 book &lt;em&gt;An Introduction to the Bootstrap,&lt;/em&gt; is a powerful, flexible statistical concept based on the idea of “pulling yourself up by your bootstraps.” With today’s computing power, it’s easier than ever to apply and use. It also happens to be one of my favorite statistical tricks because of the elegance of the underlying logic.&lt;/p&gt;
-&lt;p&gt;The idea behind the bootstrap is simple. We know that if we repeatedly sample groups from the population, our measurement of that population will get increasingly accurate, becoming perfect when we’ve sampled every member of the population (and thus obviating the need for statistics at all). However, this world, like worlds without friction in physics, don’t resemble operating conditions. In the real world, you typically get one sample from your population. If only we could easily resample from the population a few more times.&lt;/p&gt;
-&lt;p&gt;Bootstrapping gets you the next best thing. We don’t resample from the population. Instead, we continuously resample &lt;em&gt;our own data&lt;/em&gt;,with replacement, and generate a so-called bootstrapped distribution. We can then use this distribution to quantify uncertainty on all kinds of measures.&lt;/p&gt;
-&lt;p&gt;I’ll work through an example to show how this works in practice. We’ll sample from the normal to start, &lt;span class=&#34;math inline&#34;&gt;\(\mu = 1.25\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\sigma = 0.5\)&lt;/span&gt;. I’ve set the seed within the script so you’ll get exactly the results I find here.&lt;/p&gt;
-&lt;p&gt;Let’s say we run a study with 50 people, and we’re interested in, among other things, getting a good estimation of the mean of the underlying population. So, you take your 50 people, take a mean, get a standard error, and maybe 95% confidence intervals to show the variation (± 1.96*SE).&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(effsize)
-#Set the seed for reproducable results
-set.seed(123)
-#Generate some random normal data
-x &amp;lt;- rnorm(50, 1.25, .5)
-mean(x)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 1.267202&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sd(x)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 0.462935&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#Calculate the SE the old fashioned way
-se &amp;lt;- sd(x)/sqrt(50)
-#Get 95% CIs with the formula
-lb_se &amp;lt;- mean(x) - 1.96*se
-ub_se &amp;lt;- mean(x) + 1.96*se&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;[Just to note: bootstrapped confidence intervals give you a nice measure of uncertainty, and I like to use them as my error bars, but they don’t get you away from the problems of NHST, if that’s something you’re trying to avoid.]&lt;/p&gt;
-&lt;p&gt;Here’s a histogram of our sample. In this post, I’m plotting everything in base just for the thrill:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;hist(x,  breaks=10)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/bootstrapping_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;Here are the stats for our mean, calculated the old-fashioned way from an n of 50:&lt;/p&gt;
-&lt;p&gt;mean: 1.27&lt;br /&gt;
-SE: 0.18&lt;br /&gt;
-95% CI: [1.14, 1.40]&lt;/p&gt;
-&lt;p&gt;Now, let’s bootstrap this mean. A way to conceptualize this is to imagine re-running your 50-person experiment over and over again, except we’re not going to be drawing new subjects from the population. Instead, we’re going to draw groups of 50 subjects from our &lt;em&gt;sample,&lt;/em&gt; but do so with replacement. This means that some subjects may show up more than once, and some may never show up at all. We’ll take the mean of each group. We’ll do this many times–here, 1000–and so we end up with a distribution of 1000 means.&lt;/p&gt;
-&lt;p&gt;For this basic procedure, we can do it in just one line:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;boot &amp;lt;- replicate(1000, mean(sample(x, 50, replace=TRUE)))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;And here’s the resulting histogram:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;lb &amp;lt;- sort(boot)[.025*1000]
-ub &amp;lt;- sort(boot)[.975*1000]
-#Plot a histogram of the bootstrapped distribution, the
-#mean, and the 95% bootstrapped CI
-hist(boot, breaks=50)
-abline(v=c(mean(boot), lb, ub), col=rep(&amp;#39;red&amp;#39;, 3), lty=c(1, 2, 2))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/bootstrapping_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;The bootstrapped mean (1.27) is of course centered on our sample mean. Now we have a distribution of values for the mean that we could expect to obtain with our sample.&lt;/p&gt;
-&lt;p&gt;Now, if we wanted to do confidence intervals, we could get the SE of the bootstrapped distribution and do it the usual way. However, we also have an option available to us called the &lt;em&gt;percentile method.&lt;/em&gt; In order to find the confidence intervals, we sort all of our bootstrapped values, and then take the 2.5% quantile and the 97.5% quantile. If you repeat the sampling procedure with the same process on the same population (precisely what we do with our bootstrap), 95% of the time the mean falls between these endpoints. If we do this procedure with our particular sample, we get this:&lt;/p&gt;
-&lt;p&gt;95% bootstrapped CI: [1.14, 1.40]&lt;/p&gt;
-&lt;p&gt;Here, the bootstrapped CI and the standard-error derived CI match up (not that surprising, since our data is normally distributed and therefore exceptionally well-behaved!). However, if you have constrained data, such as accuracy, bootstrapped confidence intervals will automatically conform to those limits and won’t exceed 100% or dip below 0%.&lt;/p&gt;
-&lt;p&gt;Here’s an example of bootstrapping the estimate of the effect size. We’re going to assume a between-subjects design here. We’ll make two independent, normally distributed groups with a true effect of .5. I’m going to let the &lt;code&gt;cohen.d&lt;/code&gt; function from the effsize package do the heavy lifting and give me both the estimate and the confidence interval:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;groups &amp;lt;- data.frame(&amp;#39;exp&amp;#39;=rnorm(50, .5, 1), &amp;#39;control&amp;#39;=rnorm(50))
-(es &amp;lt;- cohen.d(groups$exp, groups$control))&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 
-## Cohen&amp;#39;s d
-## 
-## d estimate: 0.5537571 (medium)
-## 95 percent confidence interval:
-##       inf       sup 
-## 0.1493285 0.9581857&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Here’s how we would bootstrap those same intervals. We resample each group independently, because it’s between-subjects. The procedure is much the same if it’s within subjects, except you would resample your &lt;em&gt;pairs&lt;/em&gt; of data because the two groups are not independent in that case. The code:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;boot_es &amp;lt;- replicate(1000, cohen.d(sample(groups$exp, 50, replace=TRUE), 
-                                   sample(groups$control, 50, replace=TRUE))$estimate)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;And here’s the histogram of the bootstrapped distribution, with the mean and bootstrapped CI plotted:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;lb_es &amp;lt;- sort(boot_es)[.025*1000]
-ub_es &amp;lt;- sort(boot_es)[.975*1000]
-hist(boot_es, breaks=50)
-abline(v=c(mean(boot_es), lb_es, ub_es), col=rep(&amp;#39;red&amp;#39;, 3), lty=c(1, 2, 2))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/bootstrapping_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;bootstrapped mean: .56&lt;br /&gt;
-95% bootstrapped CI: [.14, .99]&lt;/p&gt;
-&lt;p&gt;And there you have it: bootstrapped confidence intervals on your effect sizes.&lt;/p&gt;
-&lt;p&gt;There is an &lt;a href=&#34;https://en.wikipedia.org/wiki/Bootstrapping_(statistics)&#34;&gt;incredible about of nuance&lt;/a&gt; in the bootstrap method, and many different ways to apply it to even the most complex data. You can use it for something as simple as confidence intervals on a mean, or as complicated as regression coefficients. It’s also great for getting CI estimates for statistics or measures that don’t have a formula method. The general idea–resample your own data to get estimates–underlies even the most complex applications of this method. If you understand the basic logic, it’s pretty easy to understand and start using new applications.&lt;/p&gt;
-&lt;p&gt;If you are mathematically inclined, there have been many proofs and a lot of work showing the first- and second-order correctness of bootstrapping estimations. The method I showed here for confidence intervals is just the percentile method; although it has been shown to work well in a wide variety of situations, there are other approaches, some which offer bias correction and other improvements (&lt;a href=&#34;http://www-rohan.sdsu.edu/~babailey/stat672/BCa.pdf&#34;&gt;for example&lt;/a&gt;).&lt;/p&gt;
-&lt;p&gt;If you want to get started, there are some R packages that will handle bootstrapping for you:&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/boot/boot.pdf&#34;&gt;boot&lt;/a&gt; (general-purpose, and can generate many variants of the various methods)&lt;br /&gt;
-&lt;a href=&#34;https://cran.r-project.org/web/packages/bootES/bootES.pdf&#34;&gt;bootES&lt;/a&gt; (for effect sizes in particular)&lt;/p&gt;
-&lt;p&gt;And of course, if you want a really deep dive, you can check out the original book:&lt;/p&gt;
-&lt;p&gt;Efron &amp;amp; Tibshirani, &lt;em&gt;An Introduction to the Bootstrap.&lt;/em&gt; Chapman &amp;amp; Hall/CRC, 1993.&lt;/p&gt;
 </description>
     </item>
     

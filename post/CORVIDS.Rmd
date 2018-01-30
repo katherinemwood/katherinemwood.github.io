@@ -46,12 +46,17 @@ We can see in this case that there is one, and only one, solution. From here, if
 
 This is a nice case, because a reconstruction already exists, and the original author shared his raw data. CORVIDS returns the correct answer.
 
+Just for illustrative purposes, here's what happens if we *really* relax the tolerance on the mean and standard deviation:
+
+![](/img/corvids_tolerance.png)
+
+Now we have more solutions, at different mean/standard deviation combinations:
+
+![](/img/corvids_tolerance_sol.png)
+
 We can mow through the rest of the conditions in short order, and get the raw data for the other six:
 
+![](/img/corvids_mbun.png) ![](/img/corvids_fnat.png) ![](/img/corvids_fpony.png) ![](/img/corvids_fbun.png)
 
 
-These data are somewhat unusual, in that there is only one solution for each set of statistics. By way of illustration, here's how many solutions are returned if we take condition 1 and pretend we have a 5-point scale instead of 3:
 
-![](/img/corvids_inc_scale.png "A larger scale")
-
-CORVIDS still returns every and all possible solutions, but now that the scale is less constrained there are more possibilities for the data.

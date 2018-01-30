@@ -28,13 +28,13 @@
   <link rel="stylesheet" href="../../css/hugo-academic.css">
   
 
-  <link rel="alternate" href="../../index.xml" type="application/rss+xml" title="Inattentional Coffee">
-  <link rel="feed" href="../../index.xml" type="application/rss+xml" title="Inattentional Coffee">
+  <link rel="alternate" href="https://katherinemwood.github.io/index.xml" type="application/rss+xml" title="Inattentional Coffee">
+  <link rel="feed" href="https://katherinemwood.github.io/index.xml" type="application/rss+xml" title="Inattentional Coffee">
 
   <link rel="icon" type="image/png" href="../../img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="../../img/apple-touch-icon.png">
 
-  <link rel="canonical" href="../../post/corvids/">
+  <link rel="canonical" href="https://katherinemwood.github.io/post/corvids/">
 
   
 
@@ -145,8 +145,8 @@
 <div class="article-metadata">
 
   <span class="article-date">
-    <time datetime="2017-12-12 12:36:28 -0600 -0600" itemprop="datePublished">
-      Tue, Dec 12, 2017
+    <time datetime="2018-01-29 12:36:28 -0600 CST" itemprop="datePublished">
+      Mon, Jan 29, 2018
     </time>
   </span>
 
@@ -160,35 +160,35 @@
   <ul class="share">
     <li>
       <a class="facebook"
-         href="https://www.facebook.com/sharer.php?u=%2fpost%2fcorvids%2f"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fkatherinemwood.github.io%2fpost%2fcorvids%2f"
          target="_blank">
         <i class="fa fa-facebook"></i>
       </a>
     </li>
     <li>
       <a class="twitter"
-         href="https://twitter.com/intent/tweet?text=CORVIDS%3a%20A%20provably-complete%20data%20reconstruction%20tool&amp;url=%2fpost%2fcorvids%2f"
+         href="https://twitter.com/intent/tweet?text=CORVIDS%3a%20A%20provably-complete%20data%20reconstruction%20tool&amp;url=https%3a%2f%2fkatherinemwood.github.io%2fpost%2fcorvids%2f"
          target="_blank">
         <i class="fa fa-twitter"></i>
       </a>
     </li>
     <li>
       <a class="linkedin"
-         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fpost%2fcorvids%2f&amp;title=CORVIDS%3a%20A%20provably-complete%20data%20reconstruction%20tool"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fkatherinemwood.github.io%2fpost%2fcorvids%2f&amp;title=CORVIDS%3a%20A%20provably-complete%20data%20reconstruction%20tool"
          target="_blank">
         <i class="fa fa-linkedin"></i>
       </a>
     </li>
     <li>
       <a class="weibo"
-         href="http://service.weibo.com/share/share.php?url=%2fpost%2fcorvids%2f&amp;title=CORVIDS%3a%20A%20provably-complete%20data%20reconstruction%20tool"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fkatherinemwood.github.io%2fpost%2fcorvids%2f&amp;title=CORVIDS%3a%20A%20provably-complete%20data%20reconstruction%20tool"
          target="_blank">
         <i class="fa fa-weibo"></i>
       </a>
     </li>
     <li>
       <a class="email"
-         href="mailto:?subject=CORVIDS%3a%20A%20provably-complete%20data%20reconstruction%20tool&amp;body=%2fpost%2fcorvids%2f">
+         href="mailto:?subject=CORVIDS%3a%20A%20provably-complete%20data%20reconstruction%20tool&amp;body=https%3a%2f%2fkatherinemwood.github.io%2fpost%2fcorvids%2f">
         <i class="fa fa-envelope"></i>
       </a>
     </li>
@@ -202,48 +202,53 @@
 
     <div class="article-style" itemprop="articleBody">
       <p>This is a very exciting post for me, as it marks the release of a project that I have been working on with my peerless colleague and dear friend <a href="http://www.informatics.illinois.edu/people-2/phd-students/#sean">Sean Wilner</a>.</p>
-<p>This project started with a question from my advisor–did I think change-making algorithms could be used to reconstruct Likert scale data?–and ended with a data-reconstruction system that takes in a few summary statistics for Likert-scale-type data and returns to you every possible data set which could have generated those statistics, or informs you if no such data exist.</p>
-<p>The details of the implementation can be found in our <a href="linky">pre-print</a>, and the code is open source and available in a handful of formats <a href="GitHub%20link">here</a>. You can use the source code itself, or download a standalone compiled version of the app.</p>
-<p>Briefly sketched, the CORVIDS (COmplete Reconstruction of Values In a Diophantine System) relies on two things. One is the constrained nature of the data; we know that responses will fall between two endpoints (1 - 7, 0 - 10, etc.) and that the values must be integers. These constraints, coupled with three other pieces of information (mean, variance/standard deviation, and sample size) are sufficient to reconstruct the raw data. Using this information, we can set up a system of linear Diophantine equations, which take the form <span class="math inline">\(ax + by = c\)</span>. Importantly, Diophantine equations have only integer solutions. We set up three equations–one for the mean, one for the variance, and one for the sample size–and solve the system. The result describes all possible solutions to that system of equations, which here ends up being the raw data itself.</p>
-<p>The theoretical side is pure, provable math, but extra steps need to be taken to make sure something like this can work on real (that is, messy) data. The biggest consideration is precision and rounding. Statistics aren’t always reported to sufficient precision, and rounding errors happen. How do we ensure that we can account for this, and still find solutions to reasonable values? Build in a little tolerance! We have precision arguments you can set that will put an envelope around the mean and variance. The program then finds and chugs through all possible combinations of valid means and variances, and looks for solutions to all of them. Usually there’s only one valid mean-variance pair in the neighborhood that has solutions, but sometimes you will end up with a few candidates that have valid solutions. This program will give you all of them.</p>
+<p>This project started with a question from my advisor–did I think change-making algorithms could be used to reconstruct Likert scale data?–and ended with a complete data-reconstruction system that takes in a few summary statistics for Likert-scale-type data and returns every possible data set which could have generated those statistics, or informs you if no such data exist.</p>
+<p>The details of the implementation can be found in our <a href="https://psyarxiv.com/7shr8/">pre-print</a>, and the code is open source and available in a handful of formats <a href="https://github.com/katherinemwood/corvids/releases/tag/v1.0.0">here</a>. You can use the source code itself, or download a standalone compiled version of the app (recommended).</p>
+<p>Briefly sketched, the CORVIDS (COmplete Reconstruction of Values In a Diophantine System) relies on two things. One is the constrained nature of the data; we know that responses will fall between two endpoints (1 - 7, 0 - 10, etc.) and that the values must be integers. It turns out, these constraints, along with mean, variance (-or- standard deviation), and sample size, are sufficient to reconstruct the raw data. Using this information, we can set up a system of linear Diophantine equations (linear equations which can only take integer values) to solve for all possible data sets. In order to do this, we set up three equations–one for the mean, one for the variance, and one for the sample size–and solve the resulting system of equations. The result is a single solution and a set of transformations which describe all possible solutions to that system of equations (including the <strong>actual</strong> raw data!).</p>
+<p>The theoretical side is pure, provable math, but extra steps need to be taken to make sure something like this can work on real (that is, messy) data. The biggest consideration is precision and rounding. Statistics aren’t always reported to sufficient precision, and rounding errors happen. How do we ensure that we can account for this and still find solutions to reasonable values? We build tolerances into the process. To that end, we have precision arguments you can set that will put an envelope around the mean and variance. The program then finds and chugs through all possible valid combinations of means and variances, looking for viable solutions to all of them. Usually there’s only one valid mean-variance pair in the neighborhood that has a viable solution, but sometimes you will end up with a few candidates that have valid solutions. But this isn’t a problem since the program will give you all of them.</p>
 <p>You can also play around with what happens if you forbid certain values from appearing in a solution (“can you still get these numbers if no one is allowed to respond with 1 or 7?”), or if you force certain values to be present (“can you still get solutions if at least 3 people responded 4?”).</p>
-<p>A nice test case emerged recently, described <a href="https://medium.com/@jamesheathers/long-hair-dont-care-5eeba266ec52">here</a>. Here we have data on an integer scale (1-3) with means, standard deviations, and sample sizes reported for every condition.</p>
+<p>A nice test case emerged recently as detailed by Nick Brown and James Heathers, the first installment of which is described <a href="https://medium.com/@jamesheathers/long-hair-dont-care-5eeba266ec52">here</a>. Here we have data on an integer scale (1-3) with means, standard deviations, and sample sizes reported for every condition.</p>
 <div class="figure">
 <img src="../../img/hair_data.png" title="Summary statistics from the paper" />
 
 </div>
 <p>This is enough for CORVIDS to work. What’s also nice in this instance is that Nick Brown and James Heathers already reconstructed the data manually, <strong>and</strong> the researcher shared their raw data. So we have ground truth to compare it against. With such a small scale, even at relatively low precision, I was able to reconstruct data for all 6 conditions in about 2 minutes.</p>
-<p>Here’s the process. Let’s just start with the first condition: male pedestrians, loose-haired confederate. This is what we would enter into CORVIDS:</p>
+<p>Here’s the process: For the first condition (male pedestrians, loose-haired confederate) This is what we would enter into CORVIDS:</p>
 <div class="figure">
-<img src="../../img/corvids_interface.png" title="Data entry fields" />
+<img src="../../img/corvids_interface.png" title="Data entry fields" style="width:50.0%" style="height:50.0%" />
 
 </div>
 <p>As you can see, we’re going to set a fairly generous tolerance for both the mean and standard deviation to account for rounding.</p>
 <p>Once our values are entered, we just hit “Start!” CORVIDS will now tell us how many mean/standard deviation combinations it’s going to search through (kind of a lot in this case, when precision is low).</p>
 <div class="figure">
-<img src="../../img/corvids_startup.png" title="Starting message" />
+<img src="../../img/corvids_startup.png" title="Starting message" style="width:50.0%" style="height:50.0%" />
 
 </div>
 <p>Then all we do is wait. Because the scale is so constrained (just 1 - 3), this process is going to be very fast. For larger scales and large numbers of subjects, it can take much longer.</p>
 <p>Here’s what CORVIDS will return once it’s done:</p>
 <div class="figure">
-<img src="../../img/corvids_finish.png" title="After reconstruction" />
+<img src="../../img/corvids_finish.png" title="After reconstruction" style="width:50.0%" style="height:50.0%" />
 
 </div>
 <p>We can see in this case that there is one, and only one, solution. From here, if we wanted, we could save this data out, graph it, save our parameters or save the entire model (paramters and data) to save time later.</p>
 <p>This is a nice case, because a reconstruction already exists, and the original author shared his raw data. CORVIDS returns the correct answer.</p>
-<p>Just for illustrative purposes, here’s what happens if we <em>really</em> relax the tolerance on the mean and standard deviation:</p>
+<p>Just for illustrative purposes, here’s what happens if we <em>really</em> relax the tolerance on the mean and standard deviation. We end up with more solutions, at different mean/standard deviation combinations:</p>
 <div class="figure">
-<img src="../../img/corvids_tolerance.png" />
+<img src="../../img/corvids_tolerance_sol.png" style="width:50.0%" style="height:50.0%" />
 
 </div>
-<p>Now we have more solutions, at different mean/standard deviation combinations:</p>
+<p>CORVIDS can also graph the results, so we can see how these distributions differ from one another:</p>
 <div class="figure">
-<img src="../../img/corvids_tolerance_sol.png" />
+<img src="../../img/tolerance.png" style="width:50.0%" style="height:50.0%" />
 
 </div>
+<p>One data point switches from 2 to 3 each time.</p>
 <p>We can mow through the rest of the conditions in short order, and get the raw data for the other six:</p>
-<p><img src="../../img/corvids_mbun.png" /> <img src="../../img/corvids_fnat.png" /> <img src="../../img/corvids_fpony.png" /> <img src="../../img/corvids_fbun.png" /></p>
+<p><img src="../../img/corvids_mbun.png" style="width:50.0%" style="height:50.0%" /> <img src="../../img/corvids_fnat.png" style="width:50.0%" style="height:50.0%" /> <img src="../../img/corvids_fpony.png" style="width:50.0%" style="height:50.0%" /> <img src="../../img/corvids_fbun.png" style="width:50.0%" style="height:50.0%" /></p>
+<p>If the data weren’t already known, we would know exactly how each individual subject responded.</p>
+<p>This is a straightforward case, because the data are so constrained that there happened to be only one solution for each condition. More often, scales are wider than 1-3, there might be more subjects, and often there will be multiple solutions. In that case, you can get a sense of the “family resemblance” between the data sets. Sometimes solutions will all look similar–they might all be right-skewed, for instance. Other times a great many distribution shapes will be possible.</p>
+<p>This method can also, in some lucky cases, help resurrect data that was destroyed or simply lost to time. If enough of the summary statistics survived, the raw data can be found again.</p>
+<p>We encourage you to download the code and try it yourself! You can submit any issues or bug reports on Github.</p>
 
     </div>
   </div>
@@ -254,13 +259,10 @@
   <nav>
   <ul class="pager">
     
-    <li class="previous"><a href="../../post/qualifications/"><span
-      aria-hidden="true">&larr;</span> Pre-screen MTurk workers with custom qualifications</a></li>
+    <li class="previous"><a href="https://katherinemwood.github.io/post/vizfix/"><span
+      aria-hidden="true">&larr;</span> Improving a data visualization: Connecticut edition</a></li>
     
 
-    
-    <li class="next"><a href="../../post/vizfix/">Improving a data visualization: Connecticut edition <span
-      aria-hidden="true">&rarr;</span></a></li>
     
   </ul>
 </nav>
@@ -274,9 +276,9 @@
     <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'kmwblog';
-    var disqus_identifier = '\/post\/corvids\/';
+    var disqus_identifier = 'https:\/\/katherinemwood.github.io\/post\/corvids\/';
     var disqus_title = 'CORVIDS: A provably-complete data reconstruction tool';
-    var disqus_url = '\/post\/corvids\/';
+    var disqus_url = 'https:\/\/katherinemwood.github.io\/post\/corvids\/';
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
