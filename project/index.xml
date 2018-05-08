@@ -2,29 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projects on Inattentional Coffee</title>
-    <link>https://katherinemwood.github.io/project/</link>
+    <link>/project/</link>
     <description>Recent content in Projects on Inattentional Coffee</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Katherine</copyright>
-    <lastBuildDate>Wed, 27 Apr 2016 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 01 Feb 2018 00:00:00 +0000</lastBuildDate>
     <atom:link href="/project/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>CORVIDS</title>
+      <link>/project/corvids/</link>
+      <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/project/corvids/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Shiny Effect Sizes</title>
-      <link>https://katherinemwood.github.io/project/shiny_es/</link>
+      <link>/project/shiny_es/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://katherinemwood.github.io/project/shiny_es/</guid>
+      <guid>/project/shiny_es/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Two Sisters, One Dark Sky</title>
-      <link>https://katherinemwood.github.io/project/darksky/</link>
+      <link>/project/darksky/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://katherinemwood.github.io/project/darksky/</guid>
+      <guid>/project/darksky/</guid>
       <description></description>
     </item>
     
