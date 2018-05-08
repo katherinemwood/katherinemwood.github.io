@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Publications on Inattentional Coffee</title>
-    <link>/publication/</link>
+    <link>https://katherinemwood.github.io/publication/</link>
     <description>Recent content in Publications on Inattentional Coffee</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -12,28 +12,28 @@
     
     <item>
       <title>The role of similarity in inattentional blindness: Selective enhancement, selective suppression, or both?</title>
-      <link>/publication/ib_similarity/</link>
+      <link>https://katherinemwood.github.io/publication/ib_similarity/</link>
       <pubDate>Wed, 11 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>/publication/ib_similarity/</guid>
+      <guid>https://katherinemwood.github.io/publication/ib_similarity/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Selective attention in inattentional blindness: Selection is specific but suppression is not</title>
-      <link>/publication/ib_color/</link>
+      <link>https://katherinemwood.github.io/publication/ib_color/</link>
       <pubDate>Mon, 07 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>/publication/ib_color/</guid>
+      <guid>https://katherinemwood.github.io/publication/ib_color/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Reconciling change blindness with long-term memory for objects</title>
-      <link>/publication/cbltm/</link>
+      <link>https://katherinemwood.github.io/publication/cbltm/</link>
       <pubDate>Wed, 23 Nov 2016 00:00:00 +0000</pubDate>
       
-      <guid>/publication/cbltm/</guid>
+      <guid>https://katherinemwood.github.io/publication/cbltm/</guid>
       <description></description>
     </item>
     

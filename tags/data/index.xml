@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Data on Inattentional Coffee</title>
-    <link>/tags/data/</link>
+    <link>https://katherinemwood.github.io/tags/data/</link>
     <description>Recent content in Data on Inattentional Coffee</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -12,10 +12,10 @@
     
     <item>
       <title>CORVIDS</title>
-      <link>/project/corvids/</link>
+      <link>https://katherinemwood.github.io/project/corvids/</link>
       <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>/project/corvids/</guid>
+      <guid>https://katherinemwood.github.io/project/corvids/</guid>
       <description></description>
     </item>
     

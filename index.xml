@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Inattentional Coffee on Inattentional Coffee</title>
-    <link>/</link>
+    <link>https://katherinemwood.github.io/</link>
     <description>Recent content in Inattentional Coffee on Inattentional Coffee</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -12,10 +12,10 @@
     
     <item>
       <title>CORVIDS 2.0: Faster, more stable, and now on Windows</title>
-      <link>/post/corvids2.0/</link>
+      <link>https://katherinemwood.github.io/post/corvids2.0/</link>
       <pubDate>Tue, 08 May 2018 10:04:53 -0500</pubDate>
       
-      <guid>/post/corvids2.0/</guid>
+      <guid>https://katherinemwood.github.io/post/corvids2.0/</guid>
       <description>&lt;p&gt;Some exciting CORVIDS news–we made some &lt;em&gt;major&lt;/em&gt; improvements to how things work, and we’ve released a brand new version! We now also have a standalone for Windows users, so no more wrestling with dependencies.&lt;/p&gt;
 &lt;p&gt;If you want details on what’s changed, read on. If you just want the good stuff, head over to the &lt;a href=&#34;https://github.com/katherinemwood/corvids/releases/tag/v2.0.0&#34;&gt;latest release.&lt;/a&gt;&lt;/p&gt;
 &lt;div id=&#34;whats-new&#34; class=&#34;section level1&#34;&gt;
@@ -67,19 +67,19 @@
     
     <item>
       <title>CORVIDS</title>
-      <link>/project/corvids/</link>
+      <link>https://katherinemwood.github.io/project/corvids/</link>
       <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>/project/corvids/</guid>
+      <guid>https://katherinemwood.github.io/project/corvids/</guid>
       <description></description>
     </item>
     
     <item>
       <title>CORVIDS: A provably-complete data reconstruction tool</title>
-      <link>/post/corvids/</link>
+      <link>https://katherinemwood.github.io/post/corvids/</link>
       <pubDate>Mon, 29 Jan 2018 12:36:28 -0600</pubDate>
       
-      <guid>/post/corvids/</guid>
+      <guid>https://katherinemwood.github.io/post/corvids/</guid>
       <description>&lt;p&gt;This is a very exciting post for me, as it marks the release of a project that I have been working on with my peerless colleague and dear friend &lt;a href=&#34;http://www.informatics.illinois.edu/people-2/phd-students/#sean&#34;&gt;Sean Wilner&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;This project started with a question from my advisor–did I think change-making algorithms could be used to reconstruct Likert scale data?–and ended with a complete data-reconstruction system that takes in a few summary statistics for Likert-scale-type data and returns every possible data set which could have generated those statistics, or informs you if no such data exist.&lt;/p&gt;
 &lt;p&gt;The details of the implementation can be found in our &lt;a href=&#34;https://psyarxiv.com/7shr8/&#34;&gt;pre-print&lt;/a&gt;, and the code is open source and available in a handful of formats &lt;a href=&#34;https://github.com/katherinemwood/corvids/releases/tag/v1.0.0&#34;&gt;here&lt;/a&gt;. You can use the source code itself, or download a standalone compiled version of the app (recommended).&lt;/p&gt;
@@ -133,10 +133,10 @@
     
     <item>
       <title>Improving a data visualization: Connecticut edition</title>
-      <link>/post/vizfix/</link>
+      <link>https://katherinemwood.github.io/post/vizfix/</link>
       <pubDate>Sat, 16 Dec 2017 15:11:42 -0600</pubDate>
       
-      <guid>/post/vizfix/</guid>
+      <guid>https://katherinemwood.github.io/post/vizfix/</guid>
       <description>&lt;p&gt;I came across a graph not long ago that I immediately saved for later use. Making clean, effective data visualizations is hard, and there is always someone waiting to gleefuly inform you that you’ve messed it up in one way or another. Sometimes these are minor aesthetic quibbles, and the visualization still manages to communicate what it needs to effectively.&lt;/p&gt;
 &lt;p&gt;Other times, missteps make the graph harder to interpret, and put too much onus on the viewer to make sense of what they’re seeing.&lt;/p&gt;
 &lt;p&gt;This was one of those latter cases.&lt;/p&gt;
@@ -204,19 +204,19 @@ print(gains_tweaks)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>The role of similarity in inattentional blindness: Selective enhancement, selective suppression, or both?</title>
-      <link>/publication/ib_similarity/</link>
+      <link>https://katherinemwood.github.io/publication/ib_similarity/</link>
       <pubDate>Wed, 11 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>/publication/ib_similarity/</guid>
+      <guid>https://katherinemwood.github.io/publication/ib_similarity/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Pre-screen MTurk workers with custom qualifications</title>
-      <link>/post/qualifications/</link>
+      <link>https://katherinemwood.github.io/post/qualifications/</link>
       <pubDate>Mon, 09 Oct 2017 15:25:40 -0500</pubDate>
       
-      <guid>/post/qualifications/</guid>
+      <guid>https://katherinemwood.github.io/post/qualifications/</guid>
       <description>&lt;p&gt;If you do research using MTurk, you may have run into a common issue: how to recruit exclusively workers that meet certain criteria. For instance, you may want to run a study only on colorblind people, or only people who have perfect pitch, or only people who voted in their last local election. These criteria are all pretty easy to ascertain, but you don’t want to wait to ask until the main HIT itself; then you would be paying full price for data you can’t use at all. However, it’s also not fair to let people accept a HIT, ask them the critical question, and then force them to return it if they don’t meet the necessary criteria. That hurts certain worker metrics like HIT completion rate and can affect their ability to access other HITs, through no real fault of their own.&lt;/p&gt;
 &lt;p&gt;One option I’ve seen used is a 2-part HIT. First you make a short, cheap HIT in which you ask the relevant question or two, and then you reach out to the eligible workers who completed that HIT with the link to your actual survey. This is complex and can be time consuming for the requester, though, especially if the pre-screen is extremely short.&lt;/p&gt;
 &lt;p&gt;It turns out that there is a very straightforward way to deal with this if you’re willing to use the MTurk web API. You can create custom qualifications that workers can request, either directly or by completing a test, and then assign those qualifications as a requirement for your HITs.&lt;/p&gt;
@@ -531,10 +531,10 @@ print(qual_response[&amp;#39;QualificationType&amp;#39;][&amp;#39;QualificationT
     
     <item>
       <title>Getting started with the Mechanical Turk API</title>
-      <link>/post/mturk_dev_intro/</link>
+      <link>https://katherinemwood.github.io/post/mturk_dev_intro/</link>
       <pubDate>Sun, 08 Oct 2017 15:25:40 -0500</pubDate>
       
-      <guid>/post/mturk_dev_intro/</guid>
+      <guid>https://katherinemwood.github.io/post/mturk_dev_intro/</guid>
       <description>&lt;p&gt;Amazon’s Mechanical Turk is a great research tool. You can get huge sample sizes that tend to be more diverse than what you can recruit from a Psychology department subject pool. But, with lots of data comes a new set of problems. It very quickly becomes impossible to manage things manually.&lt;/p&gt;
 &lt;p&gt;One very useful tool for dealing with this is the MTurk API. This lets you programmatically access all of MTurk’s functionality, and means you can write scripts to automate big tasks like fetching results, paying workers, or posting large numbers of HITs.&lt;/p&gt;
 &lt;p&gt;There is something of a startup cost to this, though. If you’re not sure where to start, or are feeling overwhelmed, here’s a little guide to get you setup with the tools you’ll need.&lt;/p&gt;
@@ -645,75 +645,20 @@ python balance.py&lt;/code&gt;&lt;/pre&gt;
     </item>
     
     <item>
-      <title>Working with directories and lists of files in R</title>
-      <link>/post/directories/</link>
-      <pubDate>Fri, 01 Sep 2017 11:34:43 -0500</pubDate>
-      
-      <guid>/post/directories/</guid>
-      <description>&lt;p&gt;Having lots of files in different places can pose a problem for making code robust. If you have to read in a lot of files, or scan through a bunch of directories, ideally you want your code to be agnostic as to how many items there are and what the filenames are.&lt;/p&gt;
-&lt;p&gt;R has several functions that make it easy to list files and navigate through directories so you can source in files or read in data without having to mess around with getwd() and setwd(), which is generally not advised.&lt;/p&gt;
-&lt;div id=&#34;use-relative-paths-to-make-your-life-easier&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;0. Use relative paths to make your life easier&lt;/h1&gt;
-&lt;p&gt;Relative paths are defined relative to your current directory (as opposed to “absolute paths”). Think of it this way: a relative path is like telling some one, “from where we’re standing, walk down the hall, go up one flight of stairs, then take the first left.” An absolute path is like saying, “Go to Apartment 123.” The problem with absolute paths is that if someone else wants to use your code, they have to either change the directions or set up their system to look just like yours. With relative paths, they just have to keep the structure of the files the same.&lt;/p&gt;
-&lt;p&gt;This is what the difference looks like in R itself.&lt;/p&gt;
-&lt;p&gt;A relative path assumes that the working directory is the root. You just refer to the subdirectory by name; since it is relative to the current directory, R should be able to find it no problem. You can also prepend the path with &lt;code&gt;.&lt;/code&gt;, which simply specifies the current working directory.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;read.csv(&amp;#39;data/my_file.csv&amp;#39;)
-#same as:
-read.csv(&amp;#39;./data/my_file.csv&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;An absolute path, on the other hand, specifies the precise location.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;read.csv(&amp;#39;/Users/me/my_stuff/documents/R_stuff/my_project/data/my_file.csv&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;You can probably see why this would cause problems for someone else trying to use your code; they’ll have to change this line to get it to work, but wouldn’t have to change the relative path as long as they maintained your file structure.&lt;/p&gt;
-&lt;p&gt;You can even avoid having to set the working directory to the right place to begin with if you use an R Project file. R Projects automatically set the working directory to wherever they’re located on startup!&lt;/p&gt;
-&lt;p&gt;See &lt;a href=&#34;https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects&#34;&gt;this&lt;/a&gt; for more info on Projects.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;i-need-to-get-all-the-files-in-a-single-directory&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;1. I need to get all the files in a single directory&lt;/h1&gt;
-&lt;p&gt;Use &lt;code&gt;dir()&lt;/code&gt; or &lt;code&gt;list.files()&lt;/code&gt;! They are identical (literally). These functions return a list of the files in the specified directory. They also take a number of arguments that will help you get exactly the files you want and none of the ones you don’t. You can specify a &lt;code&gt;pattern&lt;/code&gt; with some regex to limit the files that get listed, such as ones that follow a certain format or end in a certain extension. This is handy if you have a bunch of different filetypes in the same directory but only want the csvs, for instance.&lt;/p&gt;
-&lt;p&gt;Here’s how I would list just the RMarkdown files for my blogposts, for instance:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dir(pattern=&amp;#39;*.Rmd&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##  [1] &amp;quot;bootstrapping.Rmd&amp;quot;     &amp;quot;data_sharing_tips.Rmd&amp;quot;
-##  [3] &amp;quot;dates.Rmd&amp;quot;             &amp;quot;directories.Rmd&amp;quot;      
-##  [5] &amp;quot;es_var.Rmd&amp;quot;            &amp;quot;ggplot_forest.Rmd&amp;quot;    
-##  [7] &amp;quot;joy.Rmd&amp;quot;               &amp;quot;lin_reg.Rmd&amp;quot;          
-##  [9] &amp;quot;lonely_cards.Rmd&amp;quot;      &amp;quot;mturk_dev_intro.Rmd&amp;quot;  
-## [11] &amp;quot;new_sig.Rmd&amp;quot;           &amp;quot;notebooks.Rmd&amp;quot;        
-## [13] &amp;quot;open_sci.Rmd&amp;quot;          &amp;quot;prereg.Rmd&amp;quot;           
-## [15] &amp;quot;programming.Rmd&amp;quot;       &amp;quot;qualifications.Rmd&amp;quot;   
-## [17] &amp;quot;shiny_es.Rmd&amp;quot;          &amp;quot;testthat.Rmd&amp;quot;         
-## [19] &amp;quot;violins.Rmd&amp;quot;           &amp;quot;wrangling.Rmd&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;i-need-to-get-all-the-files-in-all-the-directories.&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;2. I need to get all the files in ALL the directories.&lt;/h1&gt;
-&lt;p&gt;You can specify the &lt;code&gt;recursive&lt;/code&gt; option in the above functions. If you set this to &lt;code&gt;TRUE&lt;/code&gt;, R will list all files in each subdirectory, all the way down. If you have folders-in-folders and still want to list all the files, this is the option for you. R automatically includes the path in the output with this option, so you can keep everyone’s location straight.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;i-need-to-get-all-the-subdirectories-in-my-directory&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;4. I need to get all the subdirectories in my directory&lt;/h1&gt;
-&lt;p&gt;Use &lt;code&gt;list.dirs()&lt;/code&gt;. This will only list the directories instead of all the files, and also has &lt;code&gt;pattern&lt;/code&gt; and &lt;code&gt;recursive&lt;/code&gt; options.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;i-need-to-source-in-a-bunch-of-scripts-but-they-need-to-be-sourced-in-the-context-of-their-own-directory&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;5. I need to source in a bunch of scripts, but they need to be sourced in the context of their own directory!&lt;/h1&gt;
-&lt;p&gt;It turns out that you can do this without ever calling &lt;code&gt;setwd()&lt;/code&gt;. In the &lt;code&gt;source()&lt;/code&gt; function, there’s an argument called &lt;code&gt;chdir&lt;/code&gt;. It’s &lt;code&gt;FALSE&lt;/code&gt; by default, which means the file sources into your current working directory. However, if you set it to &lt;code&gt;TRUE&lt;/code&gt;, R temporarily changes the working directory to whatever path you specify, evaluates the file, and then changes the directory back.&lt;/p&gt;
-&lt;p&gt;Here’s an example of how these functions can work together to automate working with a bunch of subdirectories in a huge project I was working on.&lt;/p&gt;
-&lt;p&gt;There are also a bunch of functions for creating and deleting files or directories, creating temporary files or directories, and getting more detailed info on everything. Try checking out &lt;code&gt;?files&lt;/code&gt; for a taste!&lt;/p&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Selective attention in inattentional blindness: Selection is specific but suppression is not</title>
-      <link>/publication/ib_color/</link>
+      <link>https://katherinemwood.github.io/publication/ib_color/</link>
       <pubDate>Mon, 07 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>/publication/ib_color/</guid>
+      <guid>https://katherinemwood.github.io/publication/ib_color/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Starter tips on sharing data and analysis scripts</title>
-      <link>/post/data_sharing_tips/</link>
+      <link>https://katherinemwood.github.io/post/data_sharing_tips/</link>
       <pubDate>Wed, 02 Aug 2017 20:12:31 -0500</pubDate>
       
-      <guid>/post/data_sharing_tips/</guid>
+      <guid>https://katherinemwood.github.io/post/data_sharing_tips/</guid>
       <description>&lt;p&gt;One practice that’s considered increasingly important to transparency and reproducibility is open data (and the accompanying analysis script). Of course, it’s one thing to say “just post it!” It can be overwhelming if you’re new to the practice. There are different considerations when posting data publicly than when you’re retaining it solely for internal use. I’ve outlined a few things to consider when posting your data, and a few tips to help make it more accessible and usable for others who want to access it.&lt;/p&gt;
 &lt;div id=&#34;subject-consent-and-irb-approval&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;1. Subject consent and IRB approval&lt;/h1&gt;
@@ -760,10 +705,10 @@ read.csv(&amp;#39;./data/my_file.csv&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Some thoughts on the New Significance</title>
-      <link>/post/new_sig/</link>
+      <link>https://katherinemwood.github.io/post/new_sig/</link>
       <pubDate>Wed, 26 Jul 2017 10:00:17 -0700</pubDate>
       
-      <guid>/post/new_sig/</guid>
+      <guid>https://katherinemwood.github.io/post/new_sig/</guid>
       <description>&lt;p&gt;The busy corridors of psychology twitter have been abuzz over a &lt;a href=&#34;https://osf.io/preprints/psyarxiv/mky9j/&#34;&gt;new paper&lt;/a&gt;, written by some heavy-hitters in the field, arguing for a new threshold for statistical significance. Now, instead of &lt;span class=&#34;math inline&#34;&gt;\(p &amp;lt; .05\)&lt;/span&gt;, the threshold would be &lt;span class=&#34;math inline&#34;&gt;\(p &amp;lt; .005\)&lt;/span&gt;. If you’ve not read the paper, I recommend doing so; it’s short and won’t take too much time.&lt;/p&gt;
 &lt;p&gt;The argument isn’t new–there was a 2013 paper arguing for something similar by Johnson–but it has made quite a splash this time.&lt;/p&gt;
 &lt;p&gt;As a way of clarifying my own thoughts on this, I thought I’d work through the main discussion points around this proposal that I’ve encountered on Twitter. This isn’t comprehensive by a long shot. People had a &lt;em&gt;lot&lt;/em&gt; to say about this. But these were the most common arguments.&lt;/p&gt;
@@ -844,44 +789,11 @@ sim_graph&lt;/code&gt;&lt;/pre&gt;
     </item>
     
     <item>
-      <title>Skills bootcamp: Linear regression</title>
-      <link>/post/lin_reg/</link>
-      <pubDate>Mon, 24 Jul 2017 11:02:57 -0700</pubDate>
-      
-      <guid>/post/lin_reg/</guid>
-      <description>&lt;p&gt;This is the first post in a series motivated by what some might call my impostor syndrome, but I call a realistic audit of my weaknesses as a person who works with data.&lt;/p&gt;
-&lt;p&gt;To that end, I’m putting myself through a skills bootcamp. Nothing is off-limits, and I plan (hope?) to cover everything from basic mathematical concepts like linear algebra to more integrative topics like modeling, machine learning, and data visualization.&lt;/p&gt;
-&lt;p&gt;I have a few reasons for wanting to do this. One, I want to learn new things. It can be a little too easy to get wrapped up in grad school and forget to 1) keep the skillset sharp and 2) expand it, so I’m hoping this can be an outlet for that. I also want an opportunity to see what I already know, what I sort of know, and where my understanding needs to be improved. Finally, by sharing it in this format, I hope that it can both be helpful to others and garner useful feedback for me. Mistakes are guaranteed.&lt;/p&gt;
-&lt;p&gt;For this initial foray, I’m going to be working from &lt;em&gt;The Elements of Statistical Learning&lt;/em&gt; by Hastie, Tibshirani, and Friedman (it’s &lt;a href=&#34;http://web.stanford.edu/~hastie/ElemStatLearn/&#34;&gt;free!&lt;/a&gt;), with supplementary materials brought in for more depth on the topics covered, other perspectives, and so on.&lt;/p&gt;
-&lt;p&gt;I’m going to start at the beginning: linear regression.&lt;/p&gt;
-&lt;div id=&#34;linear-regression&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Linear regression&lt;/h1&gt;
-&lt;div id=&#34;my-background&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;My background&lt;/h2&gt;
-&lt;p&gt;I’ve had quite a lot of exposure to linear regression, which seems appropriate given where I am in my grad career and the courses I’ve taken up to this point. I took an entire course dedicated to it in undergrad as well.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;what&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;What?&lt;/h2&gt;
-&lt;/div&gt;
-&lt;div id=&#34;why&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Why?&lt;/h2&gt;
-&lt;/div&gt;
-&lt;div id=&#34;how&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;How?&lt;/h2&gt;
-&lt;/div&gt;
-&lt;div id=&#34;when&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;When?&lt;/h2&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Oh, joy! Joyplots in R with ggjoy</title>
-      <link>/post/joy/</link>
+      <link>https://katherinemwood.github.io/post/joy/</link>
       <pubDate>Sat, 15 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/joy/</guid>
+      <guid>https://katherinemwood.github.io/post/joy/</guid>
       <description>&lt;p&gt;I’ve &lt;a href=&#34;https://katherinemwood.github.io/post/violins/&#34;&gt;written before&lt;/a&gt; about plots that are more informative than your standard barplot.&lt;/p&gt;
 &lt;p&gt;Another option is the joyplot (also known as &lt;a href=&#34;http://www.brendangregg.com/frequencytrails.html&#34;&gt;frequency trails&lt;/a&gt;). Joyplots are like mountain ranges, except instead of mountains it’s smoothed density histograms. It’s a way to visualize a lot of data in a pretty compact space.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/clauswilke/ggjoy&#34;&gt;Claus Wilke has written an R package&lt;/a&gt; that makes plotting these pretty frictionless. Just add data!&lt;/p&gt;
@@ -963,48 +875,513 @@ ggplot(joy, aes(x=value, y=label)) +
     </item>
     
     <item>
-      <title>Annotated forest plots in ggplot</title>
-      <link>/post/ggplot_forest/</link>
-      <pubDate>Tue, 11 Jul 2017 11:17:49 -0500</pubDate>
+      <title>Considerations when writing a preregistration if you&#39;re new to all this</title>
+      <link>https://katherinemwood.github.io/post/prereg/</link>
+      <pubDate>Mon, 26 Jun 2017 16:11:46 -0500</pubDate>
       
-      <guid>/post/ggplot_forest/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://chetvericov.ru/analiz-dannyx/grouped-forest-plots-using-ggplot2/#.WWT7eNPyvLY&#34; class=&#34;uri&#34;&gt;http://chetvericov.ru/analiz-dannyx/grouped-forest-plots-using-ggplot2/#.WWT7eNPyvLY&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://sakaluk.wordpress.com/2016/02/16/7-make-it-pretty-plots-for-meta-analysis/&#34; class=&#34;uri&#34;&gt;https://sakaluk.wordpress.com/2016/02/16/7-make-it-pretty-plots-for-meta-analysis/&lt;/a&gt;&lt;/p&gt;
+      <guid>https://katherinemwood.github.io/post/prereg/</guid>
+      <description>&lt;p&gt;(Note: I apparently use preregistration and pre-registration interchangeably, because I guess I want to have my hyphenation cake and eat it, too.)&lt;/p&gt;
+&lt;p&gt;I’m a selfish preregisterer (Preregisterizer? Preregistrar? Preregistrix?). I preregister experiments primarily for my own benefit. I make as many decisions as I can up front, when I’m unbiased and unattached. Yes, it’s more transparent, and yes, it provides a record to others that you made your decisions ahead of time and not in a post-hoc way. But I mostly do it for myself.&lt;/p&gt;
+&lt;p&gt;Like Odysseus tying himself to the mast, preregistration saves you from the siren song of totally justifiable post-hoc decisions that just happen to make things work a little more nicely. I do think that usually this isn’t ill-intentioned or even necessarily deliberate, but I do think it is extremely hard (if not impossible) to make decisions in an unbiased way once the data have started coming in.&lt;/p&gt;
+&lt;p&gt;Preregistration can be an asset, not an extra chore. It eliminates decision points, which speeds up the process considerably (especially in the analysis stage). It provides a record to yourself of your methods, analysis intentions, and motivating rationale. It also, of course, provides this same record to others.&lt;/p&gt;
+&lt;p&gt;So, what are some things you might want to think about when writing a pre-registration if you’re just starting out?&lt;/p&gt;
+&lt;div id=&#34;what-are-your-hypotheses-and-predictions&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;1. What are your hypotheses and predictions?&lt;/h1&gt;
+&lt;p&gt;Why are you running this study? What hypotheses are you interested in testing, or what theories are you exploring? Do you have predictions about how the data will look, or a set of possible outcomes depending on what mechanisms are at work? Can you generate hypothetical/example data for these possibilities?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;how-many-subjects&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;2. How many subjects?&lt;/h1&gt;
+&lt;p&gt;How many people are you going to run, and why? Maybe you do a power analysis to figure out how many you would need to find your smallest effect size of interest, maybe you just always like to run 50 people per group. However you decide on your number, you want to decide on this upfront.&lt;/p&gt;
+&lt;p&gt;Alternatively, if you’re going to be doing a sequential analysis, where you periodically inspect the data over the course of collection and stop once you’ve reached some threshold (such as a Bayes factor of 10 in either support of the alternative or support of the null), you’ll want to specify those details. What is the stopping point? How many batches will you run?&lt;/p&gt;
+&lt;p&gt;How will you be recruiting people? What’s their compensation? Are their any inclusion criteria they have to meet (right-handed, normal or corrected-normal vision, etc)?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-are-your-methods&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;3. What are your methods?&lt;/h1&gt;
+&lt;p&gt;How are you going to run the study? To address this, I usually like to just write the methods section. I think it’s important to be detailed here because you want to prevent nudging of the experimental procedure if it “doesn’t seem to be working.” If possible, can you upload your experimental script as it will be run and all of the stimuli?&lt;/p&gt;
+&lt;p&gt;If you always test in the same place in the same way, you could write up a general equipment page that you link to in addition to the details of your particular study (if you always use the same eyetracker, for example).&lt;/p&gt;
+&lt;p&gt;This will make writing the methods section a breeze when the time comes!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-is-your-analysis-plan&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;4. What is your analysis plan?&lt;/h1&gt;
+&lt;p&gt;How are you going to analyze the data? What kind of tests are you going to do, and between which conditions? Are there conditions under which you will pool observations across conditions? You want to make all of these decisions before you have any idea what the data are. .&lt;/p&gt;
+&lt;p&gt;If possible, can you upload the very script you’ll use to analyze the data?&lt;/p&gt;
+&lt;p&gt;How are you going to code free-responses? If people have to be classified, how are you going to do it? In the research I do, I run a lot of inattentional blindness studies. One of the things we have to decide is how to determine “noticers” (people who saw the unexpected event) from “nonnoticers” (people who missed it). This is a very consequential decision, and is definitely not one we want to have any flexibility over after the data have come in.&lt;/p&gt;
+&lt;p&gt;Are you going to exclude subjects or observations? Under what conditions? Try to imagine every possible reason you might need to exclude someone and list it. These can be things like failing attention checks, performing below chance on some critical accuracy measure, falling asleep during the experiment, reporting colorblindness during a color-based study, and so on.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;practice-makes-perfect&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Practice makes perfect&lt;/h1&gt;
+&lt;p&gt;I wasn’t sure about this whole preregistration thing when I first started. It seemed like just another chore, and I was on the up and up, so why did I need to do this, anyway? But after I ran my first preregistered experiment, I came to appreciate the absence of flexibility. Even in what I expected to be a completely straightforward experiment, there were dozens of little decisions I could have made in the moment. It was so freeing to be able to just stick to the plan and have all the decisions made ahead of time. No agonizing, no doubting, no trying a million different things in the off-chance that some other analysis would look better. I just followed my map right out of the garden of forking paths.&lt;/p&gt;
+&lt;p&gt;If you want to start pre-registering your work, the &lt;a href=&#34;https://osf.io/&#34;&gt;Open Science Framework&lt;/a&gt; is a great option. There’s also AsPredicted.&lt;/p&gt;
+&lt;p&gt;Preregistering a study for the first time can feel strange, particularly if you’re accustomed to running non-preregistered studies. When you’re used to dealing with problems and decision points as they emerge over the course of a study, rather than anticipating them ahead of time, it can be hard to even enumerate them. Like anything, though, it gets much easier with practice.&lt;/p&gt;
+&lt;/div&gt;
 </description>
     </item>
     
     <item>
-      <title>Working with dates and times in R</title>
-      <link>/post/dates/</link>
-      <pubDate>Sun, 09 Jul 2017 13:14:46 -0500</pubDate>
+      <title>One day build: Shiny effect sizes</title>
+      <link>https://katherinemwood.github.io/post/shiny_es/</link>
+      <pubDate>Mon, 26 Jun 2017 16:09:00 -0500</pubDate>
       
-      <guid>/post/dates/</guid>
-      <description>&lt;div id=&#34;date-classes&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Date classes&lt;/h1&gt;
+      <guid>https://katherinemwood.github.io/post/shiny_es/</guid>
+      <description>&lt;p&gt;It had been a long time since I had built anything, and I needed to scratch the itch. I decided to build a Shiny port of &lt;a href=&#34;https://osf.io/ixGcd/&#34;&gt;Daniël Lakens’s beloved effect size calculator spreadsheets&lt;/a&gt;. You can find the app itself &lt;a href=&#34;https://katherinemwood.shinyapps.io/lakens_effect_sizes/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;These sheets are handy for a number of reasons, primarily if a paper or talk reports stats but no effect sizes (or if you want to double-check reported stats or effect sizes). I thought it would be convenient to have an online version.&lt;/p&gt;
+&lt;p&gt;All of the math is based on what’s used in the spreadsheet, and the default examples are taken from there too.&lt;/p&gt;
+&lt;p&gt;This was a really fun build, mostly because the actual math was pretty straightforward (and I could easily check it against the spreadsheets to make sure it was working, which is a refreshing change). I got to spend more time digging into the web-dev side of things, dealing with layout and the reactivity of the components of the app. I learned a lot, and it was great to be working with Shiny again.&lt;/p&gt;
+&lt;p&gt;The code is &lt;a href=&#34;https://github.com/katherinemwood/lakens_effect_sizes&#34;&gt;on Github&lt;/a&gt;. Suggestions for improvements and bug reporting encouraged!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Intro to unit testing in R</title>
+      <link>https://katherinemwood.github.io/post/testthat/</link>
+      <pubDate>Mon, 26 Jun 2017 15:46:23 -0500</pubDate>
+      
+      <guid>https://katherinemwood.github.io/post/testthat/</guid>
+      <description>&lt;p&gt;I’ve mentioned before that a great coding practice you can ingrain into your work is unit testing. The idea is simple: you write a script that automatically evaluates pieces of your code and checks it against expected behavior. For example, a correlation coefficient should always be between -1 and 1, so you could write a test that will raise an error if it encounters an r beyond these values. Or, you could check your data file after it’s read in to make sure it reads in with all rows and columns, nothing missing where it shouldn’t be, and every column of the data type you want it.&lt;/p&gt;
+&lt;p&gt;Hadley Wickham wrote an awesome R package that makes writing tests easy and pretty intuitive. In the &lt;code&gt;testthat&lt;/code&gt; package, you can bundle a series of &lt;code&gt;expect_that&lt;/code&gt; statements into a &lt;code&gt;test_that&lt;/code&gt; suite, which ideally would run a small cluster of closely related tests. Multiple &lt;code&gt;test_that&lt;/code&gt; suites can be grouped into a &lt;code&gt;context&lt;/code&gt; that tests an entire file, or a big chunk of functionality inside a file.&lt;/p&gt;
+&lt;p&gt;I’ll walk through examples. Code for this is up on GitHub, like always.&lt;/p&gt;
+&lt;p&gt;So first, to get things set up, you have a file that you want to test, and then you make a test script to go along with it. If you want to set up automated testing, name this file &lt;code&gt;test_something.R&lt;/code&gt;. &lt;code&gt;testthat&lt;/code&gt; looks for files that start with &lt;code&gt;test_&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Once your file is set up, we can start writing tests! First, you source in the file that you’ll be testing:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;source(&amp;#39;dummy_script.R&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The first thing I’ll be testing is that the data I defined in the dummy script meets my expectations. For reference, this is the data file I defined, but we can pretend I read it in from somewhere:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;testing_data &amp;lt;- data.frame(&amp;#39;letters&amp;#39;=c(&amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;c&amp;#39;, &amp;#39;d&amp;#39;),
+                          &amp;#39;numbers&amp;#39;=seq(1, 4))
+print(testing_data)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   letters numbers
+## 1       a       1
+## 2       b       2
+## 3       c       3
+## 4       d       4&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Creative, huh?&lt;/p&gt;
+&lt;p&gt;So, because this dummy script has multiple different parts that will all get tested, I’m first going to set a context just for the data. Doing so couldn’t be easier:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;context(&amp;#39;testing data integrity&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This just gives the test block a readable label that prints during output. Typically you have one context per file, but I’ve got multiple in this file for demo purposes.&lt;/p&gt;
+&lt;p&gt;Within a context, you have tests. Tests are best deployed to test very targeted functionality, and each test contains a small number of expect statements that define expected behavior. Here’s an example with our silly data frame. We want to make sure it has the expected number of columns and rows, so we could write a test that checks for this.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;test_that(&amp;#39;data dimensions correct&amp;#39;, {
+    expect_equal(ncol(testing_data), 2)
+    expect_equal(nrow(testing_data), 4)
+})&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;All we’re saying is we expect the actual number of columns in our data, returned by ncol(), to be equal to our number of variables (here 2), and that we should have four subjects. The first argument to &lt;code&gt;expect_equal&lt;/code&gt; is what we’re testing, and the second argument is what that thing should be equal to (both of these tests pass).&lt;/p&gt;
+&lt;p&gt;This is sort of a goofy example, but you can imagine real applications–making sure your data has the right number of variables, for instance, or making sure that you have as many files as you do subjects to make sure data isn’t missing. If you’ve examined your data up using &lt;code&gt;View()&lt;/code&gt; or &lt;code&gt;head()&lt;/code&gt; just to check, you’ve pretty much done the manual equivalent of this test.&lt;/p&gt;
+&lt;p&gt;We could also check that no values are missing:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;test_that(&amp;#39;no missing values&amp;#39;, {
+    expect_identical(testing_data, na.omit(testing_data))
+})&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is a different expect statement. This is &lt;code&gt;expect_identical&lt;/code&gt;, which has no tolerance (unlike &lt;code&gt;expect_equal&lt;/code&gt;). We should have exactly the same thing after removing missing values if we’re not anticipating any. (There’s also an &lt;code&gt;expect_equivalent&lt;/code&gt; statement, which ignores the attributes of its comparators. There are about 22 different &lt;code&gt;expect_&lt;/code&gt; statements–you can read more about them in the &lt;a href=&#34;http://r-pkgs.had.co.nz/tests.html&#34;&gt;package documentation&lt;/a&gt;.)&lt;/p&gt;
+&lt;p&gt;How about we check to make sure our data is of the right type? We can use &lt;code&gt;expect_is()&lt;/code&gt;, which checks if the first argument inherits from the class specified in the second argument.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;test_that(&amp;#39;data types correct&amp;#39;, {
+    expect_is(testing_data,&amp;#39;data.frame&amp;#39;)
+    expect_is(testing_data$numbers, &amp;#39;integer&amp;#39;)
+    #expect_is(testing_data$letters, &amp;#39;character&amp;#39;) #this one fails; they&amp;#39;re factors
+})
+
+#note that an equivalent statement would be:
+
+expect_that(testing_data, is_a(&amp;#39;data.frame&amp;#39;))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This might seem silly, but I’ve been burned before by not realizing that what I thought was numeric data was actually stored as a factor. Never hurts to check before you start analyzing!&lt;/p&gt;
+&lt;p&gt;We can also, for example, run tests to make sure outputs from models conform to expectations. Here’s our toy model:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;model_data = data.frame(&amp;#39;y&amp;#39;=c(rnorm(25, 0, 1), rnorm(25, 1, 1)),
+&amp;#39;x&amp;#39;=rep(c(&amp;#39;c1&amp;#39;, &amp;#39;c2&amp;#39;), each=25))
+test.mod = lm(y ~ x, data=model_data)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now we could test, for example, that we have the expected number of coefficients:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;test_that(&amp;#39;right number of coefficients&amp;#39;, {
+    expect_equal(length(test.mod$coefficients), 2)
+})&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Or that all the factor levels in the data are also in the model (here we have to be mindful about differences in data type; &lt;code&gt;levels&lt;/code&gt; returns a character string, while the model object returns a named list).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;test_that(&amp;#39;all factor levels present&amp;#39;, {
+    expect_equivalent(levels(model_data$x), unlist(test.mod$xlevels))
+})&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;How about verifying that the intercept equals the mean of our first group? Because one value is named and the other isn’t, &lt;code&gt;expect_equivalent&lt;/code&gt; will be the statement to use:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;test_that(&amp;#39;mean of group 1 equals intercept&amp;#39;, {
+    expect_equivalent(mean(model_data$y[model_data$x == &amp;#39;c1&amp;#39;]), test.mod$coefficients[&amp;#39;(Intercept)&amp;#39;])
+})&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is a very simple model, but you can imagine how it would be useful for a more complicated one.&lt;/p&gt;
+&lt;p&gt;We can also test custom functions that we’ve written. I’ve written a silly little function that tells you whether a number is even or odd:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;even_odd = function(n){
+    ifelse(n %% 2 == 0, print(&amp;#39;even&amp;#39;), print(&amp;#39;odd&amp;#39;))
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then we can make sure it reports the correct output. We can do this even though it prints (instead of returning a value) with prints_text:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;test_that(&amp;#39;even_odd prints the right message&amp;#39;, {
+    expect_that(even_odd(1), prints_text(&amp;#39;odd&amp;#39;))
+    expect_that(even_odd(6), prints_text(&amp;#39;even&amp;#39;))
+})&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;After you have the library loaded in and you’ve set the working directory to the right place, you can run the testing suite by calling &lt;code&gt;test_file(&#39;file_to_test.R&#39;)&lt;/code&gt;. The advantage to calling this function, rather than just sourcing the file, is that it will run through all tests even if some fail. When you source it, the test script halts at the first error. If you have multiple testing files, you can call &lt;code&gt;test_dir(&#39;my_test_dir/&#39;)&lt;/code&gt; instead, and it will run all of the &lt;code&gt;test_&lt;/code&gt; files in that directory.&lt;/p&gt;
+&lt;p&gt;Here’s what output looks like. You can see that all of our tests are grouped under their contexts, which is a nice way to organize things. Each little dot is a successful test, while a number indicates a failure (with more detail printed below).&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; test_file(&amp;#39;test_dummy.R&amp;#39;)
+testing data integrity: .....1
+testing model output: ...
+testing a custom function: ..&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;When we look in detail at the failure, we see that it’s titled with the name of our test_that suite (another good reason to be granular with how you organize your tests!), and then we see what went wrong:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Failed ---------------------------------------------------------------------------------------------
+1. Failure: data types correct (@test_dummy.R#17) -----------------------------------------------------
+testing_data$letters inherits from `factor` not `character`.
+
+
+DONE ===============================================================================================&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So the context tells us which group of tests threw the error, and then the more detailed error message tells us which test failed (“data types correct” in the “data integrity” context). It also tells us exactly why the test failed. We wanted the data type to be a character, but it was read in as a factor. This alerts us that we need to set &lt;code&gt;stringsAsFactors&lt;/code&gt; equal to &lt;code&gt;FALSE&lt;/code&gt; when reading in our data (for example).&lt;/p&gt;
+&lt;p&gt;Here are some general tips on writing tests from Wickham:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Focus on testing the external interface to your functions - if you test the internal interface, then it’s harder to change the implementation in the future because as well as modifying the code, you’ll also need to update all the tests.&lt;br /&gt;
+Strive to test each behaviour in one and only one test. Then if that behaviour later changes you only need to update a single test.&lt;br /&gt;
+Avoid testing simple code that you’re confident will work. Instead focus your time on code that you’re not sure about, is fragile, or has complicated interdependencies. That said, I often find I make the most mistakes when I falsely assume that the problem is simple and doesn’t need any tests. Always write a test when you discover a bug. You may find it helpful to adopt the test-first philosophy. There you always start by writing the tests, and then write the code that makes them pass. This reflects an important problem solving strategy: start by establishing your success criteria, how you know if you’ve solved the problem. The nice thing about testing is that you can re-run the entire, automated set of tests any time you make a change to make sure you didn’t break anything. It’s a lot faster and more consistent than print-debugging or command-line inspection, and it will save you time if you write your tests early (or even before) in the coding process.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Happy testing!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Intro to R Notebooks</title>
+      <link>https://katherinemwood.github.io/post/notebooks/</link>
+      <pubDate>Mon, 26 Jun 2017 15:36:22 -0500</pubDate>
+      
+      <guid>https://katherinemwood.github.io/post/notebooks/</guid>
+      <description>&lt;p&gt;This notebook is based loosely on &lt;a href=&#34;https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf&#34;&gt;this cheatsheet&lt;/a&gt; that shows some of the most basic functionality of R notebooks, including code, markdown, and Latex.&lt;/p&gt;
+&lt;div id=&#34;code&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Code&lt;/h1&gt;
+&lt;div id=&#34;chunks&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Chunks&lt;/h2&gt;
+&lt;p&gt;You can imbed chunks of R code right into the notebooks and run them. Why not beat that long-dead horse of demo data, the iris dataset?&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(iris)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you print a dataframe, it automatically gets formatted in this nice way.&lt;/p&gt;
+&lt;p&gt;We can also look at the summary:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(iris)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   
+##  Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  
+##  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  
+##  Median :5.800   Median :3.000   Median :4.350   Median :1.300  
+##  Mean   :5.843   Mean   :3.057   Mean   :3.758   Mean   :1.199  
+##  3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100   3rd Qu.:1.800  
+##  Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :2.500  
+##        Species  
+##  setosa    :50  
+##  versicolor:50  
+##  virginica :50  
+##                 
+##                 
+## &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And of course, you can use whatever libraries you like, as usual. We can set an option in this chunk to disable the messages that print to the console when you do things like load libraries. We could also turn off warnings, set options for error handling, or specify how we want results and code interleaved, or if we want the code in the output document at all. Setting the &lt;code&gt;tidy&lt;/code&gt; argument to &lt;code&gt;TRUE&lt;/code&gt; also spiffs up your code for you (cleaning up multiline expressions with indenting, for instance) in the output. So customizable!&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(dplyr)
+(meanpetals &amp;lt;- group_by(iris, Species) %&amp;gt;%
+               summarize(length = mean(Petal.Length), width = mean(Petal.Width)))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 3 x 3
+##      Species length width
+##       &amp;lt;fctr&amp;gt;  &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;
+## 1     setosa  1.462 0.246
+## 2 versicolor  4.260 1.326
+## 3  virginica  5.552 2.026&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Boring old data demos never looked so fresh!&lt;/p&gt;
 &lt;/div&gt;
-&lt;div id=&#34;formatting-dates&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Formatting dates&lt;/h1&gt;
+&lt;div id=&#34;inline&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Inline&lt;/h2&gt;
+&lt;p&gt;Inline code executes invisibly, so all you see is the output. For example, I can run a function right here and now to get the weekday:&lt;/p&gt;
+&lt;p&gt;Today is a Sunday.&lt;/p&gt;
+&lt;p&gt;That was accomplished by simply adding a back-ticked &lt;code&gt;r&lt;/code&gt; prefix to a call to &lt;code&gt;weekdays(Sys.time())&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;You can also set global parameters in the header and reference them throughout the document.&lt;/p&gt;
+&lt;p&gt;This inline execution has various uses. If you need code primarily for its output, like getting the current date or weekday and adding it into text, then inline works really well and better than a chunk.&lt;/p&gt;
 &lt;/div&gt;
-&lt;div id=&#34;storing-dates&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Storing dates&lt;/h1&gt;
-&lt;p&gt;&lt;code&gt;POSIXct&lt;/code&gt; is the number of seconds since 12:00 am on January 1st, 1970 (UTC), also known as “unix time.” While it may seem ludicrous to represent time this way (as one giant number), this actually has a lot of advantages. You don’t have to worry about time zone conversions, and having the time as just a number makes it a lot easier for machines to handle. For human readability, you have to run conversions for day, month, year, and time.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;as.POSIXct(Sys.Date())&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;2017-10-07 19:00:00 CDT&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;code&gt;POSIXlt&lt;/code&gt; is a more human-readable form of the time. It is a named list of vectors that includes all of the information you could want about a date.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plt &amp;lt;- as.POSIXlt(Sys.Date())
-objects(plt)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;hour&amp;quot;  &amp;quot;isdst&amp;quot; &amp;quot;mday&amp;quot;  &amp;quot;min&amp;quot;   &amp;quot;mon&amp;quot;   &amp;quot;sec&amp;quot;   &amp;quot;wday&amp;quot;  &amp;quot;yday&amp;quot;  &amp;quot;year&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Generally, it’s a good idea to store dates or timestamps as &lt;code&gt;POSIXct&lt;/code&gt; objects. This ensures uniformity, and means that you can operate on all the dates without worrying about differences in how they’re stored (month-day-year versus day-month-year, for example). You can always convert these objects to another form if that’s what you need.&lt;/p&gt;
 &lt;/div&gt;
-&lt;div id=&#34;manipulating-dates&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Manipulating dates&lt;/h1&gt;
-&lt;p&gt;Dates are just numbers, meaning you can do arithmetic operations with them.&lt;/p&gt;
-&lt;p&gt;You can add and subtract time:&lt;/p&gt;
-&lt;p&gt;You can compare times with logicals:&lt;/p&gt;
+&lt;div id=&#34;displaying-data&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Displaying Data&lt;/h1&gt;
+&lt;p&gt;If you’re writing up a tutorial or a report on results, you’ll more likely than not need to display data in the form of plots and tables. This is super easy in R Notebooks, and there are lots of options.&lt;/p&gt;
+&lt;div id=&#34;plots&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Plots&lt;/h2&gt;
+&lt;p&gt;Let’s see what the sepal lengths in Iris are up to by species, just for kicks. I’ll do some more extensive data manipulation in a code chunk, just to show we can. Since I loaded dplyr in another code chunk further up, we’re good there.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
+iris_plot &amp;lt;- ggplot(data=select(iris, Species, Sepal.Length), 
+                    aes(x=Species, y=Sepal.Length, color=Species, fill=Species)) +
+  geom_violin(alpha=.1) +
+  geom_point(position=position_jitter(w=.2)) +
+  geom_crossbar(stat=&amp;#39;summary&amp;#39;,fun.y=mean, fun.ymax=mean, fun.ymin=mean, fatten=2, width=.5) +
+  theme_minimal()
+print(iris_plot)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;./&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/notebooks_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Fascinating, I guess!&lt;/p&gt;
+&lt;p&gt;The nice thing about this is that these plots are completely reproduceable–they’ll be generated everytime you run the notebook. You can keep the code cell that generates it in the output, so people can see it, or if you want a cleaner output with just the results, you can hide the generating code cell. You can tailor it to your options.&lt;/p&gt;
 &lt;/div&gt;
-&lt;div id=&#34;plotting-with-dates&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Plotting with dates&lt;/h1&gt;
-&lt;p&gt;They also play well with ggplot, and there are convenient operations you can do specifically on POSIX objects to customize things.&lt;/p&gt;
+&lt;div id=&#34;tables&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Tables&lt;/h2&gt;
+&lt;p&gt;Tables can be a real pain-point when doing manuscripts, but these can be automated in R Notebooks, rendered right into text, and some look pretty good. Here’s what &lt;code&gt;knitr&lt;/code&gt; will give you (it won’t look right until it’s rendered):&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;knitr::kable(meanpetals)&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;Species&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;length&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;width&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;setosa&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.462&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.246&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;versicolor&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;4.260&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.326&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;virginica&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;5.552&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2.026&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;That looks alright!&lt;/p&gt;
+&lt;p&gt;There’s also &lt;code&gt;xtable,&lt;/code&gt; which will make it easier to set the appearance of the table through HTML attributes. This won’t show up until it’s rendered, though.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;print(xtable::xtable(meanpetals), type=&amp;#39;html&amp;#39;, html.table.attributes=&amp;#39;border=0  width=250&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;!-- html table generated in R 3.4.1 by xtable 1.8-2 package --&gt;
+&lt;!-- Sun Oct  8 22:20:39 2017 --&gt;
+&lt;table border=&#34;0&#34; width=&#34;250&#34;&gt;
+&lt;tr&gt;
+&lt;th&gt;
+&lt;/th&gt;
+&lt;th&gt;
+Species
+&lt;/th&gt;
+&lt;th&gt;
+length
+&lt;/th&gt;
+&lt;th&gt;
+width
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td&gt;
+setosa
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+1.46
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+0.25
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;
+2
+&lt;/td&gt;
+&lt;td&gt;
+versicolor
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+4.26
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+1.33
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;
+3
+&lt;/td&gt;
+&lt;td&gt;
+virginica
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+5.55
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+2.03
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;p&gt;Finally, here’s a table fron the &lt;code&gt;stargazer&lt;/code&gt; package. Also lots of attributes we can set here. It’s designed mostly for pretty formatting of regression model results and summary stats, but we can get it to do direct output instead.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;stargazer::stargazer(as.data.frame(meanpetals), type=&amp;#39;html&amp;#39;, summary=F)&lt;/code&gt;&lt;/pre&gt;
+&lt;table style=&#34;text-align:center&#34;&gt;
+&lt;tr&gt;
+&lt;td colspan=&#34;4&#34; style=&#34;border-bottom: 1px solid black&#34;&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;
+&lt;/td&gt;
+&lt;td&gt;
+Species
+&lt;/td&gt;
+&lt;td&gt;
+length
+&lt;/td&gt;
+&lt;td&gt;
+width
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td colspan=&#34;4&#34; style=&#34;border-bottom: 1px solid black&#34;&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td&gt;
+setosa
+&lt;/td&gt;
+&lt;td&gt;
+1.462
+&lt;/td&gt;
+&lt;td&gt;
+0.246
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;
+2
+&lt;/td&gt;
+&lt;td&gt;
+versicolor
+&lt;/td&gt;
+&lt;td&gt;
+4.260
+&lt;/td&gt;
+&lt;td&gt;
+1.326
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;
+3
+&lt;/td&gt;
+&lt;td&gt;
+virginica
+&lt;/td&gt;
+&lt;td&gt;
+5.552
+&lt;/td&gt;
+&lt;td&gt;
+2.026
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td colspan=&#34;4&#34; style=&#34;border-bottom: 1px solid black&#34;&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;p&gt;If none of the formatting is quite to your liking, or you don’t have easily available options to set, you can tweak the appearance with your &lt;a href=&#34;http://rmarkdown.rstudio.com/html_document_format.html#custom_css&#34;&gt;own CSS&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If none of this is satisfying, or it’s more informal, you can always just print the dataframe.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(meanpetals)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 3 x 3
+##      Species length width
+##       &amp;lt;fctr&amp;gt;  &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;
+## 1     setosa  1.462 0.246
+## 2 versicolor  4.260 1.326
+## 3  virginica  5.552 2.026&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I don’t know that this makes tables any less painless, but at least now there’s more than one option for the pain.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;formatting&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Formatting&lt;/h1&gt;
+&lt;p&gt;If you’re writing up a report or manuscript, you also need your text to look nice, not just your data. This is where knowing a little bit of Markdown comes in handy.&lt;/p&gt;
+&lt;div id=&#34;markdown&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Markdown&lt;/h2&gt;
+&lt;p&gt;Just type to get pretty plaintext. To quote &lt;code&gt;verbatim code&lt;/code&gt; without running anything, wrap it in backticks(`). This is distinct from inline code, which is prefaced with &lt;code&gt;r&lt;/code&gt; within the ticks. I’ll do this throughout to demonstrate how to construct the effects you see.&lt;/p&gt;
+&lt;p&gt;To display a special character, like _underscores_ or asterisks *, escape them with a backslash (\).&lt;/p&gt;
+&lt;p&gt;To add a single linebreak without a blank line, end a line with two spaces.&lt;code&gt;..&lt;/code&gt;&lt;br /&gt;
+Ta-da!&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;*italics*&lt;/code&gt;: &lt;em&gt;italics&lt;/em&gt;&lt;br /&gt;
+&lt;code&gt;**bold**&lt;/code&gt;: &lt;strong&gt;bold&lt;/strong&gt;&lt;br /&gt;
+&lt;code&gt;**_both_**&lt;/code&gt;: &lt;strong&gt;&lt;em&gt;both&lt;/em&gt;&lt;/strong&gt;&lt;br /&gt;
+&lt;code&gt;~~strikethrough~~&lt;/code&gt;: &lt;del&gt;strikethrough&lt;/del&gt;&lt;br /&gt;
+&lt;code&gt;subscript~1~&lt;/code&gt;: subscript&lt;sub&gt;1&lt;/sub&gt;&lt;br /&gt;
+&lt;code&gt;superscript^2^&lt;/code&gt;: superscript&lt;sup&gt;2&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;You can do bulleted lists:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;* start with an asterisk, plus, or minus&lt;/code&gt; &lt;code&gt;+ then indent 4 spaces&lt;/code&gt; &lt;code&gt;- then indent again&lt;/code&gt; &lt;code&gt;* then more stuff&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;start with an asterisk, plus, or minus
+&lt;ul&gt;
+&lt;li&gt;then indent 4 spaces
+&lt;ul&gt;
+&lt;li&gt;then indent again&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;then more stuff&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;And ordered ones:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;1. Big thing&lt;/code&gt; &lt;code&gt;i) small thing \+ indent&lt;/code&gt; &lt;code&gt;A. sub-small thing&lt;/code&gt; &lt;code&gt;2. Another big thing&lt;/code&gt;&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Big thing
+&lt;ol style=&#34;list-style-type: lower-roman&#34;&gt;
+&lt;li&gt;small thing + indent&lt;br /&gt;
+A. sub-small thing&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;Another big thing&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Oh, and footnotes… &lt;code&gt;[^1]&lt;/code&gt; &lt;a href=&#34;#fn1&#34; class=&#34;footnoteRef&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;#Header 1&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;header-1&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Header 1&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;##Header 2&lt;/code&gt;&lt;/p&gt;
+&lt;div id=&#34;header-2&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Header 2&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;###Header 3&lt;/code&gt;&lt;/p&gt;
+&lt;div id=&#34;header-3&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Header 3&lt;/h3&gt;
+&lt;p&gt;Add horizontal lines with at least three hyphens, asterisks, or underscores:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;***&lt;/code&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Tables are a little strange in the raw, but look nice once rendered.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;| Right-aligned | Left-aligned | Centered | Default |
+|-:|:-|:-:|-|
+|1|1|1|1|
+|12|12|12|12| 
+|*1*|_2_|~~3~~|4^2^|&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;right&#34;&gt;Right-aligned&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Left-aligned&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Centered&lt;/th&gt;
+&lt;th&gt;Default&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;1&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;right&#34;&gt;12&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;12&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;12&lt;/td&gt;
+&lt;td&gt;12&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;em&gt;1&lt;/em&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;em&gt;2&lt;/em&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;del&gt;3&lt;/del&gt;&lt;/td&gt;
+&lt;td&gt;4&lt;sup&gt;2&lt;/sup&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Images are easy, too.&lt;br /&gt;
+&lt;code&gt;![The adorabilis octopus, for your viewing pleasure](http://blogs.discovermagazine.com/d-brief/files/2015/06/octopus.jpg)&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;http://blogs.discovermagazine.com/d-brief/files/2015/06/octopus.jpg&#34; alt=&#34;The adorabilis octopus, for your viewing pleasure&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;The adorabilis octopus, for your viewing pleasure&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;&lt;code&gt;[^1]:&lt;/code&gt; Are pretty easy.&lt;a href=&#34;#fnref1&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
 &lt;/div&gt;
 </description>
     </item>
