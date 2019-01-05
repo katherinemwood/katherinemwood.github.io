@@ -145,7 +145,7 @@
 <div class="article-metadata">
 
   <span class="article-date">
-    <time datetime="2017-06-26 12:34:18 -0500 CDT" itemprop="datePublished">
+    <time datetime="2017-06-26 12:34:18 -0500 -0500" itemprop="datePublished">
       Mon, Jun 26, 2017
     </time>
   </span>
@@ -219,7 +219,7 @@ return(as.numeric(!(sum(deck == sample(deck)) &gt; 0))) #1 is win, 0 is lose
 }
 results &lt;- replicate(100000, cards())
 paste(&#39;Win percentage: &#39;, sum(results)/1000,&#39;%&#39;, sep=&#39;&#39;)</code></pre>
-<pre><code>## [1] &quot;Win percentage: 1.65%&quot;</code></pre>
+<pre><code>## [1] &quot;Win percentage: 1.691%&quot;</code></pre>
 <p>I’ll update this post with the closed-form solution if I manage to work it out (failing that, I’ll just link to the solution on FiveThirtyEight).</p>
 <p><a href="https://github.com/katherinemwood/lonely_cards">Here’s the source code</a> for the shiny app.</p>
 <p>UPDATE: It turns out the <a href="https://fivethirtyeight.com/features/how-long-will-it-take-to-blow-out-the-birthday-candles/#correction">closed-form solution to this riddle</a> is nontrivial! It relies on a branch of combinatorics called <a href="http://mathworld.wolfram.com/Derangement.html">“derangements”</a> I didn’t encounter in my (admittedly less than comprehensive) math and stats education.</p>
@@ -276,6 +276,8 @@ paste(&#39;Win percentage: &#39;, sum(results)/1000,&#39;%&#39;, sep=&#39;&#39;)
 
       Powered by the <a href="https://github.com/gcushen/hugo-academic" target="_blank">Academic
       theme</a> for <a href="http://gohugo.io" target="_blank">Hugo</a>.
+      
+      Coffee cup icon made by <a href="https://www.flaticon.com/authors/dave-gandy" title="Dave Gandy">Dave Gandy</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY.</a>
 
       <span class="pull-right" aria-hidden="true">
         <a href="#" id="back_to_top">

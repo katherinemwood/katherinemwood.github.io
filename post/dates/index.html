@@ -145,7 +145,7 @@
 <div class="article-metadata">
 
   <span class="article-date">
-    <time datetime="2017-07-09 13:14:46 -0500 CDT" itemprop="datePublished">
+    <time datetime="2017-07-09 13:14:46 -0500 -0500" itemprop="datePublished">
       Sun, Jul 9, 2017
     </time>
   </span>
@@ -211,7 +211,7 @@
 <h1>Storing dates</h1>
 <p><code>POSIXct</code> is the number of seconds since 12:00 am on January 1st, 1970 (UTC), also known as “unix time.” While it may seem ludicrous to represent time this way (as one giant number), this actually has a lot of advantages. You don’t have to worry about time zone conversions, and having the time as just a number makes it a lot easier for machines to handle. For human readability, you have to run conversions for day, month, year, and time.</p>
 <pre class="r"><code>as.POSIXct(Sys.Date())</code></pre>
-<pre><code>## [1] &quot;2017-10-07 19:00:00 CDT&quot;</code></pre>
+<pre><code>## [1] &quot;2019-01-04 16:00:00 PST&quot;</code></pre>
 <p><code>POSIXlt</code> is a more human-readable form of the time. It is a named list of vectors that includes all of the information you could want about a date.</p>
 <pre class="r"><code>plt &lt;- as.POSIXlt(Sys.Date())
 objects(plt)</code></pre>
@@ -284,6 +284,8 @@ objects(plt)</code></pre>
 
       Powered by the <a href="https://github.com/gcushen/hugo-academic" target="_blank">Academic
       theme</a> for <a href="http://gohugo.io" target="_blank">Hugo</a>.
+      
+      Coffee cup icon made by <a href="https://www.flaticon.com/authors/dave-gandy" title="Dave Gandy">Dave Gandy</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY.</a>
 
       <span class="pull-right" aria-hidden="true">
         <a href="#" id="back_to_top">

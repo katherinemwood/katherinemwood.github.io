@@ -145,7 +145,7 @@
 <div class="article-metadata">
 
   <span class="article-date">
-    <time datetime="2017-06-26 15:36:22 -0500 CDT" itemprop="datePublished">
+    <time datetime="2017-06-26 15:36:22 -0500 -0500" itemprop="datePublished">
       Mon, Jun 26, 2017
     </time>
   </span>
@@ -237,17 +237,17 @@
 (meanpetals &lt;- group_by(iris, Species) %&gt;%
                summarize(length = mean(Petal.Length), width = mean(Petal.Width)))</code></pre>
 <pre><code>## # A tibble: 3 x 3
-##      Species length width
-##       &lt;fctr&gt;  &lt;dbl&gt; &lt;dbl&gt;
-## 1     setosa  1.462 0.246
-## 2 versicolor  4.260 1.326
-## 3  virginica  5.552 2.026</code></pre>
+##   Species    length width
+##   &lt;fct&gt;       &lt;dbl&gt; &lt;dbl&gt;
+## 1 setosa       1.46 0.246
+## 2 versicolor   4.26 1.33 
+## 3 virginica    5.55 2.03</code></pre>
 <p>Boring old data demos never looked so fresh!</p>
 </div>
 <div id="inline" class="section level2">
 <h2>Inline</h2>
 <p>Inline code executes invisibly, so all you see is the output. For example, I can run a function right here and now to get the weekday:</p>
-<p>Today is a Sunday.</p>
+<p>Today is a Saturday.</p>
 <p>That was accomplished by simply adding a back-ticked <code>r</code> prefix to a call to <code>weekdays(Sys.time())</code>.</p>
 <p>You can also set global parameters in the header and reference them throughout the document.</p>
 <p>This inline execution has various uses. If you need code primarily for its output, like getting the current date or weekday and adding it into text, then inline works really well and better than a chunk.</p>
@@ -267,7 +267,7 @@ iris_plot &lt;- ggplot(data=select(iris, Species, Sepal.Length),
   geom_crossbar(stat=&#39;summary&#39;,fun.y=mean, fun.ymax=mean, fun.ymin=mean, fatten=2, width=.5) +
   theme_minimal()
 print(iris_plot)</code></pre>
-<p><img src="../../"katherinemwood.github.io/"  # End your URL with a `/` trailing slash.post/notebooks_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="../../post/notebooks_files/figure-html/iris_scatter-1.png" width="672" /></p>
 <p>Fascinating, I guess!</p>
 <p>The nice thing about this is that these plots are completely reproduceable–they’ll be generated everytime you run the notebook. You can keep the code cell that generates it in the output, so people can see it, or if you want a cleaner output with just the results, you can hide the generating code cell. You can tailor it to your options.</p>
 </div>
@@ -304,8 +304,8 @@ print(iris_plot)</code></pre>
 <p>That looks alright!</p>
 <p>There’s also <code>xtable,</code> which will make it easier to set the appearance of the table through HTML attributes. This won’t show up until it’s rendered, though.</p>
 <pre class="r"><code>print(xtable::xtable(meanpetals), type=&#39;html&#39;, html.table.attributes=&#39;border=0  width=250&#39;)</code></pre>
-<!-- html table generated in R 3.4.1 by xtable 1.8-2 package -->
-<!-- Sun Oct  8 22:20:39 2017 -->
+<!-- html table generated in R 3.5.1 by xtable 1.8-3 package -->
+<!-- Sat Jan  5 13:50:41 2019 -->
 <table border="0" width="250">
 <tr>
 <th>
@@ -438,11 +438,11 @@ virginica
 <p>If none of this is satisfying, or it’s more informal, you can always just print the dataframe.</p>
 <pre class="r"><code>(meanpetals)</code></pre>
 <pre><code>## # A tibble: 3 x 3
-##      Species length width
-##       &lt;fctr&gt;  &lt;dbl&gt; &lt;dbl&gt;
-## 1     setosa  1.462 0.246
-## 2 versicolor  4.260 1.326
-## 3  virginica  5.552 2.026</code></pre>
+##   Species    length width
+##   &lt;fct&gt;       &lt;dbl&gt; &lt;dbl&gt;
+## 1 setosa       1.46 0.246
+## 2 versicolor   4.26 1.33 
+## 3 virginica    5.55 2.03</code></pre>
 <p>I don’t know that this makes tables any less painless, but at least now there’s more than one option for the pain.</p>
 </div>
 </div>
@@ -605,6 +605,8 @@ A. sub-small thing</li>
 
       Powered by the <a href="https://github.com/gcushen/hugo-academic" target="_blank">Academic
       theme</a> for <a href="http://gohugo.io" target="_blank">Hugo</a>.
+      
+      Coffee cup icon made by <a href="https://www.flaticon.com/authors/dave-gandy" title="Dave Gandy">Dave Gandy</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY.</a>
 
       <span class="pull-right" aria-hidden="true">
         <a href="#" id="back_to_top">

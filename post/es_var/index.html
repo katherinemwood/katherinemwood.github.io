@@ -145,7 +145,7 @@
 <div class="article-metadata">
 
   <span class="article-date">
-    <time datetime="2017-06-26 13:54:20 -0500 CDT" itemprop="datePublished">
+    <time datetime="2017-06-26 13:54:20 -0500 -0500" itemprop="datePublished">
       Mon, Jun 26, 2017
     </time>
   </span>
@@ -203,7 +203,7 @@
     <div class="article-style" itemprop="articleBody">
       <p>If it’s not terribly obvious, <a href="http://shiny.rstudio.com/tutorial/">Shiny</a> is my new favorite toy. It’s incredibly accessible for beginners, gives you great results with minimal effort, and can be as sophisticated as you need it to be.</p>
 <p>I decided to throw together a quick simulation to look at the variation in effect size estimates we can expect at different sample sizes. There’s an increasing focus in psych on estimation of effects, rather than simply detection of effects. This is great, but, as it turns out, virtually impossible with a single study unless you are prepared to recruit massive numbers of subjects. Nothing here is new, but I like looking at distributions and playing with sliders, and I’ll take any excuse to make a little shiny widget.</p>
-<p>In this simulation, we’re doing a basic, between-groups t-test and drawing samples from the normal distribution. The code can be dead simple. I’ll write a tiny</p>
+<p>In this simulation, we’re doing a basic, between-groups t-test and drawing samples from the normal distribution. The code can be dead simple. I’ll write a tiny function to handle the simulating, and another to handle the plotting.</p>
 <pre class="r"><code>library(ggplot2)
 
 sim_es &lt;- function(n, true_es) {
@@ -231,18 +231,18 @@ plot_es &lt;- function(data, true_es) {
 <p>Here’s what you get if you use tiny (n=10) groups (perhaps under the justification that if an effect is big, you’ll detect it just fine in small samples) and no true effect is present:</p>
 <pre class="r"><code>n10 &lt;- replicate(3000, sim_es(10, 0))
 plot_es(n10, 0)</code></pre>
-<p><img src="../../"katherinemwood.github.io/"  # End your URL with a `/` trailing slash.post/es_var_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="../../post/es_var_files/figure-html/plot_10-1.png" width="672" /></p>
 <p>The white line is the true effect, and the two red lines mark out the 95% quantile.</p>
 <p>Yikes. With samples that small, you could (and will, often!) get an enormous effect when none is present.</p>
 <p>Here’s what we get with n = 50, no effect present. I’ve left the x-axis fixed to make it easier to compare all of these plots.</p>
 <pre class="r"><code>n50 &lt;- replicate(3000, sim_es(50, 0))
 plot_es(n50, 0)</code></pre>
-<p><img src="../../"katherinemwood.github.io/"  # End your URL with a `/` trailing slash.post/es_var_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="../../post/es_var_files/figure-html/plot_50-1.png" width="672" /></p>
 <p>This is a dramatic improvement over n=10, but you could still estimate what is considered a small (d=.1, traditionally) to medium (d=.3, traditionally) effect in either direction with appreciable frequency.</p>
 <p>And here’s n=200.</p>
 <pre class="r"><code>n200 &lt;- replicate(3000, sim_es(200, 0))
 plot_es(n200, 0)</code></pre>
-<p><img src="../../"katherinemwood.github.io/"  # End your URL with a `/` trailing slash.post/es_var_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="../../post/es_var_files/figure-html/plot_200-1.png" width="672" /></p>
 <p>I’ve used d=0 as an example, but you get this spread regardless of what the true d is; it will just shift to center on the true effect. In that case, you’ll detect an effect most of the time, but can be way off about its actual size. This doesn’t mean that you can throw power out the window by arguing that you only care about detection, of course–you’ll “detect” an effect a lot of the time when d=0 with small samples.</p>
 <p>These simulations are the result of 3000 replications each, but in the shiny app you can change this number.</p>
 <p>For me, this really drives home just how important replications and meta-analyses–cumulative science in general, really–are, particularly for estimation. When you do a lot of these studies over and over again, as these simulations model, you’ll zero in on the true effect, but a study can’t do it alone.</p>
@@ -304,6 +304,8 @@ plot_es(n200, 0)</code></pre>
 
       Powered by the <a href="https://github.com/gcushen/hugo-academic" target="_blank">Academic
       theme</a> for <a href="http://gohugo.io" target="_blank">Hugo</a>.
+      
+      Coffee cup icon made by <a href="https://www.flaticon.com/authors/dave-gandy" title="Dave Gandy">Dave Gandy</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY.</a>
 
       <span class="pull-right" aria-hidden="true">
         <a href="#" id="back_to_top">

@@ -11,6 +11,31 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>What is it like to run a Registered Replication?</title>
+      <link>https://katherinemwood.github.io/post/first-rr/</link>
+      <pubDate>Mon, 19 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://katherinemwood.github.io/post/first-rr/</guid>
+      <description>&lt;p&gt;I’m one of many people who will extoll, at length, the virtues of replication and of registered reports. Until recently, I had only talked the talk; I had never actually run one myself. I had always wanted to, but I was also nervous about the prospect. There is no shortage of horror stories about replications that become contentious, or which get caught in review purgatory, or which are dismissed out of hand as a waste of time.&lt;/p&gt;
+&lt;p&gt;Fortunately, our experience was overwhelmingly positive at every stage. Not every replictation project will be, and there are some key aspects that made a big difference. The entire process was much more rewarding and meaningful than I was expecting.&lt;/p&gt;
+&lt;p&gt;So, how does the process work? What was it like, my first time out?&lt;/p&gt;
+&lt;p&gt;To start, my advisor and I decided from the beginning that we were going to approach this project as a &lt;em&gt;registered&lt;/em&gt; replication report. This refers to a publication type in which manuscripts are reviewed in two stages. In the first stage, you submit a Stage 1 manuscript in which you essentially write the first half of a traditional manuscript–the introduction, the methods, and how you intend to analyze the data (the particulars will vary from journal to journal). This format isn’t exclusively for replications, but is particularly well-suited to them. The experiments already have context, both from when they were originally published and based on their subsequent impact on the literature, which makes the introduction fairly straightforward. The methods are already decided (barring some adjustments, perhaps), and you will probably be running the same analyses that the original authors did.&lt;/p&gt;
+&lt;p&gt;The other advantage to this format is that review and acceptance decisions occur before results are known. This can help cool off a potentially contentious process; during Stage 1, because there are no results, everyone can engage more dispassionately in evaluating the methods.&lt;/p&gt;
+&lt;p&gt;To prepare our Stage 1 submission, we did everything required to run the actual experiment. We spent a lot of time thinking through how we were going to implement these experiments, and tried to make sure that every change we made to the original method was in the service of efficiency or methodological soundness. Not one change we made was arbitrary, and it took nearly as long to hammer out these methods as it would an original experiment even though most of the heavy lifting had been taken care of.&lt;/p&gt;
+&lt;p&gt;Once we settled on our approach, I programmed the experiments, rigged up some interactive demos, and programmed the analysis and tested it with some simulated data. We adapted some old-school inattentional blindness experiments to run on a large scale on MTurk. The upside to this is that this is a method we have a lot of experience in; I’ve run dozens of these experiments online by now, and worked out a lot of the bugs. The downside was this marked the most substantial departure from the original methods, and I was concerned it might be controversial with reviewers. But, I was prepared to argue the merits, and we pressed on.&lt;/p&gt;
+&lt;p&gt;(I’ll spare you the details of the experiments themselves, why we chose them in particular, etc., since it won’t be interesting or relevant to everyone; feel free to check out the paper linked at the end if you’re curious!)&lt;/p&gt;
+&lt;p&gt;We decided to submit the paper to Attention, Perception, &amp;amp; Psychophysics. Lots of journals offer registered reports now, but choice of outlet can have a substantial impact on your submission experience. We had already had a great experience submitting an earlier paper to AP&amp;amp;P, and we knew that the editor (Mike Dodd) was wonderful and that we’d be in good hands.&lt;/p&gt;
+&lt;p&gt;Like with any other manuscript, this initial submission and review is the slowest part of the process. When we got our reviews back, I was pleasantly surprised. Not only did we have a lot of support from the editor, but the original authors were available to review. They made great points, agreeing with some of our changes and pushing back on others. We made a few minor adjustments to our method and manuscript, corrected a few small errors, and sent back a revision. We received our provisional acceptance within a week.&lt;/p&gt;
+&lt;p&gt;This was the phase I was most concerned about, and at least in this case, those fears were unfounded. The entire Stage 1 process felt very collaborative, and it meant a great deal to me personally to have the original authors sign off on the method. I have tremendous respect for the studies we replicated and wanted to do right by them.&lt;/p&gt;
+&lt;p&gt;After the provisional acceptance, it was off to the races. We preregistered our provisionally-accepted Stage 1 manuscript on OSF (they even have a special format just for that!), and then launched the experiments. Because everything had been prepared and tested ahead of time, the data were collected and analyzed within a week. We wrote up the results and discussion and submitted our Stage 2 manuscript back to AP&amp;amp;P.&lt;/p&gt;
+&lt;p&gt;A lot of people–not unreasonably–balk at the idea of two rounds of peer review (particularly after a multi-round Stage 1 review), but Stage 2 review is much more limited in scope compared to Stage 1. Its primary function is to ensure that you ran the experiment(s) and analyzed the data the way you said you would in your Stage 1 manuscript, and to review the way you interpreted and contextualized your results (your discussion, essentially). This review was done in a matter of days, and required only a few minor changes on our end. And then it was done!&lt;/p&gt;
+&lt;p&gt;I was pleasantly surprised at the entire process. It was a priviledge to have the original authors review our approach, and the Stage 1 review felt very collaborative. I also found the process of designing and running this replication much more meaningful than I anticipated. However, I also recognize that we got lucky, in many ways. The review process was not contentious in our case, but could have been. The editor was supportive and treated the RR as a publication worthy of time and attention; not all journals or editors will.&lt;/p&gt;
+&lt;p&gt;Every experience won’t be like mine, but I’m so glad I finally took the plunge and ran this replication. If you’ve been on the fence about running your own, consider going for it!&lt;/p&gt;
+&lt;p&gt;If you’re curious about how a manuscript evolves between Stage 1 and Stage 2, you can check out both versions on the &lt;a href=&#34;https://osf.io/7mtzn/&#34;&gt;project’s OSF page&lt;/a&gt;. You can find the final online version &lt;a href=&#34;http://link.springer.com/article/10.3758/s13414-018-1629-1&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Processing without noticing in inattentional blindness: A replication of Moore &amp; Egeth (1997) and Mack &amp; Rock (1998)</title>
       <link>https://katherinemwood.github.io/publication/implicit_ib/</link>
       <pubDate>Sat, 10 Nov 2018 00:00:00 +0000</pubDate>
@@ -241,11 +266,7 @@ print(gains_tweaks)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;You can get pretty sophisticated with handling these qualifications, and there is a lot more detail on the &lt;a href=&#34;http://docs.aws.amazon.com/AWSMechTurk/latest/AWSMechanicalTurkRequester/Concepts_QualificationsArticle.html&#34;&gt;AWS documentation pages&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Here, I’m going to demonstrate how to make a qualification test that auto-scores itself using the boto3 library for Python. It’s a simple, 2-question colorblindness test (you can view it on the worker sandbox &lt;a href=&#34;https://workersandbox.mturk.com/mturk/requestqualification?qualificationId=3CFGE88WF7UDUETM7YP3RSRD73VS4F&#34;&gt;here&lt;/a&gt;; sign-in required) that first asks people to self-report any known issues with their color vision, and then has them respond to an Ishihara plate. Here’s what it looks like to a worker:&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 &lt;img src=&#34;./img/qualification_test.png&#34; alt=&#34;a qualification test in the wild&#34; /&gt;
-=======
-&lt;img src=&#34;https://github.com/katherinemwood/katherinemwood.github.io/blob/sources/qualification_test.png&#34; alt=&#34;a qualification test in the wild&#34; /&gt;
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; e08752c6c5d1082b199e2a3b28e25274de7966f2
 &lt;p class=&#34;caption&#34;&gt;a qualification test in the wild&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;With this test, instead of asking about colorblindness during the HIT itself and having to throw data out after the fact, I can restrict participation to people who pass this short test.&lt;/p&gt;
@@ -722,91 +743,6 @@ python balance.py&lt;/code&gt;&lt;/pre&gt;
     </item>
     
     <item>
-      <title>Some thoughts on the New Significance</title>
-      <link>https://katherinemwood.github.io/post/new_sig/</link>
-      <pubDate>Wed, 26 Jul 2017 10:00:17 -0700</pubDate>
-      
-      <guid>https://katherinemwood.github.io/post/new_sig/</guid>
-      <description>&lt;p&gt;The busy corridors of psychology twitter have been abuzz over a &lt;a href=&#34;https://osf.io/preprints/psyarxiv/mky9j/&#34;&gt;new paper&lt;/a&gt;, written by some heavy-hitters in the field, arguing for a new threshold for statistical significance. Now, instead of &lt;span class=&#34;math inline&#34;&gt;\(p &amp;lt; .05\)&lt;/span&gt;, the threshold would be &lt;span class=&#34;math inline&#34;&gt;\(p &amp;lt; .005\)&lt;/span&gt;. If you’ve not read the paper, I recommend doing so; it’s short and won’t take too much time.&lt;/p&gt;
-&lt;p&gt;The argument isn’t new–there was a 2013 paper arguing for something similar by Johnson–but it has made quite a splash this time.&lt;/p&gt;
-&lt;p&gt;As a way of clarifying my own thoughts on this, I thought I’d work through the main discussion points around this proposal that I’ve encountered on Twitter. This isn’t comprehensive by a long shot. People had a &lt;em&gt;lot&lt;/em&gt; to say about this. But these were the most common arguments.&lt;/p&gt;
-&lt;div id=&#34;this-wont-fix-nhst&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;1. This won’t fix NHST&lt;/h1&gt;
-&lt;p&gt;This is probably the most common point. It’s true, of course–all the same issues with NHST (null-hypothesis significance testing), even when it is properly used, don’t disappear at &lt;span class=&#34;math inline&#34;&gt;\(p &amp;lt; .005\)&lt;/span&gt;. People opposed to NHST in general won’t ever be pleased by changes like this; generally they want to see a move to estimation (effect sizes and confidence/credible intervals) and/or Bayesian methods. So do many of the authors on this paper, in fact.&lt;/p&gt;
-&lt;p&gt;I’m a fan of the effect size/estimation approach to reporting, and I’d like to see it used more widely (or at least always alongisde p-values, if we’re starting gradually). On the other hand, change is slow; a lot of the issues we’re discussing now have been discussed decades before, to little effect. In the meantime, it might not be an outrageous idea to be more stringent. &lt;span class=&#34;math inline&#34;&gt;\(p &amp;lt; .005\)&lt;/span&gt; is &lt;em&gt;much&lt;/em&gt; harder to p-hack than &lt;span class=&#34;math inline&#34;&gt;\(p &amp;lt; .05\)&lt;/span&gt;, and as the authors point out in the paper, it drops the “false discovery rate” across the board for all levels of power.&lt;/p&gt;
-&lt;p&gt;If you don’t like p-values and would like to see them discontinued, then proposals like this are going to look like so much wasted effort. But, there is something to be said for the fact that the system can’t be changed overnight and seeing what changes we can make in the meantime.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;this-encourages-dichotomous-thinking&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;2. This encourages dichotomous thinking&lt;/h1&gt;
-&lt;p&gt;Related to #1, one argument against that I’ve seen articulated by a few different people is that this proposal doesn’t fix the issue of the “significant-nonsignificant” dichotomy. This point is hard to argue with. The authors in the paper suggest treating &lt;span class=&#34;math inline&#34;&gt;\(p &amp;lt; .05\)&lt;/span&gt; as “suggestive,” not unlike how there is the tendency for people to call &lt;span class=&#34;math inline&#34;&gt;\(p &amp;lt; .1\)&lt;/span&gt; “trending towards significance.” But, as some of these folks have pointed out, that’s still entirely based on these thresholds. It’s essentially letting the p-value do the thinking for you, rather than demanding more difficult, nuanced interpretation.&lt;/p&gt;
-&lt;p&gt;I think there’s definitely something to this point. When these thresholds become really important– either because they are defacto required for publication, or required to avoid having others dismiss your work–results can get distilled down to the p-value and nothing more. For instance, an effect that is small, highly variable, and difficult to replicate even within the same lab is held up as “real” because it meets the threshold; the sixth of seven unplanned tests limbos under the cutoff, and it’s latched onto as the “important” result, and so on. The p-value becomes more important than whether or not the effect was predicted, how big it is, or how reliable it is.&lt;/p&gt;
-&lt;p&gt;I think this concern is reasonable. But, related to #1, change is gradual, and p-values are going to be here for a while yet (and may be here forever). So, is there any harm in a lower significance threshold? Sure, it might not &lt;em&gt;help&lt;/em&gt; in terms of the philosophy of the p-value and NHST, but if these are your primary concerns, it can’t hurt, either. Unless you view it as a waste of time and resources (see #3).&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;change-the-culture-not-the-arbitrary-cutoffs&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;3. Change the culture, not the arbitrary cutoffs&lt;/h1&gt;
-&lt;p&gt;Why not both? This is somewhat related to #1 and #2. The argument goes that we should be spending time and effort pushing for systematic cultural change. We definitely should! Things would be better if “open science practices” were just “science practices.” But I don’t think this is zero-sum. I think we can keep trying to change the culture &lt;em&gt;and&lt;/em&gt; change the arbitrary cutoffs at the same time, particularly if you think that changing the cutoffs could be a force for good.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;this-will-throw-the-type-i-to-type-ii-error-ratio-out-of-whack&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;4. This will throw the Type I to Type II error ratio out of whack&lt;/h1&gt;
-&lt;p&gt;A Type I error is when you reject the null hypothesis when in reality it should have been retained; a Type II error is when you retain the null when you should have rejected it. Typically, part of NHST is striking a balance between these two errors. The alpha level (significance threshold) is the rate of Type I errors we are willing to accept. To put things very simply, the Type II error rate is controlled by power; how often will you detect a given effect size with your chosen sample size?&lt;/p&gt;
-&lt;p&gt;At the traditional values of &lt;span class=&#34;math inline&#34;&gt;\(\alpha = .05\)&lt;/span&gt; and 80% power, the ratio of Type I to Type II errors is 1:4. Under the new threshold, this ratio would be 1:40, which for some people is far too skewed.&lt;/p&gt;
-&lt;p&gt;The authors actually address this point in the paper, and &lt;a href=&#34;http://sometimesimwrong.typepad.com/wrong/2017/07/alpha-wars.html&#34;&gt;Simine Vazire covers it on her blog&lt;/a&gt;. The short answer is that, right now, with p-hacking, multiple testing, and a lack of preregistration, our alpha level isn’t actually what it seems. Power, too, is often much lower than the typically-recommended 80% level, and &lt;a href=&#34;https://www.refsmmat.com/notebooks/power.html&#34;&gt;hasn’t improved much&lt;/a&gt; since Coehn first wrote about it back in 1962. In practice, this means that the error ratio isn’t 1:4. As Simine points out, the 1:40 ratio probably would be too strict in the case of systematic preregistration and other changes. We’ve got a ways to go before we need to worry about that, though, since we’ve only just started to publicize and prevent the effects of HARKing, QRPs, and so on.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;this-will-make-publication-harder-what-about-expensive-data-and-small-populations-of-interest&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;5. This will make publication harder / What about expensive data and small populations of interest&lt;/h1&gt;
-&lt;p&gt;The authors stress that this threshold should not be used as a publication criterion. This is important, because using these cutoffs as requirements for publication inflate the effect size estimates in the literature. You only avoid biased estimates if there is no publication bias. This doesn’t mean it wouldn’t be adopted as a requirement, of course, but the authors are advocating this as a standard-of-evidence metric, not a publication requirement. (Insert the line about the paving material on the road to hell here.)&lt;/p&gt;
-&lt;p&gt;As for the second points, this was also true at &lt;span class=&#34;math inline&#34;&gt;\(p &amp;lt; .05\)&lt;/span&gt;. I’ve also seen this point brought up in response to other proposed changes to the field, like encouraging more power. I don’t have much perspective to offer here, because I work with undergrads and MTurkers as subjects and have little difficulty getting enough people. There’s &lt;a href=&#34;https://twitter.com/chrisdc77/status/890120245423345664&#34;&gt;a little thread here&lt;/a&gt; about this sort of thing by people smarter than I am.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;what-does-this-actually-look-like&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;What does this actually look like?&lt;/h1&gt;
-&lt;p&gt;I’ve done some simulations looking at p-hacking, etc. with the &lt;span class=&#34;math inline&#34;&gt;\(p &amp;lt; .05\)&lt;/span&gt; significance level. It’s helped me develop some intuitions, but I’m curious about the new significance level. I’d like to get to know it a little better.&lt;/p&gt;
-&lt;p&gt;So, I’m going to do some simulating. First, I want to look at how many significant results you’ll get at various effect sizes at various sample sizes. I’m going to simulate the plain old t-test because, hey, it’s just a first date.&lt;/p&gt;
-&lt;p&gt;I want to see how “hits” (getting a value below the significance threshold when there is a real effect, aka power) varies with sample size and effect size between the two cutoffs.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;suppressPackageStartupMessages({
-  library(data.table)
-  library(dplyr)
-  library(ggplot2)
-  library(tidyr)
-  library(viridis)
-})
-
- sim.es &amp;lt;- function(n, es) {
-    g1 &amp;lt;- rnorm(n, es, 1)
-    g2 &amp;lt;- rnorm(n, 0, 1)
-    c(&amp;#39;p&amp;#39;=t.test(g1, g2, paired=FALSE)$p.value, &amp;#39;n&amp;#39;=n, &amp;#39;es&amp;#39;=es)
- }
-params &amp;lt;- expand.grid(list(&amp;#39;n&amp;#39;=c(20, 50, 100, 500), &amp;#39;es&amp;#39;=seq(0, 1, .1)))
-simulation_results &amp;lt;- rbindlist(mapply(function(n, es) 
-  as.data.frame(t(replicate(1000, sim.es(n, es)))), 
-                             n=params$n, es=params$es, SIMPLIFY=FALSE))
-
-sim_graph &amp;lt;- ggplot(data=simulation_results %&amp;gt;% 
-                      group_by(n, es) %&amp;gt;% 
-                      summarize(sig_results_new=sum(p &amp;lt; .005)/1000,
-                                sig_results_old=sum(p &amp;lt; .05)/1000) %&amp;gt;%
-                      gather(group, sig_pct, sig_results_old, sig_results_new)) +
-  geom_line(aes(x=es, y=sig_pct, lty=group, color=as.factor(n))) +
-  scale_color_viridis(discrete=TRUE) +
-  scale_linetype_discrete(labels=c(&amp;#39;p &amp;lt; .005&amp;#39;, &amp;#39;p &amp;lt; .05&amp;#39;)) +
-  labs(color=&amp;#39;N per cell&amp;#39;, lty=&amp;#39;Alpha level&amp;#39;) +
-  xlab(&amp;#39;Effect Size&amp;#39;) +
-  ylab(&amp;#39;Percent significant results&amp;#39;) +
-  theme_minimal()
-sim_graph&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/new_sig_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;So, yeah. Even at a big effect size, you’re not getting away with 20 per cell under the .005 threshold. Even 50 per cell is pretty lean unless you’re hunting a big effect.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;so&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;So…&lt;/h1&gt;
-&lt;p&gt;If nothing else, you’ve got to hand it to this paper for sparking a diverse and extensive discussion about where the field is now, and how best to encourage the changes that will make our science more robust.&lt;/p&gt;
-&lt;p&gt;I know you’re waiting with bated breath to hear my personal opinion on this. Call me an ideological slouch, but after reading the paper, and reading the arguments for and against, I remain solidly middle-ground. I think it’s true that changing this threshold wouldn’t change much; it doesn’t fix NHST or dichotomous, significance-based thinking. Many of the old problems would persist under the new world order. On the other hand, I don’t think this proposal is actively harmful (although others would vehemently disagree with me on that point), and I think it would even help a bit in terms of going to the mat for more power and higher standards of evidence.&lt;/p&gt;
-&lt;p&gt;This is definitely not the Thing That Will Save Psych Forever, and the authors don’t claim that it is. But I think it’s an interesting idea that has potential benefits, and merits consideration. It should also make us think about the strength of evidence we want to see, and how we should go about trying to effect that change in the field. Requiring a stricter cutoff is certainly a place to start.&lt;/p&gt;
-&lt;p&gt;If you’re interested in following this discussion, there’s a lot of it on Twitter. People are also getting into the mathematics behind the Bayesian perspective on p-values, prior probabilities, and so on; it’s worth a look if you’re interested. If this paper accomplishes nothing else, it’s sparked some interesting discussions.&lt;/p&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Oh, joy! Joyplots in R with ggjoy</title>
       <link>https://katherinemwood.github.io/post/joy/</link>
       <pubDate>Sat, 15 Jul 2017 00:00:00 +0000</pubDate>
@@ -823,7 +759,8 @@ joy &amp;lt;- data.frame(&amp;#39;label&amp;#39;=rep(letters[1:10], each=100),
 &lt;p&gt;Here’s an example in which the distributions are allowed to overlap vertically, giving the appearance that they are stacked.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;suppressPackageStartupMessages({
   library(ggjoy)
-  library(dplyr)})
+  library(dplyr)
+  library(ggplot2)})
 
 ggplot(joy, aes(x=value, y=label)) +
   geom_joy(scale=2, rel_min_height=.03) +
@@ -832,7 +769,7 @@ ggplot(joy, aes(x=value, y=label)) +
   theme_joy() +
   theme(axis.title.y = element_blank())&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.209&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/joy_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt; To make things look more orderly, and since our labels have no inherent order, we can order the data according to the mean. This isn’t neccessary if your y-axis is time, for instance.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./post/joy_files/figure-html/vertical_overlap-1.png&#34; width=&#34;672&#34; /&gt; To make things look more orderly, and since our labels have no inherent order, we can order the data according to the mean. This isn’t neccessary if your y-axis is time, for instance.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;joy &amp;lt;- group_by(joy, label) %&amp;gt;%
        mutate(m=mean(value)) %&amp;gt;%
        arrange(m) %&amp;gt;%
@@ -846,7 +783,7 @@ ggplot(joy, aes(x=value, y=label)) +
   theme_joy() +
   theme(axis.title.y = element_blank())&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.209&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/joy_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./post/joy_files/figure-html/ordered_joy-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Some people don’t like this overlap (for the aesthetics or because it can obscure the data) so here’s an example if we spread everybody out so that they don’t touch. The amount of overlap is easily controlled by the &lt;code&gt;scale&lt;/code&gt; argument in geom_joy. &lt;code&gt;scale = 1&lt;/code&gt; means no overlap; the higher this value, the more the distributions will overlap.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(joy, aes(x=value, y=label)) +
   geom_joy(scale=1, rel_min_height=.01) +
@@ -855,7 +792,7 @@ ggplot(joy, aes(x=value, y=label)) +
   theme_joy() +
   theme(axis.title.y = element_blank())&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.209&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/joy_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./post/joy_files/figure-html/scaled_joy-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;How about some color? Color can be used to separate groups:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(joy, aes(x=value, y=label, fill=as.factor(rank))) +
   geom_joy(scale=1, rel_min_height=.01) +
@@ -865,7 +802,7 @@ ggplot(joy, aes(x=value, y=label)) +
   theme_joy() +
   theme(axis.title.y = element_blank())&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.209&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/joy_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./post/joy_files/figure-html/color_joy-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Or, if your data doesn’t have grouping structure, it can just be used to break things up a little bit. (See &lt;a href=&#34;https://twitter.com/hnrklndbrg/status/883675698300420098&#34;&gt;this tweet&lt;/a&gt; for another example.)&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(joy, aes(x=value, y=label, fill=label)) +
   geom_joy(scale=3, rel_min_height=0.01) +
@@ -876,7 +813,7 @@ ggplot(joy, aes(x=value, y=label)) +
   theme(axis.title.y = element_blank(),
         legend.position=&amp;#39;none&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.209&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/joy_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./post/joy_files/figure-html/alternating_joy-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;How about some joyful facets?&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(filter(joy, rank != 5), aes(x=value, y=label)) +
   geom_joy(scale=1, rel_min_height=.03) +
@@ -885,8 +822,11 @@ ggplot(joy, aes(x=value, y=label)) +
   facet_wrap(~rank, scales=&amp;#39;free&amp;#39;) +
   theme_joy() +
   theme(axis.title.y = element_blank())&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.212&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/joy_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.202&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.219&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.198&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.229&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;./post/joy_files/figure-html/faceted_joy-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;You can check out &lt;a href=&#34;https://cran.r-project.org/web/packages/ggjoy/vignettes/introduction.html&#34;&gt;the vignette&lt;/a&gt; for more examples and more information. You can also &lt;a href=&#34;https://cran.r-project.org/web/packages/ggjoy/ggjoy.pdf&#34;&gt;check out the docs&lt;/a&gt; for information on, for example, how the density is calculated and what your options are for that.&lt;/p&gt;
 &lt;p&gt;If you want to play around with these yourself, you can make up data (like I did) or check out the examples in the vignette for datasets to use that will make cool plots. Who knows–you might even find the iris dataset fun again if you use it to make joyplots.&lt;/p&gt;
 </description>

@@ -11,6 +11,31 @@
     <atom:link href="/post/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>What is it like to run a Registered Replication?</title>
+      <link>https://katherinemwood.github.io/post/first-rr/</link>
+      <pubDate>Mon, 19 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://katherinemwood.github.io/post/first-rr/</guid>
+      <description>&lt;p&gt;I’m one of many people who will extoll, at length, the virtues of replication and of registered reports. Until recently, I had only talked the talk; I had never actually run one myself. I had always wanted to, but I was also nervous about the prospect. There is no shortage of horror stories about replications that become contentious, or which get caught in review purgatory, or which are dismissed out of hand as a waste of time.&lt;/p&gt;
+&lt;p&gt;Fortunately, our experience was overwhelmingly positive at every stage. Not every replictation project will be, and there are some key aspects that made a big difference. The entire process was much more rewarding and meaningful than I was expecting.&lt;/p&gt;
+&lt;p&gt;So, how does the process work? What was it like, my first time out?&lt;/p&gt;
+&lt;p&gt;To start, my advisor and I decided from the beginning that we were going to approach this project as a &lt;em&gt;registered&lt;/em&gt; replication report. This refers to a publication type in which manuscripts are reviewed in two stages. In the first stage, you submit a Stage 1 manuscript in which you essentially write the first half of a traditional manuscript–the introduction, the methods, and how you intend to analyze the data (the particulars will vary from journal to journal). This format isn’t exclusively for replications, but is particularly well-suited to them. The experiments already have context, both from when they were originally published and based on their subsequent impact on the literature, which makes the introduction fairly straightforward. The methods are already decided (barring some adjustments, perhaps), and you will probably be running the same analyses that the original authors did.&lt;/p&gt;
+&lt;p&gt;The other advantage to this format is that review and acceptance decisions occur before results are known. This can help cool off a potentially contentious process; during Stage 1, because there are no results, everyone can engage more dispassionately in evaluating the methods.&lt;/p&gt;
+&lt;p&gt;To prepare our Stage 1 submission, we did everything required to run the actual experiment. We spent a lot of time thinking through how we were going to implement these experiments, and tried to make sure that every change we made to the original method was in the service of efficiency or methodological soundness. Not one change we made was arbitrary, and it took nearly as long to hammer out these methods as it would an original experiment even though most of the heavy lifting had been taken care of.&lt;/p&gt;
+&lt;p&gt;Once we settled on our approach, I programmed the experiments, rigged up some interactive demos, and programmed the analysis and tested it with some simulated data. We adapted some old-school inattentional blindness experiments to run on a large scale on MTurk. The upside to this is that this is a method we have a lot of experience in; I’ve run dozens of these experiments online by now, and worked out a lot of the bugs. The downside was this marked the most substantial departure from the original methods, and I was concerned it might be controversial with reviewers. But, I was prepared to argue the merits, and we pressed on.&lt;/p&gt;
+&lt;p&gt;(I’ll spare you the details of the experiments themselves, why we chose them in particular, etc., since it won’t be interesting or relevant to everyone; feel free to check out the paper linked at the end if you’re curious!)&lt;/p&gt;
+&lt;p&gt;We decided to submit the paper to Attention, Perception, &amp;amp; Psychophysics. Lots of journals offer registered reports now, but choice of outlet can have a substantial impact on your submission experience. We had already had a great experience submitting an earlier paper to AP&amp;amp;P, and we knew that the editor (Mike Dodd) was wonderful and that we’d be in good hands.&lt;/p&gt;
+&lt;p&gt;Like with any other manuscript, this initial submission and review is the slowest part of the process. When we got our reviews back, I was pleasantly surprised. Not only did we have a lot of support from the editor, but the original authors were available to review. They made great points, agreeing with some of our changes and pushing back on others. We made a few minor adjustments to our method and manuscript, corrected a few small errors, and sent back a revision. We received our provisional acceptance within a week.&lt;/p&gt;
+&lt;p&gt;This was the phase I was most concerned about, and at least in this case, those fears were unfounded. The entire Stage 1 process felt very collaborative, and it meant a great deal to me personally to have the original authors sign off on the method. I have tremendous respect for the studies we replicated and wanted to do right by them.&lt;/p&gt;
+&lt;p&gt;After the provisional acceptance, it was off to the races. We preregistered our provisionally-accepted Stage 1 manuscript on OSF (they even have a special format just for that!), and then launched the experiments. Because everything had been prepared and tested ahead of time, the data were collected and analyzed within a week. We wrote up the results and discussion and submitted our Stage 2 manuscript back to AP&amp;amp;P.&lt;/p&gt;
+&lt;p&gt;A lot of people–not unreasonably–balk at the idea of two rounds of peer review (particularly after a multi-round Stage 1 review), but Stage 2 review is much more limited in scope compared to Stage 1. Its primary function is to ensure that you ran the experiment(s) and analyzed the data the way you said you would in your Stage 1 manuscript, and to review the way you interpreted and contextualized your results (your discussion, essentially). This review was done in a matter of days, and required only a few minor changes on our end. And then it was done!&lt;/p&gt;
+&lt;p&gt;I was pleasantly surprised at the entire process. It was a priviledge to have the original authors review our approach, and the Stage 1 review felt very collaborative. I also found the process of designing and running this replication much more meaningful than I anticipated. However, I also recognize that we got lucky, in many ways. The review process was not contentious in our case, but could have been. The editor was supportive and treated the RR as a publication worthy of time and attention; not all journals or editors will.&lt;/p&gt;
+&lt;p&gt;Every experience won’t be like mine, but I’m so glad I finally took the plunge and ran this replication. If you’ve been on the fence about running your own, consider going for it!&lt;/p&gt;
+&lt;p&gt;If you’re curious about how a manuscript evolves between Stage 1 and Stage 2, you can check out both versions on the &lt;a href=&#34;https://osf.io/7mtzn/&#34;&gt;project’s OSF page&lt;/a&gt;. You can find the final online version &lt;a href=&#34;http://link.springer.com/article/10.3758/s13414-018-1629-1&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>CORVIDS 2.0: Faster, more stable, and now on Windows</title>
       <link>https://katherinemwood.github.io/post/corvids2.0/</link>
       <pubDate>Tue, 08 May 2018 10:04:53 -0500</pubDate>
@@ -205,11 +230,7 @@ print(gains_tweaks)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;You can get pretty sophisticated with handling these qualifications, and there is a lot more detail on the &lt;a href=&#34;http://docs.aws.amazon.com/AWSMechTurk/latest/AWSMechanicalTurkRequester/Concepts_QualificationsArticle.html&#34;&gt;AWS documentation pages&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Here, I’m going to demonstrate how to make a qualification test that auto-scores itself using the boto3 library for Python. It’s a simple, 2-question colorblindness test (you can view it on the worker sandbox &lt;a href=&#34;https://workersandbox.mturk.com/mturk/requestqualification?qualificationId=3CFGE88WF7UDUETM7YP3RSRD73VS4F&#34;&gt;here&lt;/a&gt;; sign-in required) that first asks people to self-report any known issues with their color vision, and then has them respond to an Ishihara plate. Here’s what it looks like to a worker:&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 &lt;img src=&#34;../img/qualification_test.png&#34; alt=&#34;a qualification test in the wild&#34; /&gt;
-=======
-&lt;img src=&#34;https://github.com/katherinemwood/katherinemwood.github.io/blob/sources/qualification_test.png&#34; alt=&#34;a qualification test in the wild&#34; /&gt;
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; e08752c6c5d1082b199e2a3b28e25274de7966f2
 &lt;p class=&#34;caption&#34;&gt;a qualification test in the wild&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;With this test, instead of asking about colorblindness during the HIT itself and having to throw data out after the fact, I can restrict participation to people who pass this short test.&lt;/p&gt;
@@ -677,91 +698,6 @@ python balance.py&lt;/code&gt;&lt;/pre&gt;
     </item>
     
     <item>
-      <title>Some thoughts on the New Significance</title>
-      <link>https://katherinemwood.github.io/post/new_sig/</link>
-      <pubDate>Wed, 26 Jul 2017 10:00:17 -0700</pubDate>
-      
-      <guid>https://katherinemwood.github.io/post/new_sig/</guid>
-      <description>&lt;p&gt;The busy corridors of psychology twitter have been abuzz over a &lt;a href=&#34;https://osf.io/preprints/psyarxiv/mky9j/&#34;&gt;new paper&lt;/a&gt;, written by some heavy-hitters in the field, arguing for a new threshold for statistical significance. Now, instead of &lt;span class=&#34;math inline&#34;&gt;\(p &amp;lt; .05\)&lt;/span&gt;, the threshold would be &lt;span class=&#34;math inline&#34;&gt;\(p &amp;lt; .005\)&lt;/span&gt;. If you’ve not read the paper, I recommend doing so; it’s short and won’t take too much time.&lt;/p&gt;
-&lt;p&gt;The argument isn’t new–there was a 2013 paper arguing for something similar by Johnson–but it has made quite a splash this time.&lt;/p&gt;
-&lt;p&gt;As a way of clarifying my own thoughts on this, I thought I’d work through the main discussion points around this proposal that I’ve encountered on Twitter. This isn’t comprehensive by a long shot. People had a &lt;em&gt;lot&lt;/em&gt; to say about this. But these were the most common arguments.&lt;/p&gt;
-&lt;div id=&#34;this-wont-fix-nhst&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;1. This won’t fix NHST&lt;/h1&gt;
-&lt;p&gt;This is probably the most common point. It’s true, of course–all the same issues with NHST (null-hypothesis significance testing), even when it is properly used, don’t disappear at &lt;span class=&#34;math inline&#34;&gt;\(p &amp;lt; .005\)&lt;/span&gt;. People opposed to NHST in general won’t ever be pleased by changes like this; generally they want to see a move to estimation (effect sizes and confidence/credible intervals) and/or Bayesian methods. So do many of the authors on this paper, in fact.&lt;/p&gt;
-&lt;p&gt;I’m a fan of the effect size/estimation approach to reporting, and I’d like to see it used more widely (or at least always alongisde p-values, if we’re starting gradually). On the other hand, change is slow; a lot of the issues we’re discussing now have been discussed decades before, to little effect. In the meantime, it might not be an outrageous idea to be more stringent. &lt;span class=&#34;math inline&#34;&gt;\(p &amp;lt; .005\)&lt;/span&gt; is &lt;em&gt;much&lt;/em&gt; harder to p-hack than &lt;span class=&#34;math inline&#34;&gt;\(p &amp;lt; .05\)&lt;/span&gt;, and as the authors point out in the paper, it drops the “false discovery rate” across the board for all levels of power.&lt;/p&gt;
-&lt;p&gt;If you don’t like p-values and would like to see them discontinued, then proposals like this are going to look like so much wasted effort. But, there is something to be said for the fact that the system can’t be changed overnight and seeing what changes we can make in the meantime.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;this-encourages-dichotomous-thinking&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;2. This encourages dichotomous thinking&lt;/h1&gt;
-&lt;p&gt;Related to #1, one argument against that I’ve seen articulated by a few different people is that this proposal doesn’t fix the issue of the “significant-nonsignificant” dichotomy. This point is hard to argue with. The authors in the paper suggest treating &lt;span class=&#34;math inline&#34;&gt;\(p &amp;lt; .05\)&lt;/span&gt; as “suggestive,” not unlike how there is the tendency for people to call &lt;span class=&#34;math inline&#34;&gt;\(p &amp;lt; .1\)&lt;/span&gt; “trending towards significance.” But, as some of these folks have pointed out, that’s still entirely based on these thresholds. It’s essentially letting the p-value do the thinking for you, rather than demanding more difficult, nuanced interpretation.&lt;/p&gt;
-&lt;p&gt;I think there’s definitely something to this point. When these thresholds become really important– either because they are defacto required for publication, or required to avoid having others dismiss your work–results can get distilled down to the p-value and nothing more. For instance, an effect that is small, highly variable, and difficult to replicate even within the same lab is held up as “real” because it meets the threshold; the sixth of seven unplanned tests limbos under the cutoff, and it’s latched onto as the “important” result, and so on. The p-value becomes more important than whether or not the effect was predicted, how big it is, or how reliable it is.&lt;/p&gt;
-&lt;p&gt;I think this concern is reasonable. But, related to #1, change is gradual, and p-values are going to be here for a while yet (and may be here forever). So, is there any harm in a lower significance threshold? Sure, it might not &lt;em&gt;help&lt;/em&gt; in terms of the philosophy of the p-value and NHST, but if these are your primary concerns, it can’t hurt, either. Unless you view it as a waste of time and resources (see #3).&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;change-the-culture-not-the-arbitrary-cutoffs&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;3. Change the culture, not the arbitrary cutoffs&lt;/h1&gt;
-&lt;p&gt;Why not both? This is somewhat related to #1 and #2. The argument goes that we should be spending time and effort pushing for systematic cultural change. We definitely should! Things would be better if “open science practices” were just “science practices.” But I don’t think this is zero-sum. I think we can keep trying to change the culture &lt;em&gt;and&lt;/em&gt; change the arbitrary cutoffs at the same time, particularly if you think that changing the cutoffs could be a force for good.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;this-will-throw-the-type-i-to-type-ii-error-ratio-out-of-whack&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;4. This will throw the Type I to Type II error ratio out of whack&lt;/h1&gt;
-&lt;p&gt;A Type I error is when you reject the null hypothesis when in reality it should have been retained; a Type II error is when you retain the null when you should have rejected it. Typically, part of NHST is striking a balance between these two errors. The alpha level (significance threshold) is the rate of Type I errors we are willing to accept. To put things very simply, the Type II error rate is controlled by power; how often will you detect a given effect size with your chosen sample size?&lt;/p&gt;
-&lt;p&gt;At the traditional values of &lt;span class=&#34;math inline&#34;&gt;\(\alpha = .05\)&lt;/span&gt; and 80% power, the ratio of Type I to Type II errors is 1:4. Under the new threshold, this ratio would be 1:40, which for some people is far too skewed.&lt;/p&gt;
-&lt;p&gt;The authors actually address this point in the paper, and &lt;a href=&#34;http://sometimesimwrong.typepad.com/wrong/2017/07/alpha-wars.html&#34;&gt;Simine Vazire covers it on her blog&lt;/a&gt;. The short answer is that, right now, with p-hacking, multiple testing, and a lack of preregistration, our alpha level isn’t actually what it seems. Power, too, is often much lower than the typically-recommended 80% level, and &lt;a href=&#34;https://www.refsmmat.com/notebooks/power.html&#34;&gt;hasn’t improved much&lt;/a&gt; since Coehn first wrote about it back in 1962. In practice, this means that the error ratio isn’t 1:4. As Simine points out, the 1:40 ratio probably would be too strict in the case of systematic preregistration and other changes. We’ve got a ways to go before we need to worry about that, though, since we’ve only just started to publicize and prevent the effects of HARKing, QRPs, and so on.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;this-will-make-publication-harder-what-about-expensive-data-and-small-populations-of-interest&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;5. This will make publication harder / What about expensive data and small populations of interest&lt;/h1&gt;
-&lt;p&gt;The authors stress that this threshold should not be used as a publication criterion. This is important, because using these cutoffs as requirements for publication inflate the effect size estimates in the literature. You only avoid biased estimates if there is no publication bias. This doesn’t mean it wouldn’t be adopted as a requirement, of course, but the authors are advocating this as a standard-of-evidence metric, not a publication requirement. (Insert the line about the paving material on the road to hell here.)&lt;/p&gt;
-&lt;p&gt;As for the second points, this was also true at &lt;span class=&#34;math inline&#34;&gt;\(p &amp;lt; .05\)&lt;/span&gt;. I’ve also seen this point brought up in response to other proposed changes to the field, like encouraging more power. I don’t have much perspective to offer here, because I work with undergrads and MTurkers as subjects and have little difficulty getting enough people. There’s &lt;a href=&#34;https://twitter.com/chrisdc77/status/890120245423345664&#34;&gt;a little thread here&lt;/a&gt; about this sort of thing by people smarter than I am.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;what-does-this-actually-look-like&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;What does this actually look like?&lt;/h1&gt;
-&lt;p&gt;I’ve done some simulations looking at p-hacking, etc. with the &lt;span class=&#34;math inline&#34;&gt;\(p &amp;lt; .05\)&lt;/span&gt; significance level. It’s helped me develop some intuitions, but I’m curious about the new significance level. I’d like to get to know it a little better.&lt;/p&gt;
-&lt;p&gt;So, I’m going to do some simulating. First, I want to look at how many significant results you’ll get at various effect sizes at various sample sizes. I’m going to simulate the plain old t-test because, hey, it’s just a first date.&lt;/p&gt;
-&lt;p&gt;I want to see how “hits” (getting a value below the significance threshold when there is a real effect, aka power) varies with sample size and effect size between the two cutoffs.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;suppressPackageStartupMessages({
-  library(data.table)
-  library(dplyr)
-  library(ggplot2)
-  library(tidyr)
-  library(viridis)
-})
-
- sim.es &amp;lt;- function(n, es) {
-    g1 &amp;lt;- rnorm(n, es, 1)
-    g2 &amp;lt;- rnorm(n, 0, 1)
-    c(&amp;#39;p&amp;#39;=t.test(g1, g2, paired=FALSE)$p.value, &amp;#39;n&amp;#39;=n, &amp;#39;es&amp;#39;=es)
- }
-params &amp;lt;- expand.grid(list(&amp;#39;n&amp;#39;=c(20, 50, 100, 500), &amp;#39;es&amp;#39;=seq(0, 1, .1)))
-simulation_results &amp;lt;- rbindlist(mapply(function(n, es) 
-  as.data.frame(t(replicate(1000, sim.es(n, es)))), 
-                             n=params$n, es=params$es, SIMPLIFY=FALSE))
-
-sim_graph &amp;lt;- ggplot(data=simulation_results %&amp;gt;% 
-                      group_by(n, es) %&amp;gt;% 
-                      summarize(sig_results_new=sum(p &amp;lt; .005)/1000,
-                                sig_results_old=sum(p &amp;lt; .05)/1000) %&amp;gt;%
-                      gather(group, sig_pct, sig_results_old, sig_results_new)) +
-  geom_line(aes(x=es, y=sig_pct, lty=group, color=as.factor(n))) +
-  scale_color_viridis(discrete=TRUE) +
-  scale_linetype_discrete(labels=c(&amp;#39;p &amp;lt; .005&amp;#39;, &amp;#39;p &amp;lt; .05&amp;#39;)) +
-  labs(color=&amp;#39;N per cell&amp;#39;, lty=&amp;#39;Alpha level&amp;#39;) +
-  xlab(&amp;#39;Effect Size&amp;#39;) +
-  ylab(&amp;#39;Percent significant results&amp;#39;) +
-  theme_minimal()
-sim_graph&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/new_sig_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;So, yeah. Even at a big effect size, you’re not getting away with 20 per cell under the .005 threshold. Even 50 per cell is pretty lean unless you’re hunting a big effect.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;so&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;So…&lt;/h1&gt;
-&lt;p&gt;If nothing else, you’ve got to hand it to this paper for sparking a diverse and extensive discussion about where the field is now, and how best to encourage the changes that will make our science more robust.&lt;/p&gt;
-&lt;p&gt;I know you’re waiting with bated breath to hear my personal opinion on this. Call me an ideological slouch, but after reading the paper, and reading the arguments for and against, I remain solidly middle-ground. I think it’s true that changing this threshold wouldn’t change much; it doesn’t fix NHST or dichotomous, significance-based thinking. Many of the old problems would persist under the new world order. On the other hand, I don’t think this proposal is actively harmful (although others would vehemently disagree with me on that point), and I think it would even help a bit in terms of going to the mat for more power and higher standards of evidence.&lt;/p&gt;
-&lt;p&gt;This is definitely not the Thing That Will Save Psych Forever, and the authors don’t claim that it is. But I think it’s an interesting idea that has potential benefits, and merits consideration. It should also make us think about the strength of evidence we want to see, and how we should go about trying to effect that change in the field. Requiring a stricter cutoff is certainly a place to start.&lt;/p&gt;
-&lt;p&gt;If you’re interested in following this discussion, there’s a lot of it on Twitter. People are also getting into the mathematics behind the Bayesian perspective on p-values, prior probabilities, and so on; it’s worth a look if you’re interested. If this paper accomplishes nothing else, it’s sparked some interesting discussions.&lt;/p&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Oh, joy! Joyplots in R with ggjoy</title>
       <link>https://katherinemwood.github.io/post/joy/</link>
       <pubDate>Sat, 15 Jul 2017 00:00:00 +0000</pubDate>
@@ -778,7 +714,8 @@ joy &amp;lt;- data.frame(&amp;#39;label&amp;#39;=rep(letters[1:10], each=100),
 &lt;p&gt;Here’s an example in which the distributions are allowed to overlap vertically, giving the appearance that they are stacked.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;suppressPackageStartupMessages({
   library(ggjoy)
-  library(dplyr)})
+  library(dplyr)
+  library(ggplot2)})
 
 ggplot(joy, aes(x=value, y=label)) +
   geom_joy(scale=2, rel_min_height=.03) +
@@ -787,7 +724,7 @@ ggplot(joy, aes(x=value, y=label)) +
   theme_joy() +
   theme(axis.title.y = element_blank())&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.209&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/joy_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt; To make things look more orderly, and since our labels have no inherent order, we can order the data according to the mean. This isn’t neccessary if your y-axis is time, for instance.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../post/joy_files/figure-html/vertical_overlap-1.png&#34; width=&#34;672&#34; /&gt; To make things look more orderly, and since our labels have no inherent order, we can order the data according to the mean. This isn’t neccessary if your y-axis is time, for instance.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;joy &amp;lt;- group_by(joy, label) %&amp;gt;%
        mutate(m=mean(value)) %&amp;gt;%
        arrange(m) %&amp;gt;%
@@ -801,7 +738,7 @@ ggplot(joy, aes(x=value, y=label)) +
   theme_joy() +
   theme(axis.title.y = element_blank())&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.209&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/joy_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../post/joy_files/figure-html/ordered_joy-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Some people don’t like this overlap (for the aesthetics or because it can obscure the data) so here’s an example if we spread everybody out so that they don’t touch. The amount of overlap is easily controlled by the &lt;code&gt;scale&lt;/code&gt; argument in geom_joy. &lt;code&gt;scale = 1&lt;/code&gt; means no overlap; the higher this value, the more the distributions will overlap.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(joy, aes(x=value, y=label)) +
   geom_joy(scale=1, rel_min_height=.01) +
@@ -810,7 +747,7 @@ ggplot(joy, aes(x=value, y=label)) +
   theme_joy() +
   theme(axis.title.y = element_blank())&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.209&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/joy_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../post/joy_files/figure-html/scaled_joy-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;How about some color? Color can be used to separate groups:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(joy, aes(x=value, y=label, fill=as.factor(rank))) +
   geom_joy(scale=1, rel_min_height=.01) +
@@ -820,7 +757,7 @@ ggplot(joy, aes(x=value, y=label)) +
   theme_joy() +
   theme(axis.title.y = element_blank())&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.209&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/joy_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../post/joy_files/figure-html/color_joy-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Or, if your data doesn’t have grouping structure, it can just be used to break things up a little bit. (See &lt;a href=&#34;https://twitter.com/hnrklndbrg/status/883675698300420098&#34;&gt;this tweet&lt;/a&gt; for another example.)&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(joy, aes(x=value, y=label, fill=label)) +
   geom_joy(scale=3, rel_min_height=0.01) +
@@ -831,7 +768,7 @@ ggplot(joy, aes(x=value, y=label)) +
   theme(axis.title.y = element_blank(),
         legend.position=&amp;#39;none&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.209&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/joy_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../post/joy_files/figure-html/alternating_joy-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;How about some joyful facets?&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(filter(joy, rank != 5), aes(x=value, y=label)) +
   geom_joy(scale=1, rel_min_height=.03) +
@@ -840,8 +777,11 @@ ggplot(joy, aes(x=value, y=label)) +
   facet_wrap(~rank, scales=&amp;#39;free&amp;#39;) +
   theme_joy() +
   theme(axis.title.y = element_blank())&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.212&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/joy_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.202&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.219&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.198&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.229&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;../post/joy_files/figure-html/faceted_joy-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;You can check out &lt;a href=&#34;https://cran.r-project.org/web/packages/ggjoy/vignettes/introduction.html&#34;&gt;the vignette&lt;/a&gt; for more examples and more information. You can also &lt;a href=&#34;https://cran.r-project.org/web/packages/ggjoy/ggjoy.pdf&#34;&gt;check out the docs&lt;/a&gt; for information on, for example, how the density is calculated and what your options are for that.&lt;/p&gt;
 &lt;p&gt;If you want to play around with these yourself, you can make up data (like I did) or check out the examples in the vignette for datasets to use that will make cool plots. Who knows–you might even find the iris dataset fun again if you use it to make joyplots.&lt;/p&gt;
 </description>
@@ -1044,17 +984,17 @@ Avoid testing simple code that you’re confident will work. Instead focus your 
 (meanpetals &amp;lt;- group_by(iris, Species) %&amp;gt;%
                summarize(length = mean(Petal.Length), width = mean(Petal.Width)))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 3 x 3
-##      Species length width
-##       &amp;lt;fctr&amp;gt;  &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;
-## 1     setosa  1.462 0.246
-## 2 versicolor  4.260 1.326
-## 3  virginica  5.552 2.026&lt;/code&gt;&lt;/pre&gt;
+##   Species    length width
+##   &amp;lt;fct&amp;gt;       &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;
+## 1 setosa       1.46 0.246
+## 2 versicolor   4.26 1.33 
+## 3 virginica    5.55 2.03&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Boring old data demos never looked so fresh!&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;inline&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Inline&lt;/h2&gt;
 &lt;p&gt;Inline code executes invisibly, so all you see is the output. For example, I can run a function right here and now to get the weekday:&lt;/p&gt;
-&lt;p&gt;Today is a Sunday.&lt;/p&gt;
+&lt;p&gt;Today is a Saturday.&lt;/p&gt;
 &lt;p&gt;That was accomplished by simply adding a back-ticked &lt;code&gt;r&lt;/code&gt; prefix to a call to &lt;code&gt;weekdays(Sys.time())&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;You can also set global parameters in the header and reference them throughout the document.&lt;/p&gt;
 &lt;p&gt;This inline execution has various uses. If you need code primarily for its output, like getting the current date or weekday and adding it into text, then inline works really well and better than a chunk.&lt;/p&gt;
@@ -1074,7 +1014,7 @@ iris_plot &amp;lt;- ggplot(data=select(iris, Species, Sepal.Length),
   geom_crossbar(stat=&amp;#39;summary&amp;#39;,fun.y=mean, fun.ymax=mean, fun.ymin=mean, fatten=2, width=.5) +
   theme_minimal()
 print(iris_plot)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/notebooks_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../post/notebooks_files/figure-html/iris_scatter-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Fascinating, I guess!&lt;/p&gt;
 &lt;p&gt;The nice thing about this is that these plots are completely reproduceable–they’ll be generated everytime you run the notebook. You can keep the code cell that generates it in the output, so people can see it, or if you want a cleaner output with just the results, you can hide the generating code cell. You can tailor it to your options.&lt;/p&gt;
 &lt;/div&gt;
@@ -1111,8 +1051,8 @@ print(iris_plot)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;That looks alright!&lt;/p&gt;
 &lt;p&gt;There’s also &lt;code&gt;xtable,&lt;/code&gt; which will make it easier to set the appearance of the table through HTML attributes. This won’t show up until it’s rendered, though.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;print(xtable::xtable(meanpetals), type=&amp;#39;html&amp;#39;, html.table.attributes=&amp;#39;border=0  width=250&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;!-- html table generated in R 3.4.1 by xtable 1.8-2 package --&gt;
-&lt;!-- Sun Oct  8 22:20:39 2017 --&gt;
+&lt;!-- html table generated in R 3.5.1 by xtable 1.8-3 package --&gt;
+&lt;!-- Sat Jan  5 13:50:41 2019 --&gt;
 &lt;table border=&#34;0&#34; width=&#34;250&#34;&gt;
 &lt;tr&gt;
 &lt;th&gt;
@@ -1245,11 +1185,11 @@ virginica
 &lt;p&gt;If none of this is satisfying, or it’s more informal, you can always just print the dataframe.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(meanpetals)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 3 x 3
-##      Species length width
-##       &amp;lt;fctr&amp;gt;  &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;
-## 1     setosa  1.462 0.246
-## 2 versicolor  4.260 1.326
-## 3  virginica  5.552 2.026&lt;/code&gt;&lt;/pre&gt;
+##   Species    length width
+##   &amp;lt;fct&amp;gt;       &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;
+## 1 setosa       1.46 0.246
+## 2 versicolor   4.26 1.33 
+## 3 virginica    5.55 2.03&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;I don’t know that this makes tables any less painless, but at least now there’s more than one option for the pain.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1380,7 +1320,7 @@ dat &amp;lt;- data.frame(&amp;#39;condition&amp;#39;=c(rep(&amp;#39;t1&amp;#39;,
   theme_minimal()
 
 print(basic_violin)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/violins_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../post/violins_files/figure-html/basic_violins-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;These might be more accurately called “jug” or “vase” plots, since they rarely make pretty violin shapes and more often tend to look like postmodern sculpture. Name aside, the violin plot is a rotated, symmetric kernel density plot that shows the density of points at different values. Where the plot is wide, there is a high density of points; where it is narrow, a low density of points (like height on a histogram). We can see here that group T1 is less variable than T2; T1’s violin is short and squat, meaning most of the points are massed in a small region. T2, on the other hand, is tall and narrow, meaning the points are spread thinner along a wider range of values&lt;/p&gt;
 &lt;p&gt;These guys looks a little sparse, though. Why don’t we dress them up a smidge?&lt;/p&gt;
 &lt;p&gt;Maybe you like a point mean and &lt;span class=&#34;math inline&#34;&gt;\(2*\)&lt;/span&gt;SE error bars:&lt;/p&gt;
@@ -1396,7 +1336,7 @@ mean_se_violin &amp;lt;- ggplot() +
   theme_minimal()
 
 print(mean_se_violin)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/violins_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../post/violins_files/figure-html/errbar_violins-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Or maybe boxplots are your jam:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;boxplot_violin &amp;lt;- ggplot(data=dat, aes(x=condition, y=value)) +
   geom_violin(aes(fill=condition, color=condition)) +
@@ -1404,7 +1344,7 @@ print(mean_se_violin)&lt;/code&gt;&lt;/pre&gt;
   theme_minimal()
 
 print(boxplot_violin)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/violins_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../post/violins_files/figure-html/boxplot_violins-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Here’s the way I like to do my violin plots, with each subject’s point plotted plus a horizontal line for the mean. I add a little horizontal jitter to each point to make things easier to see:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;scatter_violin &amp;lt;- ggplot(data=dat, aes(x=condition, y=value)) +
   geom_violin(aes(fill=condition, color=condition)) +
@@ -1413,7 +1353,7 @@ print(boxplot_violin)&lt;/code&gt;&lt;/pre&gt;
   theme_minimal()
 
 print(scatter_violin)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/violins_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../post/violins_files/figure-html/scatter_violins-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;There are a few things I really like about violin plots. One, they add a lot more information without taking up any more space than a bar plot would. Two, they give you an intuitive way to look at the distributions of your data. I don’t think many of us are accustomed to seeing data this way, and it goes to show that even well-behaved data doesn’t necessarily look like we might expect. &lt;code&gt;t1&lt;/code&gt; is just as normal as &lt;code&gt;t2&lt;/code&gt;, but &lt;code&gt;t1&lt;/code&gt; “looks” a lot more normal than &lt;code&gt;t2&lt;/code&gt; does. You lose a lot of the characteristics of the data with a bar plot:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;bar_plot &amp;lt;- ggplot(data=errbar_lims) +
   geom_bar(aes(x=condition, y=mean, fill=condition, color=condition), stat=&amp;#39;identity&amp;#39;, position=&amp;#39;dodge&amp;#39;) +
@@ -1422,7 +1362,7 @@ print(scatter_violin)&lt;/code&gt;&lt;/pre&gt;
   theme_minimal()
 
 print(bar_plot)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/violins_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../post/violins_files/figure-html/barplot-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;It captures the broad strokes, to be sure, but a lot of the finer details disappear.&lt;/p&gt;
 &lt;p&gt;So there you go. Violin plots! Dress ’em up, dress ’em down. However you like them, they’re a nice plot type to have in your arsenal.&lt;/p&gt;
 </description>
@@ -1460,25 +1400,25 @@ alldata &amp;lt;- lapply(list.files(pattern = &amp;#39;*.csv&amp;#39;), read.csv
 &lt;p&gt;Now, a list of data frames is not the &lt;em&gt;most&lt;/em&gt; useful data format to have. Fortunately, it’s easy to bind this list together into one big data frame. Here’s how to bring it all together in base R.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;subjects_all &amp;lt;- do.call(&amp;#39;rbind&amp;#39;, alldata)
 head(subjects_all)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##          V1        V2        V3
-## 1  8.949957 124.80946 1.3867713
-## 2 11.926203 117.26313 1.0590077
-## 3  6.922328  78.01893 1.1814264
-## 4  9.323430  91.66125 0.5276688
-## 5 11.648274 140.93698 1.6975092
-## 6  6.048526  65.44654 1.3584207&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##          V1        V2           V3
+## 1 12.837402 121.58344  0.736234309
+## 2  7.775238  77.49533  0.181006951
+## 3 11.045968  91.82059  0.584469101
+## 4 12.699738  98.43809  1.010058225
+## 5  7.780108  70.64884 -0.006533699
+## 6 12.616678  95.88052  1.352935133&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Note that the information about which data belong to each subject is lost here. You’ll need to add an identifier column, or make sure that each file has one, before reading it in this way.&lt;/p&gt;
 &lt;p&gt;How about some good old dplyr?&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(dplyr)
 subjects_all &amp;lt;- bind_rows(alldata, .id=&amp;#39;subject&amp;#39;)
 head(subjects_all)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##   subject        V1        V2        V3
-## 1       1  8.949957 124.80946 1.3867713
-## 2       1 11.926203 117.26313 1.0590077
-## 3       1  6.922328  78.01893 1.1814264
-## 4       1  9.323430  91.66125 0.5276688
-## 5       1 11.648274 140.93698 1.6975092
-## 6       1  6.048526  65.44654 1.3584207&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   subject        V1        V2           V3
+## 1       1 12.837402 121.58344  0.736234309
+## 2       1  7.775238  77.49533  0.181006951
+## 3       1 11.045968  91.82059  0.584469101
+## 4       1 12.699738  98.43809  1.010058225
+## 5       1  7.780108  70.64884 -0.006533699
+## 6       1 12.616678  95.88052  1.352935133&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;unique(subjects_all$subject)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] &amp;quot;1&amp;quot; &amp;quot;2&amp;quot; &amp;quot;3&amp;quot;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;We can use the&lt;code&gt;.id&lt;/code&gt; argument to specify an ID column, which will keep track of where the data comes from.&lt;/p&gt;
@@ -1486,13 +1426,13 @@ head(subjects_all)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(data.table)
 subjects_all &amp;lt;- rbindlist(alldata, idcol=&amp;#39;subject&amp;#39;)
 head(subjects_all)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##    subject        V1        V2        V3
-## 1:       1  8.949957 124.80946 1.3867713
-## 2:       1 11.926203 117.26313 1.0590077
-## 3:       1  6.922328  78.01893 1.1814264
-## 4:       1  9.323430  91.66125 0.5276688
-## 5:       1 11.648274 140.93698 1.6975092
-## 6:       1  6.048526  65.44654 1.3584207&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    subject        V1        V2           V3
+## 1:       1 12.837402 121.58344  0.736234309
+## 2:       1  7.775238  77.49533  0.181006951
+## 3:       1 11.045968  91.82059  0.584469101
+## 4:       1 12.699738  98.43809  1.010058225
+## 5:       1  7.780108  70.64884 -0.006533699
+## 6:       1 12.616678  95.88052  1.352935133&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;unique(subjects_all$subject)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] 1 2 3&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Note also that &lt;code&gt;rbindlist()&lt;/code&gt; is an order of magnitude faster than &lt;code&gt;do.call&lt;/code&gt;. If you’ve got a lot of data, you’ll probably want to go with this function. &lt;code&gt;data.tables&lt;/code&gt; are extremely fast and memory efficient in general, and might be a good option if you’re working with truly huge amounts of data. For most uses, though, this kind of optimization isn’t really necessary.&lt;/p&gt;
@@ -1507,13 +1447,13 @@ head(subjects_all)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;To read it in, we just call &lt;code&gt;read.table&lt;/code&gt; instead.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;allsubjs &amp;lt;- lapply(list.files(pattern = &amp;#39;*.txt&amp;#39;), read.table, header=TRUE, colClasses=c(&amp;#39;double&amp;#39;))
 head(allsubjs[[1]])&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##          V1        V2        V3
-## 1  8.949957 124.80946 1.3867713
-## 2 11.926203 117.26313 1.0590077
-## 3  6.922328  78.01893 1.1814264
-## 4  9.323430  91.66125 0.5276688
-## 5 11.648274 140.93698 1.6975092
-## 6  6.048526  65.44654 1.3584207&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##          V1        V2           V3
+## 1 12.837402 121.58344  0.736234309
+## 2  7.775238  77.49533  0.181006951
+## 3 11.045968  91.82059  0.584469101
+## 4 12.699738  98.43809  1.010058225
+## 5  7.780108  70.64884 -0.006533699
+## 6 12.616678  95.88052  1.352935133&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Just like before, we end up with a list of data frames, one for each subject. In &lt;code&gt;read.table()&lt;/code&gt;, unlike &lt;code&gt;read.csv&lt;/code&gt;, the &lt;code&gt;header&lt;/code&gt; argument defaults to &lt;code&gt;FALSE&lt;/code&gt;, so be sure to change that. I also specify &lt;code&gt;colClasses&lt;/code&gt; here to tell R what type of data the content of the columns is. Without that, these doubles get read in as factors; doing it now saves a little work later.&lt;/p&gt;
 &lt;p&gt;We can then bind these together with &lt;code&gt;rbindlist&lt;/code&gt; just like we did when we used &lt;code&gt;read.csv&lt;/code&gt;.&lt;/p&gt;
 &lt;/div&gt;
@@ -1537,16 +1477,16 @@ head(allsubjs[[1]])&lt;/code&gt;&lt;/pre&gt;
                      &amp;#39;treat2&amp;#39;=floor(rnorm(10, 15, 3)))
 print(traits)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##    id control treat1 treat2
-## 1   1      36      8     21
-## 2   2      33     11      9
-## 3   3      27      9     13
-## 4   4      26      6     14
-## 5   5      23      9      8
-## 6   6      33     12     13
-## 7   7      30      9     19
-## 8   8      29     13     11
-## 9   9      22     12     11
-## 10 10      23     10     16&lt;/code&gt;&lt;/pre&gt;
+## 1   1      31     10     17
+## 2   2      32     12     17
+## 3   3      23     10     14
+## 4   4      37     11     13
+## 5   5      28      6     18
+## 6   6      25     10     18
+## 7   7      40      5     19
+## 8   8      24     10     12
+## 9   9      18      9     15
+## 10 10      23      7     22&lt;/code&gt;&lt;/pre&gt;
 &lt;div id=&#34;wide-to-long&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Wide to Long&lt;/h3&gt;
 &lt;p&gt;Now, when we cast this to “long” format, we will have the id column (the subject number), a variable column (in this case, which test was taken), and the value column (the score on each test). Here it is, melted two ways. In base:&lt;/p&gt;
@@ -1554,107 +1494,107 @@ print(traits)&lt;/code&gt;&lt;/pre&gt;
                        timevar=&amp;#39;test&amp;#39;,times=c(&amp;#39;control&amp;#39;, &amp;#39;treat1&amp;#39;, &amp;#39;treat2&amp;#39;), varying=seq(2, 4))
 print(traits_long_base)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##            id    test score
-## 1.control   1 control    36
-## 2.control   2 control    33
-## 3.control   3 control    27
-## 4.control   4 control    26
-## 5.control   5 control    23
-## 6.control   6 control    33
-## 7.control   7 control    30
-## 8.control   8 control    29
-## 9.control   9 control    22
+## 1.control   1 control    31
+## 2.control   2 control    32
+## 3.control   3 control    23
+## 4.control   4 control    37
+## 5.control   5 control    28
+## 6.control   6 control    25
+## 7.control   7 control    40
+## 8.control   8 control    24
+## 9.control   9 control    18
 ## 10.control 10 control    23
-## 1.treat1    1  treat1     8
-## 2.treat1    2  treat1    11
-## 3.treat1    3  treat1     9
-## 4.treat1    4  treat1     6
-## 5.treat1    5  treat1     9
-## 6.treat1    6  treat1    12
-## 7.treat1    7  treat1     9
-## 8.treat1    8  treat1    13
-## 9.treat1    9  treat1    12
-## 10.treat1  10  treat1    10
-## 1.treat2    1  treat2    21
-## 2.treat2    2  treat2     9
-## 3.treat2    3  treat2    13
-## 4.treat2    4  treat2    14
-## 5.treat2    5  treat2     8
-## 6.treat2    6  treat2    13
+## 1.treat1    1  treat1    10
+## 2.treat1    2  treat1    12
+## 3.treat1    3  treat1    10
+## 4.treat1    4  treat1    11
+## 5.treat1    5  treat1     6
+## 6.treat1    6  treat1    10
+## 7.treat1    7  treat1     5
+## 8.treat1    8  treat1    10
+## 9.treat1    9  treat1     9
+## 10.treat1  10  treat1     7
+## 1.treat2    1  treat2    17
+## 2.treat2    2  treat2    17
+## 3.treat2    3  treat2    14
+## 4.treat2    4  treat2    13
+## 5.treat2    5  treat2    18
+## 6.treat2    6  treat2    18
 ## 7.treat2    7  treat2    19
-## 8.treat2    8  treat2    11
-## 9.treat2    9  treat2    11
-## 10.treat2  10  treat2    16&lt;/code&gt;&lt;/pre&gt;
+## 8.treat2    8  treat2    12
+## 9.treat2    9  treat2    15
+## 10.treat2  10  treat2    22&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;We have to be pretty careful about specifying our arguments here. The &lt;code&gt;idvar&lt;/code&gt; indicates which column we want to map over the data. Here, we want the subject number; we want each subject’s score on each test labeled with their unique ID. Direction is fairly self-explanatory; we’re going to long form here. &lt;code&gt;v.names&lt;/code&gt; is the name (or names) of the new columns. Here, we’re collapsing everybody’s scores into a single column, so we call it &lt;code&gt;&#39;score&#39;&lt;/code&gt;. &lt;code&gt;timevar&lt;/code&gt; is the variable that changes over time, or over repeated measures. Here it’s which test they took, so we call the new column &lt;code&gt;&#39;test&#39;&lt;/code&gt;. Then we tell it which values to use in this new times column with &lt;code&gt;times&lt;/code&gt;; we want the name of the test. Then we tell it which columns of our data are varying over time/are our repeated measures; here it’s the final three columns (you can also specify a vector of strings).&lt;/p&gt;
 &lt;p&gt;Here are the same results with the &lt;code&gt;melt()&lt;/code&gt; function from data.table or reshape2. We specify again which column represents our data labels, and then we tell it which columns we want it to treat as our “measures,” which in our case is our three tests (if unspecified, it just uses all non-id variables, so we could have left it out here):&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;traits_long_m &amp;lt;- melt(traits, id.vars=&amp;quot;id&amp;quot;, measure.vars=c(&amp;#39;control&amp;#39;, &amp;#39;treat1&amp;#39;, &amp;#39;treat2&amp;#39;), 
                     variable.name=&amp;#39;test&amp;#39;, value.name=&amp;#39;score&amp;#39;)
 print(traits_long_m)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##    id    test score
-## 1   1 control    36
-## 2   2 control    33
-## 3   3 control    27
-## 4   4 control    26
-## 5   5 control    23
-## 6   6 control    33
-## 7   7 control    30
-## 8   8 control    29
-## 9   9 control    22
+## 1   1 control    31
+## 2   2 control    32
+## 3   3 control    23
+## 4   4 control    37
+## 5   5 control    28
+## 6   6 control    25
+## 7   7 control    40
+## 8   8 control    24
+## 9   9 control    18
 ## 10 10 control    23
-## 11  1  treat1     8
-## 12  2  treat1    11
-## 13  3  treat1     9
-## 14  4  treat1     6
-## 15  5  treat1     9
-## 16  6  treat1    12
-## 17  7  treat1     9
-## 18  8  treat1    13
-## 19  9  treat1    12
-## 20 10  treat1    10
-## 21  1  treat2    21
-## 22  2  treat2     9
-## 23  3  treat2    13
-## 24  4  treat2    14
-## 25  5  treat2     8
-## 26  6  treat2    13
+## 11  1  treat1    10
+## 12  2  treat1    12
+## 13  3  treat1    10
+## 14  4  treat1    11
+## 15  5  treat1     6
+## 16  6  treat1    10
+## 17  7  treat1     5
+## 18  8  treat1    10
+## 19  9  treat1     9
+## 20 10  treat1     7
+## 21  1  treat2    17
+## 22  2  treat2    17
+## 23  3  treat2    14
+## 24  4  treat2    13
+## 25  5  treat2    18
+## 26  6  treat2    18
 ## 27  7  treat2    19
-## 28  8  treat2    11
-## 29  9  treat2    11
-## 30 10  treat2    16&lt;/code&gt;&lt;/pre&gt;
+## 28  8  treat2    12
+## 29  9  treat2    15
+## 30 10  treat2    22&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;And let’s not leave out &lt;code&gt;tidyr&lt;/code&gt;:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyr)
 traits_long_t &amp;lt;- gather(traits, key=test, value=score, control, treat1, treat2)
 print(traits_long_t)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##    id    test score
-## 1   1 control    36
-## 2   2 control    33
-## 3   3 control    27
-## 4   4 control    26
-## 5   5 control    23
-## 6   6 control    33
-## 7   7 control    30
-## 8   8 control    29
-## 9   9 control    22
+## 1   1 control    31
+## 2   2 control    32
+## 3   3 control    23
+## 4   4 control    37
+## 5   5 control    28
+## 6   6 control    25
+## 7   7 control    40
+## 8   8 control    24
+## 9   9 control    18
 ## 10 10 control    23
-## 11  1  treat1     8
-## 12  2  treat1    11
-## 13  3  treat1     9
-## 14  4  treat1     6
-## 15  5  treat1     9
-## 16  6  treat1    12
-## 17  7  treat1     9
-## 18  8  treat1    13
-## 19  9  treat1    12
-## 20 10  treat1    10
-## 21  1  treat2    21
-## 22  2  treat2     9
-## 23  3  treat2    13
-## 24  4  treat2    14
-## 25  5  treat2     8
-## 26  6  treat2    13
+## 11  1  treat1    10
+## 12  2  treat1    12
+## 13  3  treat1    10
+## 14  4  treat1    11
+## 15  5  treat1     6
+## 16  6  treat1    10
+## 17  7  treat1     5
+## 18  8  treat1    10
+## 19  9  treat1     9
+## 20 10  treat1     7
+## 21  1  treat2    17
+## 22  2  treat2    17
+## 23  3  treat2    14
+## 24  4  treat2    13
+## 25  5  treat2    18
+## 26  6  treat2    18
 ## 27  7  treat2    19
-## 28  8  treat2    11
-## 29  9  treat2    11
-## 30 10  treat2    16&lt;/code&gt;&lt;/pre&gt;
+## 28  8  treat2    12
+## 29  9  treat2    15
+## 30 10  treat2    22&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Here, the key/value pairing tells us about our outcome columns, and then we just list the columns to gather up.&lt;/p&gt;
 &lt;p&gt;Three roads, same destination. I find &lt;code&gt;melt&lt;/code&gt; and &lt;code&gt;gather&lt;/code&gt; both much more intuitive than &lt;code&gt;reshape&lt;/code&gt;, with &lt;code&gt;gather&lt;/code&gt; the easiest of them all to use, but your mileage may vary.&lt;/p&gt;
 &lt;p&gt;Data is &lt;em&gt;really&lt;/em&gt; easy to plot this way:&lt;/p&gt;
@@ -1662,7 +1602,7 @@ print(traits_long_t)&lt;/code&gt;&lt;/pre&gt;
 plot &amp;lt;- ggplot(traits_long_t, aes(x=test, y=score, color=test)) +
         geom_point()
 print(plot)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/wrangling_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt; Simplicity itself.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../post/wrangling_files/figure-html/tidyscatter-1.png&#34; width=&#34;672&#34; /&gt; Simplicity itself.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;long-to-wide&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Long to Wide&lt;/h3&gt;
@@ -1670,46 +1610,46 @@ print(plot)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;traits_wide_base &amp;lt;- reshape(traits_long_base, direction=&amp;#39;wide&amp;#39;, timevar=&amp;#39;test&amp;#39;, idvar=&amp;#39;id&amp;#39;)
 print(traits_wide_base)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##            id score.control score.treat1 score.treat2
-## 1.control   1            36            8           21
-## 2.control   2            33           11            9
-## 3.control   3            27            9           13
-## 4.control   4            26            6           14
-## 5.control   5            23            9            8
-## 6.control   6            33           12           13
-## 7.control   7            30            9           19
-## 8.control   8            29           13           11
-## 9.control   9            22           12           11
-## 10.control 10            23           10           16&lt;/code&gt;&lt;/pre&gt;
+## 1.control   1            31           10           17
+## 2.control   2            32           12           17
+## 3.control   3            23           10           14
+## 4.control   4            37           11           13
+## 5.control   5            28            6           18
+## 6.control   6            25           10           18
+## 7.control   7            40            5           19
+## 8.control   8            24           10           12
+## 9.control   9            18            9           15
+## 10.control 10            23            7           22&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Now we have the original structure of our data back.&lt;/p&gt;
 &lt;p&gt;The inverse of &lt;code&gt;melt()&lt;/code&gt; is &lt;code&gt;dcast&lt;/code&gt;:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;traits_wide_m &amp;lt;- dcast(traits_long_m, id ~ test, value.var=&amp;#39;score&amp;#39;)
 print(traits_wide_m)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##    id control treat1 treat2
-## 1   1      36      8     21
-## 2   2      33     11      9
-## 3   3      27      9     13
-## 4   4      26      6     14
-## 5   5      23      9      8
-## 6   6      33     12     13
-## 7   7      30      9     19
-## 8   8      29     13     11
-## 9   9      22     12     11
-## 10 10      23     10     16&lt;/code&gt;&lt;/pre&gt;
+## 1   1      31     10     17
+## 2   2      32     12     17
+## 3   3      23     10     14
+## 4   4      37     11     13
+## 5   5      28      6     18
+## 6   6      25     10     18
+## 7   7      40      5     19
+## 8   8      24     10     12
+## 9   9      18      9     15
+## 10 10      23      7     22&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Right back to where we were.&lt;/p&gt;
 &lt;p&gt;And to undo &lt;code&gt;gather&lt;/code&gt;, we &lt;code&gt;spread&lt;/code&gt;:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;traits_wide_t &amp;lt;- spread(traits_long_t, test, score)
 print(traits_wide_t)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##    id control treat1 treat2
-## 1   1      36      8     21
-## 2   2      33     11      9
-## 3   3      27      9     13
-## 4   4      26      6     14
-## 5   5      23      9      8
-## 6   6      33     12     13
-## 7   7      30      9     19
-## 8   8      29     13     11
-## 9   9      22     12     11
-## 10 10      23     10     16&lt;/code&gt;&lt;/pre&gt;
+## 1   1      31     10     17
+## 2   2      32     12     17
+## 3   3      23     10     14
+## 4   4      37     11     13
+## 5   5      28      6     18
+## 6   6      25     10     18
+## 7   7      40      5     19
+## 8   8      24     10     12
+## 9   9      18      9     15
+## 10 10      23      7     22&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;reshaping-with-more-variables&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Reshaping with more variables&lt;/h3&gt;
@@ -1719,61 +1659,61 @@ print(traits_wide_t)&lt;/code&gt;&lt;/pre&gt;
                         &amp;#39;test1&amp;#39;=floor(rnorm(12, 10, 2)), &amp;#39;test2&amp;#39;=floor(rnorm(12, 15, 2)))
 head(traittest)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##   traitA   traitB test1 test2
-## 1   high positive     9    14
-## 2   high negative     7    16
-## 3   high positive    11    18
-## 4   high negative    12    16
-## 5    med positive     8    16
-## 6    med negative     8    16&lt;/code&gt;&lt;/pre&gt;
+## 1   high positive     7    10
+## 2   high negative     7    14
+## 3   high positive    12    12
+## 4   high negative    14    14
+## 5    med positive     8    15
+## 6    med negative     8    10&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;There are a lot of ways to melt this data. Maybe we want to collpase the tests into a single column–in this case the traits are the identifier variables.&lt;/p&gt;
 &lt;p&gt;In base:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tt_bytrait_base &amp;lt;- reshape(traittest, direction=&amp;#39;long&amp;#39;, v.names=&amp;#39;score&amp;#39;,
                            timevar=&amp;#39;test&amp;#39;, times=c(&amp;#39;test1&amp;#39;, &amp;#39;test2&amp;#39;), varying=c(&amp;#39;test1&amp;#39;,&amp;#39;test2&amp;#39;))
 print(tt_bytrait_base)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##          traitA   traitB  test score id
-## 1.test1    high positive test1     9  1
+## 1.test1    high positive test1     7  1
 ## 2.test1    high negative test1     7  2
-## 3.test1    high positive test1    11  3
-## 4.test1    high negative test1    12  4
+## 3.test1    high positive test1    12  3
+## 4.test1    high negative test1    14  4
 ## 5.test1     med positive test1     8  5
 ## 6.test1     med negative test1     8  6
-## 7.test1     med positive test1    10  7
-## 8.test1     med negative test1     9  8
-## 9.test1     low positive test1     6  9
-## 10.test1    low negative test1    11 10
-## 11.test1    low positive test1    13 11
-## 12.test1    low negative test1     9 12
-## 1.test2    high positive test2    14  1
-## 2.test2    high negative test2    16  2
-## 3.test2    high positive test2    18  3
-## 4.test2    high negative test2    16  4
-## 5.test2     med positive test2    16  5
-## 6.test2     med negative test2    16  6
-## 7.test2     med positive test2    16  7
-## 8.test2     med negative test2    11  8
-## 9.test2     low positive test2    17  9
+## 7.test1     med positive test1     7  7
+## 8.test1     med negative test1    12  8
+## 9.test1     low positive test1     8  9
+## 10.test1    low negative test1     5 10
+## 11.test1    low positive test1    11 11
+## 12.test1    low negative test1    10 12
+## 1.test2    high positive test2    10  1
+## 2.test2    high negative test2    14  2
+## 3.test2    high positive test2    12  3
+## 4.test2    high negative test2    14  4
+## 5.test2     med positive test2    15  5
+## 6.test2     med negative test2    10  6
+## 7.test2     med positive test2    15  7
+## 8.test2     med negative test2    14  8
+## 9.test2     low positive test2    15  9
 ## 10.test2    low negative test2    13 10
 ## 11.test2    low positive test2    18 11
-## 12.test2    low negative test2    12 12&lt;/code&gt;&lt;/pre&gt;
+## 12.test2    low negative test2    13 12&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;With &lt;code&gt;melt()&lt;/code&gt;:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tt_bytrait_m &amp;lt;- melt(traittest, measure.vars=c(&amp;#39;test1&amp;#39;, &amp;#39;test2&amp;#39;), variable.name=&amp;#39;test&amp;#39;,
                   value.name=&amp;#39;score&amp;#39;)
 head(tt_bytrait_m)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##   traitA   traitB  test score
-## 1   high positive test1     9
+## 1   high positive test1     7
 ## 2   high negative test1     7
-## 3   high positive test1    11
-## 4   high negative test1    12
+## 3   high positive test1    12
+## 4   high negative test1    14
 ## 5    med positive test1     8
 ## 6    med negative test1     8&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;With &lt;code&gt;gather&lt;/code&gt;:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tt_bytrait_t &amp;lt;- gather(traittest, test, score, test1, test2)
 head(tt_bytrait_t)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##   traitA   traitB  test score
-## 1   high positive test1     9
+## 1   high positive test1     7
 ## 2   high negative test1     7
-## 3   high positive test1    11
-## 4   high negative test1    12
+## 3   high positive test1    12
+## 4   high negative test1    14
 ## 5    med positive test1     8
 ## 6    med negative test1     8&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Or, we can let the tests be the identifiers, and collapse the traits into a single column.&lt;/p&gt;
@@ -1783,30 +1723,30 @@ head(tt_bytrait_t)&lt;/code&gt;&lt;/pre&gt;
                           varying=c(&amp;#39;traitA&amp;#39;,&amp;#39;traitB&amp;#39;))
 print(tt_bytest_base)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##           test1 test2  trait   rating id
-## 1.traitA      9    14 traitA     high  1
-## 2.traitA      7    16 traitA     high  2
-## 3.traitA     11    18 traitA     high  3
-## 4.traitA     12    16 traitA     high  4
-## 5.traitA      8    16 traitA      med  5
-## 6.traitA      8    16 traitA      med  6
-## 7.traitA     10    16 traitA      med  7
-## 8.traitA      9    11 traitA      med  8
-## 9.traitA      6    17 traitA      low  9
-## 10.traitA    11    13 traitA      low 10
-## 11.traitA    13    18 traitA      low 11
-## 12.traitA     9    12 traitA      low 12
-## 1.traitB      9    14 traitB positive  1
-## 2.traitB      7    16 traitB negative  2
-## 3.traitB     11    18 traitB positive  3
-## 4.traitB     12    16 traitB negative  4
-## 5.traitB      8    16 traitB positive  5
-## 6.traitB      8    16 traitB negative  6
-## 7.traitB     10    16 traitB positive  7
-## 8.traitB      9    11 traitB negative  8
-## 9.traitB      6    17 traitB positive  9
-## 10.traitB    11    13 traitB negative 10
-## 11.traitB    13    18 traitB positive 11
-## 12.traitB     9    12 traitB negative 12&lt;/code&gt;&lt;/pre&gt;
+## 1.traitA      7    10 traitA     high  1
+## 2.traitA      7    14 traitA     high  2
+## 3.traitA     12    12 traitA     high  3
+## 4.traitA     14    14 traitA     high  4
+## 5.traitA      8    15 traitA      med  5
+## 6.traitA      8    10 traitA      med  6
+## 7.traitA      7    15 traitA      med  7
+## 8.traitA     12    14 traitA      med  8
+## 9.traitA      8    15 traitA      low  9
+## 10.traitA     5    13 traitA      low 10
+## 11.traitA    11    18 traitA      low 11
+## 12.traitA    10    13 traitA      low 12
+## 1.traitB      7    10 traitB positive  1
+## 2.traitB      7    14 traitB negative  2
+## 3.traitB     12    12 traitB positive  3
+## 4.traitB     14    14 traitB negative  4
+## 5.traitB      8    15 traitB positive  5
+## 6.traitB      8    10 traitB negative  6
+## 7.traitB      7    15 traitB positive  7
+## 8.traitB     12    14 traitB negative  8
+## 9.traitB      8    15 traitB positive  9
+## 10.traitB     5    13 traitB negative 10
+## 11.traitB    11    18 traitB positive 11
+## 12.traitB    10    13 traitB negative 12&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;code&gt;melt&lt;/code&gt;:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tt_bytest_m &amp;lt;- melt(traittest, measure.vars=c(&amp;#39;traitA&amp;#39;, &amp;#39;traitB&amp;#39;),
                   variable.name=&amp;#39;trait&amp;#39;, value.name=&amp;#39;rating&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
@@ -1814,25 +1754,25 @@ print(tt_bytest_base)&lt;/code&gt;&lt;/pre&gt;
 ## be dropped&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(tt_bytest_m)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##   test1 test2  trait rating
-## 1     9    14 traitA   high
-## 2     7    16 traitA   high
-## 3    11    18 traitA   high
-## 4    12    16 traitA   high
-## 5     8    16 traitA    med
-## 6     8    16 traitA    med&lt;/code&gt;&lt;/pre&gt;
+## 1     7    10 traitA   high
+## 2     7    14 traitA   high
+## 3    12    12 traitA   high
+## 4    14    14 traitA   high
+## 5     8    15 traitA    med
+## 6     8    10 traitA    med&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;(We can ignore the warning; it’s warning us about the fact that we’re combining two factors that don’t share levels, so it’s coercing them all to characters.)&lt;/p&gt;
 &lt;p&gt;With &lt;code&gt;gather&lt;/code&gt;:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tt_bytest_t &amp;lt;- gather(traittest, trait, rating, traitA, traitB)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: attributes are not identical across measure variables; they will
-## be dropped&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: attributes are not identical across measure variables;
+## they will be dropped&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(tt_bytest_t)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##   test1 test2  trait rating
-## 1     9    14 traitA   high
-## 2     7    16 traitA   high
-## 3    11    18 traitA   high
-## 4    12    16 traitA   high
-## 5     8    16 traitA    med
-## 6     8    16 traitA    med&lt;/code&gt;&lt;/pre&gt;
+## 1     7    10 traitA   high
+## 2     7    14 traitA   high
+## 3    12    12 traitA   high
+## 4    14    14 traitA   high
+## 5     8    15 traitA    med
+## 6     8    10 traitA    med&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;(Same warning as above.)&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1936,90 +1876,90 @@ print(yesnomaybe)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Variables can be added to an existing data frame just with the &lt;code&gt;$&lt;/code&gt; operator:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;- data.frame(&amp;#39;x&amp;#39;=rnorm(20, 6), &amp;#39;y&amp;#39;=rnorm(20))
 print(df)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##           x           y
-## 1  6.182055  0.34012358
-## 2  7.436347 -0.59966661
-## 3  6.315306  0.36833177
-## 4  6.896922  1.50183433
-## 5  6.941559  2.49651251
-## 6  5.310434 -0.03238655
-## 7  5.571108 -1.14902213
-## 8  6.196074  0.84410316
-## 9  6.070575 -0.98276613
-## 10 7.307604 -0.41943093
-## 11 6.639640  0.85786488
-## 12 6.036730  0.59530225
-## 13 5.319429  0.51228832
-## 14 4.451193 -0.78561172
-## 15 5.352494  0.87007150
-## 16 8.215930 -0.67282494
-## 17 5.485161 -0.17377787
-## 18 6.126534 -0.03902882
-## 19 7.063122 -0.57183073
-## 20 5.599426  0.61108155&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##           x            y
+## 1  3.814685 -2.414699940
+## 2  6.561735 -1.682836391
+## 3  5.753351 -0.093147412
+## 4  6.724268 -0.740753965
+## 5  6.611494 -0.677626756
+## 6  5.821424 -0.652003973
+## 7  4.275049 -1.385014247
+## 8  4.548043  0.460906025
+## 9  6.099107  0.335752166
+## 10 6.305054  1.547601617
+## 11 4.423000  0.008901637
+## 12 6.819502  0.524443111
+## 13 4.585206  0.210899340
+## 14 5.616322 -0.046853321
+## 15 5.624543 -1.254425367
+## 16 4.335673  1.707625843
+## 17 4.205365  0.399983970
+## 18 6.108587 -1.682593643
+## 19 5.113273  1.610568789
+## 20 7.294455  0.264048002&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df$z &amp;lt;- rnorm(20, 10)
 print(df)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##           x           y         z
-## 1  6.182055  0.34012358 10.298640
-## 2  7.436347 -0.59966661  9.799344
-## 3  6.315306  0.36833177  9.668752
-## 4  6.896922  1.50183433 10.097066
-## 5  6.941559  2.49651251 10.815749
-## 6  5.310434 -0.03238655  9.597003
-## 7  5.571108 -1.14902213 11.245294
-## 8  6.196074  0.84410316  8.256783
-## 9  6.070575 -0.98276613 10.099128
-## 10 7.307604 -0.41943093 11.489885
-## 11 6.639640  0.85786488  9.110691
-## 12 6.036730  0.59530225  8.862010
-## 13 5.319429  0.51228832 10.119818
-## 14 4.451193 -0.78561172 10.767057
-## 15 5.352494  0.87007150  9.525280
-## 16 8.215930 -0.67282494  9.805977
-## 17 5.485161 -0.17377787 10.306639
-## 18 6.126534 -0.03902882  9.573121
-## 19 7.063122 -0.57183073  9.948351
-## 20 5.599426  0.61108155  9.301278&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##           x            y         z
+## 1  3.814685 -2.414699940 10.653366
+## 2  6.561735 -1.682836391  8.860697
+## 3  5.753351 -0.093147412 10.123619
+## 4  6.724268 -0.740753965 10.583160
+## 5  6.611494 -0.677626756  9.087869
+## 6  5.821424 -0.652003973  9.994681
+## 7  4.275049 -1.385014247  8.628096
+## 8  4.548043  0.460906025  8.302652
+## 9  6.099107  0.335752166 10.027321
+## 10 6.305054  1.547601617 11.018114
+## 11 4.423000  0.008901637  8.904625
+## 12 6.819502  0.524443111  7.704292
+## 13 4.585206  0.210899340  9.093481
+## 14 5.616322 -0.046853321  8.883707
+## 15 5.624543 -1.254425367 11.578125
+## 16 4.335673  1.707625843 10.974265
+## 17 4.205365  0.399983970  9.916313
+## 18 6.108587 -1.682593643  9.231529
+## 19 5.113273  1.610568789 10.085739
+## 20 7.294455  0.264048002 10.106040&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;If you need to manipulate two data vectors that are numeric, you can just add, multiply, etc. your columns together to perform these operations elementwise:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df$total &amp;lt;- with(df, x + y + z)
 head(df)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##          x           y         z    total
-## 1 6.182055  0.34012358 10.298640 16.82082
-## 2 7.436347 -0.59966661  9.799344 16.63602
-## 3 6.315306  0.36833177  9.668752 16.35239
-## 4 6.896922  1.50183433 10.097066 18.49582
-## 5 6.941559  2.49651251 10.815749 20.25382
-## 6 5.310434 -0.03238655  9.597003 14.87505&lt;/code&gt;&lt;/pre&gt;
+## 1 3.814685 -2.41469994 10.653366 12.05335
+## 2 6.561735 -1.68283639  8.860697 13.73960
+## 3 5.753351 -0.09314741 10.123619 15.78382
+## 4 6.724268 -0.74075397 10.583160 16.56667
+## 5 6.611494 -0.67762676  9.087869 15.02174
+## 6 5.821424 -0.65200397  9.994681 15.16410&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;You also have a lot of options in the &lt;code&gt;dplyr&lt;/code&gt; library, notably &lt;code&gt;transform&lt;/code&gt;:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;- transform(df, x = -x)
 head(df)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##           x           y         z    total
-## 1 -6.182055  0.34012358 10.298640 16.82082
-## 2 -7.436347 -0.59966661  9.799344 16.63602
-## 3 -6.315306  0.36833177  9.668752 16.35239
-## 4 -6.896922  1.50183433 10.097066 18.49582
-## 5 -6.941559  2.49651251 10.815749 20.25382
-## 6 -5.310434 -0.03238655  9.597003 14.87505&lt;/code&gt;&lt;/pre&gt;
+## 1 -3.814685 -2.41469994 10.653366 12.05335
+## 2 -6.561735 -1.68283639  8.860697 13.73960
+## 3 -5.753351 -0.09314741 10.123619 15.78382
+## 4 -6.724268 -0.74075397 10.583160 16.56667
+## 5 -6.611494 -0.67762676  9.087869 15.02174
+## 6 -5.821424 -0.65200397  9.994681 15.16410&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;But now that we’ve updated a column, our total is wrong. Let’s fix it with &lt;code&gt;transmute&lt;/code&gt;:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;- mutate(df, corrected_total = x + y + z)
 head(df)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##           x           y         z    total corrected_total
-## 1 -6.182055  0.34012358 10.298640 16.82082        4.456709
-## 2 -7.436347 -0.59966661  9.799344 16.63602        1.763331
-## 3 -6.315306  0.36833177  9.668752 16.35239        3.721778
-## 4 -6.896922  1.50183433 10.097066 18.49582        4.701978
-## 5 -6.941559  2.49651251 10.815749 20.25382        6.370702
-## 6 -5.310434 -0.03238655  9.597003 14.87505        4.254183&lt;/code&gt;&lt;/pre&gt;
+## 1 -3.814685 -2.41469994 10.653366 12.05335       4.4239807
+## 2 -6.561735 -1.68283639  8.860697 13.73960       0.6161248
+## 3 -5.753351 -0.09314741 10.123619 15.78382       4.2771201
+## 4 -6.724268 -0.74075397 10.583160 16.56667       3.1181375
+## 5 -6.611494 -0.67762676  9.087869 15.02174       1.7987484
+## 6 -5.821424 -0.65200397  9.994681 15.16410       3.5212526&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Maybe I now want a dataframe just of the even numbers in the x column, and the residuals from total and corrected total (for… reasons). &lt;code&gt;transmute&lt;/code&gt; is like mutate, but it throws away all the extra:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_even &amp;lt;- transmute(df, x_ev=floor(x)%%2==0, residuals=total-corrected_total)
 head(df_even)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##    x_ev residuals
-## 1 FALSE  12.36411
-## 2  TRUE  14.87269
-## 3 FALSE  12.63061
-## 4 FALSE  13.79384
-## 5 FALSE  13.88312
-## 6  TRUE  10.62087&lt;/code&gt;&lt;/pre&gt;
+## 1  TRUE  7.629371
+## 2 FALSE 13.123471
+## 3  TRUE 11.506702
+## 4 FALSE 13.448536
+## 5 FALSE 13.222987
+## 6  TRUE 11.642849&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;If none of these methods fit the bill, you can call &lt;code&gt;apply&lt;/code&gt; along all the columns or rows of your data frame and write a custom function to do whatever processing you need.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;factor-levels-as-column-labels&#34; class=&#34;section level3&#34;&gt;
@@ -2206,7 +2146,7 @@ ub_se &amp;lt;- mean(x) + 1.96*se&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;[Just to note: bootstrapped confidence intervals give you a nice measure of uncertainty, and I like to use them as my error bars, but they don’t get you away from the problems of NHST, if that’s something you’re trying to avoid.]&lt;/p&gt;
 &lt;p&gt;Here’s a histogram of our sample. In this post, I’m plotting everything in base just for the thrill:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;hist(x,  breaks=10)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/bootstrapping_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../post/bootstrapping_files/figure-html/plot_sample-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Here are the stats for our mean, calculated the old-fashioned way from an n of 50:&lt;/p&gt;
 &lt;p&gt;mean: 1.27&lt;br /&gt;
 SE: 0.18&lt;br /&gt;
@@ -2221,7 +2161,7 @@ ub &amp;lt;- sort(boot)[.975*1000]
 #mean, and the 95% bootstrapped CI
 hist(boot, breaks=50)
 abline(v=c(mean(boot), lb, ub), col=rep(&amp;#39;red&amp;#39;, 3), lty=c(1, 2, 2))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/bootstrapping_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../post/bootstrapping_files/figure-html/boot_hist_mean-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;The bootstrapped mean (1.27) is of course centered on our sample mean. Now we have a distribution of values for the mean that we could expect to obtain with our sample.&lt;/p&gt;
 &lt;p&gt;Now, if we wanted to do confidence intervals, we could get the SE of the bootstrapped distribution and do it the usual way. However, we also have an option available to us called the &lt;em&gt;percentile method.&lt;/em&gt; In order to find the confidence intervals, we sort all of our bootstrapped values, and then take the 2.5% quantile and the 97.5% quantile. If you repeat the sampling procedure with the same process on the same population (precisely what we do with our bootstrap), 95% of the time the mean falls between these endpoints. If we do this procedure with our particular sample, we get this:&lt;/p&gt;
 &lt;p&gt;95% bootstrapped CI: [1.14, 1.40]&lt;/p&gt;
@@ -2244,11 +2184,11 @@ abline(v=c(mean(boot), lb, ub), col=rep(&amp;#39;red&amp;#39;, 3), lty=c(1, 2, 2
 ub_es &amp;lt;- sort(boot_es)[.975*1000]
 hist(boot_es, breaks=50)
 abline(v=c(mean(boot_es), lb_es, ub_es), col=rep(&amp;#39;red&amp;#39;, 3), lty=c(1, 2, 2))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../&#34;katherinemwood.github.io/&#34;  # End your URL with a `/` trailing slash.post/bootstrapping_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../post/bootstrapping_files/figure-html/plot_boot_es-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;bootstrapped mean: .56&lt;br /&gt;
 95% bootstrapped CI: [.14, .99]&lt;/p&gt;
 &lt;p&gt;And there you have it: bootstrapped confidence intervals on your effect sizes.&lt;/p&gt;
-&lt;p&gt;There is an &lt;a href=&#34;https://en.wikipedia.org/wiki/Bootstrapping_(statistics)&#34;&gt;incredible about of nuance&lt;/a&gt; in the bootstrap method, and many different ways to apply it to even the most complex data. You can use it for something as simple as confidence intervals on a mean, or as complicated as regression coefficients. It’s also great for getting CI estimates for statistics or measures that don’t have a formula method. The general idea–resample your own data to get estimates–underlies even the most complex applications of this method. If you understand the basic logic, it’s pretty easy to understand and start using new applications.&lt;/p&gt;
+&lt;p&gt;There is an &lt;a href=&#34;https://en.wikipedia.org/wiki/Bootstrapping_(statistics)&#34;&gt;incredible amout of nuance&lt;/a&gt; in the bootstrap method, and many different ways to apply it to even the most complex data. You can use it for something as simple as confidence intervals on a mean, or as complicated as regression coefficients. It’s also great for getting CI estimates for statistics or measures that don’t have a formula method. The general idea–resample your own data to get estimates–underlies even the most complex applications of this method. If you understand the basic logic, it’s pretty easy to understand and start using new applications.&lt;/p&gt;
 &lt;p&gt;If you are mathematically inclined, there have been many proofs and a lot of work showing the first- and second-order correctness of bootstrapping estimations. The method I showed here for confidence intervals is just the percentile method; although it has been shown to work well in a wide variety of situations, there are other approaches, some which offer bias correction and other improvements (&lt;a href=&#34;http://www-rohan.sdsu.edu/~babailey/stat672/BCa.pdf&#34;&gt;for example&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;If you want to get started, there are some R packages that will handle bootstrapping for you:&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/boot/boot.pdf&#34;&gt;boot&lt;/a&gt; (general-purpose, and can generate many variants of the various methods)&lt;br /&gt;

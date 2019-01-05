@@ -145,7 +145,7 @@
 <div class="article-metadata">
 
   <span class="article-date">
-    <time datetime="2017-06-26 15:02:58 -0500 CDT" itemprop="datePublished">
+    <time datetime="2017-06-26 15:02:58 -0500 -0500" itemprop="datePublished">
       Mon, Jun 26, 2017
     </time>
   </span>
@@ -223,7 +223,7 @@ ub_se &lt;- mean(x) + 1.96*se</code></pre>
 <p>[Just to note: bootstrapped confidence intervals give you a nice measure of uncertainty, and I like to use them as my error bars, but they don’t get you away from the problems of NHST, if that’s something you’re trying to avoid.]</p>
 <p>Here’s a histogram of our sample. In this post, I’m plotting everything in base just for the thrill:</p>
 <pre class="r"><code>hist(x,  breaks=10)</code></pre>
-<p><img src="../../"katherinemwood.github.io/"  # End your URL with a `/` trailing slash.post/bootstrapping_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="../../post/bootstrapping_files/figure-html/plot_sample-1.png" width="672" /></p>
 <p>Here are the stats for our mean, calculated the old-fashioned way from an n of 50:</p>
 <p>mean: 1.27<br />
 SE: 0.18<br />
@@ -238,7 +238,7 @@ ub &lt;- sort(boot)[.975*1000]
 #mean, and the 95% bootstrapped CI
 hist(boot, breaks=50)
 abline(v=c(mean(boot), lb, ub), col=rep(&#39;red&#39;, 3), lty=c(1, 2, 2))</code></pre>
-<p><img src="../../"katherinemwood.github.io/"  # End your URL with a `/` trailing slash.post/bootstrapping_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="../../post/bootstrapping_files/figure-html/boot_hist_mean-1.png" width="672" /></p>
 <p>The bootstrapped mean (1.27) is of course centered on our sample mean. Now we have a distribution of values for the mean that we could expect to obtain with our sample.</p>
 <p>Now, if we wanted to do confidence intervals, we could get the SE of the bootstrapped distribution and do it the usual way. However, we also have an option available to us called the <em>percentile method.</em> In order to find the confidence intervals, we sort all of our bootstrapped values, and then take the 2.5% quantile and the 97.5% quantile. If you repeat the sampling procedure with the same process on the same population (precisely what we do with our bootstrap), 95% of the time the mean falls between these endpoints. If we do this procedure with our particular sample, we get this:</p>
 <p>95% bootstrapped CI: [1.14, 1.40]</p>
@@ -261,11 +261,11 @@ abline(v=c(mean(boot), lb, ub), col=rep(&#39;red&#39;, 3), lty=c(1, 2, 2))</code
 ub_es &lt;- sort(boot_es)[.975*1000]
 hist(boot_es, breaks=50)
 abline(v=c(mean(boot_es), lb_es, ub_es), col=rep(&#39;red&#39;, 3), lty=c(1, 2, 2))</code></pre>
-<p><img src="../../"katherinemwood.github.io/"  # End your URL with a `/` trailing slash.post/bootstrapping_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="../../post/bootstrapping_files/figure-html/plot_boot_es-1.png" width="672" /></p>
 <p>bootstrapped mean: .56<br />
 95% bootstrapped CI: [.14, .99]</p>
 <p>And there you have it: bootstrapped confidence intervals on your effect sizes.</p>
-<p>There is an <a href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">incredible about of nuance</a> in the bootstrap method, and many different ways to apply it to even the most complex data. You can use it for something as simple as confidence intervals on a mean, or as complicated as regression coefficients. It’s also great for getting CI estimates for statistics or measures that don’t have a formula method. The general idea–resample your own data to get estimates–underlies even the most complex applications of this method. If you understand the basic logic, it’s pretty easy to understand and start using new applications.</p>
+<p>There is an <a href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">incredible amout of nuance</a> in the bootstrap method, and many different ways to apply it to even the most complex data. You can use it for something as simple as confidence intervals on a mean, or as complicated as regression coefficients. It’s also great for getting CI estimates for statistics or measures that don’t have a formula method. The general idea–resample your own data to get estimates–underlies even the most complex applications of this method. If you understand the basic logic, it’s pretty easy to understand and start using new applications.</p>
 <p>If you are mathematically inclined, there have been many proofs and a lot of work showing the first- and second-order correctness of bootstrapping estimations. The method I showed here for confidence intervals is just the percentile method; although it has been shown to work well in a wide variety of situations, there are other approaches, some which offer bias correction and other improvements (<a href="http://www-rohan.sdsu.edu/~babailey/stat672/BCa.pdf">for example</a>).</p>
 <p>If you want to get started, there are some R packages that will handle bootstrapping for you:</p>
 <p><a href="https://cran.r-project.org/web/packages/boot/boot.pdf">boot</a> (general-purpose, and can generate many variants of the various methods)<br />
@@ -328,6 +328,8 @@ abline(v=c(mean(boot_es), lb_es, ub_es), col=rep(&#39;red&#39;, 3), lty=c(1, 2, 
 
       Powered by the <a href="https://github.com/gcushen/hugo-academic" target="_blank">Academic
       theme</a> for <a href="http://gohugo.io" target="_blank">Hugo</a>.
+      
+      Coffee cup icon made by <a href="https://www.flaticon.com/authors/dave-gandy" title="Dave Gandy">Dave Gandy</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY.</a>
 
       <span class="pull-right" aria-hidden="true">
         <a href="#" id="back_to_top">
