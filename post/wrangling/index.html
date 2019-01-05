@@ -227,25 +227,25 @@ alldata &lt;- lapply(list.files(pattern = &#39;*.csv&#39;), read.csv)</code></pr
 <p>Now, a list of data frames is not the <em>most</em> useful data format to have. Fortunately, it’s easy to bind this list together into one big data frame. Here’s how to bring it all together in base R.</p>
 <pre class="r"><code>subjects_all &lt;- do.call(&#39;rbind&#39;, alldata)
 head(subjects_all)</code></pre>
-<pre><code>##          V1        V2           V3
-## 1 12.837402 121.58344  0.736234309
-## 2  7.775238  77.49533  0.181006951
-## 3 11.045968  91.82059  0.584469101
-## 4 12.699738  98.43809  1.010058225
-## 5  7.780108  70.64884 -0.006533699
-## 6 12.616678  95.88052  1.352935133</code></pre>
+<pre><code>##          V1        V2          V3
+## 1 10.617459 135.59075  1.12405633
+## 2 10.351654  72.48386  1.81810735
+## 3 11.035621 101.87437  1.14936355
+## 4  9.703108 121.86247 -0.02844143
+## 5  8.429846 111.80846  0.78301924
+## 6  9.751252  58.60774  1.00420975</code></pre>
 <p>Note that the information about which data belong to each subject is lost here. You’ll need to add an identifier column, or make sure that each file has one, before reading it in this way.</p>
 <p>How about some good old dplyr?</p>
 <pre class="r"><code>library(dplyr)
 subjects_all &lt;- bind_rows(alldata, .id=&#39;subject&#39;)
 head(subjects_all)</code></pre>
-<pre><code>##   subject        V1        V2           V3
-## 1       1 12.837402 121.58344  0.736234309
-## 2       1  7.775238  77.49533  0.181006951
-## 3       1 11.045968  91.82059  0.584469101
-## 4       1 12.699738  98.43809  1.010058225
-## 5       1  7.780108  70.64884 -0.006533699
-## 6       1 12.616678  95.88052  1.352935133</code></pre>
+<pre><code>##   subject        V1        V2          V3
+## 1       1 10.617459 135.59075  1.12405633
+## 2       1 10.351654  72.48386  1.81810735
+## 3       1 11.035621 101.87437  1.14936355
+## 4       1  9.703108 121.86247 -0.02844143
+## 5       1  8.429846 111.80846  0.78301924
+## 6       1  9.751252  58.60774  1.00420975</code></pre>
 <pre class="r"><code>unique(subjects_all$subject)</code></pre>
 <pre><code>## [1] &quot;1&quot; &quot;2&quot; &quot;3&quot;</code></pre>
 <p>We can use the<code>.id</code> argument to specify an ID column, which will keep track of where the data comes from.</p>
@@ -253,13 +253,13 @@ head(subjects_all)</code></pre>
 <pre class="r"><code>library(data.table)
 subjects_all &lt;- rbindlist(alldata, idcol=&#39;subject&#39;)
 head(subjects_all)</code></pre>
-<pre><code>##    subject        V1        V2           V3
-## 1:       1 12.837402 121.58344  0.736234309
-## 2:       1  7.775238  77.49533  0.181006951
-## 3:       1 11.045968  91.82059  0.584469101
-## 4:       1 12.699738  98.43809  1.010058225
-## 5:       1  7.780108  70.64884 -0.006533699
-## 6:       1 12.616678  95.88052  1.352935133</code></pre>
+<pre><code>##    subject        V1        V2          V3
+## 1:       1 10.617459 135.59075  1.12405633
+## 2:       1 10.351654  72.48386  1.81810735
+## 3:       1 11.035621 101.87437  1.14936355
+## 4:       1  9.703108 121.86247 -0.02844143
+## 5:       1  8.429846 111.80846  0.78301924
+## 6:       1  9.751252  58.60774  1.00420975</code></pre>
 <pre class="r"><code>unique(subjects_all$subject)</code></pre>
 <pre><code>## [1] 1 2 3</code></pre>
 <p>Note also that <code>rbindlist()</code> is an order of magnitude faster than <code>do.call</code>. If you’ve got a lot of data, you’ll probably want to go with this function. <code>data.tables</code> are extremely fast and memory efficient in general, and might be a good option if you’re working with truly huge amounts of data. For most uses, though, this kind of optimization isn’t really necessary.</p>
@@ -274,13 +274,13 @@ head(subjects_all)</code></pre>
 <p>To read it in, we just call <code>read.table</code> instead.</p>
 <pre class="r"><code>allsubjs &lt;- lapply(list.files(pattern = &#39;*.txt&#39;), read.table, header=TRUE, colClasses=c(&#39;double&#39;))
 head(allsubjs[[1]])</code></pre>
-<pre><code>##          V1        V2           V3
-## 1 12.837402 121.58344  0.736234309
-## 2  7.775238  77.49533  0.181006951
-## 3 11.045968  91.82059  0.584469101
-## 4 12.699738  98.43809  1.010058225
-## 5  7.780108  70.64884 -0.006533699
-## 6 12.616678  95.88052  1.352935133</code></pre>
+<pre><code>##          V1        V2          V3
+## 1 10.617459 135.59075  1.12405633
+## 2 10.351654  72.48386  1.81810735
+## 3 11.035621 101.87437  1.14936355
+## 4  9.703108 121.86247 -0.02844143
+## 5  8.429846 111.80846  0.78301924
+## 6  9.751252  58.60774  1.00420975</code></pre>
 <p>Just like before, we end up with a list of data frames, one for each subject. In <code>read.table()</code>, unlike <code>read.csv</code>, the <code>header</code> argument defaults to <code>FALSE</code>, so be sure to change that. I also specify <code>colClasses</code> here to tell R what type of data the content of the columns is. Without that, these doubles get read in as factors; doing it now saves a little work later.</p>
 <p>We can then bind these together with <code>rbindlist</code> just like we did when we used <code>read.csv</code>.</p>
 </div>
@@ -304,16 +304,16 @@ head(allsubjs[[1]])</code></pre>
                      &#39;treat2&#39;=floor(rnorm(10, 15, 3)))
 print(traits)</code></pre>
 <pre><code>##    id control treat1 treat2
-## 1   1      31     10     17
-## 2   2      32     12     17
-## 3   3      23     10     14
-## 4   4      37     11     13
-## 5   5      28      6     18
-## 6   6      25     10     18
-## 7   7      40      5     19
-## 8   8      24     10     12
-## 9   9      18      9     15
-## 10 10      23      7     22</code></pre>
+## 1   1      32     13     14
+## 2   2      29      8     11
+## 3   3      34     14     15
+## 4   4      28      9     16
+## 5   5      29      6     16
+## 6   6      37     10     10
+## 7   7      35     11     16
+## 8   8      28     10     16
+## 9   9      34     11     12
+## 10 10      24      7      8</code></pre>
 <div id="wide-to-long" class="section level3">
 <h3>Wide to Long</h3>
 <p>Now, when we cast this to “long” format, we will have the id column (the subject number), a variable column (in this case, which test was taken), and the value column (the score on each test). Here it is, melted two ways. In base:</p>
@@ -321,107 +321,107 @@ print(traits)</code></pre>
                        timevar=&#39;test&#39;,times=c(&#39;control&#39;, &#39;treat1&#39;, &#39;treat2&#39;), varying=seq(2, 4))
 print(traits_long_base)</code></pre>
 <pre><code>##            id    test score
-## 1.control   1 control    31
-## 2.control   2 control    32
-## 3.control   3 control    23
-## 4.control   4 control    37
-## 5.control   5 control    28
-## 6.control   6 control    25
-## 7.control   7 control    40
-## 8.control   8 control    24
-## 9.control   9 control    18
-## 10.control 10 control    23
-## 1.treat1    1  treat1    10
-## 2.treat1    2  treat1    12
-## 3.treat1    3  treat1    10
-## 4.treat1    4  treat1    11
+## 1.control   1 control    32
+## 2.control   2 control    29
+## 3.control   3 control    34
+## 4.control   4 control    28
+## 5.control   5 control    29
+## 6.control   6 control    37
+## 7.control   7 control    35
+## 8.control   8 control    28
+## 9.control   9 control    34
+## 10.control 10 control    24
+## 1.treat1    1  treat1    13
+## 2.treat1    2  treat1     8
+## 3.treat1    3  treat1    14
+## 4.treat1    4  treat1     9
 ## 5.treat1    5  treat1     6
 ## 6.treat1    6  treat1    10
-## 7.treat1    7  treat1     5
+## 7.treat1    7  treat1    11
 ## 8.treat1    8  treat1    10
-## 9.treat1    9  treat1     9
+## 9.treat1    9  treat1    11
 ## 10.treat1  10  treat1     7
-## 1.treat2    1  treat2    17
-## 2.treat2    2  treat2    17
-## 3.treat2    3  treat2    14
-## 4.treat2    4  treat2    13
-## 5.treat2    5  treat2    18
-## 6.treat2    6  treat2    18
-## 7.treat2    7  treat2    19
-## 8.treat2    8  treat2    12
-## 9.treat2    9  treat2    15
-## 10.treat2  10  treat2    22</code></pre>
+## 1.treat2    1  treat2    14
+## 2.treat2    2  treat2    11
+## 3.treat2    3  treat2    15
+## 4.treat2    4  treat2    16
+## 5.treat2    5  treat2    16
+## 6.treat2    6  treat2    10
+## 7.treat2    7  treat2    16
+## 8.treat2    8  treat2    16
+## 9.treat2    9  treat2    12
+## 10.treat2  10  treat2     8</code></pre>
 <p>We have to be pretty careful about specifying our arguments here. The <code>idvar</code> indicates which column we want to map over the data. Here, we want the subject number; we want each subject’s score on each test labeled with their unique ID. Direction is fairly self-explanatory; we’re going to long form here. <code>v.names</code> is the name (or names) of the new columns. Here, we’re collapsing everybody’s scores into a single column, so we call it <code>'score'</code>. <code>timevar</code> is the variable that changes over time, or over repeated measures. Here it’s which test they took, so we call the new column <code>'test'</code>. Then we tell it which values to use in this new times column with <code>times</code>; we want the name of the test. Then we tell it which columns of our data are varying over time/are our repeated measures; here it’s the final three columns (you can also specify a vector of strings).</p>
 <p>Here are the same results with the <code>melt()</code> function from data.table or reshape2. We specify again which column represents our data labels, and then we tell it which columns we want it to treat as our “measures,” which in our case is our three tests (if unspecified, it just uses all non-id variables, so we could have left it out here):</p>
 <pre class="r"><code>traits_long_m &lt;- melt(traits, id.vars=&quot;id&quot;, measure.vars=c(&#39;control&#39;, &#39;treat1&#39;, &#39;treat2&#39;), 
                     variable.name=&#39;test&#39;, value.name=&#39;score&#39;)
 print(traits_long_m)</code></pre>
 <pre><code>##    id    test score
-## 1   1 control    31
-## 2   2 control    32
-## 3   3 control    23
-## 4   4 control    37
-## 5   5 control    28
-## 6   6 control    25
-## 7   7 control    40
-## 8   8 control    24
-## 9   9 control    18
-## 10 10 control    23
-## 11  1  treat1    10
-## 12  2  treat1    12
-## 13  3  treat1    10
-## 14  4  treat1    11
+## 1   1 control    32
+## 2   2 control    29
+## 3   3 control    34
+## 4   4 control    28
+## 5   5 control    29
+## 6   6 control    37
+## 7   7 control    35
+## 8   8 control    28
+## 9   9 control    34
+## 10 10 control    24
+## 11  1  treat1    13
+## 12  2  treat1     8
+## 13  3  treat1    14
+## 14  4  treat1     9
 ## 15  5  treat1     6
 ## 16  6  treat1    10
-## 17  7  treat1     5
+## 17  7  treat1    11
 ## 18  8  treat1    10
-## 19  9  treat1     9
+## 19  9  treat1    11
 ## 20 10  treat1     7
-## 21  1  treat2    17
-## 22  2  treat2    17
-## 23  3  treat2    14
-## 24  4  treat2    13
-## 25  5  treat2    18
-## 26  6  treat2    18
-## 27  7  treat2    19
-## 28  8  treat2    12
-## 29  9  treat2    15
-## 30 10  treat2    22</code></pre>
+## 21  1  treat2    14
+## 22  2  treat2    11
+## 23  3  treat2    15
+## 24  4  treat2    16
+## 25  5  treat2    16
+## 26  6  treat2    10
+## 27  7  treat2    16
+## 28  8  treat2    16
+## 29  9  treat2    12
+## 30 10  treat2     8</code></pre>
 <p>And let’s not leave out <code>tidyr</code>:</p>
 <pre class="r"><code>library(tidyr)
 traits_long_t &lt;- gather(traits, key=test, value=score, control, treat1, treat2)
 print(traits_long_t)</code></pre>
 <pre><code>##    id    test score
-## 1   1 control    31
-## 2   2 control    32
-## 3   3 control    23
-## 4   4 control    37
-## 5   5 control    28
-## 6   6 control    25
-## 7   7 control    40
-## 8   8 control    24
-## 9   9 control    18
-## 10 10 control    23
-## 11  1  treat1    10
-## 12  2  treat1    12
-## 13  3  treat1    10
-## 14  4  treat1    11
+## 1   1 control    32
+## 2   2 control    29
+## 3   3 control    34
+## 4   4 control    28
+## 5   5 control    29
+## 6   6 control    37
+## 7   7 control    35
+## 8   8 control    28
+## 9   9 control    34
+## 10 10 control    24
+## 11  1  treat1    13
+## 12  2  treat1     8
+## 13  3  treat1    14
+## 14  4  treat1     9
 ## 15  5  treat1     6
 ## 16  6  treat1    10
-## 17  7  treat1     5
+## 17  7  treat1    11
 ## 18  8  treat1    10
-## 19  9  treat1     9
+## 19  9  treat1    11
 ## 20 10  treat1     7
-## 21  1  treat2    17
-## 22  2  treat2    17
-## 23  3  treat2    14
-## 24  4  treat2    13
-## 25  5  treat2    18
-## 26  6  treat2    18
-## 27  7  treat2    19
-## 28  8  treat2    12
-## 29  9  treat2    15
-## 30 10  treat2    22</code></pre>
+## 21  1  treat2    14
+## 22  2  treat2    11
+## 23  3  treat2    15
+## 24  4  treat2    16
+## 25  5  treat2    16
+## 26  6  treat2    10
+## 27  7  treat2    16
+## 28  8  treat2    16
+## 29  9  treat2    12
+## 30 10  treat2     8</code></pre>
 <p>Here, the key/value pairing tells us about our outcome columns, and then we just list the columns to gather up.</p>
 <p>Three roads, same destination. I find <code>melt</code> and <code>gather</code> both much more intuitive than <code>reshape</code>, with <code>gather</code> the easiest of them all to use, but your mileage may vary.</p>
 <p>Data is <em>really</em> easy to plot this way:</p>
@@ -437,46 +437,46 @@ print(plot)</code></pre>
 <pre class="r"><code>traits_wide_base &lt;- reshape(traits_long_base, direction=&#39;wide&#39;, timevar=&#39;test&#39;, idvar=&#39;id&#39;)
 print(traits_wide_base)</code></pre>
 <pre><code>##            id score.control score.treat1 score.treat2
-## 1.control   1            31           10           17
-## 2.control   2            32           12           17
-## 3.control   3            23           10           14
-## 4.control   4            37           11           13
-## 5.control   5            28            6           18
-## 6.control   6            25           10           18
-## 7.control   7            40            5           19
-## 8.control   8            24           10           12
-## 9.control   9            18            9           15
-## 10.control 10            23            7           22</code></pre>
+## 1.control   1            32           13           14
+## 2.control   2            29            8           11
+## 3.control   3            34           14           15
+## 4.control   4            28            9           16
+## 5.control   5            29            6           16
+## 6.control   6            37           10           10
+## 7.control   7            35           11           16
+## 8.control   8            28           10           16
+## 9.control   9            34           11           12
+## 10.control 10            24            7            8</code></pre>
 <p>Now we have the original structure of our data back.</p>
 <p>The inverse of <code>melt()</code> is <code>dcast</code>:</p>
 <pre class="r"><code>traits_wide_m &lt;- dcast(traits_long_m, id ~ test, value.var=&#39;score&#39;)
 print(traits_wide_m)</code></pre>
 <pre><code>##    id control treat1 treat2
-## 1   1      31     10     17
-## 2   2      32     12     17
-## 3   3      23     10     14
-## 4   4      37     11     13
-## 5   5      28      6     18
-## 6   6      25     10     18
-## 7   7      40      5     19
-## 8   8      24     10     12
-## 9   9      18      9     15
-## 10 10      23      7     22</code></pre>
+## 1   1      32     13     14
+## 2   2      29      8     11
+## 3   3      34     14     15
+## 4   4      28      9     16
+## 5   5      29      6     16
+## 6   6      37     10     10
+## 7   7      35     11     16
+## 8   8      28     10     16
+## 9   9      34     11     12
+## 10 10      24      7      8</code></pre>
 <p>Right back to where we were.</p>
 <p>And to undo <code>gather</code>, we <code>spread</code>:</p>
 <pre class="r"><code>traits_wide_t &lt;- spread(traits_long_t, test, score)
 print(traits_wide_t)</code></pre>
 <pre><code>##    id control treat1 treat2
-## 1   1      31     10     17
-## 2   2      32     12     17
-## 3   3      23     10     14
-## 4   4      37     11     13
-## 5   5      28      6     18
-## 6   6      25     10     18
-## 7   7      40      5     19
-## 8   8      24     10     12
-## 9   9      18      9     15
-## 10 10      23      7     22</code></pre>
+## 1   1      32     13     14
+## 2   2      29      8     11
+## 3   3      34     14     15
+## 4   4      28      9     16
+## 5   5      29      6     16
+## 6   6      37     10     10
+## 7   7      35     11     16
+## 8   8      28     10     16
+## 9   9      34     11     12
+## 10 10      24      7      8</code></pre>
 </div>
 <div id="reshaping-with-more-variables" class="section level3">
 <h3>Reshaping with more variables</h3>
@@ -486,12 +486,12 @@ print(traits_wide_t)</code></pre>
                         &#39;test1&#39;=floor(rnorm(12, 10, 2)), &#39;test2&#39;=floor(rnorm(12, 15, 2)))
 head(traittest)</code></pre>
 <pre><code>##   traitA   traitB test1 test2
-## 1   high positive     7    10
-## 2   high negative     7    14
-## 3   high positive    12    12
-## 4   high negative    14    14
-## 5    med positive     8    15
-## 6    med negative     8    10</code></pre>
+## 1   high positive     7    14
+## 2   high negative    14    15
+## 3   high positive    13    12
+## 4   high negative     9    13
+## 5    med positive     7    14
+## 6    med negative     4    14</code></pre>
 <p>There are a lot of ways to melt this data. Maybe we want to collpase the tests into a single column–in this case the traits are the identifier variables.</p>
 <p>In base:</p>
 <pre class="r"><code>tt_bytrait_base &lt;- reshape(traittest, direction=&#39;long&#39;, v.names=&#39;score&#39;,
@@ -499,50 +499,50 @@ head(traittest)</code></pre>
 print(tt_bytrait_base)</code></pre>
 <pre><code>##          traitA   traitB  test score id
 ## 1.test1    high positive test1     7  1
-## 2.test1    high negative test1     7  2
-## 3.test1    high positive test1    12  3
-## 4.test1    high negative test1    14  4
-## 5.test1     med positive test1     8  5
-## 6.test1     med negative test1     8  6
-## 7.test1     med positive test1     7  7
-## 8.test1     med negative test1    12  8
-## 9.test1     low positive test1     8  9
-## 10.test1    low negative test1     5 10
-## 11.test1    low positive test1    11 11
-## 12.test1    low negative test1    10 12
-## 1.test2    high positive test2    10  1
-## 2.test2    high negative test2    14  2
+## 2.test1    high negative test1    14  2
+## 3.test1    high positive test1    13  3
+## 4.test1    high negative test1     9  4
+## 5.test1     med positive test1     7  5
+## 6.test1     med negative test1     4  6
+## 7.test1     med positive test1    11  7
+## 8.test1     med negative test1     9  8
+## 9.test1     low positive test1     9  9
+## 10.test1    low negative test1     9 10
+## 11.test1    low positive test1     7 11
+## 12.test1    low negative test1    11 12
+## 1.test2    high positive test2    14  1
+## 2.test2    high negative test2    15  2
 ## 3.test2    high positive test2    12  3
-## 4.test2    high negative test2    14  4
-## 5.test2     med positive test2    15  5
-## 6.test2     med negative test2    10  6
-## 7.test2     med positive test2    15  7
-## 8.test2     med negative test2    14  8
-## 9.test2     low positive test2    15  9
-## 10.test2    low negative test2    13 10
-## 11.test2    low positive test2    18 11
-## 12.test2    low negative test2    13 12</code></pre>
+## 4.test2    high negative test2    13  4
+## 5.test2     med positive test2    14  5
+## 6.test2     med negative test2    14  6
+## 7.test2     med positive test2    16  7
+## 8.test2     med negative test2    17  8
+## 9.test2     low positive test2    16  9
+## 10.test2    low negative test2    19 10
+## 11.test2    low positive test2    10 11
+## 12.test2    low negative test2    21 12</code></pre>
 <p>With <code>melt()</code>:</p>
 <pre class="r"><code>tt_bytrait_m &lt;- melt(traittest, measure.vars=c(&#39;test1&#39;, &#39;test2&#39;), variable.name=&#39;test&#39;,
                   value.name=&#39;score&#39;)
 head(tt_bytrait_m)</code></pre>
 <pre><code>##   traitA   traitB  test score
 ## 1   high positive test1     7
-## 2   high negative test1     7
-## 3   high positive test1    12
-## 4   high negative test1    14
-## 5    med positive test1     8
-## 6    med negative test1     8</code></pre>
+## 2   high negative test1    14
+## 3   high positive test1    13
+## 4   high negative test1     9
+## 5    med positive test1     7
+## 6    med negative test1     4</code></pre>
 <p>With <code>gather</code>:</p>
 <pre class="r"><code>tt_bytrait_t &lt;- gather(traittest, test, score, test1, test2)
 head(tt_bytrait_t)</code></pre>
 <pre><code>##   traitA   traitB  test score
 ## 1   high positive test1     7
-## 2   high negative test1     7
-## 3   high positive test1    12
-## 4   high negative test1    14
-## 5    med positive test1     8
-## 6    med negative test1     8</code></pre>
+## 2   high negative test1    14
+## 3   high positive test1    13
+## 4   high negative test1     9
+## 5    med positive test1     7
+## 6    med negative test1     4</code></pre>
 <p>Or, we can let the tests be the identifiers, and collapse the traits into a single column.</p>
 <p>Base:</p>
 <pre class="r"><code>tt_bytest_base &lt;- reshape(traittest, direction=&#39;long&#39;, v.names=&#39;rating&#39;,
@@ -550,30 +550,30 @@ head(tt_bytrait_t)</code></pre>
                           varying=c(&#39;traitA&#39;,&#39;traitB&#39;))
 print(tt_bytest_base)</code></pre>
 <pre><code>##           test1 test2  trait   rating id
-## 1.traitA      7    10 traitA     high  1
-## 2.traitA      7    14 traitA     high  2
-## 3.traitA     12    12 traitA     high  3
-## 4.traitA     14    14 traitA     high  4
-## 5.traitA      8    15 traitA      med  5
-## 6.traitA      8    10 traitA      med  6
-## 7.traitA      7    15 traitA      med  7
-## 8.traitA     12    14 traitA      med  8
-## 9.traitA      8    15 traitA      low  9
-## 10.traitA     5    13 traitA      low 10
-## 11.traitA    11    18 traitA      low 11
-## 12.traitA    10    13 traitA      low 12
-## 1.traitB      7    10 traitB positive  1
-## 2.traitB      7    14 traitB negative  2
-## 3.traitB     12    12 traitB positive  3
-## 4.traitB     14    14 traitB negative  4
-## 5.traitB      8    15 traitB positive  5
-## 6.traitB      8    10 traitB negative  6
-## 7.traitB      7    15 traitB positive  7
-## 8.traitB     12    14 traitB negative  8
-## 9.traitB      8    15 traitB positive  9
-## 10.traitB     5    13 traitB negative 10
-## 11.traitB    11    18 traitB positive 11
-## 12.traitB    10    13 traitB negative 12</code></pre>
+## 1.traitA      7    14 traitA     high  1
+## 2.traitA     14    15 traitA     high  2
+## 3.traitA     13    12 traitA     high  3
+## 4.traitA      9    13 traitA     high  4
+## 5.traitA      7    14 traitA      med  5
+## 6.traitA      4    14 traitA      med  6
+## 7.traitA     11    16 traitA      med  7
+## 8.traitA      9    17 traitA      med  8
+## 9.traitA      9    16 traitA      low  9
+## 10.traitA     9    19 traitA      low 10
+## 11.traitA     7    10 traitA      low 11
+## 12.traitA    11    21 traitA      low 12
+## 1.traitB      7    14 traitB positive  1
+## 2.traitB     14    15 traitB negative  2
+## 3.traitB     13    12 traitB positive  3
+## 4.traitB      9    13 traitB negative  4
+## 5.traitB      7    14 traitB positive  5
+## 6.traitB      4    14 traitB negative  6
+## 7.traitB     11    16 traitB positive  7
+## 8.traitB      9    17 traitB negative  8
+## 9.traitB      9    16 traitB positive  9
+## 10.traitB     9    19 traitB negative 10
+## 11.traitB     7    10 traitB positive 11
+## 12.traitB    11    21 traitB negative 12</code></pre>
 <p><code>melt</code>:</p>
 <pre class="r"><code>tt_bytest_m &lt;- melt(traittest, measure.vars=c(&#39;traitA&#39;, &#39;traitB&#39;),
                   variable.name=&#39;trait&#39;, value.name=&#39;rating&#39;)</code></pre>
@@ -581,12 +581,12 @@ print(tt_bytest_base)</code></pre>
 ## be dropped</code></pre>
 <pre class="r"><code>head(tt_bytest_m)</code></pre>
 <pre><code>##   test1 test2  trait rating
-## 1     7    10 traitA   high
-## 2     7    14 traitA   high
-## 3    12    12 traitA   high
-## 4    14    14 traitA   high
-## 5     8    15 traitA    med
-## 6     8    10 traitA    med</code></pre>
+## 1     7    14 traitA   high
+## 2    14    15 traitA   high
+## 3    13    12 traitA   high
+## 4     9    13 traitA   high
+## 5     7    14 traitA    med
+## 6     4    14 traitA    med</code></pre>
 <p>(We can ignore the warning; it’s warning us about the fact that we’re combining two factors that don’t share levels, so it’s coercing them all to characters.)</p>
 <p>With <code>gather</code>:</p>
 <pre class="r"><code>tt_bytest_t &lt;- gather(traittest, trait, rating, traitA, traitB)</code></pre>
@@ -594,12 +594,12 @@ print(tt_bytest_base)</code></pre>
 ## they will be dropped</code></pre>
 <pre class="r"><code>head(tt_bytest_t)</code></pre>
 <pre><code>##   test1 test2  trait rating
-## 1     7    10 traitA   high
-## 2     7    14 traitA   high
-## 3    12    12 traitA   high
-## 4    14    14 traitA   high
-## 5     8    15 traitA    med
-## 6     8    10 traitA    med</code></pre>
+## 1     7    14 traitA   high
+## 2    14    15 traitA   high
+## 3    13    12 traitA   high
+## 4     9    13 traitA   high
+## 5     7    14 traitA    med
+## 6     4    14 traitA    med</code></pre>
 <p>(Same warning as above.)</p>
 </div>
 </div>
@@ -703,90 +703,90 @@ print(yesnomaybe)</code></pre>
 <p>Variables can be added to an existing data frame just with the <code>$</code> operator:</p>
 <pre class="r"><code>df &lt;- data.frame(&#39;x&#39;=rnorm(20, 6), &#39;y&#39;=rnorm(20))
 print(df)</code></pre>
-<pre><code>##           x            y
-## 1  3.814685 -2.414699940
-## 2  6.561735 -1.682836391
-## 3  5.753351 -0.093147412
-## 4  6.724268 -0.740753965
-## 5  6.611494 -0.677626756
-## 6  5.821424 -0.652003973
-## 7  4.275049 -1.385014247
-## 8  4.548043  0.460906025
-## 9  6.099107  0.335752166
-## 10 6.305054  1.547601617
-## 11 4.423000  0.008901637
-## 12 6.819502  0.524443111
-## 13 4.585206  0.210899340
-## 14 5.616322 -0.046853321
-## 15 5.624543 -1.254425367
-## 16 4.335673  1.707625843
-## 17 4.205365  0.399983970
-## 18 6.108587 -1.682593643
-## 19 5.113273  1.610568789
-## 20 7.294455  0.264048002</code></pre>
+<pre><code>##           x           y
+## 1  6.144693  1.31271621
+## 2  5.994219 -1.15220141
+## 3  5.481343 -1.88612946
+## 4  6.596537  1.33190369
+## 5  6.622819  0.29091341
+## 6  5.529036 -0.92631475
+## 7  6.503472  0.95222028
+## 8  5.615649  0.78983518
+## 9  6.130155  0.05097195
+## 10 5.470999 -0.72237370
+## 11 6.502553 -0.52466896
+## 12 6.613552  0.66738197
+## 13 4.708603  0.83352695
+## 14 6.788030  0.34535172
+## 15 3.554839 -0.34517116
+## 16 6.219571 -1.62227269
+## 17 6.441796 -0.12163582
+## 18 7.346223  0.50865013
+## 19 4.426410 -0.33737165
+## 20 5.440101  0.92950079</code></pre>
 <pre class="r"><code>df$z &lt;- rnorm(20, 10)
 print(df)</code></pre>
-<pre><code>##           x            y         z
-## 1  3.814685 -2.414699940 10.653366
-## 2  6.561735 -1.682836391  8.860697
-## 3  5.753351 -0.093147412 10.123619
-## 4  6.724268 -0.740753965 10.583160
-## 5  6.611494 -0.677626756  9.087869
-## 6  5.821424 -0.652003973  9.994681
-## 7  4.275049 -1.385014247  8.628096
-## 8  4.548043  0.460906025  8.302652
-## 9  6.099107  0.335752166 10.027321
-## 10 6.305054  1.547601617 11.018114
-## 11 4.423000  0.008901637  8.904625
-## 12 6.819502  0.524443111  7.704292
-## 13 4.585206  0.210899340  9.093481
-## 14 5.616322 -0.046853321  8.883707
-## 15 5.624543 -1.254425367 11.578125
-## 16 4.335673  1.707625843 10.974265
-## 17 4.205365  0.399983970  9.916313
-## 18 6.108587 -1.682593643  9.231529
-## 19 5.113273  1.610568789 10.085739
-## 20 7.294455  0.264048002 10.106040</code></pre>
+<pre><code>##           x           y         z
+## 1  6.144693  1.31271621 10.102377
+## 2  5.994219 -1.15220141 10.131183
+## 3  5.481343 -1.88612946 12.163667
+## 4  6.596537  1.33190369 10.032213
+## 5  6.622819  0.29091341  9.859941
+## 6  5.529036 -0.92631475  9.098914
+## 7  6.503472  0.95222028  9.008977
+## 8  5.615649  0.78983518  8.747186
+## 9  6.130155  0.05097195  9.315156
+## 10 5.470999 -0.72237370  9.896939
+## 11 6.502553 -0.52466896  9.404271
+## 12 6.613552  0.66738197  9.285789
+## 13 4.708603  0.83352695  9.559692
+## 14 6.788030  0.34535172 10.237142
+## 15 3.554839 -0.34517116  9.626101
+## 16 6.219571 -1.62227269 10.075795
+## 17 6.441796 -0.12163582  8.792203
+## 18 7.346223  0.50865013 11.167645
+## 19 4.426410 -0.33737165 10.636544
+## 20 5.440101  0.92950079 10.441216</code></pre>
 <p>If you need to manipulate two data vectors that are numeric, you can just add, multiply, etc. your columns together to perform these operations elementwise:</p>
 <pre class="r"><code>df$total &lt;- with(df, x + y + z)
 head(df)</code></pre>
-<pre><code>##          x           y         z    total
-## 1 3.814685 -2.41469994 10.653366 12.05335
-## 2 6.561735 -1.68283639  8.860697 13.73960
-## 3 5.753351 -0.09314741 10.123619 15.78382
-## 4 6.724268 -0.74075397 10.583160 16.56667
-## 5 6.611494 -0.67762676  9.087869 15.02174
-## 6 5.821424 -0.65200397  9.994681 15.16410</code></pre>
+<pre><code>##          x          y         z    total
+## 1 6.144693  1.3127162 10.102377 17.55979
+## 2 5.994219 -1.1522014 10.131183 14.97320
+## 3 5.481343 -1.8861295 12.163667 15.75888
+## 4 6.596537  1.3319037 10.032213 17.96065
+## 5 6.622819  0.2909134  9.859941 16.77367
+## 6 5.529036 -0.9263148  9.098914 13.70164</code></pre>
 <p>You also have a lot of options in the <code>dplyr</code> library, notably <code>transform</code>:</p>
 <pre class="r"><code>df &lt;- transform(df, x = -x)
 head(df)</code></pre>
-<pre><code>##           x           y         z    total
-## 1 -3.814685 -2.41469994 10.653366 12.05335
-## 2 -6.561735 -1.68283639  8.860697 13.73960
-## 3 -5.753351 -0.09314741 10.123619 15.78382
-## 4 -6.724268 -0.74075397 10.583160 16.56667
-## 5 -6.611494 -0.67762676  9.087869 15.02174
-## 6 -5.821424 -0.65200397  9.994681 15.16410</code></pre>
+<pre><code>##           x          y         z    total
+## 1 -6.144693  1.3127162 10.102377 17.55979
+## 2 -5.994219 -1.1522014 10.131183 14.97320
+## 3 -5.481343 -1.8861295 12.163667 15.75888
+## 4 -6.596537  1.3319037 10.032213 17.96065
+## 5 -6.622819  0.2909134  9.859941 16.77367
+## 6 -5.529036 -0.9263148  9.098914 13.70164</code></pre>
 <p>But now that we’ve updated a column, our total is wrong. Let’s fix it with <code>transmute</code>:</p>
 <pre class="r"><code>df &lt;- mutate(df, corrected_total = x + y + z)
 head(df)</code></pre>
-<pre><code>##           x           y         z    total corrected_total
-## 1 -3.814685 -2.41469994 10.653366 12.05335       4.4239807
-## 2 -6.561735 -1.68283639  8.860697 13.73960       0.6161248
-## 3 -5.753351 -0.09314741 10.123619 15.78382       4.2771201
-## 4 -6.724268 -0.74075397 10.583160 16.56667       3.1181375
-## 5 -6.611494 -0.67762676  9.087869 15.02174       1.7987484
-## 6 -5.821424 -0.65200397  9.994681 15.16410       3.5212526</code></pre>
+<pre><code>##           x          y         z    total corrected_total
+## 1 -6.144693  1.3127162 10.102377 17.55979        5.270401
+## 2 -5.994219 -1.1522014 10.131183 14.97320        2.984762
+## 3 -5.481343 -1.8861295 12.163667 15.75888        4.796194
+## 4 -6.596537  1.3319037 10.032213 17.96065        4.767579
+## 5 -6.622819  0.2909134  9.859941 16.77367        3.528035
+## 6 -5.529036 -0.9263148  9.098914 13.70164        2.643564</code></pre>
 <p>Maybe I now want a dataframe just of the even numbers in the x column, and the residuals from total and corrected total (for… reasons). <code>transmute</code> is like mutate, but it throws away all the extra:</p>
 <pre class="r"><code>df_even &lt;- transmute(df, x_ev=floor(x)%%2==0, residuals=total-corrected_total)
 head(df_even)</code></pre>
 <pre><code>##    x_ev residuals
-## 1  TRUE  7.629371
-## 2 FALSE 13.123471
-## 3  TRUE 11.506702
-## 4 FALSE 13.448536
-## 5 FALSE 13.222987
-## 6  TRUE 11.642849</code></pre>
+## 1 FALSE  12.28939
+## 2  TRUE  11.98844
+## 3  TRUE  10.96269
+## 4 FALSE  13.19307
+## 5 FALSE  13.24564
+## 6  TRUE  11.05807</code></pre>
 <p>If none of these methods fit the bill, you can call <code>apply</code> along all the columns or rows of your data frame and write a custom function to do whatever processing you need.</p>
 </div>
 <div id="factor-levels-as-column-labels" class="section level3">

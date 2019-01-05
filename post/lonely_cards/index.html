@@ -219,7 +219,7 @@ return(as.numeric(!(sum(deck == sample(deck)) &gt; 0))) #1 is win, 0 is lose
 }
 results &lt;- replicate(100000, cards())
 paste(&#39;Win percentage: &#39;, sum(results)/1000,&#39;%&#39;, sep=&#39;&#39;)</code></pre>
-<pre><code>## [1] &quot;Win percentage: 1.691%&quot;</code></pre>
+<pre><code>## [1] &quot;Win percentage: 1.594%&quot;</code></pre>
 <p>I’ll update this post with the closed-form solution if I manage to work it out (failing that, I’ll just link to the solution on FiveThirtyEight).</p>
 <p><a href="https://github.com/katherinemwood/lonely_cards">Here’s the source code</a> for the shiny app.</p>
 <p>UPDATE: It turns out the <a href="https://fivethirtyeight.com/features/how-long-will-it-take-to-blow-out-the-birthday-candles/#correction">closed-form solution to this riddle</a> is nontrivial! It relies on a branch of combinatorics called <a href="http://mathworld.wolfram.com/Derangement.html">“derangements”</a> I didn’t encounter in my (admittedly less than comprehensive) math and stats education.</p>
