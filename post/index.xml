@@ -6,14 +6,14 @@
     <description>Recent content in Posts on Inattentional Coffee</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>&amp;copy; 2017 Katherine</copyright>
+    <copyright>&amp;copy; 2020 Katherine Wood</copyright>
     <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0000</lastBuildDate>
     <atom:link href="/post/" rel="self" type="application/rss+xml" />
     
     <item>
       <title>What is it like to run a Registered Replication?</title>
       <link>https://katherinemwood.github.io/post/first-rr/</link>
-      <pubDate>Mon, 19 Nov 2018 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 05 Jan 2019 10:04:53 -0500</pubDate>
       
       <guid>https://katherinemwood.github.io/post/first-rr/</guid>
       <description>&lt;p&gt;I’m one of many people who will extoll, at length, the virtues of replication and of registered reports. Until recently, I had only talked the talk; I had never actually run one myself. I had always wanted to, but I was also nervous about the prospect. There is no shortage of horror stories about replications that become contentious, or which get caught in review purgatory, or which are dismissed out of hand as a waste of time.&lt;/p&gt;
@@ -228,7 +228,7 @@ print(gains_tweaks)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;One option I’ve seen used is a 2-part HIT. First you make a short, cheap HIT in which you ask the relevant question or two, and then you reach out to the eligible workers who completed that HIT with the link to your actual survey. This is complex and can be time consuming for the requester, though, especially if the pre-screen is extremely short.&lt;/p&gt;
 &lt;p&gt;It turns out that there is a very straightforward way to deal with this if you’re willing to use the MTurk web API. You can create custom qualifications that workers can request, either directly or by completing a test, and then assign those qualifications as a requirement for your HITs.&lt;/p&gt;
 &lt;p&gt;You can get pretty sophisticated with handling these qualifications, and there is a lot more detail on the &lt;a href=&#34;http://docs.aws.amazon.com/AWSMechTurk/latest/AWSMechanicalTurkRequester/Concepts_QualificationsArticle.html&#34;&gt;AWS documentation pages&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Here, I’m going to demonstrate how to make a qualification test that auto-scores itself using the boto3 library for Python. It’s a simple, 2-question colorblindness test (you can view it on the worker sandbox &lt;a href=&#34;https://workersandbox.mturk.com/mturk/requestqualification?qualificationId=3CFGE88WF7UDUETM7YP3RSRD73VS4F&#34;&gt;here&lt;/a&gt;; sign-in required) that first asks people to self-report any known issues with their color vision, and then has them respond to an Ishihara plate. Here’s what it looks like to a worker:&lt;/p&gt;
+&lt;p&gt;Here, I’m going to demonstrate how to make a qualification test that auto-scores itself using the boto3 library for Python. It’s a simple, 2-question colorblindness test (you can view it on the worker sandbox &lt;a href=&#34;https://workersandbox.mturk.com/qualifications/3CFGE88WF7UDUETM7YP3RSRD73VS4F&#34;&gt;here&lt;/a&gt;; sign-in required) that first asks people to self-report any known issues with their color vision, and then has them respond to an Ishihara plate. Here’s what it looks like to a worker:&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
 &lt;img src=&#34;../img/qualification_test.png&#34; alt=&#34;a qualification test in the wild&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;a qualification test in the wild&lt;/p&gt;
@@ -245,7 +245,7 @@ print(gains_tweaks)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;the &lt;a href=&#34;http://boto3.readthedocs.io/en/latest/guide/quickstart.html#installation&#34;&gt;boto3 library for Python&lt;/a&gt;, most easily installed via &lt;a href=&#34;https://pypi.python.org/pypi/pip&#34;&gt;pip&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;You’ll also need to link your AWS account to both your real Requester account and to your Sandbox Requester account, and have your access credentials formatted in a way that boto3 can access them.&lt;/p&gt;
-&lt;p&gt;For more detail on how to handle setting all of this up, or to see how all the pieces fit together, you can check out &lt;a href=&#34;katherinemwood.github.io/post/mturk_dev_intro/&#34;&gt;this post&lt;/a&gt; for an in-depth guide.&lt;/p&gt;
+&lt;p&gt;For more detail on how to handle setting all of this up, or to see how all the pieces fit together, you can check out &lt;a href=&#34;https://katherinemwood.github.io/post/mturk_dev_intro/&#34;&gt;this post&lt;/a&gt; for an in-depth guide.&lt;/p&gt;
 &lt;p&gt;With that in place, we can move on to actually creating the qualification!&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;the-qualification-skeleton&#34; class=&#34;section level2&#34;&gt;
