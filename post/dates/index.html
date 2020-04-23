@@ -211,7 +211,7 @@
 <h1>Storing dates</h1>
 <p><code>POSIXct</code> is the number of seconds since 12:00 am on January 1st, 1970 (UTC), also known as “unix time.” While it may seem ludicrous to represent time this way (as one giant number), this actually has a lot of advantages. You don’t have to worry about time zone conversions, and having the time as just a number makes it a lot easier for machines to handle. For human readability, you have to run conversions for day, month, year, and time.</p>
 <pre class="r"><code>as.POSIXct(Sys.Date())</code></pre>
-<pre><code>## [1] &quot;2019-01-04 16:00:00 PST&quot;</code></pre>
+<pre><code>## [1] &quot;2020-04-22 17:00:00 PDT&quot;</code></pre>
 <p><code>POSIXlt</code> is a more human-readable form of the time. It is a named list of vectors that includes all of the information you could want about a date.</p>
 <pre class="r"><code>plt &lt;- as.POSIXlt(Sys.Date())
 objects(plt)</code></pre>

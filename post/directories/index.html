@@ -222,18 +222,14 @@ read.csv(&#39;./data/my_file.csv&#39;)</code></pre>
 <p>Use <code>dir()</code> or <code>list.files()</code>! They are identical (literally). These functions return a list of the files in the specified directory. They also take a number of arguments that will help you get exactly the files you want and none of the ones you don’t. You can specify a <code>pattern</code> with some regex to limit the files that get listed, such as ones that follow a certain format or end in a certain extension. This is handy if you have a bunch of different filetypes in the same directory but only want the csvs, for instance.</p>
 <p>Here’s how I would list just the RMarkdown files for my blogposts, for instance:</p>
 <pre class="r"><code>dir(pattern=&#39;*.Rmd&#39;)</code></pre>
-<pre><code>##  [1] &quot;bootstrapping.Rmd&quot;     &quot;CORVIDS.Rmd&quot;          
-##  [3] &quot;corvids2.0.Rmd&quot;        &quot;data_sharing_tips.Rmd&quot;
-##  [5] &quot;dates.Rmd&quot;             &quot;directories.Rmd&quot;      
-##  [7] &quot;es_var.Rmd&quot;            &quot;first-rr.Rmd&quot;         
-##  [9] &quot;ggplot_forest.Rmd&quot;     &quot;joy.Rmd&quot;              
-## [11] &quot;lin_reg.Rmd&quot;           &quot;lonely_cards.Rmd&quot;     
-## [13] &quot;mturk_dev_intro.Rmd&quot;   &quot;notebooks.Rmd&quot;        
-## [15] &quot;open_sci.Rmd&quot;          &quot;prereg.Rmd&quot;           
-## [17] &quot;programming.Rmd&quot;       &quot;qualifications.Rmd&quot;   
-## [19] &quot;shiny_es.Rmd&quot;          &quot;testthat.Rmd&quot;         
-## [21] &quot;violins.Rmd&quot;           &quot;vizfix.Rmd&quot;           
-## [23] &quot;wrangling.Rmd&quot;</code></pre>
+<pre><code>##  [1] &quot;bootstrapping.Rmd&quot;     &quot;CORVIDS.Rmd&quot;           &quot;corvids2.0.Rmd&quot;       
+##  [4] &quot;data_sharing_tips.Rmd&quot; &quot;dates.Rmd&quot;             &quot;directories.Rmd&quot;      
+##  [7] &quot;es_var.Rmd&quot;            &quot;first-rr.Rmd&quot;          &quot;ggplot_forest.Rmd&quot;    
+## [10] &quot;joy.Rmd&quot;               &quot;lin_reg.Rmd&quot;           &quot;lonely_cards.Rmd&quot;     
+## [13] &quot;mturk_dev_intro.Rmd&quot;   &quot;notebooks.Rmd&quot;         &quot;open_sci.Rmd&quot;         
+## [16] &quot;prereg.Rmd&quot;            &quot;programming.Rmd&quot;       &quot;qualifications.Rmd&quot;   
+## [19] &quot;shiny_es.Rmd&quot;          &quot;testthat.Rmd&quot;          &quot;violins.Rmd&quot;          
+## [22] &quot;vizfix.Rmd&quot;            &quot;wrangling.Rmd&quot;</code></pre>
 </div>
 <div id="i-need-to-get-all-the-files-in-all-the-directories." class="section level1">
 <h1>2. I need to get all the files in ALL the directories.</h1>

@@ -206,8 +206,9 @@
 <p>Bootstrapping gets you the next best thing. We don’t resample from the population. Instead, we continuously resample <em>our own data</em>,with replacement, and generate a so-called bootstrapped distribution. We can then use this distribution to quantify uncertainty on all kinds of measures.</p>
 <p>I’ll work through an example to show how this works in practice. We’ll sample from the normal to start, <span class="math inline">\(\mu = 1.25\)</span>, <span class="math inline">\(\sigma = 0.5\)</span>. I’ve set the seed within the script so you’ll get exactly the results I find here.</p>
 <p>Let’s say we run a study with 50 people, and we’re interested in, among other things, getting a good estimation of the mean of the underlying population. So, you take your 50 people, take a mean, get a standard error, and maybe 95% confidence intervals to show the variation (± 1.96*SE).</p>
-<pre class="r"><code>library(effsize)
-#Set the seed for reproducable results
+<pre class="r"><code>library(effsize)</code></pre>
+<pre><code>## Warning: package &#39;effsize&#39; was built under R version 3.6.2</code></pre>
+<pre class="r"><code>#Set the seed for reproducable results
 set.seed(123)
 #Generate some random normal data
 x &lt;- rnorm(50, 1.25, .5)
@@ -249,10 +250,10 @@ abline(v=c(mean(boot), lb, ub), col=rep(&#39;red&#39;, 3), lty=c(1, 2, 2))</code
 <pre><code>## 
 ## Cohen&#39;s d
 ## 
-## d estimate: 0.5537571 (medium)
+## d estimate: 0.6359746 (medium)
 ## 95 percent confidence interval:
-##       inf       sup 
-## 0.1493285 0.9581857</code></pre>
+##     lower     upper 
+## 0.2291717 1.0427774</code></pre>
 <p>Here’s how we would bootstrap those same intervals. We resample each group independently, because it’s between-subjects. The procedure is much the same if it’s within subjects, except you would resample your <em>pairs</em> of data because the two groups are not independent in that case. The code:</p>
 <pre class="r"><code>boot_es &lt;- replicate(1000, cohen.d(sample(groups$exp, 50, replace=TRUE), 
                                    sample(groups$control, 50, replace=TRUE))$estimate)</code></pre>
