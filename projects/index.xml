@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PROJECTS on Katherine Wood</title>
+    <link>https://katherinemwood.github.io/projects/</link>
+    <description>Recent content in PROJECTS on Katherine Wood</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© Katherine Wood</copyright>
+    <lastBuildDate>Sun, 01 Mar 2020 19:47:09 +0200</lastBuildDate>
+    
+	<atom:link href="https://katherinemwood.github.io/projects/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>PRecall</title>
+      <link>https://katherinemwood.github.io/projects/precall/</link>
+      <pubDate>Sun, 01 Mar 2020 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/projects/precall/</guid>
+      <description>Unsafe or defective products cost over a trillion dollars each year in deaths, injuries, property damage, and lost productivity. It&amp;rsquo;s imperative that consumers be able to avoid unsafe products, but it&amp;rsquo;s currently extremely difficult to find relevant information about recalls or complaints about products.
+Using recall announcements and consumer complaints filed to the CPSC, I developed an app that surfaces information related to a product. A consumer can search for a product and receive all the related complaints about that product.</description>
+    </item>
+    
+    <item>
+      <title>Multiple Object Tracking</title>
+      <link>https://katherinemwood.github.io/projects/simple_mot/</link>
+      <pubDate>Thu, 02 Jan 2020 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/projects/simple_mot/</guid>
+      <description>This is a script that runs a complete inattentional blindness experiment using multiple object tracking as the main task, including data saving. Many parameters can be changed to control the appearance and behavior of the experiment. Almost every aspect of the experiment is built in an object-oriented way, making it easy to extend.</description>
+    </item>
+    
+    <item>
+      <title>CORVIDS</title>
+      <link>https://katherinemwood.github.io/projects/corvids/</link>
+      <pubDate>Wed, 02 May 2018 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/projects/corvids/</guid>
+      <description>Raw data are often unavailable, and all that may remain of a data set are its summary statistics. When these data are integers on a fixed scale, such as Likert-style ratings, and their mean, standard deviation, and sample size are known, it is possible to reconstruct every raw distribution that gives rise to those summary statistics using a system of Diophantine equations. We have developed the open-source program CORVIDS (COmplete Reconstruction of Values In Diophantine Systems) to deterministically reconstruct raw data from summary statistics using this technique.</description>
+    </item>
+    
+    <item>
+      <title>Effect Size Calculator</title>
+      <link>https://katherinemwood.github.io/projects/effect_sizes/</link>
+      <pubDate>Tue, 02 May 2017 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/projects/effect_sizes/</guid>
+      <description>This is a Shiny application that brings the beloved effect size calculator spreadsheets by Daniel Lakens online. The application will produce as many common effect sizes as possible given the information available.</description>
+    </item>
+    
+    <item>
+      <title>One Dark Sky</title>
+      <link>https://katherinemwood.github.io/projects/darksky/</link>
+      <pubDate>Mon, 02 May 2016 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/projects/darksky/</guid>
+      <description>This is a short exploratory data analysis project using historical weather data accessed using the Darksky API. The analysis was done in an RNotebook.</description>
+    </item>
+    
+  </channel>
+</rss>

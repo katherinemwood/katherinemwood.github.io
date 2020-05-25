@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Shiny on Katherine Wood</title>
+    <link>https://katherinemwood.github.io/techs/shiny/</link>
+    <description>Recent content in Shiny on Katherine Wood</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© Katherine Wood</copyright>
+    <lastBuildDate>Tue, 02 May 2017 19:47:09 +0200</lastBuildDate>
+    
+	<atom:link href="https://katherinemwood.github.io/techs/shiny/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Effect Size Calculator</title>
+      <link>https://katherinemwood.github.io/projects/effect_sizes/</link>
+      <pubDate>Tue, 02 May 2017 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/projects/effect_sizes/</guid>
+      <description>This is a Shiny application that brings the beloved effect size calculator spreadsheets by Daniel Lakens online. The application will produce as many common effect sizes as possible given the information available.</description>
+    </item>
+    
+  </channel>
+</rss>

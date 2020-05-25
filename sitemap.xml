@@ -1,412 +1,352 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/publication/ib_timing/</loc>
-      <lastmod>2019-11-20T00:00:00+00:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/techs/aws/</loc>
+    <lastmod>2020-03-01T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/publication/interactive_ib/</loc>
-      <lastmod>2019-04-17T00:00:00+00:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/</loc>
+    <lastmod>2020-03-01T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/post/first-rr/</loc>
-      <lastmod>2019-01-05T10:04:53-05:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/techs/pandas/</loc>
+    <lastmod>2020-03-01T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/publication/implicit_ib/</loc>
-      <lastmod>2018-11-10T00:00:00+00:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/projects/precall/</loc>
+    <lastmod>2020-03-01T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/publication/motion_cb/</loc>
-      <lastmod>2018-10-23T00:00:00+00:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/projects/</loc>
+    <lastmod>2020-03-01T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/post/corvids2.0/</loc>
-      <lastmod>2018-05-08T10:04:53-05:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/techs/python/</loc>
+    <lastmod>2020-03-01T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/project/corvids/</loc>
-      <lastmod>2018-02-01T00:00:00+00:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/techs/scikit-learn/</loc>
+    <lastmod>2020-03-01T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/post/corvids/</loc>
-      <lastmod>2018-01-29T12:36:28-06:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/techs/seaborn/</loc>
+    <lastmod>2020-03-01T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/post/vizfix/</loc>
-      <lastmod>2017-12-16T15:11:42-06:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/techs/streamlit/</loc>
+    <lastmod>2020-03-01T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/publication/ib_similarity/</loc>
-      <lastmod>2017-10-11T00:00:00+00:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/techs/</loc>
+    <lastmod>2020-03-01T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/post/qualifications/</loc>
-      <lastmod>2017-10-09T15:25:40-05:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/projects/simple_mot/</loc>
+    <lastmod>2020-01-02T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/post/mturk_dev_intro/</loc>
-      <lastmod>2017-10-08T15:25:40-05:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/techs/psychopy/</loc>
+    <lastmod>2020-01-02T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/publication/ib_color/</loc>
-      <lastmod>2017-08-07T00:00:00+00:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/techs/css/</loc>
+    <lastmod>2019-11-01T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/post/data_sharing_tips/</loc>
-      <lastmod>2017-08-02T20:12:31-05:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/techs/html/</loc>
+    <lastmod>2019-11-01T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/post/joy/</loc>
-      <lastmod>2017-07-15T00:00:00+00:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/techs/javascript/</loc>
+    <lastmod>2019-11-01T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/post/prereg/</loc>
-      <lastmod>2017-06-26T16:11:46-05:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/publications/ib_timing/</loc>
+    <lastmod>2019-11-01T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/post/shiny_es/</loc>
-      <lastmod>2017-06-26T16:09:00-05:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/publications/</loc>
+    <lastmod>2019-11-01T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/post/testthat/</loc>
-      <lastmod>2017-06-26T15:46:23-05:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/techs/r/</loc>
+    <lastmod>2019-11-01T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/post/notebooks/</loc>
-      <lastmod>2017-06-26T15:36:22-05:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/publications/interactive_ib/</loc>
+    <lastmod>2019-10-01T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/post/violins/</loc>
-      <lastmod>2017-06-26T15:27:06-05:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/publications/motion_cb/</loc>
+    <lastmod>2019-03-01T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/post/wrangling/</loc>
-      <lastmod>2017-06-26T15:20:35-05:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/techs/matlab/</loc>
+    <lastmod>2019-03-01T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/post/bootstrapping/</loc>
-      <lastmod>2017-06-26T15:02:58-05:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/post/</loc>
+    <lastmod>2019-01-05T10:04:53-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/post/programming/</loc>
-      <lastmod>2017-06-26T14:35:49-05:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/post/first-rr/</loc>
+    <lastmod>2019-01-05T10:04:53-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/post/es_var/</loc>
-      <lastmod>2017-06-26T13:54:20-05:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/publications/implicit_ib/</loc>
+    <lastmod>2018-11-19T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/post/open_sci/</loc>
-      <lastmod>2017-06-26T13:48:35-05:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/post/corvids-2.0/</loc>
+    <lastmod>2018-05-08T10:04:53-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/post/lonely_cards/</loc>
-      <lastmod>2017-06-26T12:34:18-05:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/projects/corvids/</loc>
+    <lastmod>2018-05-02T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/tags/academic/</loc>
-      <lastmod>2017-01-01T00:00:00+00:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/post/corvids/</loc>
+    <lastmod>2018-01-29T12:36:28-06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/post/</loc>
-      <lastmod>2017-01-01T00:00:00+00:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/post/vizfix/</loc>
+    <lastmod>2017-12-16T15:11:42-06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/publication/cbltm/</loc>
-      <lastmod>2016-11-23T00:00:00+00:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/publications/ib_similarity/</loc>
+    <lastmod>2017-11-26T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/project/shiny_es/</loc>
-      <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/post/qualifications/</loc>
+    <lastmod>2017-10-09T15:25:40-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/project/darksky/</loc>
-      <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/post/aws-startup/</loc>
+    <lastmod>2017-10-08T15:25:40-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/publication_types/2/</loc>
-      <lastmod>2019-11-20T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/publications/ib_color/</loc>
+    <lastmod>2017-08-07T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/tags/app/</loc>
-      <lastmod>2018-02-01T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/post/data-sharing/</loc>
+    <lastmod>2017-08-02T20:12:31-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/categories/</loc>
-      <priority>0</priority>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/post/preregistration/</loc>
+    <lastmod>2017-06-26T16:11:46-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/tags/data/</loc>
-      <lastmod>2018-02-01T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/post/unittesting/</loc>
+    <lastmod>2017-06-26T15:46:23-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/</loc>
-      <lastmod>2016-04-20T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/post/r-notebooks/</loc>
+    <lastmod>2017-06-26T15:36:22-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/project/</loc>
-      <lastmod>2018-02-01T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/post/violins/</loc>
+    <lastmod>2017-06-26T15:27:06-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/publication_types/</loc>
-      <lastmod>2019-11-20T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/post/bootstrapping/</loc>
+    <lastmod>2017-06-26T15:02:58-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/publication/</loc>
-      <lastmod>2019-11-20T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/post/effect_size_variance/</loc>
+    <lastmod>2017-06-26T13:54:20-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/tags/python/</loc>
-      <lastmod>2018-02-01T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/post/gams/</loc>
+    <lastmod>2017-06-26T13:48:35-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/tags/r/</loc>
-      <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/post/card_simulation/</loc>
+    <lastmod>2017-06-26T12:34:18-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/tags/shiny/</loc>
-      <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/projects/effect_sizes/</loc>
+    <lastmod>2017-05-02T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/tags/</loc>
-      <lastmod>2017-01-01T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/techs/shiny/</loc>
+    <lastmod>2017-05-02T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
-    
-    
-    <url>
-    
-      <loc>https://katherinemwood.github.io/tags/web/</loc>
-      <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
+  <url>
+    <loc>https://katherinemwood.github.io/techs/ggplot/</loc>
+    <lastmod>2016-05-02T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://katherinemwood.github.io/projects/darksky/</loc>
+    <lastmod>2016-05-02T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://katherinemwood.github.io/techs/rmarkdown/</loc>
+    <lastmod>2016-05-02T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://katherinemwood.github.io/publications/cbltm/</loc>
+    <lastmod>2016-02-01T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://katherinemwood.github.io/about/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://katherinemwood.github.io/designs/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://katherinemwood.github.io/post/effect-size-calculator/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
 </urlset>

@@ -1,28 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Abouts on Inattentional Coffee</title>
-    <link>/about/</link>
-    <description>Recent content in Abouts on Inattentional Coffee</description>
+    <title>ABOUT on Katherine Wood</title>
+    <link>https://katherinemwood.github.io/about/</link>
+    <description>Recent content in ABOUT on Katherine Wood</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>&amp;copy; 2017 Katherine</copyright>
-    <lastBuildDate>Tue, 30 May 2017 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/about/" rel="self" type="application/rss+xml" />
+    <copyright>© Katherine Wood</copyright>
     
-    <item>
-      <title></title>
-      <link>/about/about/</link>
-      <pubDate>Tue, 30 May 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/about/about/</guid>
-      <description>
-
-&lt;h1 id=&#34;biography&#34;&gt;Biography&lt;/h1&gt;
-
-&lt;p&gt;I&amp;rsquo;m a graduate student in the UIUC psych department studying failures of awareness. I&amp;rsquo;m an advocate for open, reproducible science and open-source software.&lt;/p&gt;
-</description>
-    </item>
+	<atom:link href="https://katherinemwood.github.io/about/index.xml" rel="self" type="application/rss+xml" />
+    
     
   </channel>
 </rss>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MATLAB on Katherine Wood</title>
+    <link>https://katherinemwood.github.io/techs/matlab/</link>
+    <description>Recent content in MATLAB on Katherine Wood</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© Katherine Wood</copyright>
+    <lastBuildDate>Fri, 01 Mar 2019 19:47:09 +0200</lastBuildDate>
+    
+	<atom:link href="https://katherinemwood.github.io/techs/matlab/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>As if by magic: An abrupt change in motion direction induces change blindness</title>
+      <link>https://katherinemwood.github.io/publications/motion_cb/</link>
+      <pubDate>Fri, 01 Mar 2019 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/publications/motion_cb/</guid>
+      <description>Abstract Magicians claim that an abrupt change in the direction of movement can attract attention, allowing them to hide their method for a trick in plain sight. In three experiments involving 43 total participants, we tested this claim by examining whether a sudden directional change can induce change blindness. Participants were asked to detect an instantaneous orientation change to a single item in an array of Gabor patches, which occurred as the entire array moved across the display.</description>
+    </item>
+    
+  </channel>
+</rss>

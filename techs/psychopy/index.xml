@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>psychopy on Katherine Wood</title>
+    <link>https://katherinemwood.github.io/techs/psychopy/</link>
+    <description>Recent content in psychopy on Katherine Wood</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© Katherine Wood</copyright>
+    <lastBuildDate>Thu, 02 Jan 2020 19:47:09 +0200</lastBuildDate>
+    
+	<atom:link href="https://katherinemwood.github.io/techs/psychopy/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Multiple Object Tracking</title>
+      <link>https://katherinemwood.github.io/projects/simple_mot/</link>
+      <pubDate>Thu, 02 Jan 2020 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/projects/simple_mot/</guid>
+      <description>This is a script that runs a complete inattentional blindness experiment using multiple object tracking as the main task, including data saving. Many parameters can be changed to control the appearance and behavior of the experiment. Almost every aspect of the experiment is built in an object-oriented way, making it easy to extend.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on Katherine Wood</title>
+    <link>https://katherinemwood.github.io/techs/r/</link>
+    <description>Recent content in R on Katherine Wood</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© Katherine Wood</copyright>
+    <lastBuildDate>Fri, 01 Nov 2019 19:47:09 +0200</lastBuildDate>
+    
+	<atom:link href="https://katherinemwood.github.io/techs/r/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Now or never: noticing occurs early in sustained inattentional blindness</title>
+      <link>https://katherinemwood.github.io/publications/ib_timing/</link>
+      <pubDate>Fri, 01 Nov 2019 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/publications/ib_timing/</guid>
+      <description>Abstract People can show sustained inattentional blindness for unexpected objects visible for seconds or even minutes. Would such objects eventually be noticed given enough time, with the likelihood of noticing accumulating while the unexpected object is visible? Or, is there a narrow window around onset or offset when an object is most likely to be detected, with the chances of noticing dropping outside of that window? Across three experiments (total n&amp;rsquo;s = 283, 756, 488) exploring the temporal dynamics of noticing in sustained inattentional blindness, subjects who noticed the unexpected object did so soon after it onset.</description>
+    </item>
+    
+    <item>
+      <title>The spatial allocation of attention in an interactive environment</title>
+      <link>https://katherinemwood.github.io/publications/interactive_ib/</link>
+      <pubDate>Tue, 01 Oct 2019 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/publications/interactive_ib/</guid>
+      <description>Abstract Inattentional blindness methods allow for an unobtrusive measure of the spatial distribution of attention; because subjects do not expect the critical object, they have no reason to devote attention to task-irrelevant regions in anticipation of it. We used inattentional blindness to examine the spatial allocation of attention in an interactive game in which subjects navigated through a dynamic environment and avoided hazards. Subjects were most likely to notice unexpected objects in the areas with the greatest risk of contact with a hazard, and less likely to notice equally proximal objects in inaccessible areas of the display or areas in which hazards no longer posed a threat.</description>
+    </item>
+    
+    <item>
+      <title>As if by magic: An abrupt change in motion direction induces change blindness</title>
+      <link>https://katherinemwood.github.io/publications/motion_cb/</link>
+      <pubDate>Fri, 01 Mar 2019 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/publications/motion_cb/</guid>
+      <description>Abstract Magicians claim that an abrupt change in the direction of movement can attract attention, allowing them to hide their method for a trick in plain sight. In three experiments involving 43 total participants, we tested this claim by examining whether a sudden directional change can induce change blindness. Participants were asked to detect an instantaneous orientation change to a single item in an array of Gabor patches, which occurred as the entire array moved across the display.</description>
+    </item>
+    
+    <item>
+      <title>Processing without noticing in inattentional blindness: A replication of Moore &amp; Egeth (1997) and Mack &amp; Rock (1998)</title>
+      <link>https://katherinemwood.github.io/publications/implicit_ib/</link>
+      <pubDate>Mon, 19 Nov 2018 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/publications/implicit_ib/</guid>
+      <description>Abstract Surreptitious online measures can reveal processing of stimuli that people did not report noticing or could not describe. People seem to glean everything from low-level Gestalt grouping information to semantic meaning from unattended and unreported stimuli, and this information seems capable of influencing performance and priming semantic judgments. Moore and Egeth (1997) provided evidence that judgements about the lengths of two lines were influenced by the grouping of background dots, even when subjects did not notice the pattern they formed.</description>
+    </item>
+    
+    <item>
+      <title>The role of similarity in inattentional blindness: Selective enhancement, selective suppression, or both?</title>
+      <link>https://katherinemwood.github.io/publications/ib_similarity/</link>
+      <pubDate>Sun, 26 Nov 2017 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/publications/ib_similarity/</guid>
+      <description>Abstract When people selectively pay attention to one set of objects and ignore another, unexpected stimuli often go unnoticed. Noticing rates are higher when the unexpected object matches the features of the attended items and lower when it matches those of the ignored items. No prior studies have fully disentangled these aspects of similarity; in previous work, the unexpected object fell on a continuum between the attended and ignored objects, so increasing the similarity to one set of objects necessarily decreased it to the other.</description>
+    </item>
+    
+    <item>
+      <title>Selective attention in inattentional blindness: Selection is specific but suppression is not</title>
+      <link>https://katherinemwood.github.io/publications/ib_color/</link>
+      <pubDate>Mon, 07 Aug 2017 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/publications/ib_color/</guid>
+      <description>Abstract When we selectively attend to one set of objects and ignore another, we often fail to notice unexpected events. The likelihood of noticing varies depending on the similarity of an unexpected object to other items in the display, a process thought to be controlled by the attention set that we create for the attended and ignored objects. It remains unclear, though, how attention sets are formed and structured. Do they enhance features of attended objects (“white”) and suppress features of ignored objects (“black”), or do they distinguish objects based on relations or categories (“darker” versus “lighter,” or “dark objects” versus “light objects”)?</description>
+    </item>
+    
+    <item>
+      <title>Effect Size Calculator</title>
+      <link>https://katherinemwood.github.io/projects/effect_sizes/</link>
+      <pubDate>Tue, 02 May 2017 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/projects/effect_sizes/</guid>
+      <description>This is a Shiny application that brings the beloved effect size calculator spreadsheets by Daniel Lakens online. The application will produce as many common effect sizes as possible given the information available.</description>
+    </item>
+    
+    <item>
+      <title>One Dark Sky</title>
+      <link>https://katherinemwood.github.io/projects/darksky/</link>
+      <pubDate>Mon, 02 May 2016 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/projects/darksky/</guid>
+      <description>This is a short exploratory data analysis project using historical weather data accessed using the Darksky API. The analysis was done in an RNotebook.</description>
+    </item>
+    
+    <item>
+      <title>Reconciling change blindness with long-term memory for objects</title>
+      <link>https://katherinemwood.github.io/publications/cbltm/</link>
+      <pubDate>Mon, 01 Feb 2016 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/publications/cbltm/</guid>
+      <description>Abstract How can we reconcile remarkably precise long-term memory for thousands of images with failures to detect changes to similar images? We explored whether people can use detailed, long-term memory to improve change detection performance. Subjects studied a set of images of objects and then performed recognition and change detection tasks with those images. Recognition memory performance exceeded change detection performance, even when a single familiar object in the post-change display consistently indicated the change location.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,31 +1,61 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Inattentional Coffee on Inattentional Coffee</title>
+    <title>HOME on Katherine Wood</title>
     <link>https://katherinemwood.github.io/</link>
-    <description>Recent content in Inattentional Coffee on Inattentional Coffee</description>
+    <description>Recent content in HOME on Katherine Wood</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>&amp;copy; 2020 Katherine Wood</copyright>
-    <lastBuildDate>Wed, 20 Apr 2016 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/" rel="self" type="application/rss+xml" />
+    <copyright>© Katherine Wood</copyright>
+    <lastBuildDate>Sun, 01 Mar 2020 19:47:09 +0200</lastBuildDate>
+    
+	<atom:link href="https://katherinemwood.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
-      <title>Now or never: noticing occurs early in sustained inattentional blindness</title>
-      <link>https://katherinemwood.github.io/publication/ib_timing/</link>
-      <pubDate>Wed, 20 Nov 2019 00:00:00 +0000</pubDate>
+      <title>PRecall</title>
+      <link>https://katherinemwood.github.io/projects/precall/</link>
+      <pubDate>Sun, 01 Mar 2020 19:47:09 +0200</pubDate>
       
-      <guid>https://katherinemwood.github.io/publication/ib_timing/</guid>
-      <description></description>
+      <guid>https://katherinemwood.github.io/projects/precall/</guid>
+      <description>Unsafe or defective products cost over a trillion dollars each year in deaths, injuries, property damage, and lost productivity. It&amp;rsquo;s imperative that consumers be able to avoid unsafe products, but it&amp;rsquo;s currently extremely difficult to find relevant information about recalls or complaints about products.
+Using recall announcements and consumer complaints filed to the CPSC, I developed an app that surfaces information related to a product. A consumer can search for a product and receive all the related complaints about that product.</description>
     </item>
     
     <item>
-      <title>The allocation of attention in an interactive environment</title>
-      <link>https://katherinemwood.github.io/publication/interactive_ib/</link>
-      <pubDate>Wed, 17 Apr 2019 00:00:00 +0000</pubDate>
+      <title>Multiple Object Tracking</title>
+      <link>https://katherinemwood.github.io/projects/simple_mot/</link>
+      <pubDate>Thu, 02 Jan 2020 19:47:09 +0200</pubDate>
       
-      <guid>https://katherinemwood.github.io/publication/interactive_ib/</guid>
-      <description></description>
+      <guid>https://katherinemwood.github.io/projects/simple_mot/</guid>
+      <description>This is a script that runs a complete inattentional blindness experiment using multiple object tracking as the main task, including data saving. Many parameters can be changed to control the appearance and behavior of the experiment. Almost every aspect of the experiment is built in an object-oriented way, making it easy to extend.</description>
+    </item>
+    
+    <item>
+      <title>Now or never: noticing occurs early in sustained inattentional blindness</title>
+      <link>https://katherinemwood.github.io/publications/ib_timing/</link>
+      <pubDate>Fri, 01 Nov 2019 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/publications/ib_timing/</guid>
+      <description>Abstract People can show sustained inattentional blindness for unexpected objects visible for seconds or even minutes. Would such objects eventually be noticed given enough time, with the likelihood of noticing accumulating while the unexpected object is visible? Or, is there a narrow window around onset or offset when an object is most likely to be detected, with the chances of noticing dropping outside of that window? Across three experiments (total n&amp;rsquo;s = 283, 756, 488) exploring the temporal dynamics of noticing in sustained inattentional blindness, subjects who noticed the unexpected object did so soon after it onset.</description>
+    </item>
+    
+    <item>
+      <title>The spatial allocation of attention in an interactive environment</title>
+      <link>https://katherinemwood.github.io/publications/interactive_ib/</link>
+      <pubDate>Tue, 01 Oct 2019 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/publications/interactive_ib/</guid>
+      <description>Abstract Inattentional blindness methods allow for an unobtrusive measure of the spatial distribution of attention; because subjects do not expect the critical object, they have no reason to devote attention to task-irrelevant regions in anticipation of it. We used inattentional blindness to examine the spatial allocation of attention in an interactive game in which subjects navigated through a dynamic environment and avoided hazards. Subjects were most likely to notice unexpected objects in the areas with the greatest risk of contact with a hazard, and less likely to notice equally proximal objects in inaccessible areas of the display or areas in which hazards no longer posed a threat.</description>
+    </item>
+    
+    <item>
+      <title>As if by magic: An abrupt change in motion direction induces change blindness</title>
+      <link>https://katherinemwood.github.io/publications/motion_cb/</link>
+      <pubDate>Fri, 01 Mar 2019 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/publications/motion_cb/</guid>
+      <description>Abstract Magicians claim that an abrupt change in the direction of movement can attract attention, allowing them to hide their method for a trick in plain sight. In three experiments involving 43 total participants, we tested this claim by examining whether a sudden directional change can induce change blindness. Participants were asked to detect an instantaneous orientation change to a single item in an array of Gabor patches, which occurred as the entire array moved across the display.</description>
     </item>
     
     <item>
@@ -34,105 +64,34 @@
       <pubDate>Sat, 05 Jan 2019 10:04:53 -0500</pubDate>
       
       <guid>https://katherinemwood.github.io/post/first-rr/</guid>
-      <description>&lt;p&gt;I’m one of many people who will extoll, at length, the virtues of replication and of registered reports. Until recently, I had only talked the talk; I had never actually run one myself. I had always wanted to, but I was also nervous about the prospect. There is no shortage of horror stories about replications that become contentious, or which get caught in review purgatory, or which are dismissed out of hand as a waste of time.&lt;/p&gt;
-&lt;p&gt;Fortunately, our experience was overwhelmingly positive at every stage. Not every replictation project will be, and there are some key aspects that made a big difference. The entire process was much more rewarding and meaningful than I was expecting.&lt;/p&gt;
-&lt;p&gt;So, how does the process work? What was it like, my first time out?&lt;/p&gt;
-&lt;p&gt;To start, my advisor and I decided from the beginning that we were going to approach this project as a &lt;em&gt;registered&lt;/em&gt; replication report. This refers to a publication type in which manuscripts are reviewed in two stages. In the first stage, you submit a Stage 1 manuscript in which you essentially write the first half of a traditional manuscript–the introduction, the methods, and how you intend to analyze the data (the particulars will vary from journal to journal). This format isn’t exclusively for replications, but is particularly well-suited to them. The experiments already have context, both from when they were originally published and based on their subsequent impact on the literature, which makes the introduction fairly straightforward. The methods are already decided (barring some adjustments, perhaps), and you will probably be running the same analyses that the original authors did.&lt;/p&gt;
-&lt;p&gt;The other advantage to this format is that review and acceptance decisions occur before results are known. This can help cool off a potentially contentious process; during Stage 1, because there are no results, everyone can engage more dispassionately in evaluating the methods.&lt;/p&gt;
-&lt;p&gt;To prepare our Stage 1 submission, we did everything required to run the actual experiment. We spent a lot of time thinking through how we were going to implement these experiments, and tried to make sure that every change we made to the original method was in the service of efficiency or methodological soundness. Not one change we made was arbitrary, and it took nearly as long to hammer out these methods as it would an original experiment even though most of the heavy lifting had been taken care of.&lt;/p&gt;
-&lt;p&gt;Once we settled on our approach, I programmed the experiments, rigged up some interactive demos, and programmed the analysis and tested it with some simulated data. We adapted some old-school inattentional blindness experiments to run on a large scale on MTurk. The upside to this is that this is a method we have a lot of experience in; I’ve run dozens of these experiments online by now, and worked out a lot of the bugs. The downside was this marked the most substantial departure from the original methods, and I was concerned it might be controversial with reviewers. But, I was prepared to argue the merits, and we pressed on.&lt;/p&gt;
-&lt;p&gt;(I’ll spare you the details of the experiments themselves, why we chose them in particular, etc., since it won’t be interesting or relevant to everyone; feel free to check out the paper linked at the end if you’re curious!)&lt;/p&gt;
-&lt;p&gt;We decided to submit the paper to Attention, Perception, &amp;amp; Psychophysics. Lots of journals offer registered reports now, but choice of outlet can have a substantial impact on your submission experience. We had already had a great experience submitting an earlier paper to AP&amp;amp;P, and we knew that the editor (Mike Dodd) was wonderful and that we’d be in good hands.&lt;/p&gt;
-&lt;p&gt;Like with any other manuscript, this initial submission and review is the slowest part of the process. When we got our reviews back, I was pleasantly surprised. Not only did we have a lot of support from the editor, but the original authors were available to review. They made great points, agreeing with some of our changes and pushing back on others. We made a few minor adjustments to our method and manuscript, corrected a few small errors, and sent back a revision. We received our provisional acceptance within a week.&lt;/p&gt;
-&lt;p&gt;This was the phase I was most concerned about, and at least in this case, those fears were unfounded. The entire Stage 1 process felt very collaborative, and it meant a great deal to me personally to have the original authors sign off on the method. I have tremendous respect for the studies we replicated and wanted to do right by them.&lt;/p&gt;
-&lt;p&gt;After the provisional acceptance, it was off to the races. We preregistered our provisionally-accepted Stage 1 manuscript on OSF (they even have a special format just for that!), and then launched the experiments. Because everything had been prepared and tested ahead of time, the data were collected and analyzed within a week. We wrote up the results and discussion and submitted our Stage 2 manuscript back to AP&amp;amp;P.&lt;/p&gt;
-&lt;p&gt;A lot of people–not unreasonably–balk at the idea of two rounds of peer review (particularly after a multi-round Stage 1 review), but Stage 2 review is much more limited in scope compared to Stage 1. Its primary function is to ensure that you ran the experiment(s) and analyzed the data the way you said you would in your Stage 1 manuscript, and to review the way you interpreted and contextualized your results (your discussion, essentially). This review was done in a matter of days, and required only a few minor changes on our end. And then it was done!&lt;/p&gt;
-&lt;p&gt;I was pleasantly surprised at the entire process. It was a priviledge to have the original authors review our approach, and the Stage 1 review felt very collaborative. I also found the process of designing and running this replication much more meaningful than I anticipated. However, I also recognize that we got lucky, in many ways. The review process was not contentious in our case, but could have been. The editor was supportive and treated the RR as a publication worthy of time and attention; not all journals or editors will.&lt;/p&gt;
-&lt;p&gt;Every experience won’t be like mine, but I’m so glad I finally took the plunge and ran this replication. If you’ve been on the fence about running your own, consider going for it!&lt;/p&gt;
-&lt;p&gt;If you’re curious about how a manuscript evolves between Stage 1 and Stage 2, you can check out both versions on the &lt;a href=&#34;https://osf.io/7mtzn/&#34;&gt;project’s OSF page&lt;/a&gt;. You can find the final online version &lt;a href=&#34;http://link.springer.com/article/10.3758/s13414-018-1629-1&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-</description>
+      <description>Registered replications are generally considered the gold standard of replication studies. What does it take to actually run one?</description>
     </item>
     
     <item>
       <title>Processing without noticing in inattentional blindness: A replication of Moore &amp; Egeth (1997) and Mack &amp; Rock (1998)</title>
-      <link>https://katherinemwood.github.io/publication/implicit_ib/</link>
-      <pubDate>Sat, 10 Nov 2018 00:00:00 +0000</pubDate>
+      <link>https://katherinemwood.github.io/publications/implicit_ib/</link>
+      <pubDate>Mon, 19 Nov 2018 19:47:09 +0200</pubDate>
       
-      <guid>https://katherinemwood.github.io/publication/implicit_ib/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>As if by magic: An abrupt change in motion direction induces change blindness</title>
-      <link>https://katherinemwood.github.io/publication/motion_cb/</link>
-      <pubDate>Tue, 23 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://katherinemwood.github.io/publication/motion_cb/</guid>
-      <description></description>
+      <guid>https://katherinemwood.github.io/publications/implicit_ib/</guid>
+      <description>Abstract Surreptitious online measures can reveal processing of stimuli that people did not report noticing or could not describe. People seem to glean everything from low-level Gestalt grouping information to semantic meaning from unattended and unreported stimuli, and this information seems capable of influencing performance and priming semantic judgments. Moore and Egeth (1997) provided evidence that judgements about the lengths of two lines were influenced by the grouping of background dots, even when subjects did not notice the pattern they formed.</description>
     </item>
     
     <item>
       <title>CORVIDS 2.0: Faster, more stable, and now on Windows</title>
-      <link>https://katherinemwood.github.io/post/corvids2.0/</link>
+      <link>https://katherinemwood.github.io/post/corvids-2.0/</link>
       <pubDate>Tue, 08 May 2018 10:04:53 -0500</pubDate>
       
-      <guid>https://katherinemwood.github.io/post/corvids2.0/</guid>
-      <description>&lt;p&gt;Some exciting CORVIDS news–we made some &lt;em&gt;major&lt;/em&gt; improvements to how things work, and we’ve released a brand new version! We now also have a standalone for Windows users, so no more wrestling with dependencies.&lt;/p&gt;
-&lt;p&gt;If you want details on what’s changed, read on. If you just want the good stuff, head over to the &lt;a href=&#34;https://github.com/katherinemwood/corvids/releases/tag/v2.0.0&#34;&gt;latest release.&lt;/a&gt;&lt;/p&gt;
-&lt;div id=&#34;whats-new&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;What’s new:&lt;/h1&gt;
-&lt;div id=&#34;speeeeeeeed&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;SPEEEEEEEED&lt;/h2&gt;
-&lt;p&gt;We used some mathematical properties of variances to vastly speed up solving time a factor of 2n^2, where n is the number of subjects/samples (details are in the &lt;a href=&#34;https://osf.io/rvgqk/&#34;&gt;updated preprint&lt;/a&gt; for the curious). Now the program will only check at valid variances, and it won’t waste any time checking variances that are impossible. This cuts the number of pairs it has to search way down, and you no longer have to be gun-shy about how much tolerance you set. Even large tolerances will only add a constrained number of possible variances (dependent on scale and sample size).&lt;/p&gt;
-&lt;p&gt;Here’s a comparison of the old CORVIDS searching with large tolerance vs. the new CORVIDS, with a scale of 1-7 and a sample size of 10.&lt;/p&gt;
-&lt;p&gt;Before:&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;./img/corvids1.0_small_scale.png&#34; /&gt;
-
-&lt;/div&gt;
-&lt;p&gt;That’s a &lt;em&gt;lot&lt;/em&gt; of combinations to search through (it is too many). CORVIDS would dismiss bad pairs pretty quickly, but it all added up to a lot of waiting time.&lt;/p&gt;
-&lt;p&gt;After:&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;./img/corvids2.0_small_scale.png&#34; /&gt;
-
-&lt;/div&gt;
-&lt;p&gt;That’s a lot fewer combinations, and it translates to way more speed. It also works at scales and sample sizes of any magnitude, so you no longer have to be nervous about adding tolerance to big scales and/or samples.&lt;/p&gt;
-&lt;p&gt;Old CORVIDS starts a long journey for n=50 and scale of 1-10:&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;./img/corvids1.0_big_scale.png&#34; /&gt;
-
-&lt;/div&gt;
-&lt;p&gt;Yikes. That’s, shall we say, less than ideal.&lt;/p&gt;
-&lt;p&gt;But new CORVIDS cuts right to the chase:&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;./img/corvids2.0_big_scale.png&#34; /&gt;
-
-&lt;/div&gt;
-&lt;p&gt;Much better.&lt;/p&gt;
-&lt;p&gt;We’re thrilled we were able to speed things up so much, and we hope it improves your experience using the program.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;find-first&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Find First&lt;/h2&gt;
-&lt;p&gt;If you’re only interested in whether numbers are possible and don’t care about getting the full solution space, we have a &lt;code&gt;Stop After First Solution&lt;/code&gt; option. We revamped how it works, making it faster. It also now returns solutions at multiple means/variances, if they exist.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;windows-standalone&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Windows standalone&lt;/h2&gt;
-&lt;p&gt;CORVIDS has a handful of dependencies that can be difficult to get working in harmony. Mac users always had the option of the standalone app, and now Windows users do too. Thanks for your patience, Windows users!&lt;/p&gt;
-&lt;p&gt;We recommend using the standalone apps for routine applications. Unless you’re doing something ambitious or need programmatic access to the tool, the standalone app will give you all of the functionality with none of the pain. If you’ve struggled to get things working, we hope the standalone builds solve your problems.&lt;/p&gt;
-&lt;p&gt;We also did some minor UI adjustments and bug fixes, some of them fairly substantial. You can view the changelog on the release page.&lt;/p&gt;
-&lt;p&gt;If you notice any bugs or problems, feel free to email us or submit an issue on Github. Thanks to James Heathers, Nick Brown, and Jordan Anaya for their feedback and input as we’ve been making improvements.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-</description>
+      <guid>https://katherinemwood.github.io/post/corvids-2.0/</guid>
+      <description>We introduce some major improvements.</description>
     </item>
     
     <item>
       <title>CORVIDS</title>
-      <link>https://katherinemwood.github.io/project/corvids/</link>
-      <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
+      <link>https://katherinemwood.github.io/projects/corvids/</link>
+      <pubDate>Wed, 02 May 2018 19:47:09 +0200</pubDate>
       
-      <guid>https://katherinemwood.github.io/project/corvids/</guid>
-      <description></description>
+      <guid>https://katherinemwood.github.io/projects/corvids/</guid>
+      <description>Raw data are often unavailable, and all that may remain of a data set are its summary statistics. When these data are integers on a fixed scale, such as Likert-style ratings, and their mean, standard deviation, and sample size are known, it is possible to reconstruct every raw distribution that gives rise to those summary statistics using a system of Diophantine equations. We have developed the open-source program CORVIDS (COmplete Reconstruction of Values In Diophantine Systems) to deterministically reconstruct raw data from summary statistics using this technique.</description>
     </item>
     
     <item>
@@ -141,135 +100,25 @@
       <pubDate>Mon, 29 Jan 2018 12:36:28 -0600</pubDate>
       
       <guid>https://katherinemwood.github.io/post/corvids/</guid>
-      <description>&lt;p&gt;This is a very exciting post for me, as it marks the release of a project that I have been working on with my peerless colleague and dear friend &lt;a href=&#34;http://www.informatics.illinois.edu/people-2/phd-students/#sean&#34;&gt;Sean Wilner&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;This project started with a question from my advisor–did I think change-making algorithms could be used to reconstruct Likert scale data?–and ended with a complete data-reconstruction system that takes in a few summary statistics for Likert-scale-type data and returns every possible data set which could have generated those statistics, or informs you if no such data exist.&lt;/p&gt;
-&lt;p&gt;The details of the implementation can be found in our &lt;a href=&#34;https://psyarxiv.com/7shr8/&#34;&gt;pre-print&lt;/a&gt;, and the code is open source and available in a handful of formats &lt;a href=&#34;https://github.com/katherinemwood/corvids/releases/tag/v1.0.0&#34;&gt;here&lt;/a&gt;. You can use the source code itself, or download a standalone compiled version of the app (recommended).&lt;/p&gt;
-&lt;p&gt;Briefly sketched, the CORVIDS (COmplete Reconstruction of Values In a Diophantine System) relies on two things. One is the constrained nature of the data; we know that responses will fall between two endpoints (1 - 7, 0 - 10, etc.) and that the values must be integers. It turns out, these constraints, along with mean, variance (-or- standard deviation), and sample size, are sufficient to reconstruct the raw data. Using this information, we can set up a system of linear Diophantine equations (linear equations which can only take integer values) to solve for all possible data sets. In order to do this, we set up three equations–one for the mean, one for the variance, and one for the sample size–and solve the resulting system of equations. The result is a single solution and a set of transformations which describe all possible solutions to that system of equations (including the &lt;strong&gt;actual&lt;/strong&gt; raw data!).&lt;/p&gt;
-&lt;p&gt;The theoretical side is pure, provable math, but extra steps need to be taken to make sure something like this can work on real (that is, messy) data. The biggest consideration is precision and rounding. Statistics aren’t always reported to sufficient precision, and rounding errors happen. How do we ensure that we can account for this and still find solutions to reasonable values? We build tolerances into the process. To that end, we have precision arguments you can set that will put an envelope around the mean and variance. The program then finds and chugs through all possible valid combinations of means and variances, looking for viable solutions to all of them. Usually there’s only one valid mean-variance pair in the neighborhood that has a viable solution, but sometimes you will end up with a few candidates that have valid solutions. But this isn’t a problem since the program will give you all of them.&lt;/p&gt;
-&lt;p&gt;You can also play around with what happens if you forbid certain values from appearing in a solution (“can you still get these numbers if no one is allowed to respond with 1 or 7?”), or if you force certain values to be present (“can you still get solutions if at least 3 people responded 4?”).&lt;/p&gt;
-&lt;p&gt;A nice test case emerged recently as detailed by Nick Brown and James Heathers, the first installment of which is described &lt;a href=&#34;https://medium.com/@jamesheathers/long-hair-dont-care-5eeba266ec52&#34;&gt;here&lt;/a&gt;. Here we have data on an integer scale (1-3) with means, standard deviations, and sample sizes reported for every condition.&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;./img/hair_data.png&#34; title=&#34;Summary statistics from the paper&#34; /&gt;
-
-&lt;/div&gt;
-&lt;p&gt;This is enough for CORVIDS to work. What’s also nice in this instance is that Nick Brown and James Heathers already reconstructed the data manually, &lt;strong&gt;and&lt;/strong&gt; the researcher shared their raw data. So we have ground truth to compare it against. With such a small scale, even at relatively low precision, I was able to reconstruct data for all 6 conditions in about 2 minutes.&lt;/p&gt;
-&lt;p&gt;Here’s the process: For the first condition (male pedestrians, loose-haired confederate) This is what we would enter into CORVIDS:&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;./img/corvids_interface.png&#34; title=&#34;Data entry fields&#34; style=&#34;width:50.0%&#34; style=&#34;height:50.0%&#34; /&gt;
-
-&lt;/div&gt;
-&lt;p&gt;As you can see, we’re going to set a fairly generous tolerance for both the mean and standard deviation to account for rounding.&lt;/p&gt;
-&lt;p&gt;Once our values are entered, we just hit “Start!” CORVIDS will now tell us how many mean/standard deviation combinations it’s going to search through (kind of a lot in this case, when precision is low).&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;./img/corvids_startup.png&#34; title=&#34;Starting message&#34; style=&#34;width:50.0%&#34; style=&#34;height:50.0%&#34; /&gt;
-
-&lt;/div&gt;
-&lt;p&gt;Then all we do is wait. Because the scale is so constrained (just 1 - 3), this process is going to be very fast. For larger scales and large numbers of subjects, it can take much longer.&lt;/p&gt;
-&lt;p&gt;Here’s what CORVIDS will return once it’s done:&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;./img/corvids_finish.png&#34; title=&#34;After reconstruction&#34; style=&#34;width:50.0%&#34; style=&#34;height:50.0%&#34; /&gt;
-
-&lt;/div&gt;
-&lt;p&gt;We can see in this case that there is one, and only one, solution. From here, if we wanted, we could save this data out, graph it, save our parameters or save the entire model (paramters and data) to save time later.&lt;/p&gt;
-&lt;p&gt;This is a nice case, because a reconstruction already exists, and the original author shared his raw data. CORVIDS returns the correct answer.&lt;/p&gt;
-&lt;p&gt;Just for illustrative purposes, here’s what happens if we &lt;em&gt;really&lt;/em&gt; relax the tolerance on the mean and standard deviation. We end up with more solutions, at different mean/standard deviation combinations:&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;./img/corvids_tolerance_sol.png&#34; style=&#34;width:50.0%&#34; style=&#34;height:50.0%&#34; /&gt;
-
-&lt;/div&gt;
-&lt;p&gt;CORVIDS can also graph the results, so we can see how these distributions differ from one another:&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;./img/tolerance.png&#34; style=&#34;width:50.0%&#34; style=&#34;height:50.0%&#34; /&gt;
-
-&lt;/div&gt;
-&lt;p&gt;One data point switches from 2 to 3 each time.&lt;/p&gt;
-&lt;p&gt;We can mow through the rest of the conditions in short order, and get the raw data for the other six:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;./img/corvids_mbun.png&#34; style=&#34;width:50.0%&#34; style=&#34;height:50.0%&#34; /&gt; &lt;img src=&#34;./img/corvids_fnat.png&#34; style=&#34;width:50.0%&#34; style=&#34;height:50.0%&#34; /&gt; &lt;img src=&#34;./img/corvids_fpony.png&#34; style=&#34;width:50.0%&#34; style=&#34;height:50.0%&#34; /&gt; &lt;img src=&#34;./img/corvids_fbun.png&#34; style=&#34;width:50.0%&#34; style=&#34;height:50.0%&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;If the data weren’t already known, we would know exactly how each individual subject responded.&lt;/p&gt;
-&lt;p&gt;This is a straightforward case, because the data are so constrained that there happened to be only one solution for each condition. More often, scales are wider than 1-3, there might be more subjects, and often there will be multiple solutions. In that case, you can get a sense of the “family resemblance” between the data sets. Sometimes solutions will all look similar–they might all be right-skewed, for instance. Other times a great many distribution shapes will be possible.&lt;/p&gt;
-&lt;p&gt;This method can also, in some lucky cases, help resurrect data that was destroyed or simply lost to time. If enough of the summary statistics survived, the raw data can be found again.&lt;/p&gt;
-&lt;p&gt;We encourage you to download the code and try it yourself! You can submit any issues or bug reports on Github.&lt;/p&gt;
-</description>
+      <description>Using the constraints of Likert-scale data to fully reconstruct it.</description>
     </item>
     
     <item>
-      <title>Improving a data visualization: Connecticut edition</title>
+      <title>Improving a data visualization</title>
       <link>https://katherinemwood.github.io/post/vizfix/</link>
       <pubDate>Sat, 16 Dec 2017 15:11:42 -0600</pubDate>
       
       <guid>https://katherinemwood.github.io/post/vizfix/</guid>
-      <description>&lt;p&gt;I came across a graph not long ago that I immediately saved for later use. Making clean, effective data visualizations is hard, and there is always someone waiting to gleefuly inform you that you’ve messed it up in one way or another. Sometimes these are minor aesthetic quibbles, and the visualization still manages to communicate what it needs to effectively.&lt;/p&gt;
-&lt;p&gt;Other times, missteps make the graph harder to interpret, and put too much onus on the viewer to make sense of what they’re seeing.&lt;/p&gt;
-&lt;p&gt;This was one of those latter cases.&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;./img/cap_gains.jpg&#34; title=&#34;Connecticut Tax Report&#34; /&gt;
-
-&lt;/div&gt;
-&lt;p&gt;There is a lot going on here. It’s extremely difficult to parse this correctly. We’ve got:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Two y-axes on two different scales, meaning that two radically different values show up as overlapping, and very similar values appear to be much farther apart than they ought to be&lt;/li&gt;
-&lt;li&gt;Two y-axes and no way to tell which set of data goes with which axis without a legend&lt;/li&gt;
-&lt;li&gt;The same data type (growth rate) represented by two separate y-axes scaled to different values&lt;/li&gt;
-&lt;li&gt;In addition to the two axes, every data point is annotated in the graph itself (which should obviate the need for axes, or vice-versa)&lt;/li&gt;
-&lt;li&gt;These labels have inconsistent positions, and sometimes both points are labeled, and sometimes only one is&lt;/li&gt;
-&lt;li&gt;Data of the same type (value over time) represented by two different formats, a bar and a line, providing stark visual difference and therefore implying difference in the data itself even though none exists&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;In the defense of the graph and its makers, some of these choices make sense &lt;em&gt;in a way&lt;/em&gt;. The cap gains growth varies a lot more than the enconomic growth rate, which could make it harder to see the take-home pattern. The smaller fluctuations in the income tax growth rate could get swamped by the much larger swings in cap gains. I think, though, that in an effort to get around this problem (if that was the reason), more were introduced.&lt;/p&gt;
-&lt;p&gt;This graph has a straightforward message it wants to communicate: cap gains and state income tax vary together. When one goes up, so does the other; when one falls, the other tumbles after. This is the message the graph should communicate. Let’s see if we can rework this a little bit.&lt;/p&gt;
-&lt;p&gt;Since this is just an excersize, I’m not going to fret too much about recovering &lt;em&gt;exactly&lt;/em&gt; the right values. Most of them are helpfully labeled, but for the handful that aren’t I’ll just eyeball it from the graph.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ct &amp;lt;- data.frame(&amp;#39;type&amp;#39;=rep(c(&amp;#39;Capital Gains&amp;#39;, &amp;#39;Income Tax&amp;#39;), each=14),
-                 &amp;#39;year&amp;#39;=rep(2001:2014, 2),
-                 &amp;#39;growth_rate&amp;#39;=c(30, -52, -17, 40, 23, 30, 17, 32, -60,
-                                 -40, 93, -10, 46, -9,
-                                 19, -23.5, -14.7, 21.9, 22.8, 19.4, 13,
-                                 17.9, -27.3, -21.3, 27.7, .3, 21.9, -.9))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Let’s just see how things look if we do a straightforward connected line graph. On the y-axis will simply be the growth rate, on the x-axis, the fiscal year. Cap gains and income tax will be connected lines, colored accordingly.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
-
-gains &amp;lt;- ggplot(data=ct, aes(x=year, y=growth_rate, color=type)) +
-  geom_point() +
-  geom_line() +
-  theme_minimal()
-
-print(gains)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./post/vizfix_files/figure-html/rough_line-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;That doesn’t look too bad for a first step! The trends are still very visible–you can still clearly see that at every data point cap gains tracks with income tax. The difference in scales doesn’t actually obscure the pattern, and you can still see the changes for income tax even though they are smaller.&lt;/p&gt;
-&lt;p&gt;We’re not done yet, though. Let’s clean this up some more. We’ll need to fix the labels, put each year visible on the x-axis, make the y-axis intervals a little more granular, and add a line at 0 to make it obvious when things dip into the negative.&lt;/p&gt;
-&lt;p&gt;I’ll reproduce the entire plotting syntax, for clarity.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gains_tweaks &amp;lt;- ggplot(data=ct, aes(x=year, y=growth_rate, color=type)) +
-  geom_hline(yintercept=0, color=&amp;#39;darkgray&amp;#39;) +
-  geom_line() +
-  geom_point() +
-  labs(title = &amp;quot;When Investments Falter, So Does Connecticut&amp;quot;,
-       subtitle = &amp;quot;Annual Percentage Change in State Income Tax vs. Capital Gains&amp;quot;,
-       caption = &amp;quot;Note: Capital Gains are for the immediately preceding calendar year.&amp;quot;,
-       y = &amp;quot;Growth Rate (%)&amp;quot;,
-       x = &amp;quot;Fiscal Year&amp;quot;,
-       color=NULL) +
-  scale_y_continuous(breaks=seq(-60,100, by=20)) +
-  scale_x_continuous(breaks=seq(2001, 2014, by=2)) +
-  theme_minimal() +
-  theme(panel.grid.minor = element_blank(),
-        plot.caption = element_text(hjust=0, size=10),
-        plot.title = element_text(margin=margin(0, 0, 5, 0)),
-        plot.subtitle = element_text(margin=margin(0, 0, 10, 0)),
-        axis.title.x = element_text(margin=margin(10, 0, 10, 0)))
-
-print(gains_tweaks)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./post/vizfix_files/figure-html/clean_gains-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;That’s an improvement, I’d say. One could quibble about details here and there (but don’t, you know, feel obligated to). Regardless, now we have something that’s much easier to digest. One y-axis for general growth rate, and both types of data are represented by the same visual technique. A lot of visual clutter pruned away.&lt;/p&gt;
-&lt;p&gt;In the end, it still communicates the core idea: these two values vary together. If anything it’s a little clearer in this case anyway, because we can see that the two lines have the same shape over the years as they rise and fall.&lt;/p&gt;
-&lt;p&gt;This turned out to be a surprisingly fun exercise. Looking at a visualization and thinking carefully about how you would do it yourself (better, or just differently) is a great way to practice.&lt;/p&gt;
-</description>
+      <description>There&amp;rsquo;s a point at which more information yields negative returns.</description>
     </item>
     
     <item>
       <title>The role of similarity in inattentional blindness: Selective enhancement, selective suppression, or both?</title>
-      <link>https://katherinemwood.github.io/publication/ib_similarity/</link>
-      <pubDate>Wed, 11 Oct 2017 00:00:00 +0000</pubDate>
+      <link>https://katherinemwood.github.io/publications/ib_similarity/</link>
+      <pubDate>Sun, 26 Nov 2017 19:47:09 +0200</pubDate>
       
-      <guid>https://katherinemwood.github.io/publication/ib_similarity/</guid>
-      <description></description>
+      <guid>https://katherinemwood.github.io/publications/ib_similarity/</guid>
+      <description>Abstract When people selectively pay attention to one set of objects and ignore another, unexpected stimuli often go unnoticed. Noticing rates are higher when the unexpected object matches the features of the attended items and lower when it matches those of the ignored items. No prior studies have fully disentangled these aspects of similarity; in previous work, the unexpected object fell on a continuum between the attended and ignored objects, so increasing the similarity to one set of objects necessarily decreased it to the other.</description>
     </item>
     
     <item>
@@ -278,576 +127,142 @@ print(gains_tweaks)&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Mon, 09 Oct 2017 15:25:40 -0500</pubDate>
       
       <guid>https://katherinemwood.github.io/post/qualifications/</guid>
-      <description>&lt;p&gt;If you do research using MTurk, you may have run into a common issue: how to recruit exclusively workers that meet certain criteria. For instance, you may want to run a study only on colorblind people, or only people who have perfect pitch, or only people who voted in their last local election. These criteria are all pretty easy to ascertain, but you don’t want to wait to ask until the main HIT itself; then you would be paying full price for data you can’t use at all. However, it’s also not fair to let people accept a HIT, ask them the critical question, and then force them to return it if they don’t meet the necessary criteria. That hurts certain worker metrics like HIT completion rate and can affect their ability to access other HITs, through no real fault of their own.&lt;/p&gt;
-&lt;p&gt;One option I’ve seen used is a 2-part HIT. First you make a short, cheap HIT in which you ask the relevant question or two, and then you reach out to the eligible workers who completed that HIT with the link to your actual survey. This is complex and can be time consuming for the requester, though, especially if the pre-screen is extremely short.&lt;/p&gt;
-&lt;p&gt;It turns out that there is a very straightforward way to deal with this if you’re willing to use the MTurk web API. You can create custom qualifications that workers can request, either directly or by completing a test, and then assign those qualifications as a requirement for your HITs.&lt;/p&gt;
-&lt;p&gt;You can get pretty sophisticated with handling these qualifications, and there is a lot more detail on the &lt;a href=&#34;http://docs.aws.amazon.com/AWSMechTurk/latest/AWSMechanicalTurkRequester/Concepts_QualificationsArticle.html&#34;&gt;AWS documentation pages&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Here, I’m going to demonstrate how to make a qualification test that auto-scores itself using the boto3 library for Python. It’s a simple, 2-question colorblindness test (you can view it on the worker sandbox &lt;a href=&#34;https://workersandbox.mturk.com/qualifications/3CFGE88WF7UDUETM7YP3RSRD73VS4F&#34;&gt;here&lt;/a&gt;; sign-in required) that first asks people to self-report any known issues with their color vision, and then has them respond to an Ishihara plate. Here’s what it looks like to a worker:&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;./img/qualification_test.png&#34; alt=&#34;a qualification test in the wild&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;a qualification test in the wild&lt;/p&gt;
-&lt;/div&gt;
-&lt;p&gt;With this test, instead of asking about colorblindness during the HIT itself and having to throw data out after the fact, I can restrict participation to people who pass this short test.&lt;/p&gt;
-&lt;div id=&#34;setup&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;1. Setup&lt;/h2&gt;
-&lt;p&gt;To use the MTurk API, a couple of things are neccessary.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/free/?sc_channel=PS&amp;amp;sc_campaign=acquisition_US&amp;amp;sc_publisher=google&amp;amp;sc_medium=cloud_computing_hv_b&amp;amp;sc_content=aws_core_e_control_q32016&amp;amp;sc_detail=aws&amp;amp;sc_category=cloud_computing&amp;amp;sc_segment=188908133959&amp;amp;sc_matchtype=e&amp;amp;sc_country=US&amp;amp;s_kwcid=AL!4422!3!188908133959!e!!g!!aws&amp;amp;ef_id=WUMEpQAAAHy41iUB:20171008205604:s&#34;&gt;an AWS account&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.mturk.com/mturk/welcome&#34;&gt;an MTurk requester account&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://requestersandbox.mturk.com/&#34;&gt;an MTurk sandbox requester account&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://workersandbox.mturk.com/mturk/&#34;&gt;an MTurk sandbox worker account&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;the &lt;a href=&#34;http://boto3.readthedocs.io/en/latest/guide/quickstart.html#installation&#34;&gt;boto3 library for Python&lt;/a&gt;, most easily installed via &lt;a href=&#34;https://pypi.python.org/pypi/pip&#34;&gt;pip&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;You’ll also need to link your AWS account to both your real Requester account and to your Sandbox Requester account, and have your access credentials formatted in a way that boto3 can access them.&lt;/p&gt;
-&lt;p&gt;For more detail on how to handle setting all of this up, or to see how all the pieces fit together, you can check out &lt;a href=&#34;https://katherinemwood.github.io/post/mturk_dev_intro/&#34;&gt;this post&lt;/a&gt; for an in-depth guide.&lt;/p&gt;
-&lt;p&gt;With that in place, we can move on to actually creating the qualification!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;the-qualification-skeleton&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;2. The qualification skeleton&lt;/h2&gt;
-&lt;p&gt;Making a qualification itself involves just one function call.&lt;/p&gt;
-&lt;p&gt;First, we make our client object:&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;import boto3
-
-mturk = boto3.client(&amp;#39;mturk&amp;#39;, 
-                      region_name=&amp;#39;us-east-1&amp;#39;, 
-                      endpoint_url=&amp;#39;https://mturk-requester-sandbox.us-east-1.amazonaws.com&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Then, to make a qualification, we call &lt;code&gt;create_qualification_type()&lt;/code&gt;:&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;qual_response = mturk.create_qualification_type(
-                        Name=&amp;#39;Color blindness test&amp;#39;,
-                        Keywords=&amp;#39;test, qualification, sample, colorblindness, boto&amp;#39;,
-                        Description=&amp;#39;This is a brief colorblindness test&amp;#39;,
-                        QualificationTypeStatus=&amp;#39;Active&amp;#39;,
-                        Test=questions,
-                        AnswerKey=answers,
-                        TestDurationInSeconds=300)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;No matter what kind of qualification you’re creating, you’ll need to give it a &lt;code&gt;Name&lt;/code&gt; and a &lt;code&gt;Description&lt;/code&gt; that workers will see, plus some &lt;code&gt;Keywords&lt;/code&gt; that will help people search for it. We’re going to go ahead and set this qualification to &lt;code&gt;Active&lt;/code&gt; with the &lt;code&gt;QualificationTypeStatus&lt;/code&gt; argument, meaning that it will go live immediately (as live as something can go in the sandbox, that is).&lt;/p&gt;
-&lt;p&gt;The next handful of arguments are particular to the qualification type this is–in particular, a qualification type that requires a test. The &lt;code&gt;Test&lt;/code&gt; argument needs to be a &lt;code&gt;QuestionForm&lt;/code&gt; datatype (more on that in a second). This will specify the actual questions that make up the test. If this is left blank, a worker can request the qualification without taking a test first.&lt;/p&gt;
-&lt;p&gt;Similarly, the &lt;code&gt;AnswerKey&lt;/code&gt; argument must be an &lt;code&gt;AnswerKey&lt;/code&gt; data structure. This is like an auto-grader for the test. In this file (more details below), we specify how each answer to each question is scored, and what the scoring scheme is overall (a straight sum, a percent, a range, etc). A person will take the test, and if an answer key is provided, be automatically scored. We can then require that people have a certain score on the qualification test to be able to take your HIT. If no answer key is given, you’ll have to go through the tests manually (and free response answers can’t be auto-graded).&lt;/p&gt;
-&lt;p&gt;Because we have a qualification test, we have to specify how long people have to take it in seconds with the &lt;code&gt;TestDurationInSeconds&lt;/code&gt; argument. Because this is a short little questionnare, we’ll allot 5 minutes.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;the-question-file&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;3. The question file&lt;/h2&gt;
-&lt;p&gt;Questions have to be passed in a very specific format. They should be &lt;code&gt;.xml&lt;/code&gt; files, and they have a specific structure. There’s lots of detail &lt;a href=&#34;http://docs.aws.amazon.com/AWSMechTurk/latest/AWSMturkAPI/ApiReference_QuestionFormDataStructureArticle.html&#34;&gt;here&lt;/a&gt;, and you can get pretty sophisticated in terms of your questions.&lt;/p&gt;
-&lt;p&gt;In our case, we have just two questions: a text-only question, and a question in which we present an image.&lt;/p&gt;
-&lt;p&gt;The XML file needs to start this way:&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;&amp;lt;QuestionForm xmlns=&amp;#39;http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd&amp;#39;&amp;gt;
-...
-&amp;lt;/QuestionForm&amp;gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;This URL is important for technical reasons (it identifies the location of an important file for presenting the questions).&lt;/p&gt;
-&lt;p&gt;Inside the &lt;code&gt;QuestionForm&lt;/code&gt; tags are sections for each question. You can give it a name and an identifier (important for matching up the answer key):&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;&amp;lt;Question&amp;gt;
-      &amp;lt;QuestionIdentifier&amp;gt;self_report&amp;lt;/QuestionIdentifier&amp;gt;
-      &amp;lt;DisplayName&amp;gt;Q1&amp;lt;/DisplayName&amp;gt;
-      &amp;lt;IsRequired&amp;gt;true&amp;lt;/IsRequired&amp;gt;
-    ...
-&amp;lt;/Question&amp;gt;    &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;And then we get to the actual question content. This first question is only text:&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;&amp;lt;QuestionContent&amp;gt;
-        &amp;lt;Text&amp;gt; Which statement best describes your color vision? &amp;lt;/Text&amp;gt;
-&amp;lt;/QuestionContent&amp;gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;But we can also present images, videos, and so on. Here’s how we’ll present the Ishihara plate:&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt; &amp;lt;QuestionContent&amp;gt;
-        &amp;lt;Text&amp;gt; What number do you see in the image below? &amp;lt;/Text&amp;gt;
-        &amp;lt;Binary&amp;gt;
-          &amp;lt;MimeType&amp;gt;
-            &amp;lt;Type&amp;gt;image&amp;lt;/Type&amp;gt;
-            &amp;lt;SubType&amp;gt;jpg&amp;lt;/SubType&amp;gt;
-          &amp;lt;/MimeType&amp;gt;
-          &amp;lt;DataURL&amp;gt;https://www.spservices.co.uk/images/products/pics/1401209116aw2271.jpg&amp;lt;/DataURL&amp;gt;
-          &amp;lt;AltText&amp;gt;Ishihara Color Plate&amp;lt;/AltText&amp;gt;
-        &amp;lt;/Binary&amp;gt;
-&amp;lt;/QuestionContent&amp;gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Specifying the &lt;code&gt;MimeType&lt;/code&gt; within the &lt;code&gt;Binary&lt;/code&gt; tags is what allows us to embed other media.&lt;/p&gt;
-&lt;p&gt;After every &lt;code&gt;QuestionContent&lt;/code&gt; section, you have an &lt;code&gt;AnswerSpecification&lt;/code&gt; section. Since we just have radio button responses, we have a &lt;code&gt;SelectionAnswer&lt;/code&gt; section, and then for each answer we have a &lt;code&gt;Selection&lt;/code&gt; with text the worker sees, and then a secret label for that answer that only we see (and that the answer key will use to grade the worker). Like so:&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;&amp;lt;AnswerSpecification&amp;gt;
-    &amp;lt;SelectionAnswer&amp;gt;
-      &amp;lt;StyleSuggestion&amp;gt;radiobutton&amp;lt;/StyleSuggestion&amp;gt;
-          &amp;lt;Selections&amp;gt;
-            &amp;lt;Selection&amp;gt;
-              &amp;lt;SelectionIdentifier&amp;gt;rg&amp;lt;/SelectionIdentifier&amp;gt;
-              &amp;lt;Text&amp;gt;I am red-green colorblind.&amp;lt;/Text&amp;gt;
-            &amp;lt;/Selection&amp;gt;
-            &amp;lt;Selection&amp;gt;
-              &amp;lt;SelectionIdentifier&amp;gt;by&amp;lt;/SelectionIdentifier&amp;gt;
-              &amp;lt;Text&amp;gt;I am blue-yellow colorblind.&amp;lt;/Text&amp;gt;
-            &amp;lt;/Selection&amp;gt;
-            &amp;lt;Selection&amp;gt;
-              &amp;lt;SelectionIdentifier&amp;gt;other&amp;lt;/SelectionIdentifier&amp;gt;
-              &amp;lt;Text&amp;gt;I have some other issue with my color vision.&amp;lt;/Text&amp;gt;
-            &amp;lt;/Selection&amp;gt;
-            &amp;lt;Selection&amp;gt;
-              &amp;lt;SelectionIdentifier&amp;gt;norm&amp;lt;/SelectionIdentifier&amp;gt;
-              &amp;lt;Text&amp;gt;My color vision is normal.&amp;lt;/Text&amp;gt;
-            &amp;lt;/Selection&amp;gt;
-          &amp;lt;/Selections&amp;gt;
-    &amp;lt;/SelectionAnswer&amp;gt;
-&amp;lt;/AnswerSpecification&amp;gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;This gets defined for each question.&lt;/p&gt;
-&lt;p&gt;Here’s what that entire file, all put together, looks like:&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;&amp;lt;QuestionForm xmlns=&amp;#39;http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd&amp;#39;&amp;gt;  
-  &amp;lt;Question&amp;gt;
-      &amp;lt;QuestionIdentifier&amp;gt;self_report&amp;lt;/QuestionIdentifier&amp;gt;
-      &amp;lt;DisplayName&amp;gt;Q1&amp;lt;/DisplayName&amp;gt;
-      &amp;lt;IsRequired&amp;gt;true&amp;lt;/IsRequired&amp;gt;
-      &amp;lt;QuestionContent&amp;gt;
-        &amp;lt;Text&amp;gt; Which statement best describes your color vision? &amp;lt;/Text&amp;gt;
-      &amp;lt;/QuestionContent&amp;gt;
-      &amp;lt;AnswerSpecification&amp;gt;
-        &amp;lt;SelectionAnswer&amp;gt;
-          &amp;lt;StyleSuggestion&amp;gt;radiobutton&amp;lt;/StyleSuggestion&amp;gt;
-          &amp;lt;Selections&amp;gt;
-            &amp;lt;Selection&amp;gt;
-              &amp;lt;SelectionIdentifier&amp;gt;rg&amp;lt;/SelectionIdentifier&amp;gt;
-              &amp;lt;Text&amp;gt;I am red-green colorblind.&amp;lt;/Text&amp;gt;
-            &amp;lt;/Selection&amp;gt;
-            &amp;lt;Selection&amp;gt;
-              &amp;lt;SelectionIdentifier&amp;gt;by&amp;lt;/SelectionIdentifier&amp;gt;
-              &amp;lt;Text&amp;gt;I am blue-yellow colorblind.&amp;lt;/Text&amp;gt;
-            &amp;lt;/Selection&amp;gt;
-            &amp;lt;Selection&amp;gt;
-              &amp;lt;SelectionIdentifier&amp;gt;other&amp;lt;/SelectionIdentifier&amp;gt;
-              &amp;lt;Text&amp;gt;I have some other issue with my color vision.&amp;lt;/Text&amp;gt;
-            &amp;lt;/Selection&amp;gt;
-            &amp;lt;Selection&amp;gt;
-              &amp;lt;SelectionIdentifier&amp;gt;norm&amp;lt;/SelectionIdentifier&amp;gt;
-              &amp;lt;Text&amp;gt;My color vision is normal.&amp;lt;/Text&amp;gt;
-            &amp;lt;/Selection&amp;gt;
-          &amp;lt;/Selections&amp;gt;
-        &amp;lt;/SelectionAnswer&amp;gt;
-      &amp;lt;/AnswerSpecification&amp;gt;
-  &amp;lt;/Question&amp;gt;
-  &amp;lt;Question&amp;gt;
-      &amp;lt;QuestionIdentifier&amp;gt;ishihara_39&amp;lt;/QuestionIdentifier&amp;gt;
-      &amp;lt;DisplayName&amp;gt;Q2&amp;lt;/DisplayName&amp;gt;
-      &amp;lt;IsRequired&amp;gt;true&amp;lt;/IsRequired&amp;gt;
-      &amp;lt;QuestionContent&amp;gt;
-        &amp;lt;Text&amp;gt; What number do you see in the image below? &amp;lt;/Text&amp;gt;
-        &amp;lt;Binary&amp;gt;
-          &amp;lt;MimeType&amp;gt;
-            &amp;lt;Type&amp;gt;image&amp;lt;/Type&amp;gt;
-            &amp;lt;SubType&amp;gt;jpg&amp;lt;/SubType&amp;gt;
-          &amp;lt;/MimeType&amp;gt;
-          &amp;lt;DataURL&amp;gt;https://www.spservices.co.uk/images/products/pics/1401209116aw2271.jpg&amp;lt;/DataURL&amp;gt;
-          &amp;lt;AltText&amp;gt;Ishihara Color Plate&amp;lt;/AltText&amp;gt;
-        &amp;lt;/Binary&amp;gt;
-      &amp;lt;/QuestionContent&amp;gt;
-      &amp;lt;AnswerSpecification&amp;gt;
-        &amp;lt;SelectionAnswer&amp;gt;
-          &amp;lt;StyleSuggestion&amp;gt;radiobutton&amp;lt;/StyleSuggestion&amp;gt;
-          &amp;lt;Selections&amp;gt;
-            &amp;lt;Selection&amp;gt;
-              &amp;lt;SelectionIdentifier&amp;gt;122&amp;lt;/SelectionIdentifier&amp;gt;
-              &amp;lt;Text&amp;gt;122&amp;lt;/Text&amp;gt;
-            &amp;lt;/Selection&amp;gt;
-            &amp;lt;Selection&amp;gt;
-              &amp;lt;SelectionIdentifier&amp;gt;74&amp;lt;/SelectionIdentifier&amp;gt;
-              &amp;lt;Text&amp;gt;74&amp;lt;/Text&amp;gt;
-            &amp;lt;/Selection&amp;gt;
-            &amp;lt;Selection&amp;gt;
-              &amp;lt;SelectionIdentifier&amp;gt;21&amp;lt;/SelectionIdentifier&amp;gt;
-              &amp;lt;Text&amp;gt;21&amp;lt;/Text&amp;gt;
-            &amp;lt;/Selection&amp;gt;
-            &amp;lt;Selection&amp;gt;
-              &amp;lt;SelectionIdentifier&amp;gt;none&amp;lt;/SelectionIdentifier&amp;gt;
-              &amp;lt;Text&amp;gt;I don&amp;#39;t see a number.&amp;lt;/Text&amp;gt;
-            &amp;lt;/Selection&amp;gt;
-          &amp;lt;/Selections&amp;gt;
-        &amp;lt;/SelectionAnswer&amp;gt;
-      &amp;lt;/AnswerSpecification&amp;gt;
-  &amp;lt;/Question&amp;gt;
-&amp;lt;/QuestionForm&amp;gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;the-answer-key&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;4. The answer key&lt;/h2&gt;
-&lt;p&gt;The answer key looks much the same as the question form. Starts in a similar way:&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;&amp;lt;AnswerKey xmlns=&amp;quot;http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/AnswerKey.xsd&amp;quot;&amp;gt;
-  ...
-&amp;lt;/AnswerKey&amp;gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;It also has a &lt;code&gt;Question&lt;/code&gt; section for each question you asked on the test. Within that, you list out the score you want associated with each answer given on the test. For example, for the first question, we want to assign a point only to the answer “my color vision is normal.”&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;&amp;lt;Question&amp;gt;
-  &amp;lt;QuestionIdentifier&amp;gt;self_report&amp;lt;/QuestionIdentifier&amp;gt;
-  &amp;lt;AnswerOption&amp;gt;
-      &amp;lt;SelectionIdentifier&amp;gt;rg&amp;lt;/SelectionIdentifier&amp;gt;
-      &amp;lt;AnswerScore&amp;gt;0&amp;lt;/AnswerScore&amp;gt;
-    &amp;lt;/AnswerOption&amp;gt;
-    &amp;lt;AnswerOption&amp;gt;
-      &amp;lt;SelectionIdentifier&amp;gt;by&amp;lt;/SelectionIdentifier&amp;gt;
-      &amp;lt;AnswerScore&amp;gt;0&amp;lt;/AnswerScore&amp;gt;
-    &amp;lt;/AnswerOption&amp;gt;
-    &amp;lt;AnswerOption&amp;gt;
-      &amp;lt;SelectionIdentifier&amp;gt;other&amp;lt;/SelectionIdentifier&amp;gt;
-      &amp;lt;AnswerScore&amp;gt;0&amp;lt;/AnswerScore&amp;gt;
-    &amp;lt;/AnswerOption&amp;gt;
-    &amp;lt;AnswerOption&amp;gt;
-      &amp;lt;SelectionIdentifier&amp;gt;norm&amp;lt;/SelectionIdentifier&amp;gt;
-      &amp;lt;AnswerScore&amp;gt;1&amp;lt;/AnswerScore&amp;gt;
-  &amp;lt;/AnswerOption&amp;gt;
-&amp;lt;/Question&amp;gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Answer values can be anything you like, according to any scoring scheme. They can also be negative!&lt;/p&gt;
-&lt;p&gt;After you’re done listing out all of the questions, you need to tell MTurk how to calculate the final score with a &lt;code&gt;QualificationValueMapping&lt;/code&gt; section. There is a lot more detail &lt;a href=&#34;http://docs.aws.amazon.com/AWSMechTurk/latest/AWSMturkAPI/ApiReference_AnswerKeyDataStructureArticle.html&#34;&gt;here&lt;/a&gt;. We’re not going to do anything fancy: just a percentage conversion. We specify a &lt;code&gt;PercentageMapping&lt;/code&gt; and give it the max score to calculate relative to, like so:&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;&amp;lt;QualificationValueMapping&amp;gt;
-  &amp;lt;PercentageMapping&amp;gt;
-    &amp;lt;MaximumSummedScore&amp;gt;2&amp;lt;/MaximumSummedScore&amp;gt;
-  &amp;lt;/PercentageMapping&amp;gt;
-&amp;lt;/QualificationValueMapping&amp;gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;And here’s what the entire file looks like, strung together:&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;&amp;lt;AnswerKey xmlns=&amp;quot;http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/AnswerKey.xsd&amp;quot;&amp;gt;
-  &amp;lt;Question&amp;gt;
-    &amp;lt;QuestionIdentifier&amp;gt;self_report&amp;lt;/QuestionIdentifier&amp;gt;
-    &amp;lt;AnswerOption&amp;gt;
-      &amp;lt;SelectionIdentifier&amp;gt;rg&amp;lt;/SelectionIdentifier&amp;gt;
-      &amp;lt;AnswerScore&amp;gt;0&amp;lt;/AnswerScore&amp;gt;
-    &amp;lt;/AnswerOption&amp;gt;
-    &amp;lt;AnswerOption&amp;gt;
-      &amp;lt;SelectionIdentifier&amp;gt;by&amp;lt;/SelectionIdentifier&amp;gt;
-      &amp;lt;AnswerScore&amp;gt;0&amp;lt;/AnswerScore&amp;gt;
-    &amp;lt;/AnswerOption&amp;gt;
-    &amp;lt;AnswerOption&amp;gt;
-      &amp;lt;SelectionIdentifier&amp;gt;other&amp;lt;/SelectionIdentifier&amp;gt;
-      &amp;lt;AnswerScore&amp;gt;0&amp;lt;/AnswerScore&amp;gt;
-    &amp;lt;/AnswerOption&amp;gt;
-    &amp;lt;AnswerOption&amp;gt;
-      &amp;lt;SelectionIdentifier&amp;gt;norm&amp;lt;/SelectionIdentifier&amp;gt;
-      &amp;lt;AnswerScore&amp;gt;1&amp;lt;/AnswerScore&amp;gt;
-    &amp;lt;/AnswerOption&amp;gt;
-  &amp;lt;/Question&amp;gt;
-  &amp;lt;Question&amp;gt;
-    &amp;lt;QuestionIdentifier&amp;gt;ishihara_39&amp;lt;/QuestionIdentifier&amp;gt;
-    &amp;lt;AnswerOption&amp;gt;
-      &amp;lt;SelectionIdentifier&amp;gt;122&amp;lt;/SelectionIdentifier&amp;gt;
-      &amp;lt;AnswerScore&amp;gt;0&amp;lt;/AnswerScore&amp;gt;
-    &amp;lt;/AnswerOption&amp;gt;
-    &amp;lt;AnswerOption&amp;gt;
-      &amp;lt;SelectionIdentifier&amp;gt;21&amp;lt;/SelectionIdentifier&amp;gt;
-      &amp;lt;AnswerScore&amp;gt;0&amp;lt;/AnswerScore&amp;gt;
-    &amp;lt;/AnswerOption&amp;gt;
-    &amp;lt;AnswerOption&amp;gt;
-      &amp;lt;SelectionIdentifier&amp;gt;none&amp;lt;/SelectionIdentifier&amp;gt;
-      &amp;lt;AnswerScore&amp;gt;0&amp;lt;/AnswerScore&amp;gt;
-    &amp;lt;/AnswerOption&amp;gt;
-    &amp;lt;AnswerOption&amp;gt;
-      &amp;lt;SelectionIdentifier&amp;gt;74&amp;lt;/SelectionIdentifier&amp;gt;
-      &amp;lt;AnswerScore&amp;gt;1&amp;lt;/AnswerScore&amp;gt;
-    &amp;lt;/AnswerOption&amp;gt;
-  &amp;lt;/Question&amp;gt;
-  &amp;lt;QualificationValueMapping&amp;gt;
-    &amp;lt;PercentageMapping&amp;gt;
-      &amp;lt;MaximumSummedScore&amp;gt;2&amp;lt;/MaximumSummedScore&amp;gt;
-    &amp;lt;/PercentageMapping&amp;gt;
-  &amp;lt;/QualificationValueMapping&amp;gt;
-&amp;lt;/AnswerKey&amp;gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Now that we have these two files, we load them in. We can do this by adding two lines like this at the top of the script that actually makes the qualification:&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;questions = open(name=&amp;#39;color_qs.xml&amp;#39;, mode=&amp;#39;r&amp;#39;).read()
-answers = open(name=&amp;#39;color_ans_key.xml&amp;#39;, mode=&amp;#39;r&amp;#39;).read()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;This reads these files in and assigns their contents to these variables. We then pass these variables into our &lt;code&gt;create_qualification_type&lt;/code&gt; function call as arguments to &lt;code&gt;Test&lt;/code&gt; and &lt;code&gt;AnswerKey&lt;/code&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;using-qualifications-in-a-hit&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;5. Using qualifications in a HIT&lt;/h2&gt;
-&lt;p&gt;So here’s the entire script. Once this script is run, the qualification exists permanently in an active state (unless it’s deleted).&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;import boto3
-
-questions = open(name=&amp;#39;color_qs.xml&amp;#39;, mode=&amp;#39;r&amp;#39;).read()
-answers = open(name=&amp;#39;color_ans_key.xml&amp;#39;, mode=&amp;#39;r&amp;#39;).read()
-
-mturk = boto3.client(&amp;#39;mturk&amp;#39;, 
-                      region_name=&amp;#39;us-east-1&amp;#39;, 
-                      endpoint_url=&amp;#39;https://mturk-requester-sandbox.us-east-1.amazonaws.com&amp;#39;)
-
-qual_response = mturk.create_qualification_type(
-                        Name=&amp;#39;Color blindness test&amp;#39;,
-                        Keywords=&amp;#39;test, qualification, sample, colorblindness, boto&amp;#39;,
-                        Description=&amp;#39;This is a brief colorblindness test&amp;#39;,
-                        QualificationTypeStatus=&amp;#39;Active&amp;#39;,
-                        Test=questions,
-                        AnswerKey=answers,
-                        TestDurationInSeconds=300)
-
-print(qual_response[&amp;#39;QualificationType&amp;#39;][&amp;#39;QualificationTypeId&amp;#39;])&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;It’s important to make a note of the qualification’s unique ID, which is why I print it upon creation (you can also look it up on the MTurk website itself in the URL of the qualification), as this is how we’ll refer to it when we create a HIT that requires this qualification.&lt;/p&gt;
-&lt;p&gt;Here’s what that looks like:&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;hit = client.create_hit(
-        Reward=&amp;#39;0.01&amp;#39;,
-        LifetimeInSeconds=3600,
-        AssignmentDurationInSeconds=600,
-        MaxAssignments=9,
-        Title=&amp;#39;A HIT with a qualification test&amp;#39;,
-        Description=&amp;#39;A test HIT that requires a certain score from a qualification test to accept.&amp;#39;,
-        Keywords=&amp;#39;boto, qualification, test&amp;#39;,
-        AutoApprovalDelayInSeconds=0,
-        QualificationRequirements=[{&amp;#39;QualificationTypeId&amp;#39;:&amp;#39;3CFGE88WF7UDUETM7YP3RSRD73VS4F&amp;#39;,
-                                   &amp;#39;Comparator&amp;#39;: &amp;#39;EqualTo&amp;#39;,
-                                   &amp;#39;IntegerValues&amp;#39;:[100]}]
-        )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Looking at the &lt;code&gt;QualificationRequirements&lt;/code&gt; argument in particular, we can see how this is structured. You pass a list of dictionaries as an argument, with each qualification getting its own dictionary. You can have lots (a location requirement, a minimum HIT approval rating, a minimum number of completed HITs, and so on), but in this case we just have the one. The dictionary has three entries: the qualification type ID, a comparator, and then an integer. These last two tell MTurk how to examine the score to determine if someone is qualified. In our case, we only want to accept workers who had a score exactly equal to 100% (meaning that they did not self-report any vision problems and answered the Ishihara plate correctly), but you could also ask for a score &lt;code&gt;GreaterThan&lt;/code&gt; some minimum value, for example.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;These custom qualifications work really well if they can be automatically scored, and if it’s only a question or two long. It’s not fair to require a long, unpaid test to complete your HIT, unless passing the test would grant them access to multiple, well-paying HITs. For most purposes, a very brief prescreen is all you’ll need.&lt;/p&gt;
-&lt;p&gt;This simplifies the process on both sides–workers can quickly get qualified (or not, in which case they can filter those HITs from their options, uncluttering their feeds), and from the requester side, this process is completely automatic. You’ll exclude less data, and won’t have to bother dealing with two separate HITs, invited-only hits, or “bonuses” that are actually payment for the real HIT you want data for.&lt;/p&gt;
-&lt;/div&gt;
-</description>
+      <description>How to set up custom qualification tests to screen MTurk workers.</description>
     </item>
     
     <item>
       <title>Getting started with the Mechanical Turk API</title>
-      <link>https://katherinemwood.github.io/post/mturk_dev_intro/</link>
+      <link>https://katherinemwood.github.io/post/aws-startup/</link>
       <pubDate>Sun, 08 Oct 2017 15:25:40 -0500</pubDate>
       
-      <guid>https://katherinemwood.github.io/post/mturk_dev_intro/</guid>
-      <description>&lt;p&gt;Amazon’s Mechanical Turk is a great research tool. You can get huge sample sizes that tend to be more diverse than what you can recruit from a Psychology department subject pool. But, with lots of data comes a new set of problems. It very quickly becomes impossible to manage things manually.&lt;/p&gt;
-&lt;p&gt;One very useful tool for dealing with this is the MTurk API. This lets you programmatically access all of MTurk’s functionality, and means you can write scripts to automate big tasks like fetching results, paying workers, or posting large numbers of HITs.&lt;/p&gt;
-&lt;p&gt;There is something of a startup cost to this, though. If you’re not sure where to start, or are feeling overwhelmed, here’s a little guide to get you setup with the tools you’ll need.&lt;/p&gt;
-&lt;p&gt;This guide is for using the boto3 SDK (Python), but there are also some more general tips about working with AWS.&lt;/p&gt;
-&lt;div id=&#34;accounts-users-and-permissions-setup&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Accounts, Users, and Permissions Setup&lt;/h2&gt;
-&lt;p&gt;To work programmatically with the MTurk API, you need at minimum two accounts: an AWS account, and an account on the MTurk Requester site. However, you should also make two more accounts: one on the Requester Sandbox, and one on the Worker Sandbox. These last two accounts will let you test and experiment in an environment that looks and behaves just like the real MTurk website, but with none of the consequences.&lt;/p&gt;
-&lt;div id=&#34;aws&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;1. AWS&lt;/h3&gt;
-&lt;p&gt;AWS stands for “Amazon Web Services.” It’s an umbrella that covers a huge array of the web-based services Amazon offers, including access to their cloud servers. Among these services is MTurk. Your billing info is stored with your AWS account, rather than your MTurk requester account; on the MTurk side of things, you pre-pay for HITs and deplete that purse, rather than having a direct link to your credit card.&lt;/p&gt;
-&lt;p&gt;To set up an AWS account, go to the &lt;a href=&#34;https://aws.amazon.com/free/?sc_channel=PS&amp;amp;sc_campaign=acquisition_US&amp;amp;sc_publisher=google&amp;amp;sc_medium=cloud_computing_hv_b&amp;amp;sc_content=aws_core_e_control_q32016&amp;amp;sc_detail=aws&amp;amp;sc_category=cloud_computing&amp;amp;sc_segment=188908133959&amp;amp;sc_matchtype=e&amp;amp;sc_country=US&amp;amp;s_kwcid=AL!4422!3!188908133959!e!!g!!aws&amp;amp;ef_id=WUMEpQAAAHy41iUB:20171008221039:s&#34;&gt;website&lt;/a&gt; and sign up. The free tier of service is all that you’ll need, if you’re only going to be dealing with MTurk.&lt;/p&gt;
-&lt;p&gt;One of the many nice features about the AWS account is the ability to create what are called IAM users. These are users that you can assign permissions to without giving them root access to your account. This is the setup I have with my advisor; he has the billing info assigned to his AWS account, but he made me a user with complete MTurk permissions. This means I can post and delete HITs, pay workers, even sign into the AWS console to manage my user settings, but I have no ability to access his AWS account.&lt;/p&gt;
-&lt;p&gt;We’ll create an IAM user with credentials that we’ll use to play around in the sandbox, but that don’t grant root access. Once the account is set up and you are signed in to your dashboard, type ‘iam’ in the AWS Services search bar. This will take you to your users dashboard; on the left hand side, go to the &lt;code&gt;users&lt;/code&gt; menu and then click &lt;code&gt;Add User&lt;/code&gt;. You can now set a name for this user; I recommend something obvious, like &lt;code&gt;reqester_sandbox&lt;/code&gt; or &lt;code&gt;mturk&lt;/code&gt;. Below that, you want to check the &lt;code&gt;Enable Programmatic Access&lt;/code&gt; box. On the next page, you can select &lt;code&gt;Attach existing policies directly&lt;/code&gt; (unless you want to deal with setting up groups, which can be useful if you’re managing lab members and multiple people will need the same set of permissions). Since we’re only dealing with MTurk, we don’t have to get too fancy. If you search for &lt;code&gt;mechanical&lt;/code&gt; in the policy search bar, you’ll see one that says &lt;code&gt;AmazonMechanicalTurkFullAccess&lt;/code&gt;. This is the policy we want to attach to this user; it gives full read and write access to MTurk. Check the box next to it and hit &lt;code&gt;Review&lt;/code&gt;, then &lt;code&gt;Create User&lt;/code&gt;. On this next screen, you will be presented with two very important pieces of information; the user access key, and the secret key. This is your only chance to take note of the secret key, so make a note of both of these passwords somewhere. We’ll need them later.&lt;/p&gt;
-&lt;p&gt;You’ll also see a special URL that user can use to access the AWS console. This is another piece of information you would want to provide if you were setting up a user for another person.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;amazons-mechanical-turk-requester&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;2. Amazon’s Mechanical Turk – Requester&lt;/h3&gt;
-&lt;p&gt;The next step is to create an account on the &lt;a href=&#34;https://requester.mturk.com/&#34;&gt;MTurk requester site&lt;/a&gt;. Once you’ve done that, head over to the &lt;code&gt;Developer&lt;/code&gt; tab and scroll down until you see the &lt;code&gt;Link your AWS Account&lt;/code&gt; option. You’ll need to link these accounts together for programmatic access.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;the-requester-sandbox&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;3. The Requester Sandbox&lt;/h3&gt;
-&lt;p&gt;If you keep scrolling under the &lt;code&gt;Developer&lt;/code&gt; tab on the MTurk requester site, you’ll see a &lt;code&gt;Register for Requester Sandbox&lt;/code&gt; option. Follow this link and make a Sandbox account, and then link it up to your AWS account just like you did on the real MTurk site. The sandbox looks and acts just like the real MTurk, allowing you to do extensive testing on your HITs and qualifications before you launch them for real.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;the-worker-sandbox&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;4. The Worker Sandbox&lt;/h3&gt;
-&lt;p&gt;You can also go over to the &lt;a href=&#34;https://workersandbox.mturk.com/mturk/&#34;&gt;worker sandbox&lt;/a&gt; and make an account there. This will let you see your HITs and qualification tests as real workers will.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;software-setup&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Software Setup&lt;/h2&gt;
-&lt;p&gt;In order to handle Mechanical Turk operations via the command line, a few programs have to be installed.&lt;/p&gt;
-&lt;div id=&#34;python&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;1. Python&lt;/h3&gt;
-&lt;div id=&#34;on-a-mac&#34; class=&#34;section level5&#34;&gt;
-&lt;h5&gt;On a Mac&lt;/h5&gt;
-&lt;p&gt;If you are on a Mac, Python is already installed and you don’t need to do anything further.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;on-windows&#34; class=&#34;section level5&#34;&gt;
-&lt;h5&gt;On Windows&lt;/h5&gt;
-&lt;p&gt;If you are on windows, you need to install Python 2. You can find Python’s download link &lt;a href=&#34;https://www.python.org/downloads/release/python-2714/&#34;&gt;here&lt;/a&gt;. You’ll want to select &lt;code&gt;Windows x86 MSI Installer&lt;/code&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;pip&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;2. Pip&lt;/h3&gt;
-&lt;p&gt;Pip is a package manager for Python that makes it very easy to install additional packages.&lt;/p&gt;
-&lt;div id=&#34;on-a-mac-1&#34; class=&#34;section level5&#34;&gt;
-&lt;h5&gt;On a Mac&lt;/h5&gt;
-&lt;p&gt;If you are on a Mac, navigate to Pip’s &lt;a href=&#34;https://pip.pypa.io/en/stable/installing/&#34;&gt;website&lt;/a&gt; and download the file &lt;code&gt;get-pip.py&lt;/code&gt;[&lt;a href=&#34;https://bootstrap.pypa.io/get-pip.py&#34; class=&#34;uri&#34;&gt;https://bootstrap.pypa.io/get-pip.py&lt;/a&gt;] (make sure to save it as a .py file if it saves as .txt). Put this file on the desktop.&lt;/p&gt;
-&lt;p&gt;Now, open up Terminal, and first enter the following command to navigate to your desktop:&lt;/p&gt;
-&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;cd desktop&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Now, we need to run the installation program. Do this by running the following command:&lt;/p&gt;
-&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;python get-pip.py&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The program will then run automatically to install pip. You may be prompted for your password at some points during this process.&lt;/p&gt;
-&lt;p&gt;To verify that install was successful, run the following command:&lt;/p&gt;
-&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;which pip&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;You should see a filepath output as a result, telling you where pip was installed. You can now get rid of the installer file if you like.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;on-a-windows&#34; class=&#34;section level5&#34;&gt;
-&lt;h5&gt;On a Windows&lt;/h5&gt;
-&lt;p&gt;Since you installed Python, pip comes with it. You may, however, need to upgrade pip. Do so by opening the Command Line and running the following command:&lt;/p&gt;
-&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;python -m pip install -U pip&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;This will upgrade pip to the latest version.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;boto3&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;3. Boto3&lt;/h3&gt;
-&lt;p&gt;Now that pip is installed, it’s easy to install the boto3 package. Simply run the following command in either Terminal or Command Line:&lt;/p&gt;
-&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;pip install boto3&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;IF YOU GET AN ERROR ON MAC:&lt;/strong&gt;&lt;br /&gt;
-Try again, but this time run this command:&lt;/p&gt;
-&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;sudo pip install boto3&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;You will be prompted for your password.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;managing-your-aws-credentials&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Managing your AWS credentials&lt;/h2&gt;
-&lt;p&gt;As a general rule, you don’t ever want to hardcode your credentials into your code. We want to avoid this at the top of your scripts:&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;aws_access_key_id = &amp;#39;my_access_code&amp;#39;
-aws_secret_access_key = &amp;#39;my_super_secret_access_key&amp;#39;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The nice thing about boto3 is that it checks a few different places for credentials in a specified order. So, rather than put them in your script directly, you can squirrel them away in a hidden file that the script will access automatically. &lt;a href=&#34;http://boto3.readthedocs.io/en/latest/guide/configuration.html&#34;&gt;This page&lt;/a&gt; has several different options for setting up your credentials; if you’re not comfortable with bash, I suggest making either a shared credentials file or a config file to house your credentials. This is where you’ll put the access key and the secret key that you got from AWS back when you created a new user.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;testing-your-setup&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Testing your setup&lt;/h2&gt;
-&lt;p&gt;After all this legwork, it’s time to test the setup! First, you’ll want to copy-paste the code below into a file (adapted from step 5 &lt;a href=&#34;https://requester.mturk.com/developer&#34;&gt;here&lt;/a&gt;) and save it as &lt;code&gt;balance.py&lt;/code&gt;; to make things easy, you might want to save it to the desktop for now.&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;import boto3
-
-region_name = &amp;#39;us-east-1&amp;#39;
-
-endpoint_url = &amp;#39;https://mturk-requester-sandbox.us-east-1.amazonaws.com&amp;#39;
-
-client = boto3.client(
-    &amp;#39;mturk&amp;#39;,
-    endpoint_url=endpoint_url,
-    region_name=region_name,
-)
-
-# This will return $10,000.00 in the MTurk Developer Sandbox
-print(client.get_account_balance()[&amp;#39;AvailableBalance&amp;#39;])&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;You can then run it from the Terminal by executing the following commands:&lt;/p&gt;
-&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;cd desktop
-python balance.py&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;If everything is working, you’ll see it print 10,000. You always have 10k in the sandbox. If you call this with the real MTurk site, it will print your actual account balance.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;You’re now setup and ready to start managing MTurk programmatically. With boto3, you can do all sorts of things, including creating and posting hits, contacting workers, fetching results, and managing custom qualifications. This interface allows you to automate some of the more tedious aspects of MTurk, and you can always test everything in the Sandbox.&lt;/p&gt;
-&lt;p&gt;Now that you’re good to go, you can check out how to make &lt;a href=&#34;katherinemwood.github.io/post/qualifications/&#34;&gt;custom qualifications for workers using boto3&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-</description>
+      <guid>https://katherinemwood.github.io/post/aws-startup/</guid>
+      <description>How to get set up with AWS and Mechanical Turk.</description>
     </item>
     
     <item>
       <title>Selective attention in inattentional blindness: Selection is specific but suppression is not</title>
-      <link>https://katherinemwood.github.io/publication/ib_color/</link>
-      <pubDate>Mon, 07 Aug 2017 00:00:00 +0000</pubDate>
+      <link>https://katherinemwood.github.io/publications/ib_color/</link>
+      <pubDate>Mon, 07 Aug 2017 19:47:09 +0200</pubDate>
       
-      <guid>https://katherinemwood.github.io/publication/ib_color/</guid>
-      <description></description>
+      <guid>https://katherinemwood.github.io/publications/ib_color/</guid>
+      <description>Abstract When we selectively attend to one set of objects and ignore another, we often fail to notice unexpected events. The likelihood of noticing varies depending on the similarity of an unexpected object to other items in the display, a process thought to be controlled by the attention set that we create for the attended and ignored objects. It remains unclear, though, how attention sets are formed and structured. Do they enhance features of attended objects (“white”) and suppress features of ignored objects (“black”), or do they distinguish objects based on relations or categories (“darker” versus “lighter,” or “dark objects” versus “light objects”)?</description>
     </item>
     
     <item>
       <title>Starter tips on sharing data and analysis scripts</title>
-      <link>https://katherinemwood.github.io/post/data_sharing_tips/</link>
+      <link>https://katherinemwood.github.io/post/data-sharing/</link>
       <pubDate>Wed, 02 Aug 2017 20:12:31 -0500</pubDate>
       
-      <guid>https://katherinemwood.github.io/post/data_sharing_tips/</guid>
-      <description>&lt;p&gt;One practice that’s considered increasingly important to transparency and reproducibility is open data (and the accompanying analysis script). Of course, it’s one thing to say “just post it!” It can be overwhelming if you’re new to the practice. There are different considerations when posting data publicly than when you’re retaining it solely for internal use. I’ve outlined a few things to consider when posting your data, and a few tips to help make it more accessible and usable for others who want to access it.&lt;/p&gt;
-&lt;div id=&#34;subject-consent-and-irb-approval&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;1. Subject consent and IRB approval&lt;/h1&gt;
-&lt;p&gt;If you intend to publicly post your data, a good place to start is updating your consent forms through the IRB to have some text about it, so that subjects can give their informed consent to have their data shared. For example, this is what the relevant text in our lab looks like for our subject pool recruits:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Your responses will be assigned a code number that is not linked to your name or other identifying information. All data and consent forms will be stored in a locked room or a password-protected digital archive. Results of this study may be presented at conferences and/or published in books, journals, and/or the popular media. &lt;strong&gt;De-identified data may be made publicly avaliable.&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;That’s it! Then you can be assured in your studious data posting.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;anonymization&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;2. Anonymization&lt;/h1&gt;
-&lt;p&gt;If you have data that uses some sort of non-random identifier for each subject, you’ll want to strip that out and replace it with some arbitrary subject ID before you post it. MTurk Worker IDs, for example, are not strictly anonymous, because they are linked to a person’s real information. You might want them during data collection, but not for public data.&lt;/p&gt;
-&lt;p&gt;Even if you don’t collect subjects’ names or other explicitly identifying information, it can still be possible to identify someone from the information in their data. A particular combination of gender, general age range, workplace, and ethnicity in a survey of professors, for example, might identify someone. You don’t have to be hyper-vigilant about everything all of the time, but it’s not a bad idea to keep this in mind and possibly take steps around it, such as withholding or binning nonessential variables, if it seems like it would be an issue.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;file-format&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;3. File format&lt;/h1&gt;
-&lt;p&gt;For maximum accessibility, plaintext is your friend. If at all possible, text should be in .txt format, column-data should be in .csv format, and images should be in .jpg, .png, .tiff, or some other common form. If possible, you want to avoid having data in proprietary forms, like .psd (Photoshop) which some people may not be able to open. Word and Excel documents can behave in strange ways if you open them in other applications, and sometimes aren’t back-compatible with older version of the software. You want anyone to be able to open your files, regardless of their setup.&lt;/p&gt;
-&lt;p&gt;Similarly, you want your analysis code in its source format and in plaintext. You don’t want to wrap things in executables, or post code as an image or word-processed document.&lt;/p&gt;
-&lt;p&gt;Data should also be in their raw form. Cleaning, wrangling, and summarizing should be left to the scripts if possible.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;readmes&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;4. Readmes&lt;/h1&gt;
-&lt;p&gt;You should include, along with your data and/or script, a readme that tells the user what they need to know. How do they run the analysis? Are there any special steps they need to take? What should things look like as it happens? What kind of output should they expect?&lt;/p&gt;
-&lt;p&gt;You also need a readme for your data. What variables are included in the dataset? What is the datatype of each variable? If you opened up a new datafile and see a column of numbers ranging from 1 to 4, that could mean anything. Did it come from a Likert-type scale? Is it a count of some event? Is it a continuous variable, or a discrete one? This confusion is only worsened by unusual or non-descriptive variable name choices, like &lt;code&gt;psc_sf&lt;/code&gt;. A detailed readme clears this up not only for the user, and but possibly for your future self!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;future-proofing&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;5. Future-proofing&lt;/h1&gt;
-&lt;p&gt;If your analysis has a lot of dependencies–it loads a lot of packages, or requires something special–it’s very possible that it could break in the future with updates and new versions, or just not work for a user if they have a different setup. If you don’t want to be constantly maintaining your script, or trying to anticipate what things will look like for someone else, there are tools you can use that will wrap everything up for you in a bundle so that your project will always have the set of dependencies it needs. Here are a few:&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.docker.com/&#34;&gt;Docker&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://www.reprozip.org/&#34;&gt;ReproZip&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://github.com/benmarwick/rrtools&#34;&gt;&lt;code&gt;rrtools&lt;/code&gt; package&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://rstudio.github.io/packrat/&#34;&gt;PackRat&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;If you have a lightweight setup, you may not need these measures. But if it’s a concern, you have options!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;forever-homes&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;6. Forever homes&lt;/h1&gt;
-&lt;p&gt;Ideally, you’ll want to host your resources in a reliable place that won’t give you or your users access problems, is content to host multiple filetypes, and makes retrieval easy. The &lt;a href=&#34;https://osf.io&#34;&gt;Open Science Framework&lt;/a&gt; is a great option, as is &lt;a href=&#34;https://github.com/&#34;&gt;GitHub&lt;/a&gt;. Plus, this can serve as your cloud-backup in case some cataclysm destroys your computer.&lt;/p&gt;
-&lt;p&gt;This also makes it possible to have the analysis script download the data directly for a user, rather than relying on them to put it in the right place. For instance, you may have a line in your private version of the script that sets the current directory to &lt;code&gt;users/me/documents/folder_with_the_stuff&lt;/code&gt;, which the user would have to change if you uploaded it as-is.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;Posting all this publicly can feel intimidating, especially if it’s a new experience. But the most important thing is that it’s out there. It doesn’t have to be perfect, and it gets easier and better with practice.&lt;/p&gt;
-&lt;/div&gt;
-</description>
+      <guid>https://katherinemwood.github.io/post/data-sharing/</guid>
+      <description>Getting your materials ready for public release.</description>
     </item>
     
     <item>
-      <title>Oh, joy! Joyplots in R with ggjoy</title>
-      <link>https://katherinemwood.github.io/post/joy/</link>
-      <pubDate>Sat, 15 Jul 2017 00:00:00 +0000</pubDate>
+      <title>Considerations when writing a preregistration if you&#39;re new to all this</title>
+      <link>https://katherinemwood.github.io/post/preregistration/</link>
+      <pubDate>Mon, 26 Jun 2017 16:11:46 -0500</pubDate>
       
-      <guid>https://katherinemwood.github.io/post/joy/</guid>
-      <description>&lt;p&gt;I’ve &lt;a href=&#34;https://katherinemwood.github.io/post/violins/&#34;&gt;written before&lt;/a&gt; about plots that are more informative than your standard barplot.&lt;/p&gt;
-&lt;p&gt;Another option is the joyplot (also known as &lt;a href=&#34;http://www.brendangregg.com/frequencytrails.html&#34;&gt;frequency trails&lt;/a&gt;). Joyplots are like mountain ranges, except instead of mountains it’s smoothed density histograms. It’s a way to visualize a lot of data in a pretty compact space.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/clauswilke/ggjoy&#34;&gt;Claus Wilke has written an R package&lt;/a&gt; that makes plotting these pretty frictionless. Just add data!&lt;/p&gt;
-&lt;p&gt;I’ll whip up some fake data to play with.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(123)
-joy &amp;lt;- data.frame(&amp;#39;label&amp;#39;=rep(letters[1:10], each=100),
-                  &amp;#39;value&amp;#39;=as.vector(mapply(rnorm, rep(100, 10), rnorm(10), SIMPLIFY=TRUE)),
-                  &amp;#39;rank&amp;#39;=rep(1:5, each=100, times=20))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Here’s an example in which the distributions are allowed to overlap vertically, giving the appearance that they are stacked.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;suppressPackageStartupMessages({
-  library(ggjoy)
-  library(dplyr)
-  library(ggplot2)})
-
-ggplot(joy, aes(x=value, y=label)) +
-  geom_joy(scale=2, rel_min_height=.03) +
-  scale_y_discrete(expand = c(0.01, 0)) +
-  xlab(&amp;#39;Value&amp;#39;) +
-  theme_joy() +
-  theme(axis.title.y = element_blank())&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.209&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./post/joy_files/figure-html/vertical_overlap-1.png&#34; width=&#34;672&#34; /&gt; To make things look more orderly, and since our labels have no inherent order, we can order the data according to the mean. This isn’t neccessary if your y-axis is time, for instance.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;joy &amp;lt;- group_by(joy, label) %&amp;gt;%
-       mutate(m=mean(value)) %&amp;gt;%
-       arrange(m) %&amp;gt;%
-       ungroup() %&amp;gt;%
-       mutate(label=factor(label, unique(label)))
-
-ggplot(joy, aes(x=value, y=label)) +
-  geom_joy(scale=2, rel_min_height=.03) +
-  scale_y_discrete(expand = c(0.01, 0)) +
-  xlab(&amp;#39;Value&amp;#39;) +
-  theme_joy() +
-  theme(axis.title.y = element_blank())&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.209&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./post/joy_files/figure-html/ordered_joy-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;Some people don’t like this overlap (for the aesthetics or because it can obscure the data) so here’s an example if we spread everybody out so that they don’t touch. The amount of overlap is easily controlled by the &lt;code&gt;scale&lt;/code&gt; argument in geom_joy. &lt;code&gt;scale = 1&lt;/code&gt; means no overlap; the higher this value, the more the distributions will overlap.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(joy, aes(x=value, y=label)) +
-  geom_joy(scale=1, rel_min_height=.01) +
-  scale_y_discrete(expand = c(0.001, 0)) +
-  xlab(&amp;#39;Value&amp;#39;) +
-  theme_joy() +
-  theme(axis.title.y = element_blank())&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.209&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./post/joy_files/figure-html/scaled_joy-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;How about some color? Color can be used to separate groups:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(joy, aes(x=value, y=label, fill=as.factor(rank))) +
-  geom_joy(scale=1, rel_min_height=.01) +
-  scale_y_discrete(expand = c(0.01, 0)) +
-  xlab(&amp;#39;Value&amp;#39;) +
-  labs(fill=&amp;#39;Rank&amp;#39;) +
-  theme_joy() +
-  theme(axis.title.y = element_blank())&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.209&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./post/joy_files/figure-html/color_joy-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;Or, if your data doesn’t have grouping structure, it can just be used to break things up a little bit. (See &lt;a href=&#34;https://twitter.com/hnrklndbrg/status/883675698300420098&#34;&gt;this tweet&lt;/a&gt; for another example.)&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(joy, aes(x=value, y=label, fill=label)) +
-  geom_joy(scale=3, rel_min_height=0.01) +
-  scale_fill_manual(values=rep(c(&amp;#39;gray&amp;#39;, &amp;#39;lightblue&amp;#39;), length(unique(joy$label))/2)) + 
-  scale_y_discrete(expand = c(0.01, 0)) +
-  xlab(&amp;#39;Value&amp;#39;) +
-  theme_joy() +
-  theme(axis.title.y = element_blank(),
-        legend.position=&amp;#39;none&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.209&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./post/joy_files/figure-html/alternating_joy-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;How about some joyful facets?&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(filter(joy, rank != 5), aes(x=value, y=label)) +
-  geom_joy(scale=1, rel_min_height=.03) +
-  scale_y_discrete(expand = c(0.01, 0)) +
-  xlab(&amp;#39;Value&amp;#39;) +
-  facet_wrap(~rank, scales=&amp;#39;free&amp;#39;) +
-  theme_joy() +
-  theme(axis.title.y = element_blank())&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.202&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.219&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.198&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.229&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./post/joy_files/figure-html/faceted_joy-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;You can check out &lt;a href=&#34;https://cran.r-project.org/web/packages/ggjoy/vignettes/introduction.html&#34;&gt;the vignette&lt;/a&gt; for more examples and more information. You can also &lt;a href=&#34;https://cran.r-project.org/web/packages/ggjoy/ggjoy.pdf&#34;&gt;check out the docs&lt;/a&gt; for information on, for example, how the density is calculated and what your options are for that.&lt;/p&gt;
-&lt;p&gt;If you want to play around with these yourself, you can make up data (like I did) or check out the examples in the vignette for datasets to use that will make cool plots. Who knows–you might even find the iris dataset fun again if you use it to make joyplots.&lt;/p&gt;
-</description>
+      <guid>https://katherinemwood.github.io/post/preregistration/</guid>
+      <description>How do you know where to start?</description>
+    </item>
+    
+    <item>
+      <title>Intro to unit testing in R</title>
+      <link>https://katherinemwood.github.io/post/unittesting/</link>
+      <pubDate>Mon, 26 Jun 2017 15:46:23 -0500</pubDate>
+      
+      <guid>https://katherinemwood.github.io/post/unittesting/</guid>
+      <description>The best way to know if something works is to test it.</description>
+    </item>
+    
+    <item>
+      <title>Intro to R Notebooks</title>
+      <link>https://katherinemwood.github.io/post/r-notebooks/</link>
+      <pubDate>Mon, 26 Jun 2017 15:36:22 -0500</pubDate>
+      
+      <guid>https://katherinemwood.github.io/post/r-notebooks/</guid>
+      <description>Combine executable code, math formatting, and nice markdown in one easy place.</description>
+    </item>
+    
+    <item>
+      <title>Data in the raw: Violin plots</title>
+      <link>https://katherinemwood.github.io/post/violins/</link>
+      <pubDate>Mon, 26 Jun 2017 15:27:06 -0500</pubDate>
+      
+      <guid>https://katherinemwood.github.io/post/violins/</guid>
+      <description>Violin plots are a way to present more information about your raw data.</description>
+    </item>
+    
+    <item>
+      <title>Intro to Bootstrapping</title>
+      <link>https://katherinemwood.github.io/post/bootstrapping/</link>
+      <pubDate>Mon, 26 Jun 2017 15:02:58 -0500</pubDate>
+      
+      <guid>https://katherinemwood.github.io/post/bootstrapping/</guid>
+      <description>Bootstrapping is a powerful and intuitive technique.</description>
+    </item>
+    
+    <item>
+      <title>5 Minute Simulation: Variation in effect size estimates</title>
+      <link>https://katherinemwood.github.io/post/effect_size_variance/</link>
+      <pubDate>Mon, 26 Jun 2017 13:54:20 -0500</pubDate>
+      
+      <guid>https://katherinemwood.github.io/post/effect_size_variance/</guid>
+      <description>How much variability can you expect from the effect size estimate in a single study?</description>
+    </item>
+    
+    <item>
+      <title>Open Science in Practice</title>
+      <link>https://katherinemwood.github.io/post/gams/</link>
+      <pubDate>Mon, 26 Jun 2017 13:48:35 -0500</pubDate>
+      
+      <guid>https://katherinemwood.github.io/post/gams/</guid>
+      <description>A look inside an open science workflow.</description>
+    </item>
+    
+    <item>
+      <title>5 Minute Simulation: Lonely Cards</title>
+      <link>https://katherinemwood.github.io/post/card_simulation/</link>
+      <pubDate>Mon, 26 Jun 2017 12:34:18 -0500</pubDate>
+      
+      <guid>https://katherinemwood.github.io/post/card_simulation/</guid>
+      <description>Solving a probability question with simulation.</description>
+    </item>
+    
+    <item>
+      <title>Effect Size Calculator</title>
+      <link>https://katherinemwood.github.io/projects/effect_sizes/</link>
+      <pubDate>Tue, 02 May 2017 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/projects/effect_sizes/</guid>
+      <description>This is a Shiny application that brings the beloved effect size calculator spreadsheets by Daniel Lakens online. The application will produce as many common effect sizes as possible given the information available.</description>
+    </item>
+    
+    <item>
+      <title>One Dark Sky</title>
+      <link>https://katherinemwood.github.io/projects/darksky/</link>
+      <pubDate>Mon, 02 May 2016 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/projects/darksky/</guid>
+      <description>This is a short exploratory data analysis project using historical weather data accessed using the Darksky API. The analysis was done in an RNotebook.</description>
+    </item>
+    
+    <item>
+      <title>Reconciling change blindness with long-term memory for objects</title>
+      <link>https://katherinemwood.github.io/publications/cbltm/</link>
+      <pubDate>Mon, 01 Feb 2016 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/publications/cbltm/</guid>
+      <description>Abstract How can we reconcile remarkably precise long-term memory for thousands of images with failures to detect changes to similar images? We explored whether people can use detailed, long-term memory to improve change detection performance. Subjects studied a set of images of objects and then performed recognition and change detection tasks with those images. Recognition memory performance exceeded change detection performance, even when a single familiar object in the post-change display consistently indicated the change location.</description>
+    </item>
+    
+    <item>
+      <title>One day build: Shiny effect sizes</title>
+      <link>https://katherinemwood.github.io/post/effect-size-calculator/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://katherinemwood.github.io/post/effect-size-calculator/</guid>
+      <description>Take your effect sizes on the go.</description>
     </item>
     
   </channel>

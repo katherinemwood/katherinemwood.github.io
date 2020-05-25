@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>python on Katherine Wood</title>
+    <link>https://katherinemwood.github.io/techs/python/</link>
+    <description>Recent content in python on Katherine Wood</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© Katherine Wood</copyright>
+    <lastBuildDate>Sun, 01 Mar 2020 19:47:09 +0200</lastBuildDate>
+    
+	<atom:link href="https://katherinemwood.github.io/techs/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>PRecall</title>
+      <link>https://katherinemwood.github.io/projects/precall/</link>
+      <pubDate>Sun, 01 Mar 2020 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/projects/precall/</guid>
+      <description>Unsafe or defective products cost over a trillion dollars each year in deaths, injuries, property damage, and lost productivity. It&amp;rsquo;s imperative that consumers be able to avoid unsafe products, but it&amp;rsquo;s currently extremely difficult to find relevant information about recalls or complaints about products.
+Using recall announcements and consumer complaints filed to the CPSC, I developed an app that surfaces information related to a product. A consumer can search for a product and receive all the related complaints about that product.</description>
+    </item>
+    
+    <item>
+      <title>Multiple Object Tracking</title>
+      <link>https://katherinemwood.github.io/projects/simple_mot/</link>
+      <pubDate>Thu, 02 Jan 2020 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/projects/simple_mot/</guid>
+      <description>This is a script that runs a complete inattentional blindness experiment using multiple object tracking as the main task, including data saving. Many parameters can be changed to control the appearance and behavior of the experiment. Almost every aspect of the experiment is built in an object-oriented way, making it easy to extend.</description>
+    </item>
+    
+    <item>
+      <title>As if by magic: An abrupt change in motion direction induces change blindness</title>
+      <link>https://katherinemwood.github.io/publications/motion_cb/</link>
+      <pubDate>Fri, 01 Mar 2019 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/publications/motion_cb/</guid>
+      <description>Abstract Magicians claim that an abrupt change in the direction of movement can attract attention, allowing them to hide their method for a trick in plain sight. In three experiments involving 43 total participants, we tested this claim by examining whether a sudden directional change can induce change blindness. Participants were asked to detect an instantaneous orientation change to a single item in an array of Gabor patches, which occurred as the entire array moved across the display.</description>
+    </item>
+    
+    <item>
+      <title>CORVIDS</title>
+      <link>https://katherinemwood.github.io/projects/corvids/</link>
+      <pubDate>Wed, 02 May 2018 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/projects/corvids/</guid>
+      <description>Raw data are often unavailable, and all that may remain of a data set are its summary statistics. When these data are integers on a fixed scale, such as Likert-style ratings, and their mean, standard deviation, and sample size are known, it is possible to reconstruct every raw distribution that gives rise to those summary statistics using a system of Diophantine equations. We have developed the open-source program CORVIDS (COmplete Reconstruction of Values In Diophantine Systems) to deterministically reconstruct raw data from summary statistics using this technique.</description>
+    </item>
+    
+    <item>
+      <title>Reconciling change blindness with long-term memory for objects</title>
+      <link>https://katherinemwood.github.io/publications/cbltm/</link>
+      <pubDate>Mon, 01 Feb 2016 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/publications/cbltm/</guid>
+      <description>Abstract How can we reconcile remarkably precise long-term memory for thousands of images with failures to detect changes to similar images? We explored whether people can use detailed, long-term memory to improve change detection performance. Subjects studied a set of images of objects and then performed recognition and change detection tasks with those images. Recognition memory performance exceeded change detection performance, even when a single familiar object in the post-change display consistently indicated the change location.</description>
+    </item>
+    
+  </channel>
+</rss>

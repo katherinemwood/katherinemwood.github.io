@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Techs on Katherine Wood</title>
+    <link>https://katherinemwood.github.io/techs/</link>
+    <description>Recent content in Techs on Katherine Wood</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© Katherine Wood</copyright>
+    <lastBuildDate>Sun, 01 Mar 2020 19:47:09 +0200</lastBuildDate>
+    
+	<atom:link href="https://katherinemwood.github.io/techs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>AWS</title>
+      <link>https://katherinemwood.github.io/techs/aws/</link>
+      <pubDate>Sun, 01 Mar 2020 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/techs/aws/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pandas</title>
+      <link>https://katherinemwood.github.io/techs/pandas/</link>
+      <pubDate>Sun, 01 Mar 2020 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/techs/pandas/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://katherinemwood.github.io/techs/python/</link>
+      <pubDate>Sun, 01 Mar 2020 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/techs/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>scikit-learn</title>
+      <link>https://katherinemwood.github.io/techs/scikit-learn/</link>
+      <pubDate>Sun, 01 Mar 2020 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/techs/scikit-learn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>seaborn</title>
+      <link>https://katherinemwood.github.io/techs/seaborn/</link>
+      <pubDate>Sun, 01 Mar 2020 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/techs/seaborn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>streamlit</title>
+      <link>https://katherinemwood.github.io/techs/streamlit/</link>
+      <pubDate>Sun, 01 Mar 2020 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/techs/streamlit/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>psychopy</title>
+      <link>https://katherinemwood.github.io/techs/psychopy/</link>
+      <pubDate>Thu, 02 Jan 2020 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/techs/psychopy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CSS</title>
+      <link>https://katherinemwood.github.io/techs/css/</link>
+      <pubDate>Fri, 01 Nov 2019 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/techs/css/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>HTML</title>
+      <link>https://katherinemwood.github.io/techs/html/</link>
+      <pubDate>Fri, 01 Nov 2019 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/techs/html/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Javascript</title>
+      <link>https://katherinemwood.github.io/techs/javascript/</link>
+      <pubDate>Fri, 01 Nov 2019 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/techs/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R</title>
+      <link>https://katherinemwood.github.io/techs/r/</link>
+      <pubDate>Fri, 01 Nov 2019 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/techs/r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MATLAB</title>
+      <link>https://katherinemwood.github.io/techs/matlab/</link>
+      <pubDate>Fri, 01 Mar 2019 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/techs/matlab/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Shiny</title>
+      <link>https://katherinemwood.github.io/techs/shiny/</link>
+      <pubDate>Tue, 02 May 2017 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/techs/shiny/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ggplot</title>
+      <link>https://katherinemwood.github.io/techs/ggplot/</link>
+      <pubDate>Mon, 02 May 2016 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/techs/ggplot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RMarkdown</title>
+      <link>https://katherinemwood.github.io/techs/rmarkdown/</link>
+      <pubDate>Mon, 02 May 2016 19:47:09 +0200</pubDate>
+      
+      <guid>https://katherinemwood.github.io/techs/rmarkdown/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

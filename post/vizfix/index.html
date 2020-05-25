@@ -1,212 +1,195 @@
 <!DOCTYPE html>
-<html lang="en-us">
-<head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="theme" content="hugo-academic">
-  <meta name="generator" content="Hugo 0.21" />
-  <meta name="author" content="Katherine Wood">
-  <meta name="description" content="Psychology Graduate Student">
-
+<html lang='en'><head>
+  <title>Improving a data visualization - Katherine Wood</title>
+  <link rel='canonical' href='https://katherinemwood.github.io/post/vizfix/' />
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1' />
+  <meta name='description' content='' />
+  <meta name='theme-color' content='#FD3519' />
   
-  
-  
-    
-  
-  
-    
-    
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
-    
-  
-  <link rel="stylesheet" href="../../css/bootstrap.min.css">
-  <link rel="stylesheet" href="../../css/font-awesome.min.css">
-  <link rel="stylesheet" href="../../css/academicons.min.css">
-  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono">
-  <link rel="stylesheet" href="../../css/hugo-academic.css">
+    <link rel="shortcut icon" href="/images/icon.png" type="image/x-icon" />
+    <link rel="icon" href="/images/icon.png" type="image/x-icon" />
   
 
-  <link rel="alternate" href="https://katherinemwood.github.io/index.xml" type="application/rss+xml" title="Inattentional Coffee">
-  <link rel="feed" href="https://katherinemwood.github.io/index.xml" type="application/rss+xml" title="Inattentional Coffee">
-
-  <link rel="icon" type="image/png" href="../../img/icon.png">
-  <link rel="apple-touch-icon" type="image/png" href="../../img/apple-touch-icon.png">
-
-  <link rel="canonical" href="https://katherinemwood.github.io/post/vizfix/">
+  <meta name="generator" content="Hugo 0.69.1" />
 
   
 
-  <title>Improving a data visualization: Connecticut edition | Inattentional Coffee</title>
 
+
+
+
+<link rel="stylesheet" href="https://katherinemwood.github.io/sass/style.min.2de9e904f1f2255b4be5258cc2591aab739366aeae2332fef7ec14564581fe35.css" integrity="sha256-LenpBPHyJVtL5SWMwlkaq3OTZq6uIzL&#43;9&#43;wUVkWB/jU=" media="screen">
+<link rel="stylesheet" href="https://katherinemwood.github.io/syntax.min.css" integrity="" media="screen">
+
+  <meta property="og:title" content="Improving a data visualization" />
+<meta property="og:description" content="There&rsquo;s a point at which more information yields negative returns." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://katherinemwood.github.io/post/vizfix/" />
+<meta property="article:published_time" content="2017-12-16T15:11:42-06:00" />
+<meta property="article:modified_time" content="2017-12-16T15:11:42-06:00" />
+
+  <meta itemprop="name" content="Improving a data visualization">
+<meta itemprop="description" content="There&rsquo;s a point at which more information yields negative returns.">
+<meta itemprop="datePublished" content="2017-12-16T15:11:42-06:00" />
+<meta itemprop="dateModified" content="2017-12-16T15:11:42-06:00" />
+<meta itemprop="wordCount" content="847">
+
+
+
+<meta itemprop="keywords" content="data visualization,R,ggplot," />
 </head>
-<body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/github.min.css" />
 
-<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
-  <div class="container">
+<body>
 
-    
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-              data-target=".navbar-collapse" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="../../">Inattentional Coffee</a>
+  <header style="background-image:linear-gradient(
+      rgba(0,0,0,0.4),rgba(0,0,0,0.4)
+    ),url(&#39;https://katherinemwood.github.io/images/path.jpeg&#39;)">
+
+  <div class="intro">
+    <div class="logo-container">
+      <a href="/">
+        <img src='https://katherinemwood.github.io/images/portrait.jpeg' alt="Profile CORVIDS: A provably-complete data reconstruction tool" class="rounded-logo">
+      </a>
     </div>
+    <h3>Katherine Wood</h3>
+    <div class="menu">
+      
 
-    
-    <div class="collapse navbar-collapse">
+        <p>
+            <a href="/about/">
+               <strong> About </strong>
+            </a>
+        </p>
+
+        <p>
+            <a href="/post/">
+               <strong> Blog </strong>
+            </a>
+        </p>
+
+        <p>
+            <a href="/projects/">
+               <strong> Projects </strong>
+            </a>
+        </p>
+
+        <p>
+            <a href="/publications/">
+               <strong> Publications </strong>
+            </a>
+        </p>
 
       
-      <ul class="nav navbar-nav navbar-right">
-        
-
-        
-
-        <li class="nav-item">
-          <a href="../../#posts">
-            
-            <span>Blog</span>
-          </a>
-        </li>
-
-        
-        
-
-        
-
-        <li class="nav-item">
-          <a href="../../#projects">
-            
-            <span>Projects</span>
-          </a>
-        </li>
-
-        
-        
-
-        
-
-        <li class="nav-item">
-          <a href="../../#publications">
-            
-            <span>Publications</span>
-          </a>
-        </li>
-
-        
-        
-
-        
-
-        <li class="nav-item">
-          <a href="../../#about">
-            
-            <span>About</span>
-          </a>
-        </li>
-
-        
-        
-
-        
-
-        <li class="nav-item">
-          <a href="../../#cv">
-            
-            <span>CV</span>
-          </a>
-        </li>
-
-        
-        
-
-        
-      </ul>
-
     </div>
+
   </div>
-</nav>
 
-
-<article class="article" itemscope itemtype="http://schema.org/Article">
-
+  <div class="socials">
+      
+  
+    <a href="https://github.com/katherinemwood" class="social-link" target="_blank" rel="noopener" ><div class="icon">
+  <svg width="35px" height="35px" viewBox="0 0 115 115" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
+  
+  <path d="M102.679 0H12.32C5.52 0 0 5.519 0 12.321v90.358C0 109.48 5.519 115 12.321 115h90.358c6.802 0 12.321-5.519 12.321-12.321V12.32C115 5.52 109.481 0 102.679 0zM71.182 98.494c-2.156.385-2.952-.95-2.952-2.053 0-1.386.051-8.471.051-14.195 0-4.005-1.335-6.546-2.9-7.881C74.878 73.313 84.89 72.003 84.89 55.6c0-4.671-1.669-7.007-4.39-10.01.436-1.105 1.9-5.648-.436-11.552-3.568-1.104-11.731 4.595-11.731 4.595-3.389-.95-7.06-1.438-10.679-1.438-3.62 0-7.29.488-10.679 1.438 0 0-8.163-5.699-11.73-4.595-2.337 5.878-.899 10.422-.437 11.551-2.72 3.004-4.004 5.34-4.004 10.011 0 16.326 9.574 17.712 19.072 18.765-1.232 1.104-2.336 3.003-2.72 5.724-2.44 1.104-8.677 3.004-12.4-3.568-2.335-4.056-6.545-4.39-6.545-4.39-4.159-.05-.282 2.619-.282 2.619 2.772 1.283 4.723 6.212 4.723 6.212 2.49 7.624 14.4 5.057 14.4 5.057 0 3.568.052 9.37.052 10.422 0 1.104-.77 2.438-2.952 2.053C27.21 92.821 15.35 76.701 15.35 57.86c0-23.564 18.02-41.456 41.585-41.456s42.663 17.892 42.663 41.456c.026 18.842-11.474 34.988-28.416 40.635zM46 82.81c-.488.103-.95-.102-1.001-.436-.051-.385.282-.719.77-.822.488-.05.95.154 1.001.488.077.334-.257.668-.77.77zm-2.439-.23c0 .333-.385.615-.898.615-.565.052-.95-.23-.95-.616 0-.333.385-.616.899-.616.487-.051.95.231.95.616zm-3.516-.283c-.103.334-.616.488-1.053.334-.488-.103-.821-.488-.719-.822.103-.334.617-.488 1.053-.385.513.154.847.54.719.873zm-3.158-1.386c-.23.282-.718.23-1.104-.154-.385-.334-.487-.822-.23-1.053.23-.282.718-.23 1.103.154.334.334.462.847.231 1.053zm-2.336-2.336c-.23.154-.667 0-.95-.385-.282-.385-.282-.822 0-1.001.283-.231.72-.052.95.333.283.385.283.847 0 1.053zm-1.668-2.49c-.231.23-.616.103-.899-.154-.282-.334-.333-.719-.102-.899.23-.23.616-.102.898.154.282.334.334.72.103.899zm-1.72-1.9c-.103.231-.436.283-.719.103-.334-.154-.488-.436-.385-.667.103-.154.385-.231.719-.103.334.18.488.462.385.667z"/>
+  
+  </svg>
+</div>
+</a>
   
 
+  
+    <a href="https://www.linkedin.com/in/katherine-m-wood/" class="social-link" target="_blank" rel="noopener" ><div class="icon">
+  <svg width="35px" height="35px" viewBox="0 0 115 115" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
+  
+  <path d="M106.786 0H8.189C3.67 0 0 3.722 0 8.291v98.418C0 111.278 3.67 115 8.189 115h98.597c4.518 0 8.214-3.722 8.214-8.291V8.29C115 3.722 111.304 0 106.786 0zm-72.03 98.571H17.713V43.69h17.07V98.57h-.025zm-8.522-62.377c-5.467 0-9.882-4.44-9.882-9.883 0-5.442 4.415-9.882 9.882-9.882 5.442 0 9.883 4.44 9.883 9.882a9.87 9.87 0 0 1-9.883 9.883zm72.414 62.377H81.604V71.875c0-6.366-.129-14.555-8.856-14.555-8.882 0-10.242 6.931-10.242 14.093V98.57H45.46V43.69h16.352v7.495h.23c2.285-4.312 7.855-8.856 16.147-8.856 17.25 0 20.458 11.372 20.458 26.158V98.57z"/>
+  
+  </svg>
+</div>
+</a>
+  
 
-  <div class="article-container">
-    <h1 itemprop="name">Improving a data visualization: Connecticut edition</h1>
+  
+    <a href="https://twitter.com/kathmwood" class="social-link" target="_blank" rel="noopener" ><div class="icon">
+  <svg width="35px" height="35px" viewBox="0 0 115 115" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
+  
+  <path d="M102.679 0H12.32C5.52 0 0 5.519 0 12.321v90.358C0 109.48 5.519 115 12.321 115h90.358c6.802 0 12.321-5.519 12.321-12.321V12.32C115 5.52 109.481 0 102.679 0zM90.126 40.763c.051.72.051 1.464.051 2.182 0 22.256-16.942 47.9-47.9 47.9-9.548 0-18.404-2.772-25.848-7.547 1.36.154 2.67.205 4.055.205 7.881 0 15.12-2.67 20.895-7.187-7.392-.154-13.604-5.006-15.735-11.68 2.593.385 4.929.385 7.598-.308a16.837 16.837 0 0 1-13.476-16.531v-.205a16.824 16.824 0 0 0 7.598 2.13 16.8 16.8 0 0 1-7.496-14.016c0-3.131.822-6.006 2.285-8.496a47.803 47.803 0 0 0 34.705 17.61c-2.387-11.424 6.161-20.69 16.429-20.69 4.851 0 9.215 2.027 12.296 5.313a32.99 32.99 0 0 0 10.678-4.056 16.792 16.792 0 0 1-7.393 9.267c3.389-.36 6.674-1.31 9.703-2.618a35.437 35.437 0 0 1-8.445 8.727z"/>
+  
+  </svg>
+</div>
+</a>
+  
+
+  </div>
+
+</header>
+
+  <div class="content-wrapper">
     
-
-<div class="article-metadata">
-
-  <span class="article-date">
-    <time datetime="2017-12-16 15:11:42 -0600 -0600" itemprop="datePublished">
-      Sat, Dec 16, 2017
-    </time>
-  </span>
-
+      <div class="breadcrumb">
   
 
-  
-
-  
-  
-<div class="share-box" aria-hidden="true">
-  <ul class="share">
-    <li>
-      <a class="facebook"
-         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fkatherinemwood.github.io%2fpost%2fvizfix%2f"
-         target="_blank">
-        <i class="fa fa-facebook"></i>
-      </a>
-    </li>
-    <li>
-      <a class="twitter"
-         href="https://twitter.com/intent/tweet?text=Improving%20a%20data%20visualization%3a%20Connecticut%20edition&amp;url=https%3a%2f%2fkatherinemwood.github.io%2fpost%2fvizfix%2f"
-         target="_blank">
-        <i class="fa fa-twitter"></i>
-      </a>
-    </li>
-    <li>
-      <a class="linkedin"
-         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fkatherinemwood.github.io%2fpost%2fvizfix%2f&amp;title=Improving%20a%20data%20visualization%3a%20Connecticut%20edition"
-         target="_blank">
-        <i class="fa fa-linkedin"></i>
-      </a>
-    </li>
-    <li>
-      <a class="weibo"
-         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fkatherinemwood.github.io%2fpost%2fvizfix%2f&amp;title=Improving%20a%20data%20visualization%3a%20Connecticut%20edition"
-         target="_blank">
-        <i class="fa fa-weibo"></i>
-      </a>
-    </li>
-    <li>
-      <a class="email"
-         href="mailto:?subject=Improving%20a%20data%20visualization%3a%20Connecticut%20edition&amp;body=https%3a%2f%2fkatherinemwood.github.io%2fpost%2fvizfix%2f">
-        <i class="fa fa-envelope"></i>
-      </a>
-    </li>
-  </ul>
-</div>
 
 
+
+
+<span >
+  <a href="https://katherinemwood.github.io/">HOME</a>
+   / 
+</span>
+
+
+<span >
+  <a href="https://katherinemwood.github.io/post/">BLOG</a>
+   / 
+</span>
+
+
+<span  class="active">
+  <a href="https://katherinemwood.github.io/post/vizfix/">Improving a data visualization</a>
   
+</span>
 
 </div>
 
-    <div class="article-style" itemprop="articleBody">
-      <p>I came across a graph not long ago that I immediately saved for later use. Making clean, effective data visualizations is hard, and there is always someone waiting to gleefuly inform you that you’ve messed it up in one way or another. Sometimes these are minor aesthetic quibbles, and the visualization still manages to communicate what it needs to effectively.</p>
+    
+    <main id="content" class="post">
+
+<h1>Improving a data visualization</h1>
+<div class="reading-time">
+  <div class="icon">
+  <svg width="18px" height="18px" viewBox="0 0 115 115" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
+  
+  <path d="M57.5 11C29.05 11 6 34.05 6 62.5S29.05 114 57.5 114 109 90.95 109 62.5 85.95 11 57.5 11zm0 93.032c-22.947 0-41.532-18.585-41.532-41.532 0-22.947 18.585-41.532 41.532-41.532 22.947 0 41.532 18.585 41.532 41.532 0 22.947-18.585 41.532-41.532 41.532zm12.833-21.68L52.703 69.54a2.508 2.508 0 0 1-1.018-2.015V33.427a2.5 2.5 0 0 1 2.492-2.492h6.646a2.5 2.5 0 0 1 2.492 2.492v29.426l13.871 10.092c1.122.81 1.35 2.368.54 3.49l-3.904 5.377a2.51 2.51 0 0 1-3.489.54z"/>
+  
+  </svg>
+</div>
+
+  <span>4 minutes</span>
+</div>
+
+<div class="published-date">
+  <div class="icon">
+  <svg width="18px" height="18px" viewBox="0 0 115 115" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
+  
+  <path d="M77.577 51.23a1.807 1.807 0 0 0-2.2.342l-27.562 27.79a1.807 1.807 0 0 1-2.2.342l-14.008-9.702a1.807 1.807 0 0 0-2.2.342l-1.952 1.968c-.287.22-.456.568-.455.936.001.37.172.716.46.934L45.637 86.77a1.807 1.807 0 0 0 2.2-.342l31.709-31.97c.287-.22.456-.567.455-.936a1.175 1.175 0 0 0-.46-.933l-1.963-1.36z"/><path d="M97.304 20H80.512c-.041.34-.063.683-.064 1.026a5.986 5.986 0 0 0 1.256 4.1c.054.003.103.02.157.025a4.881 4.881 0 0 1 1.865-.025c3.05.562 4.984 3.907 4.32 7.47-.666 3.563-3.678 5.996-6.728 5.433a4.932 4.932 0 0 1-2.437-1.258c-6.018-1.378-10.445-7.795-10.445-15.745 0-.347.023-.685.04-1.026H34.579c-.041.34-.063.683-.064 1.026a5.986 5.986 0 0 0 1.256 4.1c.054.003.103.02.157.025a4.881 4.881 0 0 1 1.865-.025c3.05.562 4.984 3.907 4.32 7.47-.666 3.563-3.678 5.996-6.728 5.433a4.932 4.932 0 0 1-2.437-1.258c-6.018-1.378-10.445-7.795-10.445-15.745 0-.22.019-.434.025-.652a9.788 9.788 0 0 0-5.697 4.471 9.683 9.683 0 0 0-2.65 4.764L1.158 92.871c-.965 4.689 2.6 8.503 7.948 8.503h6.334v2.673c-.077 5.41 4.263 9.861 9.705 9.953h72.16c5.438-.095 9.774-4.546 9.694-9.953V29.953c.08-5.407-4.256-9.858-9.695-9.953zM10.078 96.653c-2.378 0-3.964-1.697-3.535-3.782L16.637 43.84h80.787L87.331 92.871a5.254 5.254 0 0 1-5.091 3.782H10.078zm91.535 7.394c.036 2.403-1.891 4.382-4.308 4.424h-72.16c-2.42-.04-4.352-2.018-4.32-4.424v-2.673h60.443c5.348 0 10.484-3.814 11.449-8.503l8.897-43.215v54.391z"/><path d="M34.814 33c1.243 0 2.251-1.057 2.251-2.36 0-1.305-1.008-2.362-2.25-2.362-2.04 0-4.313-3.194-4.313-7.778s2.272-7.778 4.312-7.778c1.227 0 2.536 1.163 3.386 3.084H43C41.716 11.19 38.578 8 34.814 8 29.871 8 26 13.49 26 20.5c0 7.009 3.871 12.5 8.814 12.5z"/>
+  
+  </svg>
+</div>
+
+  <span>December 16, 2017</span>
+</div>
+
+
+
+
+<p>I came across a graph not long ago that I immediately saved for later use. Making clean, effective data visualizations is hard, and there is always someone waiting to gleefuly inform you that you’ve messed it up in one way or another. Sometimes these are minor aesthetic quibbles, and the visualization still manages to communicate what it needs to effectively.</p>
 <p>Other times, missteps make the graph harder to interpret, and put too much onus on the viewer to make sense of what they’re seeing.</p>
 <p>This was one of those latter cases.</p>
 <div class="figure">
-<img src="../../img/cap_gains.jpg" title="Connecticut Tax Report" />
-
+<img src="/post/images/cap_gains.jpg" alt="A graph from the Connecticut Tax Study." />
+<p class="caption">A graph from the Connecticut Tax Study.</p>
 </div>
 <p>There is a lot going on here. It’s extremely difficult to parse this correctly. We’ve got:</p>
 <ul>
@@ -235,7 +218,7 @@ gains &lt;- ggplot(data=ct, aes(x=year, y=growth_rate, color=type)) +
   theme_minimal()
 
 print(gains)</code></pre>
-<p><img src="../../post/vizfix_files/figure-html/rough_line-1.png" width="672" /></p>
+<p><img src="/post/vizfix_files/figure-html/rough_line-1.png" width="672" /></p>
 <p>That doesn’t look too bad for a first step! The trends are still very visible–you can still clearly see that at every data point cap gains tracks with income tax. The difference in scales doesn’t actually obscure the pattern, and you can still see the changes for income tax even though they are smaller.</p>
 <p>We’re not done yet, though. Let’s clean this up some more. We’ll need to fix the labels, put each year visible on the x-axis, make the y-axis intervals a little more granular, and add a line at 0 to make it obvious when things dip into the negative.</p>
 <p>I’ll reproduce the entire plotting syntax, for clarity.</p>
@@ -259,136 +242,80 @@ print(gains)</code></pre>
         axis.title.x = element_text(margin=margin(10, 0, 10, 0)))
 
 print(gains_tweaks)</code></pre>
-<p><img src="../../post/vizfix_files/figure-html/clean_gains-1.png" width="672" /></p>
+<p><img src="/post/vizfix_files/figure-html/clean_gains-1.png" width="672" /></p>
 <p>That’s an improvement, I’d say. One could quibble about details here and there (but don’t, you know, feel obligated to). Regardless, now we have something that’s much easier to digest. One y-axis for general growth rate, and both types of data are represented by the same visual technique. A lot of visual clutter pruned away.</p>
 <p>In the end, it still communicates the core idea: these two values vary together. If anything it’s a little clearer in this case anyway, because we can see that the two lines have the same shape over the years as they rise and fall.</p>
 <p>This turned out to be a surprisingly fun exercise. Looking at a visualization and thinking carefully about how you would do it yourself (better, or just differently) is a great way to practice.</p>
 
-    </div>
-  </div>
 
-</article>
-
-<div class="container">
-  <nav>
-  <ul class="pager">
+<h2>Comments</h2>
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
     
-    <li class="previous"><a href="https://katherinemwood.github.io/post/qualifications/"><span
-      aria-hidden="true">&larr;</span> Pre-screen MTurk workers with custom qualifications</a></li>
     
-
     
-    <li class="next"><a href="https://katherinemwood.github.io/post/corvids/">CORVIDS: A provably-complete data reconstruction tool <span
-      aria-hidden="true">&rarr;</span></a></li>
-    
-  </ul>
-</nav>
-
-</div>
-
-<div class="article-container">
-  
-<section id="comments">
-  <div id="disqus_thread">
-    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'kmwblog';
-    var disqus_identifier = 'https:\/\/katherinemwood.github.io\/post\/vizfix\/';
-    var disqus_title = 'Improving a data visualization: Connecticut edition';
-    var disqus_url = 'https:\/\/katherinemwood.github.io\/post\/vizfix\/';
-
+    };
     (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "kmwblog" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </main>
   </div>
-</section>
+  <footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js" integrity="sha256-/2C3CAfmuTGkUqK2mVrhkTacBscoR1caE0u2QZZ3Uh8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/r.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/python.min.js"></script>
 
+<script>
+hljs.configure({languages: []});
+hljs.initHighlightingOnLoad();
+</script>
 
-</div>
-
-<footer class="site-footer">
-  <div class="container">
-    <p class="powered-by">
-
-      &copy; 2020 Katherine Wood &middot; 
-
-      Powered by the <a href="https://github.com/gcushen/hugo-academic" target="_blank">Academic
-      theme</a> for <a href="http://gohugo.io" target="_blank">Hugo</a>.
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+           extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+    });
+    MathJax.Hub.Queue(function() {
       
-      Coffee cup icon made by <a href="https://www.flaticon.com/authors/dave-gandy" title="Dave Gandy">Dave Gandy</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY.</a>
-
-      <span class="pull-right" aria-hidden="true">
-        <a href="#" id="back_to_top">
-          <span class="button_icon">
-            <i class="fa fa-chevron-up fa-2x"></i>
-          </span>
-        </a>
-      </span>
-
-    </p>
-  </div>
-</footer>
-
-    <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenMax.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/ScrollToPlugin.min.js"></script>
-    <script src="../../js/jquery-1.12.3.min.js"></script>
-    <script src="../../js/bootstrap.min.js"></script>
-    <script src="../../js/isotope.pkgd.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.1/imagesloaded.pkgd.min.js"></script>
-    <script src="../../js/hugo-academic.js"></script>
-    
-
-    
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-100181660-1', 'auto');
-        ga('send', 'pageview');
-
-         
-        var links = document.querySelectorAll('a');
-        Array.prototype.map.call(links, function(item) {
-            if (item.host != document.location.host) {
-                item.addEventListener('click', function() {
-                    var action = item.getAttribute('data-action') || 'follow';
-                    ga('send', 'event', 'outbound', action, item.href);
-                });
-            }
-        });
-    </script>
-    
-
-    
-    
       
-      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
-
       
-      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/r.min.js"></script>
-      
-      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/python.min.js"></script>
-      
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i = 0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
 
-      
+    MathJax.Hub.Config({
+    
+    TeX: { equationNumbers: { autoNumber: "AMS" } }
+    });
+</script>
 
-      <script>hljs.initHighlightingOnLoad();</script>
-    
-
-    
-    
-    <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
-    </script>
-    <script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"></script>
-    
-
-  </body>
+    <div class="footer-wrapper">
+      <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="external">Hugo</a> and the <a href="https://github.com/bjacquemet/personal-web" target='_blank' rel="external">Personal Web</a> theme. Icons from <a href="https://fontawesome.com/license" target="_blank" rel="external">Font Awesome.</a></p>
+      <p>© Katherine Wood</p>
+    </div>
+  </footer>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:500,600|Raleway:400,400i,600" rel="stylesheet">
+  
+</body>
 </html>
-
