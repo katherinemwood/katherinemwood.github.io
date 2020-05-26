@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang='en'><head>
-  <title> - Katherine Wood</title>
-  <link rel='canonical' href='https://katherinemwood.github.io/404.html' />
+  <title>Cross-validation gotchas - Katherine Wood</title>
+  <link rel='canonical' href='/post/cross-validation/' />
   <meta charset='utf-8'>
   <meta name='viewport' content='width=device-width, initial-scale=1' />
   <meta name='description' content='' />
@@ -19,17 +19,25 @@
 
 
 
-<link rel="stylesheet" href="https://katherinemwood.github.io/sass/style.min.2de9e904f1f2255b4be5258cc2591aab739366aeae2332fef7ec14564581fe35.css" integrity="sha256-LenpBPHyJVtL5SWMwlkaq3OTZq6uIzL&#43;9&#43;wUVkWB/jU=" media="screen">
-<link rel="stylesheet" href="https://katherinemwood.github.io/syntax.min.css" integrity="" media="screen">
+<link rel="stylesheet" href="/sass/style.min.2de9e904f1f2255b4be5258cc2591aab739366aeae2332fef7ec14564581fe35.css" integrity="sha256-LenpBPHyJVtL5SWMwlkaq3OTZq6uIzL&#43;9&#43;wUVkWB/jU=" media="screen">
+<link rel="stylesheet" href="/syntax.min.css" integrity="" media="screen">
 
-  <meta property="og:title" content="404 Page not found" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://katherinemwood.github.io/404.html" />
+  <meta property="og:title" content="Cross-validation gotchas" />
+<meta property="og:description" content="Cross-validation is elegant and simple, but that doesn&rsquo;t mean there aren&rsquo;t pitfalls." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/cross-validation/" />
+<meta property="article:published_time" content="2020-05-21T12:19:13-07:00" />
+<meta property="article:modified_time" content="2020-05-21T00:00:00+00:00" />
+
+  <meta itemprop="name" content="Cross-validation gotchas">
+<meta itemprop="description" content="Cross-validation is elegant and simple, but that doesn&rsquo;t mean there aren&rsquo;t pitfalls.">
+<meta itemprop="datePublished" content="2020-05-21T12:19:13-07:00" />
+<meta itemprop="dateModified" content="2020-05-21T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="269">
 
 
-  <meta itemprop="name" content="404 Page not found">
-<meta itemprop="description" content="">
+
+<meta itemprop="keywords" content="model selection,model validation,machine learning," />
 </head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/github.min.css" />
 
@@ -37,12 +45,12 @@
 
   <header style="background-image:linear-gradient(
       rgba(0,0,0,0.4),rgba(0,0,0,0.4)
-    ),url(&#39;https://katherinemwood.github.io/images/path.jpeg&#39;)">
+    ),url(&#39;/images/path.jpeg&#39;)">
 
   <div class="intro">
     <div class="logo-container">
       <a href="/">
-        <img src='https://katherinemwood.github.io/images/portrait.jpeg' alt="Profile Starter tips on sharing data and analysis scripts" class="rounded-logo">
+        <img src='/images/portrait.jpeg' alt="Profile Cross-validation gotchas" class="rounded-logo">
       </a>
     </div>
     <h3>Katherine Wood</h3>
@@ -124,34 +132,88 @@
 
 
 
+
+
 <span >
-  <a href="https://katherinemwood.github.io/">HOME</a>
+  <a href="/">HOME</a>
+   / 
+</span>
+
+
+<span >
+  <a href="/post/">BLOG</a>
    / 
 </span>
 
 
 <span  class="active">
-  <a href="https://katherinemwood.github.io/404.html">404 Page not found</a>
+  <a href="/post/cross-validation/">Cross-validation gotchas</a>
   
 </span>
 
 </div>
 
     
-    <main id="content" class="">
+    <main id="content" class="post">
 
-<h1>Bummer!</h1>
-<p>It seems that this page doesn&#39;t exist.</p>
-<img src="/images/gopher.png" alt="gopher" title="gopher" class="gopher" />
-
-
+<h1>Cross-validation gotchas</h1>
+<div class="reading-time">
+  <div class="icon">
+  <svg width="18px" height="18px" viewBox="0 0 115 115" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
   
+  <path d="M57.5 11C29.05 11 6 34.05 6 62.5S29.05 114 57.5 114 109 90.95 109 62.5 85.95 11 57.5 11zm0 93.032c-22.947 0-41.532-18.585-41.532-41.532 0-22.947 18.585-41.532 41.532-41.532 22.947 0 41.532 18.585 41.532 41.532 0 22.947-18.585 41.532-41.532 41.532zm12.833-21.68L52.703 69.54a2.508 2.508 0 0 1-1.018-2.015V33.427a2.5 2.5 0 0 1 2.492-2.492h6.646a2.5 2.5 0 0 1 2.492 2.492v29.426l13.871 10.092c1.122.81 1.35 2.368.54 3.49l-3.904 5.377a2.51 2.51 0 0 1-3.489.54z"/>
   
+  </svg>
+</div>
+
+  <span>2 minutes</span>
+</div>
+
+<div class="published-date">
+  <div class="icon">
+  <svg width="18px" height="18px" viewBox="0 0 115 115" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
+  
+  <path d="M77.577 51.23a1.807 1.807 0 0 0-2.2.342l-27.562 27.79a1.807 1.807 0 0 1-2.2.342l-14.008-9.702a1.807 1.807 0 0 0-2.2.342l-1.952 1.968c-.287.22-.456.568-.455.936.001.37.172.716.46.934L45.637 86.77a1.807 1.807 0 0 0 2.2-.342l31.709-31.97c.287-.22.456-.567.455-.936a1.175 1.175 0 0 0-.46-.933l-1.963-1.36z"/><path d="M97.304 20H80.512c-.041.34-.063.683-.064 1.026a5.986 5.986 0 0 0 1.256 4.1c.054.003.103.02.157.025a4.881 4.881 0 0 1 1.865-.025c3.05.562 4.984 3.907 4.32 7.47-.666 3.563-3.678 5.996-6.728 5.433a4.932 4.932 0 0 1-2.437-1.258c-6.018-1.378-10.445-7.795-10.445-15.745 0-.347.023-.685.04-1.026H34.579c-.041.34-.063.683-.064 1.026a5.986 5.986 0 0 0 1.256 4.1c.054.003.103.02.157.025a4.881 4.881 0 0 1 1.865-.025c3.05.562 4.984 3.907 4.32 7.47-.666 3.563-3.678 5.996-6.728 5.433a4.932 4.932 0 0 1-2.437-1.258c-6.018-1.378-10.445-7.795-10.445-15.745 0-.22.019-.434.025-.652a9.788 9.788 0 0 0-5.697 4.471 9.683 9.683 0 0 0-2.65 4.764L1.158 92.871c-.965 4.689 2.6 8.503 7.948 8.503h6.334v2.673c-.077 5.41 4.263 9.861 9.705 9.953h72.16c5.438-.095 9.774-4.546 9.694-9.953V29.953c.08-5.407-4.256-9.858-9.695-9.953zM10.078 96.653c-2.378 0-3.964-1.697-3.535-3.782L16.637 43.84h80.787L87.331 92.871a5.254 5.254 0 0 1-5.091 3.782H10.078zm91.535 7.394c.036 2.403-1.891 4.382-4.308 4.424h-72.16c-2.42-.04-4.352-2.018-4.32-4.424v-2.673h60.443c5.348 0 10.484-3.814 11.449-8.503l8.897-43.215v54.391z"/><path d="M34.814 33c1.243 0 2.251-1.057 2.251-2.36 0-1.305-1.008-2.362-2.25-2.362-2.04 0-4.313-3.194-4.313-7.778s2.272-7.778 4.312-7.778c1.227 0 2.536 1.163 3.386 3.084H43C41.716 11.19 38.578 8 34.814 8 29.871 8 26 13.49 26 20.5c0 7.009 3.871 12.5 8.814 12.5z"/>
+  
+  </svg>
+</div>
+
+  <span>May 21, 2020</span>
+</div>
+
+<h1 id="background">Background</h1>
+<p>One of the most crucial aspects of a model is its ability to generalize to unseen data. A model has to learn its training data well enough to identify underlying patterns, but not learn it so aggressively that it cannot accurately predict data it has not seen before. This is the classic bias-variance tradeoff.</p>
+<p><img src="" alt="Hand-drawn graph"></p>
+<p>Cross-validation is one technique by which a model can be evaluated on its generalizeability. To cross-validate a model, you divide your data up into a training portion, a validation portion, and ideally a test portion that goes into an impregnable vault until the very end of model development. The model is then trained on the training portion of the data (imagine that!) and asked to predict the validation set and its performance evaluated according to the metric of interest.</p>
+<p><img src="" alt="Data divisions"></p>
+<p>In cross validation, this train-validate process is repeated many times, each time with a different training and validation set. In the end you have an average performance of this model on data it was not trained on. You can use this cross-validation performance to evaluate a model, select a model from several alternatives, or select hyperparameter values.</p>
+<p><em>K-fold cross validation</em> is a commonly used variant of this procedure. In k-fold cross validation, you divide your data up into some number of &ldquo;folds.&rdquo; One of these folds is designated as the validation set, and the rest are the training sets. You train the model on the training folds, evaluate in on the valiadtion fold, and then designate a different fold to serve as the validation fold on the next go-round.</p>
+<p><img src="" alt="Folds"></p>
+<h2 id="how-many-folds">How many folds?</h2>
+<h1 id="pitfalls-and-gotchas">Pitfalls and gotchas</h1>
+
+
+<h2>Comments</h2>
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
     
-  
-
-
-
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "kmwblog" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
     </main>
   </div>
